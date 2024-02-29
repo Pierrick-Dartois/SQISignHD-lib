@@ -233,4 +233,3 @@ for data in L_exec:
 	verify(data)
 	print("\n")
 	k+=1
-#verify(L_exec[0])

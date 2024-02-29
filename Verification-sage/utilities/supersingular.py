@@ -2,6 +2,17 @@
 Helper functions for the supersingular elliptic curve computations in FESTA
 """
 
+# =========================================== #
+# Compute points of order D and Torsion Bases #
+# =========================================== #
+
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
 # Sage Imports
 from sage.all import ZZ
 
@@ -10,9 +21,8 @@ from utilities.order import has_order_D
 from utilities.discrete_log import weil_pairing_pari
 from utilities.fast_sqrt import sqrt_Fp2
 
-# =========================================== #
-# Compute points of order D and Torsion Bases #
-# =========================================== #
+
+
 
 def random_point(E):
     """

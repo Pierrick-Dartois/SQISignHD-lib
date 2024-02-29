@@ -1,6 +1,15 @@
-# ================================================ #
-#     Compute optimised strategy for (2,2)-chain   #
-# ================================================ #
+# ============================================================================ #
+#     Compute optimised strategy for 2-isogeny chains (in dimensions 2 and 4)  #
+# ============================================================================ #
+
+"""
+The function optimised_strategy has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+
+Other functions are original work.
+"""
 
 def optimised_strategy(n, mul_c=1):
     """

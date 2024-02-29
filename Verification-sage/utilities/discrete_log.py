@@ -1,3 +1,16 @@
+# ===================================== #
+#  Fast DLP solving using Weil pairing  #
+# ===================================== #
+
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
+
+
 # Sage imports
 from sage.all import (
     ZZ
@@ -5,10 +18,6 @@ from sage.all import (
 
 # import pari for fast dlog
 import cypari2
-
-# ===================================== #
-#  Fast DLP solving using Weil pairing  #
-# ===================================== #
 
 # Make instance of Pari
 pari = cypari2.Pari()

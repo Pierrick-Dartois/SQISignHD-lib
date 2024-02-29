@@ -25,10 +25,10 @@ from isogenies.isogeny_chain_dim4 import IsogenyChainDim4
 def form_kernel(x,y,P1,Q1,R2,S2,T1,U1):
 	r""" Given the data outputted by generate_kernel, computes a basis B_Kpp of a maximal isotropic
 	subgroup of E_1^2\times E_2^2[2**(e_A+2)] lying above the kernel of: 
-	F:=[[\alpha_1,Diag(\hat{\phi},\hat{\phi})],
-	    [-Diag(\phi,\phi),\tilde{\alpha_2}]]\in\End(E_1^2\times E_2^2)
+	F:=[[\alpha_1,Diag(\hat{\sigma},\hat{\sigma})],
+	    [-Diag(\sigma,\sigma),\tilde{\alpha_2}]]\in\End(E_1^2\times E_2^2)
 	given by:
-	K:=\{(\tilde{\alpha_1}(P),\Diag(\phi,\phi)(P)), P\in E_1^2[2**e_A]\}.
+	K:=\{(\tilde{\alpha_1}(P),\Diag(\sigma,\sigma)(P)), P\in E_1^2[2**e_A]\}.
 	(see generate_kernel description).
 
 	Input:
@@ -36,7 +36,7 @@ def form_kernel(x,y,P1,Q1,R2,S2,T1,U1):
 	\alpha_i:=[[x, y],
 			   [-y, x]]\in\End(E_i^2).
 	- P1,Q1: a basis of E1[2**(e_A+2)] inducing a canonical basis of E1[4].
-	- R2, S2: the image of (P1, Q1) by a 3**e_B isogeny phi: E1-->E2, forming a basis of E2[2**(e_A+2)].
+	- R2, S2: the image of (P1, Q1) by a 3**e_B isogeny \sigma: E1-->E2, forming a basis of E2[2**(e_A+2)].
 	- T1, U1: the canonical basis of E1[4] induced by (P1,Q1) (T1=2**e_A*P1 and U1=2**e_A*Q1).
 
 	Output:
@@ -61,6 +61,23 @@ def form_kernel(x,y,P1,Q1,R2,S2,T1,U1):
 	return B_Kpp
 
 class KaniEndo(IsogenyChainDim4):
+	r"""Class representing a full isogeny chain E1^2*E2^2 --> E1^2*E2^2 derived from Kani's lemma 
+	when given torsion point information and degrees.
+
+	INPUT:
+	- P1, Q1: Basis of E1[2**f].
+	- R2, S2: image of (P1,Q1) via a q-isogeny \sigma: E1-->E2.
+	- q, a1, a2, e: integers such that a1**2+a2**2+q=2**e.
+	- f: integer such that f>=e+2 specifying the available 2**f-torsion in E1 and E2. 
+	By default, f=e+2.
+
+	OUTPUT: A chain of 2-isogenies in dimension 4 representing the endomorphism:
+	F:=[[\alpha_1,Diag(\hat{\sigma},\hat{\sigma)],
+	    [-Diag(\sigma,\sigma),\tilde{\alpha_2}]]\in\End(E_1^2\times E_2^2)
+	with:
+	\alpha_i:=[[a1, a2],
+			   [-a2, a1]]\in\End(E_i^2).
+	"""
 	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f=None):
 		if q+a1**2+a2**2!=2**e:
 			raise ValueError("Wrong parameters: q+a1^2+a2^2!=2^e")
@@ -83,24 +100,6 @@ class KaniEndo(IsogenyChainDim4):
 
 		E1=P1.curve()
 		E2=R2.curve()
-
-		#Fp2=E1.base_field()
-
-		# Canonical basis, theta structures and kernel.
-		#P1_doubles,P2_doubles,R1_doubles,R2_doubles,T1,T2,U1,U2,M0=base_change_canonical_dim2(P1,P2,R1,R2,q,f)
-
-		#Theta1=ThetaStructureDim1(E1,T1,T2)
-		#Theta2=ThetaStructureDim1(E2,U1,U2)
-
-		#Theta12=ProductThetaStructureDim2(Theta1,Theta2)
-
-		#B_Kpp=form_kernel(a1,a2,P1_doubles[0],P2_doubles[0],R1_doubles[0],R2_doubles[0],P1_doubles[-1],P2_doubles[-1])
-
-		# Testing if the basis is symplectic
-		#for i in range(4):
-			#for j in range(i+1,4):
-				#assert B_Kpp[i].weil_pairing(B_Kpp[j],2**(e+2))==1
-
 
 		# Number of dimension 2 steps before dimension 4 gluing Am^2-->B 
 		m=0
@@ -134,16 +133,6 @@ class KaniEndo(IsogenyChainDim4):
 		Theta2=self.gluing_isogeny_chain.Theta2
 		self.codomain_product=ProductThetaStructureDim1To4(Theta1,Theta1,Theta2,Theta2)
 
-		#ZC=self._isogenies[-1]._codomain.base_change_struct(self.N_split).zero()
-		#ZP=self.codomain_product.zero()
-		#print(ZC==ZP)
-
-		#FB_Kp=[2*P for P in B_Kpp]
-		#for f in self._isogenies:
-			#FB_Kp=[f(P) for P in FB_Kp]
-
-		#print(self._isogenies[-1]._codomain.is_K2(FB_Kp))
-
 	def evaluate(self,P):
 		if self.swap:
 			Q=TuplePoint(P[1],P[0],P[2],-P[3])
@@ -161,6 +150,26 @@ class KaniEndo(IsogenyChainDim4):
 
 
 class KaniEndoHalf:
+	r"""Class representing an isogeny chain E1^2*E2^2 --> E1^2*E2^2 derived from Kani's lemma 
+	when given torsion point information sufficient to represent haf the chain and degrees.
+
+	Since not enough torsion is given to compute the chain at once, the computation is divided
+	into two as specified in https://eprint.iacr.org/2023/436, Section 4.3. Namely, we compute
+	two isogeny chain F1: E1^2*E2^2-->C and \tilde{F2}: E1^2*E2^2-->C such that F=F2\circ F1.
+
+	INPUT:
+	- P1, Q1: Basis of E1[2**f].
+	- R2, S2: image of (P1,Q1) via a q-isogeny \sigma: E1-->E2.
+	- q, a1, a2, e: integers such that a1**2+a2**2+q=2**e.
+	- f: integer such that f>=\ceil(e/2)+2 specifying the available 2**f-torsion in E1 and E2.
+
+	OUTPUT: A chain of 2-isogenies in dimension 4 representing the endomorphism:
+	F:=[[\alpha_1,Diag(\hat{\sigma},\hat{\sigma)],
+	    [-Diag(\sigma,\sigma),\tilde{\alpha_2}]]\in\End(E_1^2\times E_2^2)
+	with:
+	\alpha_i:=[[a1, a2],
+			   [-a2, a1]]\in\End(E_i^2).
+	"""
 	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f):
 		e1=ceil(e/2)
 		e2=e-e1

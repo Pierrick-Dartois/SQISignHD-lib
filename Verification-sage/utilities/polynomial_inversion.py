@@ -2,6 +2,13 @@
 #  Compute f^(-1) mod g for f,g in R[X]  #
 # ====================================== #
 
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
 def invert_mod_polynomial_quadratic(f, g):
     """
     Given polynomials f, g with deg(g) = 2

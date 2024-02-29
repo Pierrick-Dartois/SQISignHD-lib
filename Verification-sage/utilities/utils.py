@@ -1,3 +1,10 @@
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
 from sage.all import (
     proof,
     cached_method

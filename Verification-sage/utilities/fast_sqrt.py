@@ -3,6 +3,13 @@
 #     Fast square root and quadratic roots     #
 # ============================================ #
 
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
 def sqrt_Fp2(a):
     """
     Efficiently computes the sqrt

@@ -52,9 +52,9 @@ The default build type uses the flags `-O3 -Wstrict-prototypes -Wno-error=strict
 
 ## License
 
-SQIsignHD is licensed under Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+SQIsignHD is licensed under Apache-2.0. See LICENSE and NOTICE in the root directory.
 
-Third party code is used in some test and common code files of this repository:
+Third party code is used in some test and common code files of this directory (Signature):
 
 - `Signature/src/common/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"
 - `Signature/src/common/fips202.c`: Public Domain

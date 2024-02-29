@@ -1,12 +1,19 @@
+# ================================================== #
+#  Code to check whether a group element has order D #
+# ================================================== #
+
+"""
+This code has been taken from:
+https://github.com/FESTA-PKE/FESTA-SageMath
+
+Copyright (c) 2023 Andrea Basso, Luciano Maino and Giacomo Pope.
+"""
+
 from sage.all import(
     ZZ,
     prod,
     cached_function
 )
-
-# ================================================== #
-#  Code to check whether a group element has order D #
-# ================================================== #
 
 def batch_cofactor_mul_generic(G_list, pis, group_action, lower, upper):
     """
