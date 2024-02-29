@@ -1,0 +1,211 @@
+from sage.all import *
+from sage.schemes.elliptic_curves.hom_composite import EllipticCurveHom_composite
+from time import time
+
+from parameters.parameter_generation import read_params
+from utilities.supersingular import random_point, compute_point_order_D, torsion_basis
+from isogenies.Kani_endomorphism import KaniEndo, KaniEndoHalf
+from theta_structures.Tuple_point import TuplePoint
+from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only
+from basis_change.canonical_basis_dim1 import make_canonical
+
+
+filename_3="parameters/parameters.txt"
+L_params_3=read_params(filename_3)
+
+filename_7="parameters/parameters_7.txt"
+L_params_7=read_params(filename_7)
+
+
+
+def random_walk(E0,N):
+	P0,Q0=torsion_basis(E0,N)
+	P0,Q0,_,_,_=make_canonical(P0,Q0,N)# Q0 is above (0,0) which should not be in the kernel
+
+	lamb=randint(1,N-1)
+
+	_, E1 = isogeny_from_scalar_x_only(E0, N, lamb, basis=(P0,Q0))
+	return E1
+
+def test_kani_endomorphism(index,l_B=7):
+
+	t0=time()
+
+	if l_B==7:
+		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
+	elif l_B==3:
+		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
+	else:
+		raise ValueError("Last parameter l_B should be 3 or 7.")
+
+	print("Testing KaniEndo with parameters:")
+	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
+	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
+	print(" - a1 = {}".format(a1))
+	print(" - a2 = {}".format(a2))
+	print(" - Length of the dimension 4 2-isogeny = {}".format(e_A))
+
+	Fp2=GF(p**2,'i',modulus=[1,0,1],proof=False)
+	i=Fp2.gen()
+
+	q=l_B**e_B
+
+	E0=EllipticCurve(Fp2,[1,0])
+
+	t1=time()
+	print("Parameter import: {} s".format(t1-t0))
+
+	# Generating a random elliptic curve in the supersingular isogeny graph.
+	N=ZZ(2**(f_A-1)*l_B**(f_B-1))
+	E1=random_walk(E0,N)
+
+	t2=time()
+	print("Random walk: {} s".format(t2-t1))
+
+	Basis_sigma=torsion_basis(E1,q)
+	scalar=randint(0,q-1)
+
+	# q-isogeny of kernel <Basis_sigma[0]+scalar*Basis_sigma[1]>
+	sigma, E2 = isogeny_from_scalar_x_only(E1, ZZ(q), scalar, basis=Basis_sigma)
+
+	t3=time()
+	print("Generation of sigma: {} s".format(t3-t2))
+
+	P1,Q1=torsion_basis(E1,2**f_A)
+	R2,S2=evaluate_isogeny_x_only(sigma, P1, Q1, ZZ(2**f_A), ZZ(q))
+
+	t4=time()
+	print("Generation and evaluation of the torsion basis: {} s".format(t4-t3))
+
+	F=KaniEndo(P1,Q1,R2,S2,q,a1,a2,e_A,f_A)
+
+	t5=time()
+	print("Dimension 4 endomorphism: {} s".format(t5-t4))
+
+	T=TuplePoint(P1,E1(0),E2(0),E2(0))
+
+	try:
+		FT=F(T)
+	except:
+		return F
+
+	t6=time()
+
+	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
+
+	print("Time evaluation: {} s".format(t6-t5))
+
+	return F
+
+def test_kani_endomorphism_half(index,l_B=7):
+	t0=time()
+
+	if l_B==7:
+		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
+	elif l_B==3:
+		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
+	else:
+		raise ValueError("Last parameter l_B should be 3 or 7.")
+
+	print("Testing KaniEndoHalf with parameters:")
+	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
+	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
+	print(" - a1 = {}".format(a1))
+	print(" - a2 = {}".format(a2))
+	print(" - Length of the dimension 4 2-isogeny = {}".format(e_A))
+	print(" - Used available torsion = 2**{}".format(ceil(e_A/2)+2))
+
+	Fp2=GF(p**2,'i',modulus=[1,0,1],proof=False)
+
+	i=Fp2.gen()
+
+	q=l_B**e_B
+
+	E0=EllipticCurve(Fp2,[1,0])
+
+	t1=time()
+	print("Parameter import: {} s".format(t1-t0))
+
+	N=ZZ(2**(f_A-1)*l_B**(f_B-1))
+	E1=random_walk(E0,N)
+
+	t2=time()
+	print("Random walk: {} s".format(t2-t1))
+
+	Basis_sigma=torsion_basis(E1,q)
+	scalar=randint(0,q-1)
+
+	# q-isogeny of kernel <Basis_sigma[0]+scalar*Basis_sigma[1]>
+	sigma, E2 = isogeny_from_scalar_x_only(E1, ZZ(q), scalar, basis=Basis_sigma)
+
+	t3=time()
+	print("Generation of sigma: {} s".format(t3-t2))
+
+	f=ceil(e_A/2)+2
+
+	P1,Q1=torsion_basis(E1,2**f)
+	R2,S2=evaluate_isogeny_x_only(sigma, P1, Q1, ZZ(2**f), ZZ(q))
+
+	t4=time()
+	print("Generation and evaluation of the torsion basis: {} s".format(t4-t3))
+
+	F=KaniEndoHalf(P1,Q1,R2,S2,q,a1,a2,e_A,f)
+
+	t5=time()
+	print("Dimension 4 endomorphism: {} s".format(t5-t4))
+
+	T=TuplePoint(P1,E1(0),E2(0),E2(0))
+
+	FT=F(T)
+
+	t6=time()
+
+	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
+	print("Time evaluation: {} s".format(t6-t5))
+
+	return F
+
+test_endomorphism_3=False
+if test_endomorphism_3:
+	print("===========================================================")
+	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 3**{*}.")
+	print("===========================================================\n")
+	for i in range(1,len(L_params_3)):
+		F=test_kani_endomorphism(i,3)
+		print("\n")
+
+test_endomorphism_7=False
+if test_endomorphism_7:
+	print("===========================================================")
+	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 7**{*}.")
+	print("===========================================================\n")
+	for i in range(len(L_params_7)):
+		F=test_kani_endomorphism(i)
+		print("\n")
+
+test_half_endomorphism_3=False
+if test_half_endomorphism_3:
+	print("===============================================================================")
+	print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = 3**{*}.")
+	print("===============================================================================\n")
+	for i in range(1,len(L_params_3)):
+		F=test_kani_endomorphism_half(i,3)
+		print("\n")
+
+test_half_endomorphism_7=False
+if test_half_endomorphism_7:
+	print("===============================================================================")
+	print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = 7**{*}.")
+	print("===============================================================================\n")
+	for i in range(len(L_params_7)):
+		F=test_kani_endomorphism_half(i)
+		print("\n")
+
+
+
+
+
+
+
+
+
