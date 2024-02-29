@@ -106,7 +106,8 @@ INPUT:
 OUTPUT: an object of the class `KaniEndoHalf` (imported from `isogenies/Kani_endomorphism.py`) representing a dimension 4 $2$-isogeny chain derived from Kani's lemma.
 
 EXAMPLE:
-```sage: load("Tests.py")
+```sage
+sage: load("Tests.py")
 sage: F=test_kani_endomorphism_half(2)
 Testing KaniEndoHalf with parameters:
  - Prime characteristic p = 9 * 2**35 * 7**5 - 1
@@ -157,7 +158,8 @@ When computing dimension 4 isogenies with the Theta model, extra care is needed 
 
 In particular, the set of parametres of index 0 in `parameters/parameters.txt` always strikes a failure.
 
-```sage: F=test_kani_endomorphism(0,3)
+```sage
+sage: F=test_kani_endomorphism(0,3)
 Testing KaniEndo with parameters:
  - Prime characteristic p = 1 * 2**18 * 3**5 - 1
  - Degree of the embedded isogeny sigma q = 3**5
@@ -212,7 +214,8 @@ load("Verify_SQISignHD.py")
 
 Once `Verify_SQISignHD.py` is loaded, one can also verify a specific signature with the function `verify` by specifying its index in the list `L_exec` (between 0 and 9).
 
-```sage: load("Verify_SQISignHD.py")
+```sage
+sage: load("Verify_SQISignHD.py")
 ===========================================================
 Testing 10 instances of SQISignHD verification parameters:
  - Prime characteristic p = 13 * 2**126 * 3**78 - 1
@@ -270,7 +273,7 @@ The main test files `Tests.py` and `Verification_SQIsignHD.py` are located in th
 - `isogenies` contains code to compute 2-isogenies and chains of 2-isogenies in dimension 4 in the Theta model.
 - `isogenies_dim2` contains code to compute 2-isogenies and chains of 2-isogenies in dimension 2 in the Theta model, based on the implementation of [3]. This code is useful for the first steps of dimension 4 2-isogeny chains (involving gluings).
 - `montgomery_isogenies` contains code to compute dimension 1 isogeny on the Kummer line faster than `sagemath` using $x$-only arithmetic. These files are due to Giacomo Pope.
-- `parameters` contains the parameters mentionned in [Generic tests](#Generic tests).
+- `parameters` contains the parameters mentionned in [Generic tests](Geneic tests).
 - `SQISignHD_data` contains real SQISignHD signatures.
 - `theta_structures` contains code for different models in dimension 1, 2 and 4 and translations between those models (Montgomery model on elliptic curves (dimension 1) or product of elliptic curves, level 2 Theta models in dimensions 1, 2 and 4).
 - `utilities` contains several useful functions to work on supersingular elliptic curves faster than with the `sagemath` generic functions (discrete logarithms, Weil pairings...).
