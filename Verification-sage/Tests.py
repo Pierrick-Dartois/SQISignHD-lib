@@ -28,6 +28,16 @@ def random_walk(E0,N):
 	return E1
 
 def test_kani_endomorphism(index,l_B=7):
+	r""" Computes dimension 4 2-isogeny chains derived from Kani's lemma when the full torsion
+	is available.
+
+	INPUT:
+	- index: specifies the index of the set of parameters in the list extracted from the file "parameters/parameters.txt"
+	if l_B=3 or "parameters/parameters_7.txt" if l_B=7.
+	- l_B: prime specifying the degree of the embedded isogeny sigma (deg(sigma)=l_B**e_B), l_B=3 or 7 (7 by default).
+
+	OUTPUT: an object of the class KaniEndo representing a dimension 4 2-isogeny chain derived from Kani's lemma.
+	"""
 
 	t0=time()
 
@@ -98,6 +108,23 @@ def test_kani_endomorphism(index,l_B=7):
 	return F
 
 def test_kani_endomorphism_half(index,l_B=7):
+	r""" Computes dimension 4 2-isogeny chains derived from Kani's lemma when only half of the full torsion
+	is available. 
+
+	Since not enough torsion is given to compute the chain F at once, the computation is divided
+	into two as specified in https://eprint.iacr.org/2023/436, Section 4.3. Namely, we compute
+	two isogeny chain F1: E1^2*E2^2-->C and \tilde{F2}: E1^2*E2^2-->C such that F=F2 \circ F1.
+
+	NB: In practice, the full torsion is available with the tested sets of parameters but only half is used in this
+	function.
+
+	INPUT:
+	- index: specifies the index of the set of parameters in the list extracted from the file "parameters/parameters.txt"
+	if l_B=3 or "parameters/parameters_7.txt" if l_B=7.
+	- l_B: prime specifying the degree of the embedded isogeny $\sigma$ ($\deg(\sigma)=l_B^{e_B}$), l_B=3 or 7 (7 by default).
+
+	OUTPUT: an object of the class KaniEndoHalf representing a dimension 4 2-isogeny chain derived from Kani's lemma.
+	"""
 	t0=time()
 
 	if l_B==7:
