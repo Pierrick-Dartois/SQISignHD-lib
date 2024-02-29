@@ -222,7 +222,7 @@ def verify(d_sign):
 L_exec=read_exec("SQISignHD_data/SQISignHD_executions.txt")
 
 print("===========================================================")
-print("Testing 10 instances of SQISignHD verification parameters:")
+print("Testing {} instances of SQISignHD verification parameters:".format(len(L_exec)))
 print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
 print(" - Length of the dimension 4 2-isogeny = {}".format(e))
 print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))

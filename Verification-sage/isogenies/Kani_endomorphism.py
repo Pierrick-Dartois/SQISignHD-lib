@@ -155,7 +155,7 @@ class KaniEndoHalf:
 
 	Since not enough torsion is given to compute the chain at once, the computation is divided
 	into two as specified in https://eprint.iacr.org/2023/436, Section 4.3. Namely, we compute
-	two isogeny chain F1: E1^2*E2^2-->C and \tilde{F2}: E1^2*E2^2-->C such that F=F2\circ F1.
+	two isogeny chains F1: E1^2*E2^2-->C and \tilde{F2}: E1^2*E2^2-->C such that F=F2\circ F1.
 
 	INPUT:
 	- P1, Q1: Basis of E1[2**f].
