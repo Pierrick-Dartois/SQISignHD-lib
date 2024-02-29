@@ -277,7 +277,7 @@ The main test files `Tests.py` and `Verification_SQIsignHD.py` are located in th
 
 ## License
 
-SQIsign is licensed under Apache-2.0. See LICENSE and NOTICE in the root directory.
+SQIsignHD is licensed under Apache-2.0. See LICENSE and NOTICE in the root directory.
 
 Third party code is used in this directory (`Verification-sage`):
 

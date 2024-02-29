@@ -52,11 +52,12 @@ The default build type uses the flags `-O3 -Wstrict-prototypes -Wno-error=strict
 
 ## License
 
-SQIsignHD is licensed under Apache-2.0. See LICENSE and NOTICE in the root directory.
+SQIsignHD is licensed under Apache-2.0. See LICENSE and NOTICE in the root directory. 
 
-Third party code is used in some test and common code files of this directory (Signature):
+Most functionalities of this code are based on the original SQIsign implementation <https://github.com/SQISign/the-sqisign> under the license MIT: "Copyright (c) 2023 The SQIsign team".
 
-- `Signature/src/common/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"
-- `Signature/src/common/fips202.c`: Public Domain
-- `Signature/src/common/randombytes_system.c`: MIT: Copyright (c) 2017 Daan Sprenkels <hello@dsprenkels.com>
-- `Signature/apps/PQCgenKAT_sign.c`, `common/randombytes_ctrdrbg.c`, `test/test_kat.c`: by NIST (Public Domain)
+Third party code is used in some test and common code files of this directory (`Signature`):
+
+- `src/common/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"
+- `src/common/fips202.c`: Public Domain
+- `src/common/randombytes_system.c`: MIT: Copyright (c) 2017 Daan Sprenkels <hello@dsprenkels.com>
