@@ -17,7 +17,7 @@ where `file` is the file containing the code you want to run.
 ## Generic tests
 
 The script in `Tests.py` computes several instanciations of dimension 4 2-isogeny chains derived from Kani's lemma given as endomorphisms:
-$$\left(\begin{array}{cccc} a_1 & a_2 & \widehat{\sigma} & 0 \end{array}\right)$$
+$$\left(\begin{array}{cccc} \end{array}\right)$$
 $$F:=\left(\begin{array}{cccc} a_1 & a_2 & \widehat{\sigma} & 0 \\
 -a_2 & a_1 & 0 & \widehat{\sigma} \\
 -\sigma & 0 & a_1 & -a_2 \\
