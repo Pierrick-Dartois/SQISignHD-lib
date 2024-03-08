@@ -153,17 +153,17 @@ def splitting_base_change_matrix_dim4(a1,a2,q,m,M0,A_B,mu=None):
 			E1^2*E2^2 -- Phi x Phi --> Am^2 -- G --> E1^2*E2^2,
 	where Phi: E1 x E1 --> Am is a 2**m-isogeny in dimension 2. 
 	Let (U_1,...,U_4,V_1,...,V_4) be a symplectic basis of Am^2[2**(e-m+2)] 
-	such that V_i=F(W_i), where W_1,...,W_4 have order 2**(e+2), lie over ker(F) 
+	such that V_i=Phi x Phi(W_i), where W_1,...,W_4 have order 2**(e+2), lie over ker(F) 
 	and generate an isotropic subgroup:
-	W_1=Phi x Phi([a1]P1-[2^e/a1]P1,[a2]P1,R2,0)
-	W_2=Phi x Phi([a1]Q1,[a2]Q1,S2,0)
-	W_3=Phi x Phi(-[a2]P1,[a1]P1,0,R2)
-	W_4=Phi x Phi(-[a2]Q1,[a1]Q1,0,S2),
+	W_1=([a1]P1-[2^e/a1]P1,[a2]P1,R2,0)
+	W_2=([a1]Q1,[a2]Q1,S2,0)
+	W_3=(-[a2]P1,[a1]P1,0,R2)
+	W_4=(-[a2]Q1,[a1]Q1,0,S2),
 	with (P1,Q1), a basis of E1[2**(e+2)] and (R2,S2) its image via 
-	sigma: E1 --> E2. Then B:=([2^e]G(U_1),...,[2^e]G(U_4),G(V_1),...,G(V_4))
+	sigma: E1 --> E2. Then B:=([2^(e-m)]G(U_1),...,[2^(e-m)]G(U_4),G(V_1),...,G(V_4))
 	is a symplectic basis of E1^2*E2^2[4].
 
-	We assume that ([2^e]U_1,...,[2^e]U_4) is the symplectic complement of 
+	We assume that ([2^(e-m)]U_1,...,[2^(e-m)]U_4) is the symplectic complement of 
 	([2^(e-m)]V_1,...,[2^(e-m)]V_4) that has been outputted by 
 	gluing_base_change_matrix_dim2_dim4 for the gluing isogeny on Am^2 
 	(first 2-isogeny of G). This function computes the base change matrix of B
@@ -210,7 +210,7 @@ def splitting_base_change_matrix_dim4(a1,a2,q,m,M0,A_B,mu=None):
 	c=ZZ(2**(m+1))
 	d=ZZ(-mu*a2*inv_q)
 
-	# Matrix of the for torsion basis of E1^2*E2^2[4] given by
+	# Matrix of the four torsion basis of E1^2*E2^2[4] given by
 	# ([2^(e-m)]G(B1[0],0),[2^(e-m)]G(B1[1],0),[2^(e-m)]G(0,B1[0]),[2^(e-m)]G(0,B1[1]),
 	# G(B1[2],0),G(B1[3],0),G(0,B1[2]),G(0,B1[3])) in the basis induced by 
 	# [2**e](P1,Q1,R2,[1/q]S2)
