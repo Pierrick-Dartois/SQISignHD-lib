@@ -127,7 +127,7 @@ class KaniEndo(IsogenyChainDim4):
 		mu=self.gluing_isogeny_chain.M_gluing_dim2[0,1]
 		M_split=splitting_base_change_matrix_dim4(a1,a2,q,m,self.gluing_isogeny_chain.M_product_dim2,self.gluing_isogeny_chain.M_gluing_dim4[range(8),range(4)],mu)
 
-		self.N_split=base_change_theta_dim4(M_split,self.gluing_isogeny_chain.e4).inverse()
+		self.N_split=base_change_theta_dim4(M_split.inverse(),self.gluing_isogeny_chain.e4)#.inverse()
 
 		Theta1=self.gluing_isogeny_chain.Theta1
 		Theta2=self.gluing_isogeny_chain.Theta2
