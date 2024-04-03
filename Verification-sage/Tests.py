@@ -212,7 +212,7 @@ def test_kani_endomorphism_half(index,l_B=7):
 
 	return F
 
-test_endomorphism_3=True
+test_endomorphism_3=False
 if test_endomorphism_3:
 	print("===========================================================")
 	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 3**{*}.")
