@@ -8,6 +8,7 @@ from isogenies.Kani_endomorphism import KaniEndo, KaniEndoHalf
 from theta_structures.Tuple_point import TuplePoint
 from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only
 from basis_change.canonical_basis_dim1 import make_canonical
+from utilities.strategy import precompute_strategy_with_first_eval, precompute_strategy_with_first_eval_and_splitting
 
 
 filename_3="parameters/parameters.txt"
@@ -45,6 +46,7 @@ def test_kani_endomorphism(index,l_B=7):
 		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
 	elif l_B==3:
 		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
+		m=1
 	else:
 		raise ValueError("Last parameter l_B should be 3 or 7.")
 
@@ -87,10 +89,15 @@ def test_kani_endomorphism(index,l_B=7):
 	t4=time()
 	print("Generation and evaluation of the torsion basis: {} s".format(t4-t3))
 
-	F=KaniEndo(P1,Q1,R2,S2,q,a1,a2,e_A,f_A)
+	strategy=precompute_strategy_with_first_eval_and_splitting(e_A,m,M=1,S=0.8,I=100)
 
 	t5=time()
-	print("Dimension 4 endomorphism: {} s".format(t5-t4))
+	print("Strategy computation: {} s".format(t5-t4))
+
+	F=KaniEndo(P1,Q1,R2,S2,q,a1,a2,e_A,f_A,strategy)
+
+	t6=time()
+	print("Dimension 4 endomorphism: {} s".format(t6-t5))
 
 	T=TuplePoint(P1,E1(0),E2(0),E2(0))
 
@@ -99,11 +106,11 @@ def test_kani_endomorphism(index,l_B=7):
 	except:
 		return F
 
-	t6=time()
+	t7=time()
 
 	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
 
-	print("Time evaluation: {} s".format(t6-t5))
+	print("Time evaluation: {} s".format(t7-t6))
 
 	return F
 
@@ -131,6 +138,7 @@ def test_kani_endomorphism_half(index,l_B=7):
 		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
 	elif l_B==3:
 		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
+		m=1
 	else:
 		raise ValueError("Last parameter l_B should be 3 or 7.")
 
@@ -176,23 +184,35 @@ def test_kani_endomorphism_half(index,l_B=7):
 	t4=time()
 	print("Generation and evaluation of the torsion basis: {} s".format(t4-t3))
 
-	F=KaniEndoHalf(P1,Q1,R2,S2,q,a1,a2,e_A,f)
+	e1=ceil(e_A/2)
+	e2=e_A-e1
+
+	strategy1=precompute_strategy_with_first_eval(e1,m,M=1,S=0.8,I=100)
+	if e2==e1:
+		strategy2=strategy1
+	else:
+		strategy2=precompute_strategy_with_first_eval(e2,m,M=1,S=0.8,I=100)
 
 	t5=time()
-	print("Dimension 4 endomorphism: {} s".format(t5-t4))
+	print("Computation of strategies: {} s".format(t5-t4))
+
+	F=KaniEndoHalf(P1,Q1,R2,S2,q,a1,a2,e_A,f,strategy1,strategy2)
+
+	t6=time()
+	print("Dimension 4 endomorphism: {} s".format(t6-t5))
 
 	T=TuplePoint(P1,E1(0),E2(0),E2(0))
 
 	FT=F(T)
 
-	t6=time()
+	t7=time()
 
 	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
-	print("Time evaluation: {} s".format(t6-t5))
+	print("Time evaluation: {} s".format(t7-t6))
 
 	return F
 
-test_endomorphism_3=False
+test_endomorphism_3=True
 if test_endomorphism_3:
 	print("===========================================================")
 	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 3**{*}.")

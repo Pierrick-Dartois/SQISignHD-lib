@@ -1,5 +1,5 @@
 from sage.all import *
-from utilities.strategy import optimised_strategy_with_first_eval, optimised_strategy_with_first_eval_and_splitting
+from utilities.strategy import precompute_strategy_with_first_eval, precompute_strategy_with_first_eval_and_splitting
 from isogenies.isogeny_dim4 import IsogenyDim4
 
 
@@ -16,18 +16,10 @@ class IsogenyChainDim4:
 
 
 	def get_strategy(self,splitting):
-		n = self.e - self.m
-		M = 1 # multiplication cost
-		S = 0.8 # squaring cost
-		I = 100 # inversion cost
-		eval_c = 4*(16*M+16*S)
-		mul_c = 4*(32*M+32*S)+(48*M+I)/log(n*1.0)
-		first_eval_c = 4*(2*I+(244+6*self.m)*M+(56+8*self.m)*S)
-
 		if splitting:
-			return optimised_strategy_with_first_eval_and_splitting(n, self.m, mul_c = mul_c/eval_c, first_eval_c = first_eval_c/eval_c)
+			return precompute_strategy_with_first_eval_and_splitting(self.e,self.m,M=1,S=0.8,I=100)
 		else:
-			return optimised_strategy_with_first_eval(n, mul_c = mul_c/eval_c, first_eval_c = first_eval_c/eval_c)
+			return precompute_strategy_with_first_eval(self.e,self.m,M=1,S=0.8,I=100)
 
 	def isogeny_chain(self, B_K, first_isogenies):
 		"""

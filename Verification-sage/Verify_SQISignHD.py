@@ -7,6 +7,7 @@ from utilities.order import has_order_D
 from utilities.supersingular import compute_point_order_D
 from theta_structures.Tuple_point import TuplePoint
 from isogenies.Kani_endomorphism import KaniEndoHalf
+from utilities.strategy import precompute_strategy_with_first_eval
 
 f=126# Power of 2
 fp=78# Power of 3
@@ -191,31 +192,53 @@ def verify(d_sign):
 	t2=time()
 	print("Challenge computation time {} s".format(t2-t1))
 
-	F=KaniEndoHalf(P2,Q2,R1,S1,q,a1,a2,e,f1)
+	# Strategies
+	m=0
+	if a2%2==0:
+		ai_div=a2
+	else:
+		ai_div=a1
+	while ai_div%2==0:
+		m+=1
+		ai_div=ai_div//2
+
+	e1=ceil(e/2)
+	e2=e-e1
+
+	strategy1=precompute_strategy_with_first_eval(e1,m,M=1,S=0.8,I=100)
+	if e2==e1:
+		strategy2=strategy1
+	else:
+		strategy2=precompute_strategy_with_first_eval(e2,m,M=1,S=0.8,I=100)
+
 	t3=time()
-	print("Endomorphism F=F2*F1 computation time {} s".format(t3-t2))
+	print("Time to compute the strategies {} s".format(t3-t2))
+
+	F=KaniEndoHalf(P2,Q2,R1,S1,q,a1,a2,e,f1,strategy1,strategy2)
+	t4=time()
+	print("Endomorphism F=F2*F1 computation time {} s".format(t4-t3))
 
 	C1=F.F1._isogenies[-1]._codomain
 	C2=F.F2_dual._isogenies[-1]._codomain
 	HC2=C2.hadamard()
 	print("Do F1 and F2_dual have the same codomain?\n{}".format(C1.zero()==HC2.zero()))
-	t4=time()
-	print("Codomain matching verification time {} s".format(t4-t3))
+	t5=time()
+	print("Codomain matching verification time {} s".format(t5-t4))
 
 	#Point to evaluate
 	Q=compute_point_order_D(E2,two_power*three_power)
-	t5=time()
-	print("Time to find a point of order 2^f*3^fp {} s".format(t5-t4))
+	t6=time()
+	print("Time to find a point of order 2^f*3^fp {} s".format(t6-t5))
 
 	T=TuplePoint(Q,E2(0),E1(0),E1(0))
 
 	FT=F(T)
-	t6=time()
-	print("Time point evaluation {} s".format(t6-t5))
+	t7=time()
+	print("Time point evaluation {} s".format(t7-t6))
 
 	print("Is the point evaluation correct ?\n{}".format(((FT[0]==a1*Q)|(FT[0]==-a1*Q))&((FT[1]==-a2*Q)|(FT[1]==a2*Q))&(FT[3]==E1(0))))
-	t7=time()
-	print("Total verification time {} s".format(t7-t1))
+	t8=time()
+	print("Total verification time {} s".format(t8-t1))
 
 	return P3A,Q3A,PA,QA,P1,Q1,P2,Q2,R1,S1,q,Q,FT
 

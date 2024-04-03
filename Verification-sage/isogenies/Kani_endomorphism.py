@@ -18,7 +18,6 @@ from isogenies_dim2.isogeny_dim2 import ThetaIsogenyDim2
 from isogenies_dim2.gluing_isogeny_dim2 import GluingThetaIsogenyDim2
 from isogenies.gluing_isogeny_dim4 import GluingIsogenyDim4
 from isogenies.isogeny_dim4 import IsogenyDim4
-
 from isogenies.Kani_gluing_isogeny_chain_dim4 import KaniGluingIsogenyChainDim4, KaniGluingIsogenyChainDim4Half
 from isogenies.isogeny_chain_dim4 import IsogenyChainDim4
 
@@ -78,7 +77,7 @@ class KaniEndo(IsogenyChainDim4):
 	\alpha_i:=[[a1, a2],
 			   [-a2, a1]]\in\End(E_i^2).
 	"""
-	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f=None):
+	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f=None,strategy=None):
 		if q+a1**2+a2**2!=2**e:
 			raise ValueError("Wrong parameters: q+a1^2+a2^2!=2^e")
 
@@ -121,7 +120,7 @@ class KaniEndo(IsogenyChainDim4):
 
 		B_Kpp=form_kernel(a1,a2,P1_doubles[0],Q1_doubles[0],R2_doubles[0],S2_doubles[0],P1_doubles[-1],Q1_doubles[-1])
 
-		IsogenyChainDim4.__init__(self, B_Kpp, self.gluing_isogeny_chain, e, m, splitting=True)
+		IsogenyChainDim4.__init__(self, B_Kpp, self.gluing_isogeny_chain, e, m, splitting=True, strategy=strategy)
 
 		# Splitting
 		mu=self.gluing_isogeny_chain.M_gluing_dim2[0,1]
@@ -170,7 +169,7 @@ class KaniEndoHalf:
 	\alpha_i:=[[a1, a2],
 			   [-a2, a1]]\in\End(E_i^2).
 	"""
-	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f):
+	def __init__(self,P1,Q1,R2,S2,q,a1,a2,e,f,strategy1=None,strategy2=None):
 		e1=ceil(e/2)
 		e2=e-e1
 
@@ -253,8 +252,8 @@ class KaniEndoHalf:
 		B_Kpp1=kernel_basis(M1,e1,P1_doubles[f-e1-2],Q1_doubles[f-e1-2],R2_doubles[f-e1-2],lamb1*S2_doubles[f-e1-2])
 		B_Kpp2=kernel_basis(M2,e2,P1_doubles[f-e2-2],Q1_doubles[f-e2-2],R2_doubles[f-e2-2],lamb2*S2_doubles[f-e2-2])
 
-		self.F1=IsogenyChainDim4(B_Kpp1, self.gluing_isogeny_chain1, e1, m, splitting=False)
-		self.F2_dual=IsogenyChainDim4(B_Kpp2, self.gluing_isogeny_chain2, e2, m, splitting=False)
+		self.F1=IsogenyChainDim4(B_Kpp1, self.gluing_isogeny_chain1, e1, m, splitting=False, strategy=strategy1)
+		self.F2_dual=IsogenyChainDim4(B_Kpp2, self.gluing_isogeny_chain2, e2, m, splitting=False, strategy=strategy2)
 
 		self.F2=self.F2_dual.dual()
 
