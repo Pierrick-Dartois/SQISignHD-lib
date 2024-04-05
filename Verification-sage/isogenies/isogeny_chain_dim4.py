@@ -36,24 +36,26 @@ class IsogenyChainDim4:
 
 		# Length of the chain
 		n=self.e-self.m
-
+		
 		for k in range(n):
 			prev = sum(level)
 			ker = kernel_elements[-1]
 
 			while prev != (n - 1 - k):
 				level.append(self.strategy[strat_idx])
-
-				# Perform the doublings
-				ker = [ker[k].double_iter(self.strategy[strat_idx]) for k in range(4)]
-
-				# Update kernel elements and bookkeeping variables
-				kernel_elements.append(ker)
 				prev += self.strategy[strat_idx]
+
+				# Perform the doublings and update kernel elements
+				# Prevent the last unnecessary doublings for first isogeny computation
+				if k>0 or prev!=n-1:
+					ker = [ker[i].double_iter(self.strategy[strat_idx]) for i in range(4)]
+					kernel_elements.append(ker)
+
+				# Update bookkeeping variable
 				strat_idx += 1
 
 			# Compute the codomain from the 8-torsion
-			if k == 0:
+			if k==0:
 				phi = first_isogenies
 			else:
 				phi = IsogenyDim4(Th,ker)
@@ -63,7 +65,8 @@ class IsogenyChainDim4:
 			isogeny_chain.append(phi)
 
 			# Remove elements from list
-			kernel_elements.pop()
+			if k>0:
+				kernel_elements.pop()
 			level.pop()
 
 			# Push through points for the next step
