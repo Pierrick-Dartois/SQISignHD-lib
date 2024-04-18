@@ -27,7 +27,7 @@ The script in `Tests.py` computes several instanciations of dimension 4 2-isogen
 $$F:=\left(\begin{matrix} a_1 & a_2 & \widehat{\sigma} & 0 \\ 
 -a_2 & a_1 & 0 & \widehat{\sigma} \\ 
 -\sigma & 0 & a_1 & -a_2 \\ 
-0 & -\sigma & a_2 & a_1 \end{matrix}\right)\in End(E_1^2\times E_2^2),$$
+0 & -\sigma & a_2 & a_1 \end{matrix}\right)\in \mathrm{End}(E_1^2\times E_2^2),$$
 
 where:
 - $E_1$ is a "random" supersingular elliptic curve, generated as the codomain of a random isogeny walk of degree $\simeq p$ starting from the supersingular elliptic curve $E_0$ of $j$-invariat $1728$;
