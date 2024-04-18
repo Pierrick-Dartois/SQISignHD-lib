@@ -10,13 +10,67 @@ from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, ev
 from basis_change.canonical_basis_dim1 import make_canonical
 from utilities.strategy import precompute_strategy_with_first_eval, precompute_strategy_with_first_eval_and_splitting
 
+# CLI import
+import argparse
 
-filename_3="parameters/parameters.txt"
+from pathlib import Path
+
+
+## Retrieving parameter files
+target_dir=Path("parameters")
+
+# Dictionnary of list of params indexed by l_B (3 or 7)
+d_L_params={}
+
+for file in target_dir.iterdir():
+	# Files containing parameters are .txt files of the form "parameters_{l_B}.txt"
+	if str(file)[-3::]=="txt":
+		try:
+			l_B=int(str(file)[-5])
+			d_L_params[l_B]=read_params(file)
+		except:
+			raise ValueError(".txt parameter file in the wrong format.")
+
+
+def lookup_and_display_params(index,l_B):
+	if l_B not in d_L_params:
+		raise ValueError("No parameter with prime l_B={l_B} has been generated.")
+
+	if l_B==3:
+		e_A,e_B,a1,a2,f,f_A,f_B,p=d_L_params[l_B][index]
+		m=1
+	else:
+		e_A,e_B,a1,a2,f,f_A,f_B,p,m=d_L_params[l_B][index]
+
+	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
+	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
+	print(" - a1 = {}".format(a1))
+	print(" - a2 = {}".format(a2))
+	print(" - m = max(v_2(a1),v_2(a2)) = {}".format(m))
+	print(" - Length of the 4-dimensional 2-isogeny = {}".format(e_A))
+
+	return e_A,e_B,a1,a2,f,f_A,f_B,p,m
+
+def display_all_params(l_B=None):
+	if l_B not in d_L_params:
+		raise ValueError("No parameter with prime l_B={l_B} has been generated.")
+
+	if l_B==None:
+		for l_B in d_L_params:
+			print("===========================================")
+			print("All parameters with second prime l_B={l_B}.")
+			print("===========================================\n")
+	
+			for index in range(len(d_L_params[l_B])):
+				lookup_and_display_params(index,l_B)
+				print("\n")
+
+
+filename_3="parameters/parameters_3.txt"
 L_params_3=read_params(filename_3)
 
 filename_7="parameters/parameters_7.txt"
 L_params_7=read_params(filename_7)
-
 
 
 def random_walk(E0,N):
@@ -48,7 +102,7 @@ def test_kani_endomorphism(index,l_B=7):
 		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
 		m=1
 	else:
-		raise ValueError("Last parameter l_B should be 3 or 7.")
+		raise ValueError("Last entry l_B should be 3 or 7.")
 
 	print("Testing KaniEndo with parameters:")
 	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
@@ -113,6 +167,7 @@ def test_kani_endomorphism(index,l_B=7):
 	print("Time evaluation: {} s".format(t7-t6))
 
 	return F
+ 
 
 def test_kani_endomorphism_half(index,l_B=7):
 	r""" Computes dimension 4 2-isogeny chains derived from Kani's lemma when only half of the full torsion
@@ -140,7 +195,7 @@ def test_kani_endomorphism_half(index,l_B=7):
 		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
 		m=1
 	else:
-		raise ValueError("Last parameter l_B should be 3 or 7.")
+		raise ValueError("Last entry l_B should be 3 or 7.")
 
 	print("Testing KaniEndoHalf with parameters:")
 	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
@@ -212,7 +267,12 @@ def test_kani_endomorphism_half(index,l_B=7):
 
 	return F
 
-test_endomorphism_3=False
+# CLI (command line interface)
+parser = argparse.ArgumentParser()
+
+#parser.add_argument()
+
+test_endomorphism_3=True
 if test_endomorphism_3:
 	print("===========================================================")
 	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 3**{*}.")
