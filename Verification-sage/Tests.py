@@ -42,6 +42,7 @@ def lookup_and_display_params(index,l_B):
 	else:
 		e_A,e_B,a1,a2,f,f_A,f_B,p,m=d_L_params[l_B][index]
 
+	print(" - Index in the list of parameters = {}".format(index))
 	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
 	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
 	print(" - a1 = {}".format(a1))
@@ -51,26 +52,31 @@ def lookup_and_display_params(index,l_B):
 
 	return e_A,e_B,a1,a2,f,f_A,f_B,p,m
 
-def display_all_params(l_B=None):
-	if l_B not in d_L_params:
-		raise ValueError("No parameter with prime l_B={l_B} has been generated.")
-
+def display_all_params(l_B,index):
 	if l_B==None:
-		for l_B in d_L_params:
+		for l in d_L_params:
 			print("===========================================")
-			print("All parameters with second prime l_B={l_B}.")
+			print("All parameters with second prime l_B={}.".format(l))
 			print("===========================================\n")
 	
-			for index in range(len(d_L_params[l_B])):
-				lookup_and_display_params(index,l_B)
+			for index in range(len(d_L_params[l])):
+				lookup_and_display_params(index,l)
 				print("\n")
-
-
-filename_3="parameters/parameters_3.txt"
-L_params_3=read_params(filename_3)
-
-filename_7="parameters/parameters_7.txt"
-L_params_7=read_params(filename_7)
+	elif int(l_B) not in d_L_params:
+		raise ValueError("No parameter with prime l_B={} has been generated.".format(l_B))
+	elif index==None:
+		l=int(l_B)
+		print("===========================================")
+		print("All parameters with second prime l_B={}.".format(l))
+		print("===========================================\n")
+	
+		for index in range(len(d_L_params[l])):
+			lookup_and_display_params(index,l)
+			print("\n")
+	else:
+		l=int(l_B)
+		i=int(index)
+		lookup_and_display_params(i,l)
 
 
 def random_walk(E0,N):
@@ -82,7 +88,7 @@ def random_walk(E0,N):
 	_, E1 = isogeny_from_scalar_x_only(E0, N, lamb, basis=(P0,Q0))
 	return E1
 
-def test_kani_endomorphism(index,l_B=7):
+def test_kani_endomorphism(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_check=True):
 	r""" Computes dimension 4 2-isogeny chains derived from Kani's lemma when the full torsion
 	is available.
 
@@ -96,30 +102,51 @@ def test_kani_endomorphism(index,l_B=7):
 
 	t0=time()
 
-	if l_B==7:
-		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
-	elif l_B==3:
-		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
-		m=1
+	q=l_B**e_B
+
+	# Recovering m from a2
+	if a1%2==0:
+		ai_div=a1
 	else:
-		raise ValueError("Last entry l_B should be 3 or 7.")
+		ai_div=a2
+
+	ai_div=ai_div//2
+	m_comp=1
+	while ai_div%2==0:
+		ai_div=ai_div//2
+		m_comp+=1
+
+	if m==None:
+		m=m_comp
+
+	if q+a1**2+a2**2!=2**e_A:
+		raise ValueError("Wrong choice of parameters: q+a1**2+a2**2!=2**e_A.")
+	elif p!=f*2**f_A*l_B**f_B-1:
+		raise ValueError("Wrong choice of parameters: p!=f*2**f_A*l_B**f_B-1.")
+	elif primality_check and not is_prime(p):
+		raise ValueError("Wrong choice of parameters: p is not prime.")
+	elif f_A<e_A+2:
+		raise ValueError("Wrong choice of parameters: f_A<e_A+2.")
+	elif f_B<e_B:
+		raise ValueError("Wrong choice of parameters: f_B<e_B.")
+	elif m!=m_comp:
+		raise ValueError("Wrong choice of parameters: m!=max(v_2(a1),v_2(a2)).")
 
 	print("Testing KaniEndo with parameters:")
 	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
 	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
 	print(" - a1 = {}".format(a1))
 	print(" - a2 = {}".format(a2))
+	print(" - m = max(v_2(a1),v_2(a2)) = {}".format(m))
 	print(" - Length of the dimension 4 2-isogeny = {}".format(e_A))
 
 	Fp2=GF(p**2,'i',modulus=[1,0,1],proof=False)
 	i=Fp2.gen()
-
-	q=l_B**e_B
-
+	
 	E0=EllipticCurve(Fp2,[1,0])
 
 	t1=time()
-	print("Parameter import: {} s".format(t1-t0))
+	print("Setup: {} s".format(t1-t0))
 
 	# Generating a random elliptic curve in the supersingular isogeny graph.
 	N=ZZ(2**(f_A-1)*l_B**(f_B-1))
@@ -164,12 +191,12 @@ def test_kani_endomorphism(index,l_B=7):
 
 	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
 
-	print("Time evaluation: {} s".format(t7-t6))
+	print("Time evaluation: {} s\n".format(t7-t6))
 
 	return F
  
 
-def test_kani_endomorphism_half(index,l_B=7):
+def test_kani_endomorphism_half(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_check=True):
 	r""" Computes dimension 4 2-isogeny chains derived from Kani's lemma when only half of the full torsion
 	is available. 
 
@@ -189,19 +216,42 @@ def test_kani_endomorphism_half(index,l_B=7):
 	"""
 	t0=time()
 
-	if l_B==7:
-		e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params_7[index]
-	elif l_B==3:
-		e_A,e_B,a1,a2,f,f_A,f_B,p=L_params_3[index]
-		m=1
+	q=l_B**e_B
+
+	# Recovering m from a2
+	if a1%2==0:
+		ai_div=a1
 	else:
-		raise ValueError("Last entry l_B should be 3 or 7.")
+		ai_div=a2
+
+	ai_div=ai_div//2
+	m_comp=1
+	while ai_div%2==0:
+		ai_div=ai_div//2
+		m_comp+=1
+
+	if m==None:
+		m=m_comp
+	
+	if q+a1**2+a2**2!=2**e_A:
+		raise ValueError("Wrong choice of parameters: q+a1**2+a2**2!=2**e_A.")
+	elif p!=f*2**f_A*l_B**f_B-1:
+		raise ValueError("Wrong choice of parameters: p!=f*2**f_A*l_B**f_B-1.")
+	elif primality_check and not is_prime(p):
+		raise ValueError("Wrong choice of parameters: p is not prime.")
+	elif f_A<e_A+2:
+		raise ValueError("Wrong choice of parameters: f_A<e_A+2.")
+	elif f_B<e_B:
+		raise ValueError("Wrong choice of parameters: f_B<e_B.")
+	elif m!=m_comp:
+		raise ValueError("Wrong choice of parameters: m!=max(v_2(a1),v_2(a2)).")
 
 	print("Testing KaniEndoHalf with parameters:")
 	print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
 	print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
 	print(" - a1 = {}".format(a1))
 	print(" - a2 = {}".format(a2))
+	print(" - m = max(v_2(a1),v_2(a2)) = {}".format(m))
 	print(" - Length of the dimension 4 2-isogeny = {}".format(e_A))
 	print(" - Used available torsion = 2**{}".format(ceil(e_A/2)+2))
 
@@ -209,12 +259,10 @@ def test_kani_endomorphism_half(index,l_B=7):
 
 	i=Fp2.gen()
 
-	q=l_B**e_B
-
 	E0=EllipticCurve(Fp2,[1,0])
 
 	t1=time()
-	print("Parameter import: {} s".format(t1-t0))
+	print("Setup: {} s".format(t1-t0))
 
 	N=ZZ(2**(f_A-1)*l_B**(f_B-1))
 	E1=random_walk(E0,N)
@@ -263,51 +311,114 @@ def test_kani_endomorphism_half(index,l_B=7):
 	t7=time()
 
 	print("Is evaluation correct?\n{}".format((FT[0][0]==(a1*P1)[0])&(FT[1][0]==(-a2*P1)[0])&(FT[2][0]==(-R2)[0])&(FT[3]==E2(0))))
-	print("Time evaluation: {} s".format(t7-t6))
+	print("Time evaluation: {} s\n".format(t7-t6))
 
 	return F
 
-# CLI (command line interface)
-parser = argparse.ArgumentParser()
 
-#parser.add_argument()
+## CLI (command line interface)
+if __name__=="__main__":
+	parser = argparse.ArgumentParser()
 
-test_endomorphism_3=True
-if test_endomorphism_3:
-	print("===========================================================")
-	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 3**{*}.")
-	print("===========================================================\n")
-	for i in range(1,len(L_params_3)):
-		F=test_kani_endomorphism(i,3)
-		print("\n")
+	# To display stored parameters
+	parser.add_argument("-d","--display",action="store_true")
+	# To execute 
+	parser.add_argument("-l_B")
+	parser.add_argument("-e_A")
+	parser.add_argument("-e_B")
+	parser.add_argument("-a1")
+	parser.add_argument("-a2")
+	parser.add_argument("-f")
+	parser.add_argument("-f_A")
+	parser.add_argument("-f_B")
+	parser.add_argument("-p")
+	parser.add_argument("-m")
+	parser.add_argument("-i","--index")
+	parser.add_argument("--no_primality_check",action="store_true")
+	parser.add_argument("--KaniEndo",action="store_true")
+	parser.add_argument("--KaniEndoHalf",action="store_true")
 
-test_endomorphism_7=False
-if test_endomorphism_7:
-	print("===========================================================")
-	print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = 7**{*}.")
-	print("===========================================================\n")
-	for i in range(len(L_params_7)):
-		F=test_kani_endomorphism(i)
-		print("\n")
+	args = parser.parse_args()
+	
+	if args.display:
+		display_all_params(args.l_B,args.index)
+	else:
+		if args.KaniEndo:
+			if args.l_B==None:
+				for l_B in d_L_params:
+					print("===========================================================")
+					print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = {}**e_B.".format(l_B))
+					print("===========================================================\n")
 
-test_half_endomorphism_3=False
-if test_half_endomorphism_3:
-	print("===============================================================================")
-	print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = 3**{*}.")
-	print("===============================================================================\n")
-	for i in range(1,len(L_params_3)):
-		F=test_kani_endomorphism_half(i,3)
-		print("\n")
+					n=len(d_L_params[l_B])
+					if l_B==3:
+						i_min=1
+					else:
+						i_min=0
+					for i in range(i_min,n):
+						test_kani_endomorphism(l_B,*d_L_params[l_B][i],primality_check=False)
+			elif args.e_A!=None and args.e_B!=None and args.a1!=None and args.a2!=None and args.f!=None and args.f_A!=None and args.f_B!=None and args.p!=None:
+				l_B,e_A,e_B,a1,a2,f,f_A,f_B,p=int(args.l_B),int(args.e_A),int(args.e_B),int(args.a1),int(args.a2),int(args.f),int(args.f_A),int(args.f_B),int(args.p)
+				if args.m==None:
+					m=None
+				else:
+					m=int(args.m)
+				test_kani_endomorphism(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m,not args.no_primality_check)
+			elif args.index!=None:
+				l_B=int(args.l_B)
+				index=int(args.index)
+				test_kani_endomorphism(l_B,*d_L_params[l_B][index],primality_check=False)
+			else:
+				l_B=int(args.l_B)
+				print("===========================================================")
+				print("Testing Kani endomorphism computation (class KaniEndo) when\nthe embedded isogeny has degree deg(sigma) = {}**e_B.".format(l_B))
+				print("===========================================================\n")
 
-test_half_endomorphism_7=False
-if test_half_endomorphism_7:
-	print("===============================================================================")
-	print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = 7**{*}.")
-	print("===============================================================================\n")
-	for i in range(len(L_params_7)):
-		F=test_kani_endomorphism_half(i)
-		print("\n")
+				n=len(d_L_params[l_B])
+				if l_B==3:
+					i_min=1
+				else:
+					i_min=0
+				for i in range(i_min,n):
+					test_kani_endomorphism(l_B,*d_L_params[l_B][i],primality_check=False)
+		if args.KaniEndoHalf:
+			if args.l_B==None:
+				for l_B in d_L_params:
+					print("===============================================================================")
+					print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = {}**e_B.".format(l_B))
+					print("===============================================================================\n")
 
+					n=len(d_L_params[l_B])
+					if l_B==3:
+						i_min=1
+					else:
+						i_min=0
+					for i in range(i_min,n):
+						test_kani_endomorphism_half(l_B,*d_L_params[l_B][i],primality_check=False)
+			elif args.e_A!=None and args.e_B!=None and args.a1!=None and args.a2!=None and args.f!=None and args.f_A!=None and args.f_B!=None and args.p!=None:
+				l_B,e_A,e_B,a1,a2,f,f_A,f_B,p=int(args.l_B),int(args.e_A),int(args.e_B),int(args.a1),int(args.a2),int(args.f),int(args.f_A),int(args.f_B),int(args.p)
+				if args.m==None:
+					m=None
+				else:
+					m=int(args.m)
+				test_kani_endomorphism_half(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m,not args.no_primality_check)
+			elif args.index!=None:
+				l_B=int(args.l_B)
+				index=int(args.index)
+				test_kani_endomorphism_half(l_B,*d_L_params[l_B][index],primality_check=False)
+			else:
+				l_B=int(args.l_B)
+				print("===============================================================================")
+				print("Testing Kani endomorphism with half the torsion computation (class KaniEndoHalf)\nwhen the embedded isogeny has degree deg(sigma) = {}**e_B.".format(l_B))
+				print("===============================================================================\n")
+
+				n=len(d_L_params[l_B])
+				if l_B==3:
+					i_min=1
+				else:
+					i_min=0
+				for i in range(i_min,n):
+					test_kani_endomorphism_half(l_B,*d_L_params[l_B][i],primality_check=False)
 
 
 
