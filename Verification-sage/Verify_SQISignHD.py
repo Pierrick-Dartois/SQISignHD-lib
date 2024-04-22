@@ -9,6 +9,12 @@ from theta_structures.Tuple_point import TuplePoint
 from isogenies.Kani_endomorphism import KaniEndoHalf
 from utilities.strategy import precompute_strategy_with_first_eval
 
+# CLI imports
+import argparse
+from pathlib import Path
+
+# Public parameters
+
 f=126# Power of 2
 fp=78# Power of 3
 c=13
@@ -25,6 +31,7 @@ def to_Fp2(char):
 	return int(L[0],16)+i*int(L[1][2:],16)
 
 def parse_sign_data(row):
+	# To parse a row in the sample signature file "SQISignHD_data/SQISignHD_executions.txt"
 	S = "".join(row.split()) # remove white spaces
 	L=S.split(',')
 	d_sign_str={}
@@ -52,6 +59,16 @@ def parse_sign_data(row):
 	d_sign['j_E1']=to_Fp2(d_sign_str['j_E1'])
 	d_sign['M_sigma']=matrix(ZZ,[[int(d_sign_str['M_sigma[00]']),int(d_sign_str['M_sigma[01]'])],[int(d_sign_str['M_sigma[10]']),int(d_sign_str['M_sigma[11]'])]])
 	return d_sign
+
+def parse_one_signature(file_open):
+	# To parse a new generated signature
+	with open(file_open,'r',encoding='utf-8') as f:
+		L=f.readlines()
+		row_1=L[26]
+		row_2=L[29]
+		L_row_1=row_1.split(",")
+		row=L_row_1[0]+","+L_row_1[1]+","+row_2
+	return parse_sign_data(row)
 
 def read_exec(file_open):
 	L_ret=[]
@@ -242,17 +259,37 @@ def verify(d_sign):
 
 	return P3A,Q3A,PA,QA,P1,Q1,P2,Q2,R1,S1,q,Q,FT
 
-L_exec=read_exec("SQISignHD_data/SQISignHD_executions.txt")
+## CLI (command line interface)
+if __name__=="__main__":
+	parser = argparse.ArgumentParser()
 
-print("===========================================================")
-print("Testing {} instances of SQISignHD verification parameters:".format(len(L_exec)))
-print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
-print(" - Length of the dimension 4 2-isogeny = {}".format(e))
-print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
-print("===========================================================\n")
-k=1
-for data in L_exec:
-	print("Test {}".format(k))
-	verify(data)
-	print("\n")
-	k+=1
+	parser.add_argument("-vs","--verify_samples",action="store_true")
+	parser.add_argument("-vo","--verify_one_signature")
+
+	args = parser.parse_args()
+
+	if args.verify_one_signature!=None:
+		file_open = Path(args.verify_one_signature)
+		data=parse_one_signature(file_open)
+		print("===========================================================")
+		print("Verifying one SQISignHD signature with parameters:")
+		print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
+		print(" - Length of the 4-dimensional 2-isogeny chain = {}".format(e))
+		print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
+		print("===========================================================\n")
+		verify(data)
+		print("\n")
+	if args.verify_samples:
+		L_exec=read_exec("SQISignHD_data/SQISignHD_executions.txt")
+		print("===========================================================")
+		print("Testing {} instances of SQISignHD verification with parameters:".format(len(L_exec)))
+		print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
+		print(" - Length of the 4-dimensional 2-isogeny chain = {}".format(e))
+		print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
+		print("===========================================================\n")
+		k=1
+		for data in L_exec:
+			print("Test {}".format(k))
+			verify(data)
+			print("\n")
+			k+=1

@@ -19,6 +19,10 @@ It uses the base code of SQIsign (sqisign.org)
 - `make`
 - `./src/sqisignhd/ref/lvl1/test/sqisign_test_sqisignhd_lvl1`
 
+If you want to save a signature test and verify it afterwards:
+
+`./src/sqisignhd/ref/lvl1/test/sqisign_test_sqisignhd_lvl1 > ../../Verification-sage/SQISignHD_data/<specify file name>.txt`
+
 ## Build options
 
 CMake build options can be specified with `-D<BUILD_OPTION>=<VALUE>`.

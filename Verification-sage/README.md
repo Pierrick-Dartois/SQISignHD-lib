@@ -16,13 +16,19 @@ You should have `python` and `sagemath` installed on your computer. Instructions
 
 ## How to run the code?
 
-Launch sagemath in the terminal (type command `sage`) and type 
-`load("path to 'file' from your current directory")`
-where `file` is the file containing the code you want to run.
+Start a terminal and use the `cd` command to locate in the `Verification-sage` directory. From there, you can access two command line interfaces (CLI):
+- `Tests.py` running generic tests on 4-dimensional 2-isogeny chains derived from Kani's lemma;
+- `Verify_SQISignHD.py` to verify real SQISignHD signatures.
+
+To use the CLI, type:
+
+`sage <Tests.py/Verify_SQISignHD.py> <arguments>`
+
+More details on the `<arguments>` of each CLI are provided in the following. 
 
 ## <a name="Generic"></a> Generic tests
 
-The script in `Tests.py` computes several instanciations of dimension 4 2-isogeny chains derived from Kani's lemma given as endomorphisms:
+The script in `Tests.py` computes instanciations of 4-dimensional 2-isogeny chains derived from Kani's lemma given as endomorphisms:
 
 $$F:=\left(\begin{matrix} a_1 & a_2 & \widehat{\sigma} & 0 \\ 
 -a_2 & a_1 & 0 & \widehat{\sigma} \\ 
@@ -31,12 +37,26 @@ $$F:=\left(\begin{matrix} a_1 & a_2 & \widehat{\sigma} & 0 \\
 
 where:
 - $E_1$ is a "random" supersingular elliptic curve, generated as the codomain of a random isogeny walk of degree $\simeq p$ starting from the supersingular elliptic curve $E_0$ of $j$-invariat $1728$;
-- $\sigma: E_1\longrightarrow E_2$ is an isogeny of degree $\ell_B^{e_B}$ with $\ell_B=3$ or $7$; 
+- $\sigma: E_1\longrightarrow E_2$ is an isogeny of degree $\ell_B^{e_B}$ where $\ell_B$ is an odd prime ($\ell_B=3$ or $7$ here); 
 - Integers $a_1, a_2, e_A$ have been chosen such that:
 $$a_1^2+a_2^2+\ell_B^{e_B}=2^{e_A};$$
-- The characteristic $p$ is of the form $p:=c\cdot 2^{e_A+2}\cdot 3^{e_B}-1$, so that we have enough accessible torsion defined over $\mathbb{F}_{p^2}$ to compute $\sigma$ and evaluate it on $E_1[2^{e_A+2}]$. 
+- The characteristic $p$ is of the form $p:=f\cdot 2^{f_A}\cdot \ell_B^{f_B}-1$, with $f_A\geq e_A+2$ and $f_B\geq e_B$ so that we have enough accessible torsion defined over $\mathbb{F}_{p^2}$ to compute $\sigma$ and evaluate it on $E_1[2^{e_A+2}]$.
 
-Different set of parameters $a_1, a_2, e_A, e_B, p$... can be found in `parameters/parameters.txt` (for $\ell_B=3$) and `parameters/parameters_7.txt` (for $\ell_B=7$). They all have been generated with the function `find_prime_gen` of `parameters/parameter_generation.py`.
+### Parameters 
+
+Different set of parameters can be found in the subdirectory `parameters`. The files labeled `parameters/parameters_3.txt` and `parameters/parameters_7.txt` contain lists of parameters for the values $\ell_B=3$ and $\ell_B=7$ respectively. Every line of those files contains a list:
+
+$$[e_A, e_B, a_1, a_2, f, f_A, f_B, p(, m)]$$
+
+such that:
+- $p:=f\cdot 2^{f_A}\cdot \ell_B^{f_B}-1$;
+- $f_A\geq e_A+2$;
+- $f_B\geq e_B$;
+- $m=\max(v_2(a_1),v_2(a_2))$ (this parameter is not present in the list when $\ell_B=3$ since it is always $1$ in this case).
+
+These parameters have been generated with the function `find_prime_gen` of `parameters/parameter_generation.py`. To generate new parameters, you can either:
+- add a line to `parameters/parameters_3.txt` or `parameters/parameters_7.txt` if $\ell_B=3$ or $7$;
+- create a new file `parameters/parameters_{l_B}.txt` if $\ell_B\neq 3, 7$ and add as many lines as list of parameters .
 
 This script includes two different ways of computing such a dimension 4 isogeny:
 - the function `test_kani_endomorphism` tests instances when we have the full torsion available.

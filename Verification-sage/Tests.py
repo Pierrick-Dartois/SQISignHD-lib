@@ -2,7 +2,7 @@ from sage.all import *
 from sage.schemes.elliptic_curves.hom_composite import EllipticCurveHom_composite
 from time import time
 
-from parameters.parameter_generation import read_params
+from parameters.parameter_generation import read_params, find_param, find_param_gen, save_params
 from utilities.supersingular import random_point, compute_point_order_D, torsion_basis
 from isogenies.Kani_endomorphism import KaniEndo, KaniEndoHalf
 from theta_structures.Tuple_point import TuplePoint
@@ -10,9 +10,8 @@ from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, ev
 from basis_change.canonical_basis_dim1 import make_canonical
 from utilities.strategy import precompute_strategy_with_first_eval, precompute_strategy_with_first_eval_and_splitting
 
-# CLI import
+# CLI imports
 import argparse
-
 from pathlib import Path
 
 
@@ -78,7 +77,49 @@ def display_all_params(l_B,index):
 		i=int(index)
 		lookup_and_display_params(i,l)
 
+## Add params
+def add_params(l_B,e_A):
+	if l_B%2==0:
+		raise ValueError("l_B should be odd.")
+	elif l_B==3:
+		L_params=find_param(e_A)
+	else:
+		L_params=find_param_gen(2,l_B,e_A)
 
+	filename=str(target_dir)+"/parameters_"+str(l_B)+".txt"
+	if filename in [str(file) for file in target_dir.iterdir()]:
+		L_params_prev=read_params(filename)
+	else:
+		L_params_prev=[]
+
+	print("===========================================")
+	print("New parameters with second prime l_B={}.".format(l_B))
+	print("===========================================\n")
+
+	for i in range(len(L_params)):
+		if l_B==3:
+			e_A,e_B,a1,a2,f,f_A,f_B,p=L_params[i]
+			print(" - Index in the list of parameters = {}".format(i+len(L_params_prev)))
+			print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
+			print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
+			print(" - a1 = {}".format(a1))
+			print(" - a2 = {}".format(a2))
+			print(" - Length of the 4-dimensional 2-isogeny = {}".format(e_A))
+			print("\n")
+		else:
+			e_A,e_B,a1,a2,f,f_A,f_B,p,m=L_params[i]
+			print(" - Index in the list of parameters = {}".format(i+len(L_params_prev)))
+			print(" - Prime characteristic p = {} * 2**{} * {}**{} - 1".format(f,f_A,l_B,f_B))
+			print(" - Degree of the embedded isogeny sigma q = {}**{}".format(l_B,e_B))
+			print(" - a1 = {}".format(a1))
+			print(" - a2 = {}".format(a2))
+			print(" - m = max(v_2(a1),v_2(a2)) = {}".format(m))
+			print(" - Length of the 4-dimensional 2-isogeny = {}".format(e_A))
+			print("\n")
+
+	save_params(L_params_prev+L_params,filename)
+
+## Testing 4-dimensional isogenies
 def random_walk(E0,N):
 	P0,Q0=torsion_basis(E0,N)
 	P0,Q0,_,_,_=make_canonical(P0,Q0,N)# Q0 is above (0,0) which should not be in the kernel
@@ -322,7 +363,13 @@ if __name__=="__main__":
 
 	# To display stored parameters
 	parser.add_argument("-d","--display",action="store_true")
-	# To execute 
+	# To add new parameters
+	parser.add_argument("--add_params",action="store_true")
+	# To run algorithms
+	parser.add_argument("--no_primality_check",action="store_true")
+	parser.add_argument("--KaniEndo",action="store_true")
+	parser.add_argument("--KaniEndoHalf",action="store_true")
+	# To set parameters 
 	parser.add_argument("-l_B")
 	parser.add_argument("-e_A")
 	parser.add_argument("-e_B")
@@ -334,14 +381,14 @@ if __name__=="__main__":
 	parser.add_argument("-p")
 	parser.add_argument("-m")
 	parser.add_argument("-i","--index")
-	parser.add_argument("--no_primality_check",action="store_true")
-	parser.add_argument("--KaniEndo",action="store_true")
-	parser.add_argument("--KaniEndoHalf",action="store_true")
+	
 
 	args = parser.parse_args()
 	
 	if args.display:
 		display_all_params(args.l_B,args.index)
+	if args.add_params:
+		add_params(int(args.l_B),int(args.e_A))
 	else:
 		if args.KaniEndo:
 			if args.l_B==None:
@@ -419,11 +466,3 @@ if __name__=="__main__":
 					i_min=0
 				for i in range(i_min,n):
 					test_kani_endomorphism_half(l_B,*d_L_params[l_B][i],primality_check=False)
-
-
-
-
-
-
-
-
