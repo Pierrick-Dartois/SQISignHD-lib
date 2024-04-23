@@ -25,7 +25,8 @@ for file in target_dir.iterdir():
 	# Files containing parameters are .txt files of the form "parameters_{l_B}.txt"
 	if str(file)[-3::]=="txt":
 		try:
-			l_B=int(str(file)[-5])
+			L=str(file)[:-4].split('_')
+			l_B=int(L[-1])
 			d_L_params[l_B]=read_params(file)
 		except:
 			raise ValueError(".txt parameter file in the wrong format.")

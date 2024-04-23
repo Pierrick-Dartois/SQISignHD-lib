@@ -42,6 +42,10 @@ where:
 $$a_1^2+a_2^2+\ell_B^{e_B}=2^{e_A};$$
 - The characteristic $p$ is of the form $p:=f\cdot 2^{f_A}\cdot \ell_B^{f_B}-1$, with $f_A\geq e_A+2$ and $f_B\geq e_B$ so that we have enough accessible torsion defined over $\mathbb{F}_{p^2}$ to compute $\sigma$ and evaluate it on $E_1[2^{e_A+2}]$.
 
+This script includes two different ways of computing such a dimension 4 isogeny:
+- the command line instruction `--KaniEndo` tests instances when we have the full torsion available.
+- the function `--KaniEndoHalf` tests instances when only half the torsion is available (as in SQISignHD, see Section 4.3 of the paper).
+
 ### Parameters 
 
 Different set of parameters can be found in the subdirectory `parameters`. The files labeled `parameters/parameters_3.txt` and `parameters/parameters_7.txt` contain lists of parameters for the values $\ell_B=3$ and $\ell_B=7$ respectively. Every line of those files contains a list:
@@ -54,173 +58,175 @@ such that:
 - $f_B\geq e_B$;
 - $m=\max(v_2(a_1),v_2(a_2))$ (this parameter is not present in the list when $\ell_B=3$ since it is always $1$ in this case).
 
-These parameters have been generated with the function `find_prime_gen` of `parameters/parameter_generation.py`. To generate new parameters, you can either:
-- add a line to `parameters/parameters_3.txt` or `parameters/parameters_7.txt` if $\ell_B=3$ or $7$;
-- create a new file `parameters/parameters_{l_B}.txt` if $\ell_B\neq 3, 7$ and add as many lines as list of parameters .
+These parameters have been generated with the functions `find_param` and `find_param_gen` of `parameters/parameter_generation.py`. 
 
-This script includes two different ways of computing such a dimension 4 isogeny:
-- the function `test_kani_endomorphism` tests instances when we have the full torsion available.
-- the function `test_kani_endomorphism_half` tests instances when only half the torsion is available (as in SQISignHD, see Section 4.3 of the paper).
+#### Displaying parameters 
 
-### Chain with the full torsion (as in the SIDH attacks)
+You can display available parameters with the command:
 
-When we can access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the whole isogeny chain $F: E_1^2\times E_2^2\longrightarrow E_1^2\times E_2^2$ can be computed directly. The function `test_kani_endomorphism` tests this direct chain computation for specified sets of parameters. 
+```sage Tests.py --display```
 
-INPUT:
-- index: specifies the index of the set of parameters in the list extracted from the file `parameters/parameters.txt`
-	if $\ell_B=3$ or `parameters/parameters_7.txt` if $\ell_B=7$.
-- $\ell_B$: prime specifying the degree of the embedded isogeny $\sigma$ ($\deg(\sigma)=\ell_B^{e_B}$), $\ell_B=3$ or $7$ ($7$ by default).
+or in short:
 
-OUTPUT: an object of the class `KaniEndo` (imported from `isogenies/Kani_endomorphism.py`) representing a dimension 4 $2$-isogeny chain derived from Kani's lemma.
+```sage Tests.py -d```
+
+This command will display all saved parameters with their index in the list. Those indices will be used as reference to execute tests on a specific set of parameters.
+
+If you want to restrict the displayed lists of parameters, type:
+
+```sage Tests.py -d -l_B=<value>```
+
+to display all parameters with a given `<value>` of $\ell_B$ or type:
+
+```sage Tests.py -d -l_B=<value l_B> -i=<value index>```
+
+to display the list of parameters with a given `<value l_B>` of $\ell_B$ indexed with `<value index>`.
+
+#### Creating new parameters
+
+If you want to create new lists of parameters, you can type:
+
+```sage --add_params -l_B=<value l_B> -e_A=<value e_A>```
+
+this command will create lists of parameters with $\ell_B=$`<value l_B>`, $e_A=$`<value e_A>` and $e_B$ varying in the range $2^{e_A/2}\leq \ell_B^{e_B}\leq 2^{e_A}$. Depending on the specified values, multiple parameters or no parameter can be found. The new parameters are saved in an existing file (after the previously saved parameters) or in a newly created file `parameters/parameters_<value l_B>.txt`. The newly created parameters are displayed along with their index in the file.
 
 EXAMPLE:
 ```
-sage: load("Tests.py")
-sage: F=test_kani_endomorphism(1)
-Testing KaniEndo with parameters:
- - Prime characteristic p = 1 * 2**21 * 7**5 - 1
- - Degree of the embedded isogeny sigma q = 7**5
- - a1 = 37
- - a2 = -336
- - Length of the dimension 4 2-isogeny = 17
-Parameter import: 0.18054890632629395 s
-Random walk: 0.0447688102722168 s
-Generation of sigma: 0.005819082260131836 s
-Generation and evaluation of the torsion basis: 0.007441997528076172 s
-Dimension 4 endomorphism: 0.20083093643188477 s
-Is evaluation correct?
-True
-Time evaluation: 0.008864164352416992 s
-sage: F=test_kani_endomorphism(1,3)
-Testing KaniEndo with parameters:
- - Prime characteristic p = 1 * 2**19 * 3**9 - 1
- - Degree of the embedded isogeny sigma q = 3**9
- - a1 = 213
- - a2 = 22
- - Length of the dimension 4 2-isogeny = 16
-Parameter import: 0.009882926940917969 s
-Random walk: 0.018561124801635742 s
-Generation of sigma: 0.010208845138549805 s
-Generation and evaluation of the torsion basis: 0.004849910736083984 s
-Dimension 4 endomorphism: 0.16254210472106934 s
-Is evaluation correct?
-True
-Time evaluation: 0.007250070571899414 s
-```
+% sage Tests.py --add_params -l_B=11 -e_A=66
+===========================================
+New parameters with second prime l_B=11.
+===========================================
 
-To automatically test all sets of parameters in `parameters/parameters.txt` (except the set of index 0), set: 
-```python
-test_endomorphism_3=True
+ - Index in the list of parameters = 0
+ - Prime characteristic p = 1 * 2**70 * 11**11 - 1
+ - Degree of the embedded isogeny sigma q = 11**11
+ - a1 = 1440875693
+ - a2 = -8468226098
+ - m = max(v_2(a1),v_2(a2)) = 1
+ - Length of the 4-dimensional 2-isogeny = 66
+ ```
+
+The parameter generation is subexponential and may take a while. We do not recommend to select `<value e_A>` bigger than $200$.
+
+### Chain with the full torsion available (as in the SIDH attacks)
+
+When we can access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the whole $2$-isogeny chain $F: E_1^2\times E_2^2\longrightarrow E_1^2\times E_2^2$ can be computed directly. The command line instruction `--KaniEndo` tests this direct chain computation for specified sets of parameters. 
+
+Type:
+
+```sage Tests.py --KaniEndo```
+
+to test all saved lists of parameters. 
+
+Type:
+
+```sage Tests.py --KaniEndo -l_B=<value l_B>```
+
+to test all saved lists of parameters with $\ell_B=$`<value l_B>`.
+
+Type:
+
+```sage Tests.py --KaniEndo -l_B=<value l_B> -i=<value index>```
+
+to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value index>`.
+
+#### For experimented users only
+
+You can test a specific set of parameters chosen manually. If the set of parameters is not well chosen, this could lead to errors.
+
+```sage Tests.py --KaniEndo -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]```
+
+EXAMPLE:
 ```
-in the file `Tests.py`. To automatically test all sets of parameters in `parameters/parameters_7.txt`, set: 
-```python
-test_endomorphism_7=True
+% sage Tests.py --KaniEndo -l_B=7 -e_A=17 -e_B=3 -a1=123 -a2=-340 -f=3 -f_A=20 -f_B=3 -p=1078984703
+Testing KaniEndo with parameters:
+ - Prime characteristic p = 3 * 2**20 * 7**3 - 1
+ - Degree of the embedded isogeny sigma q = 7**3
+ - a1 = 123
+ - a2 = -340
+ - m = max(v_2(a1),v_2(a2)) = 2
+ - Length of the dimension 4 2-isogeny = 17
+Setup: 0.04501986503601074 s
+Random walk: 0.015614986419677734 s
+Generation of sigma: 0.004041910171508789 s
+Generation and evaluation of the torsion basis: 0.002375364303588867 s
+Strategy computation: 0.0004138946533203125 s
+Dimension 4 endomorphism: 0.16916584968566895 s
+Is evaluation correct?
+True
 ```
-in the file `Tests.py`.
 
 ### Chain with half the necessary torsion (as in SQISignHD)
 
-When we cannot access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the computation of the isogeny chain $F: E_1^2\times E_2^2\longrightarrow E_1^2\times E_2^2$ can has to be divided in two, as in Section 4.3 of the SQISignHD paper. Namely, we compute two isogeny chains $F_1: E_1^2\times E_2^2\longrightarrow C$ and $\widetilde{F_2}: E1^2\times E2^2\longrightarrow C$ such that $F=F_2\circ F_1$.
+When we cannot access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the computation of the 2-isogeny chain $F: E_1^2\times E_2^2\longrightarrow E_1^2\times E_2^2$ can has to be divided in two, as in Section 4.3 of the SQISignHD paper. Namely, we compute two isogeny chains $F_1: E_1^2\times E_2^2\longrightarrow C$ and $\widetilde{F_2}: E1^2\times E2^2\longrightarrow C$ such that $F=F_2\circ F_1$. The command line instruction `--KaniEndoHalf` tests this computation for specified sets of parameters. 
 
-The function `test_kani_endomorphism_half` tests this chain computation for specified sets of parameters. Note that, in practice, the full torsion is available with the tested sets of parameters but only half is used.
+Type:
 
-INPUT:
-- index: specifies the index of the set of parameters in the list extracted from the file `parameters/parameters.txt`
-	if $\ell_B=3$ or `parameters/parameters_7.txt` if $\ell_B=7$.
-- $\ell_B$: prime specifying the degree of the embedded isogeny $\sigma$ ($\deg(\sigma)=\ell_B^{e_B}$), $\ell_B=3$ or $7$ ($7$ by default).
+```sage Tests.py --KaniEndoHalf```
 
-OUTPUT: an object of the class `KaniEndoHalf` (imported from `isogenies/Kani_endomorphism.py`) representing a dimension 4 $2$-isogeny chain derived from Kani's lemma.
+to test all saved lists of parameters. 
+
+Type:
+
+```sage Tests.py --KaniEndoHalf -l_B=<value l_B>```
+
+to test all saved lists of parameters with $\ell_B=$`<value l_B>`.
+
+Type:
+
+```sage Tests.py --KaniEndoHalf -l_B=<value l_B> -i=<value index>```
+
+to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value index>`.
+
+#### For experimented users only
+
+You can test a specific set of parameters chosen manually. If the set of parameters is not well chosen, this could lead to errors.
+
+```sage Tests.py --KaniEndoHalf -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]```
 
 EXAMPLE:
 ```
-sage: load("Tests.py")
-sage: F=test_kani_endomorphism_half(2)
+% sage Tests.py --KaniEndoHalf -l_B=7 -e_A=17 -e_B=3 -a1=123 -a2=-340 -f=3 -f_A=20 -f_B=3 -p=1078984703
 Testing KaniEndoHalf with parameters:
- - Prime characteristic p = 9 * 2**35 * 7**5 - 1
- - Degree of the embedded isogeny sigma q = 7**5
- - a1 = 35037
- - a2 = 85804
- - Length of the dimension 4 2-isogeny = 33
- - Used available torsion = 2**19
-Parameter import: 0.03811001777648926 s
-Random walk: 0.024472951889038086 s
-Generation of sigma: 0.0059468746185302734 s
-Generation and evaluation of the torsion basis: 0.0032341480255126953 s
-Dimension 4 endomorphism: 0.28946805000305176 s
+ - Prime characteristic p = 3 * 2**20 * 7**3 - 1
+ - Degree of the embedded isogeny sigma q = 7**3
+ - a1 = 123
+ - a2 = -340
+ - m = max(v_2(a1),v_2(a2)) = 2
+ - Length of the dimension 4 2-isogeny = 17
+ - Used available torsion = 2**11
+Setup: 0.04306387901306152 s
+Random walk: 0.015376091003417969 s
+Generation of sigma: 0.004205942153930664 s
+Generation and evaluation of the torsion basis: 0.002997159957885742 s
+Computation of strategies: 0.00025773048400878906 s
+Dimension 4 endomorphism: 0.20006227493286133 s
 Is evaluation correct?
 True
-Time evaluation: 0.008486032485961914 s
-sage: F=test_kani_endomorphism_half(2,3)
-Testing KaniEndoHalf with parameters:
- - Prime characteristic p = 1 * 2**34 * 3**13 - 1
- - Degree of the embedded isogeny sigma q = 3**13
- - a1 = -52562
- - a2 = 39123
- - Length of the dimension 4 2-isogeny = 32
- - Used available torsion = 2**18
-Parameter import: 0.00571894645690918 s
-Random walk: 0.03211402893066406 s
-Generation of sigma: 0.008935213088989258 s
-Generation and evaluation of the torsion basis: 0.006306886672973633 s
-Dimension 4 endomorphism: 0.24866199493408203 s
-Is evaluation correct?
-True
-Time evaluation: 0.00876617431640625 s
+Time evaluation: 0.00693202018737793 s
 ```
-
-To automatically test all sets of parameters in `parameters/parameters.txt` (except the set of index 0), set: 
-```python
-test_half_endomorphism_3=True
-```
-in the file `Tests.py`. To automatically test all sets of parameters in `parameters/parameters_7.txt`, set: 
-```python
-test_half_endomorphism_7=True
-```
-in the file `Tests.py`.
 
 ### Implementation restrictions
 
 When computing dimension 4 isogenies with the Theta model, extra care is needed to compute gluing isogenies (isogenies starting from a product of abelian varieties of dimension less than 4). In most cases, when we compute an isogeny chain derived from Kani's lemma, we only encounter gluings at the beginning. However, it may happen in small characteristic that an isogeny splits into a product of abelian varieties in the middle of the chain. In this case, we have to compute a gluing afterwards and this step generally fails since we can only compute gluings when we know their location in advance in the chain. Our code then returns a NotImplementedError.    
 
-In particular, the set of parametres of index 0 in `parameters/parameters.txt` always strikes a failure.
+In particular, the set of parameters with $\ell_B=3$ and index 0 always strikes a failure.
 
 ```
-sage: F=test_kani_endomorphism(0,3)
+% sage Tests.py --KaniEndo -l_B=3 -i=0
 Testing KaniEndo with parameters:
  - Prime characteristic p = 1 * 2**18 * 3**5 - 1
  - Degree of the embedded isogeny sigma q = 3**5
  - a1 = 238
  - a2 = -93
+ - m = max(v_2(a1),v_2(a2)) = 1
  - Length of the dimension 4 2-isogeny = 16
-Parameter import: 0.0007309913635253906 s
-Random walk: 0.015373945236206055 s
-Generation of sigma: 0.004636049270629883 s
-Generation and evaluation of the torsion basis: 0.0027260780334472656 s
-Zero dual theta constants.
-Random symplectic base change is being used for duplication.
-Doublings are more costly than expected.
-
+Setup: 0.04303693771362305 s
+Random walk: 0.018531084060668945 s
+Generation of sigma: 0.004489898681640625 s
+Generation and evaluation of the torsion basis: 0.002763986587524414 s
+Strategy computation: 0.0003800392150878906 s
 [...]
-
-NotImplementedError: The codomain of this 2-isogeny could not be computed.
-We may have encountered a product of abelian varieties
-somewhere unexpected along the chain.
-This is exceptionnal and should not happen in larger characteristic.
-sage: F=test_kani_endomorphism_half(0,3)
-Testing KaniEndoHalf with parameters:
- - Prime characteristic p = 1 * 2**18 * 3**5 - 1
- - Degree of the embedded isogeny sigma q = 3**5
- - a1 = 238
- - a2 = -93
- - Length of the dimension 4 2-isogeny = 16
- - Used available torsion = 2**10
-Parameter import: 0.13568615913391113 s
-Random walk: 0.015301942825317383 s
-Generation of sigma: 0.005235910415649414 s
-Generation and evaluation of the torsion basis: 0.0023212432861328125 s
-
-[...]
-
 NotImplementedError: The codomain of this 2-isogeny could not be computed.
 We may have encountered a product of abelian varieties
 somewhere unexpected along the chain.
@@ -229,25 +235,35 @@ This is exceptionnal and should not happen in larger characteristic.
 
 ## Verifying real SQISignHD signatures
 
-The file `Verify_SQISignHD.py` runs the verification of SQISignHD (Alogorithms 4 and 5 of the SQISignHD paper [1]) with real SQISignHD parameters and signatures (at NIST-1 level). Ten signatures have been saved in the file `SQIsignHD_data/SQISignHD_executions.txt`. Each line of this file is a signature. Since we have not already implemented an interface between the C signature implementation and the verification, we simply copy pasted the signatures we obtained. You can test new signatures by running new signatures and copy pasting them in the file `SQIsignHD_data/SQISignHD_executions.txt`.
+The file `Verify_SQISignHD.py` runs the verification of SQISignHD (Alogorithms 4 and 5 of the SQISignHD paper [1]) with real SQISignHD parameters and signatures (at NIST-1 level). Ten signatures have already been saved in the file `SQIsignHD_data/SQISignHD_executions.txt`.
 
-To run all the signatures contained in `SQIsignHD_data/SQISignHD_executions.txt`, simply type:
-```python
-load("Verify_SQISignHD.py")
+### What does this script do?
+
+Given the kernel of the challenge $\varphi: E_A\longrightarrow E_2$, we compute and evaluate it on the basis $(P_A,Q_A)$ of $E_A[2^f]$ obtained from the data from the signature file. The result $(P_2,Q_2):=(\varphi(P_A),\varphi(Q_A))$ is a basis of $E_2[2^f]$ and we already know the basis $(R_1,R_2):=(\widehat{\sigma}(P_2),\widehat{\sigma}(Q_2))$ from the signature. We can then compute integers $a_1, a_2$ such that $a_1^2+a_2^2+q=2^e$ and compute the embedding $F\in \mbox{End}(E_2^2\times E_1^2)$ of $\widehat{\sigma}$ given by Kani's lemma by decomposing it in two parts $F:=F_2\circ F_1$ as previously. We then evaluate $F(Q,0,0,0)$, where $Q$ is a point of $2^f 3^{f'}$-torsion and check that $F(Q,0,0,0)=([a_1]Q,-[a_2]Q,*,0)$ (up to signs on each component).
+
+### Verifying signatures in the sample
+
+To test all 10 signatures contained in the sample `SQIsignHD_data/SQISignHD_executions.txt`, type:
+
+```sage Verify_SQISignHD.py --verify_sample```
+
+or in short format:
+
+```sage Verify_SQISignHD.py -vs```
+
+You can also verify only one signature of index `<value index>` between 0 and 9:
+
+```sage Verify_SQISignHD.py -vs -i=0```
+
+EXAMPLE:
 ```
-
-### Verifying a specific signature
-
-Once `Verify_SQISignHD.py` is loaded, one can also verify a specific signature with the function `verify` by specifying its index in the list `L_exec` (between 0 and 9).
-
-```
-sage: load("Verify_SQISignHD.py")
-===========================================================
-Testing 10 instances of SQISignHD verification parameters:
+% sage Verify_SQISignHD.py --verify_sample
+===============================================================
+Testing 10 instances of SQISignHD verification with parameters:
  - Prime characteristic p = 13 * 2**126 * 3**78 - 1
  - Length of the dimension 4 2-isogeny = 142
  - Used available torsion = 2**73
-===========================================================
+===============================================================
 
 Test 1
 Signature data parsing time 0.19607090950012207 s
@@ -278,9 +294,45 @@ True
 Total verification time 1.825559139251709 s
 ```
 
-### What does this file do?
+### Verifying a generated signature
 
-Given the kernel of the challenge $\varphi: E_A\longrightarrow E_2$, we compute and evaluate it on the basis $(P_A,Q_A)$ of $E_A[2^f]$ obtained from the signature data. The result $(P_2,Q_2):=(\varphi(P_A),\varphi(Q_A))$ is a basis of $E_2[2^f]$ and we already know the basis $(R_1,R_2):=(\widehat{\sigma}(P_2),\widehat{\sigma}(Q_2))$ from the signature. We can then compute integers $a_1, a_2$ such that $a_1^2+a_2^2+q=2^e$ and compute the embedding $F\in \mbox{End}(E_2^2\times E_1^2)$ of $\widehat{\sigma}$ given by Kani's lemma by decomposing it in two parts $F:=F_2\circ F_1$ as previously. We then evaluate $F(Q,0,0,0)$, where $Q$ is a point of $2^f 3^{f'}$-torsion and check that $F(Q,0,0,0)=([a_1]Q,-[a_2]Q,*,0)$ (up to signs on each component).
+Instructions to generate signatures may be found in the `README.md` file of the `Signature` library. We strongly advise to save the generated signature in the `Verification-sage/SQIsignHD_data` subdirectory as instructed in the `Signature/README.md`:
+
+```./src/sqisignhd/ref/lvl1/test/sqisign_test_sqisignhd_lvl1 > ../../Verification-sage/SQISignHD_data/<specify file name>.txt```
+
+Otherwise, you have to specify a relative path from the `Verification-sage` to verify your signature.
+
+Once, you have generated a signature, you may verify it from `Verification-sage` with the command:
+
+```sage Verify_SQISignHD.py --verify_one_signature <path to signature file>```
+
+or in short format:
+
+```sage Verify_SQISignHD.py -vo <path to signature file>```
+
+EXAMPLE:
+```
+% sage Verify_SQISignHD.py --verify_one_signature SQISignHD_data/signature.txt
+===========================================================
+Verifying one SQISignHD signature with parameters:
+ - Prime characteristic p = 13 * 2**126 * 3**78 - 1
+ - Length of the 4-dimensional 2-isogeny chain = 142
+ - Used available torsion = 2**73
+===========================================================
+
+Signature data parsing time 0.20653986930847168 s
+Challenge computation time 0.16781020164489746 s
+Time to compute the strategies 0.0027136802673339844 s
+Endomorphism F=F2*F1 computation time 1.514930248260498 s
+Do F1 and F2_dual have the same codomain?
+True
+Codomain matching verification time 0.00026869773864746094 s
+Time to find a point of order 2^f*3^fp 0.006500244140625 s
+Time point evaluation 0.06669378280639648 s
+Is the point evaluation correct ?
+True
+Total verification time 1.7653708457946777 s
+```
 
 ### Implementation restrictions
 
@@ -288,11 +340,11 @@ Note that the implementation is slightly different from the presentation of the 
 - We have to recompute the challenge $\varphi: E_A\longrightarrow E_2$ given its kernel.
 - For convenience (since we have to recompute $\varphi$ and push points through $\varphi$), we "embed" in dimension 4 the dual of the signature isogeny $\widehat{\sigma}: E_2\longrightarrow E_1$ instead of $\sigma$ itself.
 - For now, only isogenies of degree $q=\deg(\sigma)$ such that $2^e-q\equiv 5 \mod 8$ are outputted by the signature protocol but our verification procedure should work with any degree $q$ such that $2^e-q\equiv 1 \mod 4$, as specified in the SQISignHD paper [1].
-- Since the code is still experimental, note that signatures are not compressed. In particular, we have more torsion than needed and we have to multiply some torsion points by a power of 2.
+- Since the code is still experimental, note that signatures are not compressed. In particular, the deterministic basis $(P_A,Q_A)$ of $E_A[2^f]$ is part of the signature and we have more torsion than needed (we have to multiply torsion points by a power of 2).
 
 ## Organization of the library
 
-The main test files `Tests.py` and `Verification_SQIsignHD.py` are located in the main directory `Verification-sage` of this library.
+The main test files `Tests.py` and `Verify_SQIsignHD.py` are located in the main directory `Verification-sage` of this library.
 
 `Verification-sage` contains several subdirectories:
 - `basis_change` contains code for changing level 2 Theta structures in dimension 2 and 4 useful for the computation of gluing and splitting isogenies (in the beginning and in the end of the chain).

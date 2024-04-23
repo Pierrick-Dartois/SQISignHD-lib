@@ -264,6 +264,7 @@ if __name__=="__main__":
 	parser = argparse.ArgumentParser()
 
 	parser.add_argument("-vs","--verify_samples",action="store_true")
+	parser.add_argument("-i","--index")
 	parser.add_argument("-vo","--verify_one_signature")
 
 	args = parser.parse_args()
@@ -279,17 +280,28 @@ if __name__=="__main__":
 		print("===========================================================\n")
 		verify(data)
 		print("\n")
-	if args.verify_samples:
+	elif args.verify_samples:
 		L_exec=read_exec("SQISignHD_data/SQISignHD_executions.txt")
-		print("===========================================================")
-		print("Testing {} instances of SQISignHD verification with parameters:".format(len(L_exec)))
-		print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
-		print(" - Length of the 4-dimensional 2-isogeny chain = {}".format(e))
-		print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
-		print("===========================================================\n")
-		k=1
-		for data in L_exec:
-			print("Test {}".format(k))
-			verify(data)
-			print("\n")
-			k+=1
+		if args.index==None:
+			print("===============================================================")
+			print("Testing {} instances of SQISignHD verification with parameters:".format(len(L_exec)))
+			print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
+			print(" - Length of the 4-dimensional 2-isogeny chain = {}".format(e))
+			print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
+			print("===============================================================\n")
+			k=0
+			for data in L_exec:
+				print("Test {}".format(k))
+				verify(data)
+				print("\n")
+				k+=1
+		else:
+			i=int(args.index)
+			print("============================================================")
+			print("Testing SQISignHD verification of sample {} with parameters:".format(i))
+			print(" - Prime characteristic p = {} * 2**{} * 3**{} - 1".format(c,f,fp))
+			print(" - Length of the 4-dimensional 2-isogeny chain = {}".format(e))
+			print(" - Used available torsion = 2**{}".format(ceil(e/2)+2))
+			print("============================================================\n")
+			verify(L_exec[i])
+
