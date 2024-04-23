@@ -64,7 +64,9 @@ These parameters have been generated with the functions `find_param` and `find_p
 
 You can display available parameters with the command:
 
-```sage Tests.py --display```
+```
+sage Tests.py --display
+```
 
 or in short:
 
