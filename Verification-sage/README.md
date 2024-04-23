@@ -70,17 +70,23 @@ sage Tests.py --display
 
 or in short:
 
-```sage Tests.py -d```
+```
+sage Tests.py -d
+```
 
 This command will display all saved parameters with their index in the list. Those indices will be used as reference to execute tests on a specific set of parameters.
 
 If you want to restrict the displayed lists of parameters, type:
 
-```sage Tests.py -d -l_B=<value>```
+```
+sage Tests.py -d -l_B=<value>
+```
 
 to display all parameters with a given `<value>` of $\ell_B$ or type:
 
-```sage Tests.py -d -l_B=<value l_B> -i=<value index>```
+```
+sage Tests.py -d -l_B=<value l_B> -i=<value index>
+```
 
 to display the list of parameters with a given `<value l_B>` of $\ell_B$ indexed with `<value index>`.
 
@@ -116,19 +122,25 @@ When we can access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the whole $2
 
 Type:
 
-```sage Tests.py --KaniEndo```
+```
+sage Tests.py --KaniEndo
+```
 
 to test all saved lists of parameters. 
 
 Type:
 
-```sage Tests.py --KaniEndo -l_B=<value l_B>```
+```
+sage Tests.py --KaniEndo -l_B=<value l_B>
+```
 
 to test all saved lists of parameters with $\ell_B=$`<value l_B>`.
 
 Type:
 
-```sage Tests.py --KaniEndo -l_B=<value l_B> -i=<value index>```
+```
+sage Tests.py --KaniEndo -l_B=<value l_B> -i=<value index>
+```
 
 to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value index>`.
 
@@ -136,7 +148,9 @@ to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value in
 
 You can test a specific set of parameters chosen manually. If the set of parameters is not well chosen, this could lead to errors.
 
-```sage Tests.py --KaniEndo -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]```
+```
+sage Tests.py --KaniEndo -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]
+```
 
 EXAMPLE:
 ```
@@ -164,19 +178,25 @@ When we cannot access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the compu
 
 Type:
 
-```sage Tests.py --KaniEndoHalf```
+```
+sage Tests.py --KaniEndoHalf
+```
 
 to test all saved lists of parameters. 
 
 Type:
 
-```sage Tests.py --KaniEndoHalf -l_B=<value l_B>```
+```
+sage Tests.py --KaniEndoHalf -l_B=<value l_B>
+```
 
 to test all saved lists of parameters with $\ell_B=$`<value l_B>`.
 
 Type:
 
-```sage Tests.py --KaniEndoHalf -l_B=<value l_B> -i=<value index>```
+```
+sage Tests.py --KaniEndoHalf -l_B=<value l_B> -i=<value index>
+```
 
 to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value index>`.
 
@@ -184,7 +204,9 @@ to test the list of parameters with $\ell_B=$`<value l_B>` indexed by `<value in
 
 You can test a specific set of parameters chosen manually. If the set of parameters is not well chosen, this could lead to errors.
 
-```sage Tests.py --KaniEndoHalf -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]```
+```
+sage Tests.py --KaniEndoHalf -l_B=<value l_B> -e_A=<value e_A> -e_B=<value e_B> -a1=<value a1> -a2=<value a2> -f=<value f> -f_A=<value f_A> -f_B=<value f_B> -p=<value p> [optional: -m=<value m>]
+```
 
 EXAMPLE:
 ```
@@ -247,15 +269,21 @@ Given the kernel of the challenge $\varphi: E_A\longrightarrow E_2$, we compute 
 
 To test all 10 signatures contained in the sample `SQIsignHD_data/SQISignHD_executions.txt`, type:
 
-```sage Verify_SQISignHD.py --verify_sample```
+```
+sage Verify_SQISignHD.py --verify_sample
+```
 
 or in short format:
 
-```sage Verify_SQISignHD.py -vs```
+```
+sage Verify_SQISignHD.py -vs
+```
 
 You can also verify only one signature of index `<value index>` between 0 and 9:
 
-```sage Verify_SQISignHD.py -vs -i=0```
+```
+sage Verify_SQISignHD.py -vs -i=0
+```
 
 EXAMPLE:
 ```
@@ -300,17 +328,23 @@ Total verification time 1.825559139251709 s
 
 Instructions to generate signatures may be found in the `README.md` file of the `Signature` library. We strongly advise to save the generated signature in the `Verification-sage/SQIsignHD_data` subdirectory as instructed in the `Signature/README.md`:
 
-```./src/sqisignhd/ref/lvl1/test/sqisign_test_sqisignhd_lvl1 > ../../Verification-sage/SQISignHD_data/<specify file name>.txt```
+```
+./src/sqisignhd/ref/lvl1/test/sqisign_test_sqisignhd_lvl1 > ../../Verification-sage/SQISignHD_data/<specify file name>.txt
+```
 
 Otherwise, you have to specify a relative path from the `Verification-sage` to verify your signature.
 
 Once, you have generated a signature, you may verify it from `Verification-sage` with the command:
 
-```sage Verify_SQISignHD.py --verify_one_signature <path to signature file>```
+```
+sage Verify_SQISignHD.py --verify_one_signature <path to signature file>
+```
 
 or in short format:
 
-```sage Verify_SQISignHD.py -vo <path to signature file>```
+```
+sage Verify_SQISignHD.py -vo <path to signature file>
+```
 
 EXAMPLE:
 ```
