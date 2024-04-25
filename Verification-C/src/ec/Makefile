@@ -1,54 +1,59 @@
-COMMON_LIB_PATH = ../common/include
-COMMON_LIB_FILES = bench.h
 
-CC = gcc
-CFLAGS = -I${COMMON_LIB_PATH}
 ifeq (${PRIME},hd256)
 	# SQISignHD NIST level 1
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=1
+	V_DATA = -n_words=4 -f=13 -l_A=2 -f_A=126 -l_B=3 -f_B=78
 else ifeq (${PRIME},p_2_68_3_31)
 	V_DEFS = -DNWORDS_FIELD=2 -DPRIME_CODE=3640
+	V_DATA = -n_words=2 -f=11 -l_A=2 -f_A=68 -l_B=3 -f_B=31
 else ifeq (${PRIME},p_2_66_3_36)
 	V_DEFS = -DNWORDS_FIELD=2 -DPRIME_CODE=3641
+	V_DATA = -n_words=2 -f=5 -l_A=2 -f_A=66 -l_B=3 -f_B=36
 else ifeq (${PRIME},p_2_131_3_45)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=31280
+	V_DATA = -n_words=4 -f=25 -l_A=2 -f_A=131 -l_B=3 -f_B=45
 else ifeq (${PRIME},p_2_132_3_53)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=31281
+	V_DATA = -n_words=4 -f=11 -l_A=2 -f_A=132 -l_B=3 -f_B=53
 else ifeq (${PRIME},p_2_130_3_64)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=31282
+	V_DATA = -n_words=4 -f=11 -l_A=2 -f_A=130 -l_B=3 -f_B=64
 else ifeq (${PRIME},p_2_134_3_69)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=31283
+	V_DATA = -n_words=4 -f=1 -l_A=2 -f_A=134 -l_B=3 -f_B=69
 else ifeq (${PRIME},p_2_131_3_78)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=31284
+	V_DATA = -n_words=4 -f=1 -l_A=2 -f_A=131 -l_B=3 -f_B=78
 else ifeq (${PRIME},p_2_131_3_79)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=31285
+	V_DATA = -n_words=5 -f=25 -l_A=2 -f_A=131 -l_B=3 -f_B=79
 else ifeq (${PRIME},p_2_194_3_61)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=31920
+	V_DATA = -n_words=5 -f=67 -l_A=2 -f_A=194 -l_B=3 -f_B=61
 else ifeq (${PRIME},p_2_67_7_13)
 	V_DEFS = -DNWORDS_FIELD=2 -DPRIME_CODE=7640
+	V_DATA = -n_words=2 -f=109 -l_A=2 -f_A=67 -l_B=7 -f_B=13
 else ifeq (${PRIME},p_2_70_7_23)
 	V_DEFS = -DNWORDS_FIELD=3 -DPRIME_CODE=7641
+	V_DATA = -n_words=3 -f=5 -l_A=2 -f_A=70 -l_B=7 -f_B=23
 else ifeq (${PRIME},p_2_131_7_35)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=71280
+	V_DATA = -n_words=4 -f=3 -l_A=2 -f_A=131 -l_B=7 -f_B=35
 else ifeq (${PRIME},p_2_131_7_39)
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=71281
+	V_DATA = -n_words=4 -f=261 -l_A=2 -f_A=131 -l_B=7 -f_B=39
 else ifeq (${PRIME},p_2_132_7_43)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=71282
+	V_DATA = -n_words=5 -f=15 -l_A=2 -f_A=132 -l_B=7 -f_B=43
 else ifeq (${PRIME},p_2_197_7_35)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=71920
+	V_DATA = -n_words=5 -f=75 -l_A=2 -f_A=197 -l_B=7 -f_B=35
 endif
-TARGETS_FP = fp.c fiat_arithmetic/fp_${PRIME}.c test/test_fp.c test/test_extras.c
-TARGETS_FP2 = fp2.c fp.c fiat_arithmetic/fp_${PRIME}.c test/test_fp2.c test/test_extras.c
 
+all: test_arith_data.txt
 
-
-all: test_fp.exe test_fp2.exe
-
-test_fp.exe: ${TARGETS_FP}
-	${CC} ${CFLAGS} ${V_DEFS} -o test_fp.exe ${TARGETS_FP}
-
-test_fp2.exe: ${TARGETS_FP2}
-	${CC} ${CFLAGS} ${V_DEFS} -o test_fp2.exe ${TARGETS_FP2}
+test_arith_data.txt: 
+	sage test/ec_test_data.py -arith ${V_DATA} test/test_arith_data.txt
 
 clean:
-	rm test_fp.exe test_fp2.exe
+	rm test/test_arith_data.txt
