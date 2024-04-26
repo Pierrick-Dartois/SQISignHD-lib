@@ -12,7 +12,7 @@ Note that this library heavily relies on dimension 2 isogeny computations in the
 
 ## Requirement
 
-You should have `python` and `sagemath` installed on your computer. Instructions to download `sagemath` can be found here https://doc.sagemath.org/html/en/installation/index.html.
+You should have `python 3` and `sagemath` (version 10 at least) installed on your computer. Instructions to download `sagemath` can be found here https://doc.sagemath.org/html/en/installation/index.html.
 
 ## How to run the code?
 

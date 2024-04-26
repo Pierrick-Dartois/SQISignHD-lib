@@ -4,7 +4,7 @@ from ec_test_data_functions import random_point, int_to_digit_t
 import argparse
 from pathlib import Path
 
-def generate_arithmetic_data(f,l_A,f_A,l_B,f_B,n_words):
+def generate_arithmetic_params(f,l_A,f_A,l_B,f_B,n_words,filename):
 	p=f*l_A**f_A*l_B**f_B-1
 	Fp2=GF(p**2,'i',modulus=[1,0,1],proof=False)
 	
@@ -14,32 +14,42 @@ def generate_arithmetic_data(f,l_A,f_A,l_B,f_B,n_words):
 
 	P = random_point(E0)
 	Q = random_point(E0)
-	twoP = 2*P
-	PpQ = P+Q
-	PmQ = P-Q
+	k = randint(0,p-1)
 
-	m = randint(0,p-1)
-	mP = m*P
-	PpmQ=P+m*Q
+	d_points={'P':P, 'Q':Q, 'twoP':2*P, 'PpQ':P+Q, 'PmQ':P-Q,'kP':k*P, 'PpkQ': P+k*Q}
 
-	xP = P[0]
-	xQ = Q[0]
-	xtwoP = twoP[0]
-	xPpQ = PpQ[0]
-	xPmQ = PmQ[0]
-	xmP = mP[0]
-	xPpmQ = PpmQ[0]
+	with open(filename,'w',encoding='utf-8') as f:
+		L_file=filename[:-2].split("/")
+		f.write("#ifndef "+L_file[-1].upper()+"_H\n")
+		f.write("#define "+L_file[-1].upper()+"_H\n")
+		f.write("\n")
+		f.write("#include \"../include/ec.h\"\n")
+		f.write("\n")
 
-	# List of outputs in hex format (each item is a list of hex of length 64 representing output.re or output.im, 
-	# except for m which is not in Fp2 but in ZZ)
-	# A, C
-	L_data=[int_to_digit_t(0,n_words),int_to_digit_t(0,n_words),int_to_digit_t(1,n_words),int_to_digit_t(0,n_words),int_to_digit_t(m,n_words)]
+		L_k=int_to_digit_t(k,n_words)
+		str_k='{'
+		for i in range(n_words):
+			str_k+=L_k[i]
+			if i<n_words-1:
+				str_k+=','
+			else:
+				str_k+='}'
+		f.write("digit_t k[NWORDS_FIELD]="+str_k+";\n")
 
-	for x in [xP,xQ,xtwoP,xPpQ,xPmQ,xmP,xPpmQ]:
-		L_data.append(int_to_digit_t(int(x[0]),n_words))
-		L_data.append(int_to_digit_t(int(x[1]),n_words))
-
-	return L_data
+		f.write("ec_point_t AC={0}, P={0}, twoP={0}, PpQ={0}, PmQ={0}, kP={0}, PpkQ={0};\n")
+		f.write("\n")
+		f.write("AC.z.re[0]=0x1;\n")
+		f.write("\n")
+		for point in d_points:
+			L_point_re=int_to_digit_t(int(d_points[point][0][0]),n_words)
+			L_point_im=int_to_digit_t(int(d_points[point][0][1]),n_words)
+			for i in range(n_words):
+				f.write(point+".x.re["+str(i)+"]="+L_point_re[i]+";\n")
+			for i in range(n_words):
+				f.write(point+".x.im["+str(i)+"]="+L_point_im[i]+";\n")
+			f.write(point+".z.re[0]=0x1;\n")
+			f.write("\n")
+		f.write("#endif")
 
 def save_data(L,filename):
 	with open(filename,'w',encoding='utf-8') as f:
@@ -70,12 +80,10 @@ if __name__=="__main__":
 
 	if args.arith:
 		if args.l_A==None:
-			L_arith_data=generate_arithmetic_data(f,2,f_A,l_B,f_B,n_words)
-			save_data(L_arith_data,args.path)
+			L_arith_data=generate_arithmetic_params(f,2,f_A,l_B,f_B,n_words,args.path)
 		else:
 			l_A=int(args.l_A)
-			L_arith_data=generate_arithmetic_data(f,l_A,f_A,l_B,f_B,n_words)
-			save_data(L_arith_data,args.path)
+			L_arith_data=generate_arithmetic_params(f,l_A,f_A,l_B,f_B,n_words,args.path)
 
 
 

@@ -1,4 +1,9 @@
+COMMON_LIB_PATH = ../common/include
+GF_LIB_PATH1 = ../gf/include
+GF_LIB_PATH2 = ../gf/test
 
+CC = gcc
+CFLAGS = -I${COMMON_LIB_PATH} -I${GF_LIB_PATH1} -I${GF_LIB_PATH2}
 ifeq (${PRIME},hd256)
 	# SQISignHD NIST level 1
 	V_DEFS = -DNWORDS_FIELD=4 -DPRIME_CODE=1
@@ -49,11 +54,15 @@ else ifeq (${PRIME},p_2_197_7_35)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=71920
 	V_DATA = -n_words=5 -f=75 -l_A=2 -f_A=197 -l_B=7 -f_B=35
 endif
+TARGETS = ec.c test/ec-test.c 
 
-all: test_arith_data.txt
+all: test_arith_data.h ec-test.exe
 
-test_arith_data.txt: 
-	sage test/ec_test_data.py -arith ${V_DATA} test/test_arith_data.txt
+test_arith_data.h: 
+	sage test/ec_test_data.py -arith ${V_DATA} test/test_arith_data.h
+
+ec-test.exe: ${TARGETS}
+	${CC} ${CFLAGS} ${V_DEFS} -o ec-test.exe ${TARGETS}
 
 clean:
-	rm test/test_arith_data.txt
+	rm test/test_arith_data.h ec-test.exe
