@@ -178,7 +178,7 @@ def benchmark_dim_one(N_iter,l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None):
 		K=P+scalar*Q
 
 		t0=time()
-		phi = EllipticCurveHom_composite(E1, K)
+		phi = EllipticCurveHom_composite(E1,K)
 		t1=time()
 
 		phiP=phi(P)
@@ -222,7 +222,7 @@ if __name__=="__main__":
 			L_time_compute, L_time_eval=benchmark_kani_endo(N_iter,l_B,*d_L_params[l_B][i])
 			L_time_compute_half, L_time_eval_half=benchmark_kani_endo_half(N_iter,l_B,*d_L_params[l_B][i])
 			L_time_compute_one, L_time_eval_one=benchmark_dim_one(N_iter,l_B,*d_L_params[l_B][i])
-
+			
 			d_results_compute[(l_B,i,"full","compute")]=L_time_compute
 			d_results_compute[(l_B,i,"full","eval")]=L_time_eval
 			d_results_compute[(l_B,i,"half","compute")]=L_time_compute_half
@@ -232,7 +232,7 @@ if __name__=="__main__":
 			t1=time()
 			print("Time {} s.".format(t1-t0))
 
-	with open("Benchmarking_results.csv",'w',encoding='utf-8') as f:
+	with open("Benchmarking_results2.csv",'w',encoding='utf-8') as f:
 		for i in range(4):
 			line=""
 			for r in d_results_compute:
