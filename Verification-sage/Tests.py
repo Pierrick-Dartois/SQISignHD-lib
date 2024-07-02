@@ -125,7 +125,7 @@ def random_walk(E0,N):
 	P0,Q0=torsion_basis(E0,N)
 	P0,Q0,_,_,_=make_canonical(P0,Q0,N)# Q0 is above (0,0) which should not be in the kernel
 
-	lamb=randint(1,N-1)
+	lamb=randint(0,N-1)
 
 	_, E1 = isogeny_from_scalar_x_only(E0, N, lamb, basis=(P0,Q0))
 	return E1

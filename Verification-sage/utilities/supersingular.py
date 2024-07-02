@@ -161,6 +161,7 @@ def torsion_basis(E, D):
     P, Q, _ = torsion_basis_with_pairing(E, D)
     return P, Q
 
+
 # =========================================== #
 #   Entangled torsion basis for fast E[2^k]   #
 # =========================================== #
