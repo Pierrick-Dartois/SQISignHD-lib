@@ -146,7 +146,7 @@ def test_kani_endomorphism(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_check=
 
 	q=l_B**e_B
 
-	# Recovering m from a2
+	# Recovering m from a1 or a2
 	if a1%2==0:
 		ai_div=a1
 	else:
@@ -260,7 +260,7 @@ def test_kani_endomorphism_half(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_c
 
 	q=l_B**e_B
 
-	# Recovering m from a2
+	# Recovering m from a1 or a2
 	if a1%2==0:
 		ai_div=a1
 	else:

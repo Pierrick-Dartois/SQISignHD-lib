@@ -32,6 +32,15 @@ def discrete_log_pari(a, base, order):
     x = pari.fflog(a, base, order)
     return ZZ(x)
 
+def ell_discrete_log_pari(E,P,Base,order):
+    """
+    Wrapper around pari elllog function to compute discrete
+    logarithms in elliptic curves over finite fields. 
+    Works like P.log(Base).
+    """
+    x = pari.elllog(E,P,Base,order)
+    return ZZ(x)
+
 def weil_pairing_pari(P, Q, D, check=False):
     """
     Wrapper around Pari's implementation of the Weil pairing

@@ -310,7 +310,7 @@ Total verification time 1.754267930984497 s
 
 [...]
 
-sage: data=verify(L_exec[0])
+Test 10
 Signature data parsing time 0.08100771903991699 s
 Challenge computation time 0.17457008361816406 s
 Endomorphism F=F2*F1 computation time 1.55623197555542 s

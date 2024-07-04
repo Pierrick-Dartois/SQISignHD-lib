@@ -1,5 +1,5 @@
 from sage.all import *
-from sage.schemes.elliptic_curves.hom_composite import EllipticCurveHom_composite
+#from sage.schemes.elliptic_curves.hom_composite import EllipticCurveHom_composite
 from time import time
 
 from parameters.parameter_generation import read_params
@@ -8,6 +8,7 @@ from isogenies.Kani_endomorphism import KaniEndo, KaniEndoHalf
 from theta_structures.Tuple_point import TuplePoint
 from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only
 from utilities.strategy import precompute_strategy_with_first_eval, precompute_strategy_with_first_eval_and_splitting
+from basis_change.canonical_basis_dim1 import make_canonical
 from Tests import random_walk
 
 from pathlib import Path
@@ -169,19 +170,24 @@ def benchmark_dim_one(N_iter,l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None):
 	N=ZZ(2**(f_A-1)*l_B**(f_B-1))
 	E1=random_walk(E0,N)
 
-	P, Q=torsion_basis(E1,2**e_A)
+	D=ZZ(2**e_A)
+	P,Q=torsion_basis(E1,D)
+	P,Q,_,_,_=make_canonical(P,Q,D)# Q is above (0,0) which should not be in the kernel
 
 	L_time_compute=[]
 	L_time_eval=[]
 	for k in range(N_iter):
 		scalar=randint(0,2**e_A-1)
-		K=P+scalar*Q
 
 		t0=time()
-		phi = EllipticCurveHom_composite(E1,K)
+		# Isogeny computation
+		phi, E2 = isogeny_from_scalar_x_only(E1, D, scalar, basis=(P,Q))
 		t1=time()
-
-		phiP=phi(P)
+		# Isogeny evaluation
+		L1=phi.domain()
+		xP=L1(P[0])
+		xphiP=phi(xP)
+		phiP=xphiP.curve_point()
 
 		t2=time()
 
@@ -232,7 +238,7 @@ if __name__=="__main__":
 			t1=time()
 			print("Time {} s.".format(t1-t0))
 
-	with open("Benchmarking_results2.csv",'w',encoding='utf-8') as f:
+	with open("Benchmarking_results5.csv",'w',encoding='utf-8') as f:
 		for i in range(4):
 			line=""
 			for r in d_results_compute:
