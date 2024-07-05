@@ -1,8 +1,7 @@
 from sage.all import *
 from SIDH.parameter_generation import read_params_SIKE
 from utilities.supersingular import torsion_basis, weil_pairing_pari
-from utilities.discrete_log import discrete_log_pari
-from utilities.order import has_order_D
+from utilities.discrete_log import ell_discrete_log_pari
 from montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only, random_isogeny_x_only
 from basis_change.canonical_basis_dim1 import make_canonical
 from Tests import random_walk
@@ -89,28 +88,34 @@ def SIDH_key_recovery_attack_bench(params,pub_params,pubA,pubB,EAB=None):
 	FU=F(U)
 	phipB_QB=FU[2]
 
-	# DL computation to find \pm sb
+	# DL computation to find sb
+	# ker(phiB)=PB+sb*QB so sb=-DL(phiB(PB),phiB(QB))
 	NB=ZZ(3**e3)
-	P,Q=torsion_basis(EBp,NB)
-	wPQB=weil_pairing_pari(P,phipB_QB,NB)
-	if has_order_D(wPQB, NB, multiplicative=True):
-		wPPB=weil_pairing_pari(P,phipB_PB,NB)
-		# ker(phiB)=PB+sb*QB so sb=-DL(phiB(PB),phiB(QB))
-		sb=discrete_log_pari(wPPB,wPQB,NB)
+	backtrack=False
+	if (NB//3)*phipB_QB!=EBp(0):
+		# When ker(psi)\cap<phiB(QB)>={0}
+		sb=ell_discrete_log_pari(EBp,phipB_PB,phipB_QB,NB)
 	else:
-		wQQB=weil_pairing_pari(Q,phipB_QB,NB)
-		print(has_order_D(wQQB, NB, multiplicative=True))
-		wQPB=weil_pairing_pari(Q,phipB_PB,NB)
-		sb=discrete_log_pari(wQPB,wQQB,NB)
+		# When ker(psi)\cap<phiB(QB)>!={0} (psi backtracks)
+		backtrack=True
+		sb=ell_discrete_log_pari(EBp,phipB_PB,phipB_QB,ZZ(NB//3))
 	
 
-	# Find the sign in \pm sb
-	phiB, EC=isogeny_from_scalar_x_only(E1, NB, sb, basis=(PB,QB))
+	# Find the correct sb
+	if backtrack:
+		# sb determined modulo NB//3=3**(e3-1) and up to a sign
+		sb_candidates=[sb,-sb,sb+NB//3,-sb+NB//3,sb+2*NB//3,-sb+2*NB//3]
+	else:
+		# sb determined modulo NB=3**e3 up to a sign
+		sb_candidates=[sb,-sb]
 
-	if EC.j_invariant()!=EB.j_invariant():
-		sb=-sb
-		phiB, EC=isogeny_from_scalar_x_only(E1, NB, sb, basis=(PB,QB))
-		assert EC.j_invariant()==EB.j_invariant()
+	found_sb=False
+	for s in sb_candidates:
+		phiB, EC=isogeny_from_scalar_x_only(E1, NB, s, basis=(PB,QB))
+		if EC.j_invariant()==EB.j_invariant():
+			found_sb=True
+			sb=s
+			break
 	
 	# Find the shared secret by acting on Alice's public key.
 	psiB,EABp=isogeny_from_scalar_x_only(EA, NB, sb, basis=(phiA_PB,phiA_QB))
@@ -178,6 +183,7 @@ def benchmark_attacks(params,N_iter):
 	L_time_attack=[]
 
 	for i in range(N_iter):
+		print(i)
 		t0=time()
 		pubA,pubB,EAB=SIDH_key_exchange_bench(pub_params,NA,NB,fast=True)
 		t1=time()
@@ -195,7 +201,7 @@ if __name__=="__main__":
 
 	d_results={}
 	N_iter=100
-	for x in []:#d_params:
+	for x in d_params:
 		print("Benchmarking attack against SIDH {}.".format(x))
 		t0=time()
 		L_time_protocol, L_time_attack=benchmark_attacks(d_params[x],N_iter)
@@ -204,17 +210,17 @@ if __name__=="__main__":
 		t1=time()
 		print(t1-t0)
 
-	#with open("Benchmarking_results_SIDH.csv",'w',encoding='utf-8') as f:
-		#for i in range(2):
-			#line=""
-			#for r in d_results:
-				#line+=str(r[i])+","
-			#f.write(line+"\n")
-		#for i in range(N_iter):
-			#line=""
-			#for r in d_results:
-				#line+=str(d_results[r][i])+","
-			#f.write(line+"\n")
+	with open("Benchmarking_results_SIDH.csv",'w',encoding='utf-8') as f:
+		for i in range(2):
+			line=""
+			for r in d_results:
+				line+=str(r[i])+","
+			f.write(line+"\n")
+		for i in range(N_iter):
+			line=""
+			for r in d_results:
+				line+=str(d_results[r][i])+","
+			f.write(line+"\n")
 
 
 

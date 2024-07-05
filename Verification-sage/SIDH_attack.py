@@ -163,7 +163,7 @@ def SIDH_key_recovery_attack(params,pub_params,pubA,pubB,EAB=None):
 	t4=time()
 	print("Evaluation of Bob's isogeny phiB: {} s".format(t4-t3))
 
-	# DL computation to find \pm sb
+	# DL computation to find sb
 	# ker(phiB)=PB+sb*QB so sb=-DL(phiB(PB),phiB(QB))
 	NB=ZZ(3**e3)
 	backtrack=False
