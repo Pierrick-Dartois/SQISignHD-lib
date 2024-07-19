@@ -125,7 +125,7 @@ def random_walk(E0,N):
 	P0,Q0=torsion_basis(E0,N)
 	P0,Q0,_,_,_=make_canonical(P0,Q0,N)# Q0 is above (0,0) which should not be in the kernel
 
-	lamb=randint(1,N-1)
+	lamb=randint(0,N-1)
 
 	_, E1 = isogeny_from_scalar_x_only(E0, N, lamb, basis=(P0,Q0))
 	return E1
@@ -146,7 +146,7 @@ def test_kani_endomorphism(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_check=
 
 	q=l_B**e_B
 
-	# Recovering m from a2
+	# Recovering m from a1 or a2
 	if a1%2==0:
 		ai_div=a1
 	else:
@@ -260,7 +260,7 @@ def test_kani_endomorphism_half(l_B,e_A,e_B,a1,a2,f,f_A,f_B,p,m=None,primality_c
 
 	q=l_B**e_B
 
-	# Recovering m from a2
+	# Recovering m from a1 or a2
 	if a1%2==0:
 		ai_div=a1
 	else:

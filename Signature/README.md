@@ -62,6 +62,6 @@ Most functionalities of this code are based on the original SQIsign implementati
 
 Third party code is used in some test and common code files of this directory (`Signature`):
 
-- `src/common/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"
-- `src/common/fips202.c`: Public Domain
-- `src/common/randombytes_system.c`: MIT: Copyright (c) 2017 Daan Sprenkels <hello@dsprenkels.com>
+- `src/common/generic/aes_c.c`; MIT: "Copyright (c) 2016 Thomas Pornin <pornin@bolet.org>"
+- `src/common/generic/fips202.c`: Public Domain
+- `src/common/generic/randombytes_system.c`: MIT: Copyright (c) 2017 Daan Sprenkels <hello@dsprenkels.com>

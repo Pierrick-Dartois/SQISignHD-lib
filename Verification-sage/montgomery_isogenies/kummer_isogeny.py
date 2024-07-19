@@ -729,7 +729,7 @@ class KummerLineIsogeny(KummerLineIsogeny_Generic):
         L = maps[0].domain()
         for phi in maps:
             if not isinstance(phi, KummerLineIsogeny_Generic):
-                raise TypeError(f'not an kummer-line isogeny: {phi}')
+                raise TypeError(f'not an kummer-line isogeny or a kummer-line isomorphism: {phi}')
             if phi.domain() != L:
                 raise ValueError(f'isogeny has incorrect domain: {phi}')
             L = phi.codomain()
