@@ -238,7 +238,7 @@ if __name__=="__main__":
 			t1=time()
 			print("Time {} s.".format(t1-t0))
 
-	with open("Benchmarking_results5.csv",'w',encoding='utf-8') as f:
+	with open("Benchmarking_results.csv",'w',encoding='utf-8') as f:
 		for i in range(4):
 			line=""
 			for r in d_results_compute:

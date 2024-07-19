@@ -687,46 +687,6 @@ def factored_kummer_isogeny(K, P, order, threshold=1000):
 
     return phi_list
 
-# Quite wrong. Do not use !
-class KummerIsomorphism:
-    """ Instanciates the Kummer isomorphism that maps (0,0) to another 
-    2-torsion point"""
-    def __init__(self,domain):
-        A=domain._A
-        C=domain._C
-
-        A1=-2*A
-        C1=(A*A-4*C*C).sqrt()
-
-        self._domain=domain
-        F=domain.base_ring()
-        self._codomain=KummerLine(F,[A1,C1])
-        self._A=A
-        self._C=C
-
-    def __call__(self,P):
-        X,Z=P._X,P._Z
-        A,C=self._A,self._C
-        A1,C1=self._codomain._A,self._codomain._C
-
-        assert ((X/Z)**3+(A/C)*(X/Z)**2+(X/Z)).is_square()
-        X1=(X-Z)*(X-Z)
-        Z1=X*Z
-        X1=X1*C+Z1*(A+2*C)
-        Z1=Z1*C1
-        assert ((X1/Z1)**3+(A1/C1)*(X1/Z1)**2+(X1/Z1)).is_square()
-
-        return self._codomain((X1,Z1))
-
-    def domain(self):
-        return self._domain
-
-    def codomain(self):
-        return self._codomain
-
-    def degree(self):
-        return 1
-
 class KummerLineIsogeny(KummerLineIsogeny_Generic):
     """
     Computes composite degree isogenies as a chain of prime

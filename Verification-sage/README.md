@@ -2,6 +2,7 @@
 
 This library is a `python/sagemath` implementation of the dimension 4 isogeny computations with the Theta model. Only chains of 2-isogenies and Theta models of level 2 are implemented. The library is suited to the computation of isogenies between products of elliptic curves given by Kani's lemma, especially in the context of SQISignHD verification. We recover isogenies in dimension 1 given their evaluation on torsion points. Hence, the library could also be used to test SIDH attacks.
 
+
 ## Disclaimer
 
 This library is experimental. Further tests and optimizations are still needed. 
@@ -10,9 +11,11 @@ Due to already implemented optimizations, the code is significantly different fr
 
 Note that this library heavily relies on dimension 2 isogeny computations in the Theta-model as described in [3].
 
+
 ## Requirement
 
 You should have `python 3` and `sagemath` (version 10 at least) installed on your computer. Instructions to download `sagemath` can be found here https://doc.sagemath.org/html/en/installation/index.html.
+
 
 ## How to run the code?
 
@@ -25,6 +28,7 @@ To use the CLI, type:
 `sage <Tests.py/Verify_SQISignHD.py> <arguments>`
 
 More details on the `<arguments>` of each CLI are provided in the following. 
+
 
 ## <a name="Generic"></a> Generic tests
 
@@ -116,7 +120,7 @@ New parameters with second prime l_B=11.
 
 The parameter generation is subexponential and may take a while. We do not recommend to select `<value e_A>` bigger than $200$.
 
-### Chain with the full torsion available (as in the SIDH attacks)
+### Chain with the full torsion available
 
 When we can access the full $2^{e_A+2}$-torsion on $E_1$ and $E_2$, the whole $2$-isogeny chain $F: E_1^2\times E_2^2\longrightarrow E_1^2\times E_2^2$ can be computed directly. The command line instruction `--KaniEndo` tests this direct chain computation for specified sets of parameters. 
 
@@ -257,6 +261,7 @@ somewhere unexpected along the chain.
 This is exceptionnal and should not happen in larger characteristic.
 ```
 
+
 ## Verifying real SQISignHD signatures
 
 The file `Verify_SQISignHD.py` runs the verification of SQISignHD (Alogorithms 4 and 5 of the SQISignHD paper [1]) with real SQISignHD parameters and signatures (at NIST-1 level). Ten signatures have already been saved in the file `SQIsignHD_data/SQISignHD_executions.txt`.
@@ -377,6 +382,82 @@ Note that the implementation is slightly different from the presentation of the 
 - For convenience (since we have to recompute $\varphi$ and push points through $\varphi$), we "embed" in dimension 4 the dual of the signature isogeny $\widehat{\sigma}: E_2\longrightarrow E_1$ instead of $\sigma$ itself.
 - For now, only isogenies of degree $q=\deg(\sigma)$ such that $2^e-q\equiv 5 \mod 8$ are outputted by the signature protocol but our verification procedure should work with any degree $q$ such that $2^e-q\equiv 1 \mod 4$, as specified in the SQISignHD paper [1].
 - Since the code is still experimental, note that signatures are not compressed. In particular, the deterministic basis $(P_A,Q_A)$ of $E_A[2^f]$ is part of the signature and we have more torsion than needed (we have to multiply torsion points by a power of 2).
+
+
+## SIDH attacks
+
+The file `SIDH_attack.py` runs a full key recovery attack against the Supersingular Isogeny Diffie Hellman (SIDH) key exchange following the approach of [2, § 5.5] for all SIKE NIST primes (p434, p503, p610, p751) and with an arbitrary starting curve $E_1$.
+
+### What does this script do?
+
+For a selected SIKE NIST prime (p434, p503, p610, p751) of the form $p=2^{e_2}\cdot 2^{e_3}-1$, the scripts samples a supersingular elliptic curve $E_1$ defined over $\mathbb{F}_{p^2}$ (starting from the curve of $j$-invariant $1728$ and walking a random isogeny path of degree $\approx p$). Then it performs an SIDH key exchange starting from $E_1$ and runs an attack to recover the shared secret key $E_{AB}$ of Alice and Bob.
+
+#### The SIDH protocol:
+
+- Let $(P_A,Q_A)$ and $(P_B,Q_B)$ be basis of $E_1[2^{e_2}]$ and $E_1[3^{e_3}]$ respectively. 
+- Alice samples $s_A\in\{0,\cdots, 2^{e_2}-1\}$ and computes $\varphi_A: E_1\longrightarrow E_A$ of kernel $\langle P_A+[s_A]Q_A\rangle$ and sends $(\varphi_A(P_B),\varphi_A(Q_B))$ to Bob. 
+- Bob samples $s_B\in\{0,\cdots, 3^{e_3}-1\}$ and computes $\varphi_B: E_1\longrightarrow E_B$ of kernel $\langle P_B+[s_B]Q_B\rangle$ and sends $(\varphi_B(P_A),\varphi_B(Q_A))$ to Alice.
+- Alice computes $\psi_A: E_B\longrightarrow E_{BA}$ of kernel $\langle \varphi_B(P_A)+[s_A]\varphi_B(Q_A)\rangle$.
+- Bob computes $\psi_B: E_A\longrightarrow E_{AB}\simeq E_{BA}$ of kernel $\langle \varphi_A(P_B)+[s_B]\varphi_A(Q_B)\rangle$.
+
+
+#### The key recovery attack:
+
+The attacker uses $(\varphi_B(P_A),\varphi_B(Q_A))$ to compute the secret $s_B$.
+- They use precomputed integers $e, a_1, a_2$ such that $a_1^2+a_2^2+3^{e_3}=2^e$ (stored in `SIDH/parameters_SIKE_NIST.txt`). $e>e_2-2$ so the available torsion is insufficient to use `KaniEndo` but $\lceil e/2\rceil+2\leq e_2$ so `KaniEndoHalf` can (and has to) be used.
+- Using `KaniEndoHalf` and $(\varphi_B(P_A),\varphi_B(Q_A))$, the attacker can evaluate $\varphi_B$ everywhere and especially on $(P_B,Q_B)$.
+- With discrete logarithms, they can recover $\ker(\varphi_B)$ so $s_B$.
+- They can then compute $\psi_B: E_A\longrightarrow E_{AB}$ of kernel $\langle \varphi_A(P_B)+[s_B]\varphi_A(Q_B)\rangle$ and obtain the shared secret key $E_{AB}$.
+
+### Instructions to run the script
+
+To run the complete attack, type:
+
+```
+sage SIDH_attack.py --Protocol_and_Attack -p=prime
+```
+
+where `prime` is a choice of SIKE NIST prime (`p434`, `p503`, `p610` or `p751`).
+
+To display the available primes, type:
+
+```
+sage SIDH_attack.py --display
+```
+
+or in short format:
+
+```
+sage SIDH_attack.py -d
+```
+
+If you want to run an SIDH key exchange without the attack, type:
+
+```
+sage SIDH_attack.py --Protocol -p=prime
+```
+
+where `prime` is again a choice of SIKE NIST prime (`p434`, `p503`, `p610` or `p751`).
+
+
+## Benchmarks
+
+The user can reproduce the timings from [2, Tables 2-3] comparing 4-dimensional 2-isogeny chains computations (with `KaniEndo` and `KaniEndoHalf`) and 1-dimensional 2-isogeny chains of the same length for some parameters contained in the `parameters` file. Simply type:
+
+```
+sage Benchmarks.py
+```
+
+The results are then saved in the file `Benchmarking_results.csv`. Note that for each parameter, tests are reproduced 100 times so the benchmarking may take more than 1h.
+
+The user can also benchmark the SIDH attacks and reproduce [2, Table 4]. Simply type:
+
+```
+sage Benchmarks_SIDH.py
+```
+
+The results are then saved in the file `Benchmarking_results_SIDH.csv`. Note that for each parameter, tests are reproduced 100 times so the benchmarking may take several tens of minutes.
+
 
 ## Organization of the library
 
