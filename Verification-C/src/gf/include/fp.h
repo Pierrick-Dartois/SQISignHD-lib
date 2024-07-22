@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include <string.h>
 //#include <tutil.h>
-#include "fp_constants.h"
+#include "../../common/include/constants.h"
 
 #define digit_t uint64_t
 #define sdigit_t int64_t

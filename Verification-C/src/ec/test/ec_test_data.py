@@ -36,18 +36,21 @@ def generate_arithmetic_params(f,l_A,f_A,l_B,f_B,n_words,filename):
 				str_k+='}'
 		f.write("digit_t k[NWORDS_FIELD]="+str_k+";\n")
 
-		f.write("ec_point_t AC={0}, P={0}, twoP={0}, PpQ={0}, PmQ={0}, kP={0}, PpkQ={0};\n")
+		f.write("ec_point_t AC = {{{0x0"+",0x0"*(n_words-1)+"},{0x0"+",0x0"*(n_words-1)+"}}, {{0x1"+",0x0"*(n_words-1)+"},{0x0"+",0x0"*(n_words-1)+"}}};\n")
 		f.write("\n")
-		f.write("AC.z.re[0]=0x1;\n")
-		f.write("\n")
+
 		for point in d_points:
 			L_point_re=int_to_digit_t(int(d_points[point][0][0]),n_words)
 			L_point_im=int_to_digit_t(int(d_points[point][0][1]),n_words)
-			for i in range(n_words):
-				f.write(point+".x.re["+str(i)+"]="+L_point_re[i]+";\n")
-			for i in range(n_words):
-				f.write(point+".x.im["+str(i)+"]="+L_point_im[i]+";\n")
-			f.write(point+".z.re[0]=0x1;\n")
+			line="ec_point_t "+point+" = {{{"
+			for i in range(n_words-1):
+				line+=L_point_re[i]+","
+			line+=L_point_re[-1]+"},{"
+			for i in range(n_words-1):
+				line+=L_point_im[i]+","
+			line+=L_point_im[-1]+"}}, "
+			line+="{{0x1"+",0x0"*(n_words-1)+"},{0x0"+",0x0"*(n_words-1)+"}}};\n"
+			f.write(line)
 			f.write("\n")
 		f.write("#endif")
 

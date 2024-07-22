@@ -1,6 +1,6 @@
-COMMON_LIB_PATH = ../common/include
-GF_LIB_PATH1 = ../gf/include
-GF_LIB_PATH2 = ../gf/test
+COMMON_LIB_PATH = common/include
+GF_LIB_PATH1 = gf/include
+GF_LIB_PATH2 = gf/test
 
 CC = gcc
 CFLAGS = -I${COMMON_LIB_PATH} -I${GF_LIB_PATH1} -I${GF_LIB_PATH2}
@@ -54,15 +54,23 @@ else ifeq (${PRIME},p_2_197_7_35)
 	V_DEFS = -DNWORDS_FIELD=5 -DPRIME_CODE=71920
 	V_DATA = -n_words=5 -f=75 -l_A=2 -f_A=197 -l_B=7 -f_B=35
 endif
-TARGETS = ec_void.c ../gf/fp2.c ../gf/fp.c ../gf/fiat_arithmetic/fp_${PRIME}.c test/ec_void-test.c #Change ec_void.c into ec.c when it is correct.
+TARGETS_FP = gf/fp.c gf/fiat_arithmetic/fp_${PRIME}.c gf/test/test_fp.c gf/test/test_extras.c
+TARGETS_FP2 = gf/fp2.c gf/fp.c gf/fiat_arithmetic/fp_${PRIME}.c gf/test/test_fp2.c gf/test/test_extras.c
+TARGETS_EC = ec/ec_void.c gf/fp2.c gf/fp.c gf/fiat_arithmetic/fp_${PRIME}.c ec/test/ec_void-test.c #Change ec_void.c into ec.c when it is correct.
 
-all: test_arith_data.h ec-test.exe
+all: test_fp.exe test_fp2.exe test_arith_data.h ec-test.exe
+
+test_fp.exe: ${TARGETS_FP}
+	${CC} ${CFLAGS} ${V_DEFS} -o gf/test_fp.exe ${TARGETS_FP}
+
+test_fp2.exe: ${TARGETS_FP2}
+	${CC} ${CFLAGS} ${V_DEFS} -o gf/test_fp2.exe ${TARGETS_FP2}
 
 test_arith_data.h: 
-	sage test/ec_test_data.py -arith ${V_DATA} test/test_arith_data.h
+	sage ec/test/ec_test_data.py -arith ${V_DATA} ec/test/test_arith_data.h
 
 ec-test.exe: ${TARGETS}
-	${CC} ${CFLAGS} ${V_DEFS} -o ec-test.exe ${TARGETS}
+	${CC} ${CFLAGS} ${V_DEFS} -o ec/ec-test.exe ${TARGETS_EC}
 
 clean:
-	rm test/test_arith_data.h ec-test.exe
+	rm gf/test_fp.exe gf/test_fp2.exe ec/test/test_arith_data.h ec/ec-test.exe
