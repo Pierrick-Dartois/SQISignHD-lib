@@ -248,7 +248,7 @@ void xMULv2(ec_point_t* Q, ec_point_t const* P, digit_t const* k, const int kbit
  * @param Q a point
  * @param PQ the difference P-Q
  */
-void ec_ladder3pt(ec_point_t *R, fp_t const m, ec_point_t const *P, ec_point_t const *Q, ec_point_t const *PQ, ec_curve_t const *A);
+void ec_ladder3pt(ec_point_t *R, digit_t const* m, ec_point_t const *P, ec_point_t const *Q, ec_point_t const *PQ, ec_curve_t const *A);
 
 /**
  * @brief Linear combination of points of a basis
