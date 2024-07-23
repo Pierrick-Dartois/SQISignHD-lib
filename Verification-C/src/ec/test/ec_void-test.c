@@ -2,11 +2,11 @@
 //Replaced by
 #include "../include/ec.h"
 #include "test_arith_data.h"
-#include "../include/curve_extras.h"
+//#include "../include/curve_extras.h"
 //#include "../../gf/test/test_extras.h"
 #include <stdio.h>
 
-bool ec_test(){
+bool ec_mont_test(){
     ec_point_t R = {0}, S={0}, T={0}, U={0}, V={0}, W={0}, A24={0};
     ec_curve_t E0;
     digit_t m[NWORDS_FIELD]={1};
@@ -41,8 +41,21 @@ bool ec_test(){
     return is_point_equal(&R,&twoP)&&is_point_equal(&S,&PpQ)&&is_point_equal(&T,&kP)&&is_point_equal(&U,&kP)&&is_point_equal(&V,&PpkQ)&&is_point_equal(&W,&PpkQ)&&fp2_is_zero(&t);
 }
 
+bool ec_jac_test(){
+    jac_point_t R = {0}, S={0};
+    ec_curve_t E0;
+
+    point_to_curve(&E0,&AC);
+
+    DBL(&R, &jac_P, &E0);
+
+    return is_jac_equal(&R,&jac_twoP);
+}
+
 int main(int argc, char* argv[])
 {
-    bool b=ec_test();
-    printf("Are all tests correct ? %d\n",b);
+    bool b=ec_mont_test();
+    printf("Are all ec tests correct ? %d\n",b);
+    bool c=ec_jac_test();
+    printf("Are all jac tests correct ? %d\n",c);
 }

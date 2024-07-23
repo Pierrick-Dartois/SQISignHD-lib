@@ -52,6 +52,32 @@ def generate_arithmetic_params(f,l_A,f_A,l_B,f_B,n_words,filename):
 			line+="{{0x1"+",0x0"*(n_words-1)+"},{0x0"+",0x0"*(n_words-1)+"}}};\n"
 			f.write(line)
 			f.write("\n")
+
+		for point in d_points:
+			x_point_re=int_to_digit_t(int(d_points[point][0][0]),n_words)
+			x_point_im=int_to_digit_t(int(d_points[point][0][1]),n_words)
+			y_point_re=int_to_digit_t(int(d_points[point][1][0]),n_words)
+			y_point_im=int_to_digit_t(int(d_points[point][1][1]),n_words)
+			
+			line="jac_point_t jac_"+point+" = {{{"
+			
+			for i in range(n_words-1):
+				line+=x_point_re[i]+","
+			line+=x_point_re[-1]+"},{"
+			for i in range(n_words-1):
+				line+=x_point_im[i]+","
+			line+=x_point_im[-1]+"}}, {{"
+
+			for i in range(n_words-1):
+				line+=y_point_re[i]+","
+			line+=y_point_re[-1]+"},{"
+			for i in range(n_words-1):
+				line+=y_point_im[i]+","
+			line+=y_point_im[-1]+"}}, "
+			
+			line+="{{0x1"+",0x0"*(n_words-1)+"},{0x0"+",0x0"*(n_words-1)+"}}};\n"
+			f.write(line)
+			f.write("\n")
 		f.write("#endif")
 
 def save_data(L,filename):

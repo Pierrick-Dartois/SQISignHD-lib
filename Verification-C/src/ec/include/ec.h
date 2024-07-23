@@ -60,6 +60,20 @@ typedef struct ec_curve_t {
     fp2_t C; ///< cannot be 0
 } ec_curve_t;
 
+/** @brief Projective Jacobian point
+ *
+ * @typedef jac_point_t
+ *
+ * @struct jac_point_t
+ *
+ * A projective point (X:Y:Z) in Jaconian form.
+*/
+typedef struct jac_point_t {
+    fp2_t x;
+    fp2_t y;
+    fp2_t z;
+} jac_point_t;
+
 /** @brief An isogeny of degree a power of 2
  *
  * @typedef ec_isog_even_t
@@ -413,6 +427,198 @@ static inline void ec_eval_even_basis(ec_curve_t* image, const ec_isog_even_t* p
 /** @}
 */
 
+/* Added from former curve_extras.h */
+
+/**
+ * @brief Point equals point at infinity (zero)
+ *
+ * @param P a point
+ * @return 1 if P is the point at infinity
+ */
+bool ec_is_zero(ec_point_t const* P);
+
+/**
+ * @brief Sets point to point at infinity (zero)
+ *
+ * @param P a point
+ * 
+ * Sets P to point at infinity
+ */
+void ec_set_zero(ec_point_t *P);
+
+/**
+ * @brief Copy elliptic curve
+ *
+ * @param E1 an elliptic curve
+ * @param E2 an elliptic curve
+ * 
+ * Copies E2<-E1.
+ */
+void copy_curve(ec_curve_t* E1, ec_curve_t const* E2);
+
+/**
+ * @brief Copy an (elliptic curve) point
+ *
+ * @param P a point
+ * @param Q a point
+ * 
+ * Copies Q<-P.
+ */
+void copy_point(ec_point_t* P, ec_point_t const* Q);
+
+/**
+ * @brief Swap two points
+ *
+ * @param P a point
+ * @param Q a point
+ * @param option
+ * 
+ * If option = 0 then P <- P and Q <- Q, else if option = 0xFF...FF then P <- Q and Q <- P.
+ */
+void swap_points(ec_point_t* P, ec_point_t* Q, const digit_t option);
+
+/**
+ * @brief Point initialization
+ *
+ * @param P a point
+ * 
+ * P is initialized to the point at infinity.
+ */
+void ec_init(ec_point_t* P);
+
+/**
+* @brief Point doubling (x-only, version 1)
+ *
+ * @param Q a point
+ * @param P a point
+ * @param AC an elliptic curve
+ * 
+ * Sets Q<-2*P.
+ */
+void xDBL(ec_point_t* Q, ec_point_t const* P, ec_point_t const* AC);
+
+/**
+ * @brief Point doubling (x-only, version 2)
+ *
+ * @param Q a point
+ * @param P a point
+ * @param A24 a point representing the elliptic curve (A:C), A24=(A+2C:4C).
+ * 
+ * Sets Q<-2*P.
+ */
+void xDBLv2(ec_point_t* Q, ec_point_t const* P, ec_point_t const* A24);
+
+/**
+ * @brief Differential addition
+ *
+ * @param R a point
+ * @param P a point
+ * @param Q a point
+ * @param PQ=P-Q
+ * 
+ * Sets R<-P+Q.
+ */
+void xADD(ec_point_t* R, ec_point_t const* P, ec_point_t const* Q, ec_point_t const* PQ);
+
+/**
+ * @brief Point doubling and addition (x-only)
+ *
+ * @param R a point
+ * @param S a point
+ * @param P a point
+ * @param Q a point
+ * @param PQ=P-Q
+ * @param A24 a point representing the elliptic curve (A:C), A24=(A+2C:4C).
+ * 
+ * Sets R<-2*P and S<-2*P+Q
+ */
+void xDBLADD(ec_point_t* R, ec_point_t* S, ec_point_t const* P, ec_point_t const* Q, ec_point_t const* PQ, ec_point_t const* A24);
+
+/**
+ * @brief Point scalar multiplication
+ *
+ * @param Q a point
+ * @param P a point
+ * @param k a multiprecision integer
+ * @param curve an elliptic curve
+ * 
+ * Sets Q<-k*P.
+ */
+void xMUL(ec_point_t* Q, ec_point_t const* P, digit_t const* k, ec_curve_t const* curve);
+
+/**
+ * @brief Point linear combination (x-only)
+ *
+ * @param S a point
+ * @param P a point
+ * @param k a multiprecision integer
+ * @param Q a point
+ * @param l a multiprecision integer
+ * @param PQ=P-Q
+ * @param curve an elliptic curve
+ * 
+ * Sets S<-k*P+l*Q.
+ */
+void xDBLMUL(ec_point_t* S, ec_point_t const* P, digit_t const* k, ec_point_t const* Q, digit_t const* l, ec_point_t const* PQ, ec_curve_t const* curve);
+
+/**
+ * @brief Converting point to curve
+ *
+ * @param curve an elliptic curve
+ * @param AC a point (A:C)
+ * 
+ * Sets curve coefficients to (A:C).
+ */
+void point_to_curve(ec_curve_t* curve, ec_point_t const * AC);
+
+/**
+ * @brief Compute (A+2C:4C) from point
+ *
+ * @param A24 a point
+ * @param AC a point (A:C)
+ * 
+ * Sets A24<-(A+2C:4C).
+ */
+void AC_to_A24(ec_point_t* A24, ec_point_t const * AC);
+
+/**
+ * @brief Compute (A+2C:4C) from curve
+ *
+ * @param A24 a point
+ * @param AC an elliptic curve with coefficients (A:C)
+ * 
+ * Sets A24<-(A+2C:4C).
+ */
+void curve_to_A24(ec_point_t* A24, ec_curve_t const * curve);
+
+#define is_point_equal ec_is_equal
+#define xADD ec_add
+
+/* Jacobian model */
+
+static void jac_init(jac_point_t* P);
+
+bool is_jac_equal(const jac_point_t* P, const jac_point_t* Q);
+
+static bool is_jac_xz_equal(const jac_point_t* P, const ec_point_t* Q);
+
+static void copy_jac_point(jac_point_t* P, jac_point_t const* Q);
+
+static void jac_neg(jac_point_t* Q, jac_point_t const* P);
+
+void DBL(jac_point_t* Q, jac_point_t const* P, ec_curve_t const* AC);
+
+void ADD(jac_point_t* R, jac_point_t const* P, jac_point_t const* Q, ec_curve_t const* AC);
+
+void TPL(jac_point_t* Q, jac_point_t const* P, ec_curve_t const* AC);
+
+void recover_y(fp2_t* y, fp2_t const* Px, ec_curve_t const* curve);
+
+void jac_swap_points(jac_point_t* P, jac_point_t* Q, const digit_t option);
+
+void jac_MUL(jac_point_t* Q, const jac_point_t* P, const digit_t* k, const ec_curve_t* curve);
+
+void DBLMUL(jac_point_t* R, const jac_point_t* P, const digit_t k, const jac_point_t* Q, const digit_t l, const ec_curve_t* curve);
 
 
 #endif

@@ -1,4 +1,4 @@
-#include "include/curve_extras.h"
+//#include "include/curve_extras.h"
 //#include "tedwards.h"
 //#include "ec_params.h"
 //#include <assert.h>
@@ -6,6 +6,10 @@
 #include "../common/include/constants.h"
 #include "../gf/include/fp2.h"
 #include "include/ec.h"
+
+
+/* Montgomery model with (x:z)-arithmetic */
+
 
 bool ec_is_zero(ec_point_t const* P)
 {
@@ -455,4 +459,299 @@ void ec_j_inv(fp2_t* j_inv, const ec_curve_t* curve){
     fp2_mul(j_inv, &t0, j_inv);//j_inv=256(A^2-3C^2)^3/((A^2-4C^2)*C^4)
     fp2_frommont(j_inv,j_inv);
 }
+
+/* Jacobian model with (X:Y:Z)-arithmetic. 
+Jacobian (X:Y:Z) corresponds to affine (X/Z^2,Y/Z^3) in Weierstrass/Montgomery coordinates. */
+
+static void jac_init(jac_point_t* P)
+{ // Initialize Montgomery in Jacobian coordinates as identity element (0:1:0)
+    fp_t one = {0};
+
+    memset((digit_t*)P, 0, NWORDS_FIELD*RADIX*6/8);
+    one[0] = 1;
+    fp_tomont(P->y.re, one);
+}
+
+bool is_jac_equal(const jac_point_t* P, const jac_point_t* Q)
+{ // Evaluate if two points in Jacobian coordinates (X:Y:Z) are equal
+  // Returns 1 (true) if P=Q, 0 (false) otherwise
+    fp2_t t0, t1, t2, t3;
+
+    fp2_sqr(&t0, &Q->z);
+    fp2_mul(&t2, &P->x, &t0);       // x1*z2^2
+    fp2_sqr(&t1, &P->z);
+    fp2_mul(&t3, &Q->x, &t1);       // x2*z1^2
+    fp2_sub(&t2, &t2, &t3);
+
+    fp2_mul(&t0, &t0, &Q->z);
+    fp2_mul(&t0, &P->y, &t0);       // y1*z2^3
+    fp2_mul(&t1, &t1, &P->z);
+    fp2_mul(&t1, &Q->y, &t1);       // y2*z1^3
+    fp2_sub(&t0, &t0, &t1);
+
+    return fp2_is_zero(&t0) && fp2_is_zero(&t2);
+}
+
+static bool is_jac_xz_equal(const jac_point_t* P, const ec_point_t* Q)
+{ // Evaluate if point P in Jacobian coordinates is equal to Q in homogeneous projective coordinates (X:Z) 
+  // Comparison is up to sign (only compares X and Z coordinates)
+  // Returns 1 (true) if P=Q, 0 (false) otherwise
+    fp2_t t0, t1;
+
+    fp2_mul(&t0, &P->x, &Q->z);     // x1*z2
+    fp2_sqr(&t1, &P->z);
+    fp2_mul(&t1, &Q->x, &t1);       // x2*z1^2
+    fp2_sub(&t0, &t0, &t1);
+
+    return fp2_is_zero(&t0);
+}
+
+static void copy_jac_point(jac_point_t* P, jac_point_t const* Q)
+{
+    fp2_copy(&(P->x), &(Q->x));
+    fp2_copy(&(P->y), &(Q->y));
+    fp2_copy(&(P->z), &(Q->z));
+}
+
+static void jac_neg(jac_point_t* Q, jac_point_t const* P)
+{
+    fp2_copy(&Q->x, &P->x);
+    fp2_neg(&Q->y, &P->y);
+    fp2_copy(&Q->z, &P->z);
+}
+
+void DBL(jac_point_t* Q, jac_point_t const* P, ec_curve_t const* AC)
+{ // Doubling on a Montgomery curve, representation in Jacobian coordinates (X:Y:Z) corresponding to (X/Z^2,Y/Z^3) 
+  // This version receives the coefficient value A 
+    fp2_t t0, t1, t2, t3;
+
+    if (fp2_is_zero(&P->x) && fp2_is_zero(&P->z)) {
+        jac_init(Q);
+        return;
+    }
+
+    fp2_sqr(&t0, &P->x);            // t0 = x1^2
+    fp2_add(&t1, &t0, &t0);
+    fp2_add(&t0, &t0, &t1);         // t0 = 3x1^2
+    fp2_sqr(&t1, &P->z);            // t1 = z1^2
+    fp2_mul(&t2, &P->x, &AC->A);
+    fp2_add(&t2, &t2, &t2);         // t2 = 2Ax1  
+    fp2_add(&t2, &t1, &t2);         // t2 = 2Ax1+z1^2
+    fp2_mul(&t2, &t1, &t2);         // t2 = z1^2(2Ax1+z1^2)
+    fp2_add(&t2, &t0, &t2);         // t2 = alpha = 3x1^2 + z1^2(2Ax1+z1^2)
+    fp2_mul(&Q->z, &P->y, &P->z);
+    fp2_add(&Q->z, &Q->z, &Q->z);   // z2 = 2y1z1
+    fp2_sqr(&t0, &Q->z);
+    fp2_mul(&t0, &t0, &AC->A);      // t0 = 4Ay1^2z1^2
+    fp2_sqr(&t1, &P->y);
+    fp2_add(&t1, &t1, &t1);         // t1 = 2y1^2
+    fp2_add(&t3, &P->x, &P->x);     // t3 = 2x1
+    fp2_mul(&t3, &t1, &t3);         // t3 = 4x1y1^2
+    fp2_sqr(&Q->x, &t2);            // x2 = alpha^2
+    fp2_sub(&Q->x, &Q->x, &t0);     // x2 = alpha^2 - 4Ay1^2z1^2
+    fp2_sub(&Q->x, &Q->x, &t3);
+    fp2_sub(&Q->x, &Q->x, &t3);     // x2 = alpha^2 - 4Ay1^2z1^2 - 8x1y1^2
+    fp2_sub(&Q->y, &t3, &Q->x);     // y2 = 4x1y1^2 - x2
+    fp2_mul(&Q->y, &Q->y, &t2);     // y2 = alpha(4x1y1^2 - x2)
+    fp2_sqr(&t1, &t1);              // t1 = 4y1^4
+    fp2_sub(&Q->y, &Q->y, &t1);
+    fp2_sub(&Q->y, &Q->y, &t1);     // y2 = alpha(4x1y1^2 - x2) - 8y1^4
+}
+
+void ADD(jac_point_t* R, jac_point_t const* P, jac_point_t const* Q, ec_curve_t const* AC)
+{ // Addition on a Montgomery curve, representation in Jacobian coordinates (X:Y:Z) corresponding to (X/Z^2,Y/Z^3)
+  // This version receives the coefficient value A 
+    fp2_t t0, t1, t2, t3, t4, t5, t6;
+    jac_point_t T;
+
+    if (is_jac_equal(P, Q)) {
+        DBL(R, P, AC);
+        return;
+    }
+    jac_neg(&T, P);
+    if (is_jac_equal(&T, Q)) {
+        jac_init(R);
+        return;
+    }
+    if (fp2_is_zero(&P->x) && fp2_is_zero(&P->z)) {
+        copy_jac_point(R, Q);
+        return;
+    } else if (fp2_is_zero(&Q->x) && fp2_is_zero(&Q->z)) {
+        copy_jac_point(R, P);
+        return;
+    }
+
+    fp2_sqr(&t0, &P->z);            // t0 = z1^2
+    fp2_mul(&t1, &t0, &P->z);       // t1 = z1^3
+    fp2_sqr(&t2, &Q->z);            // t2 = z2^2
+    fp2_mul(&t3, &t2, &Q->z);       // t3 = z2^3
+    fp2_mul(&t1, &t1, &Q->y);       // t1 = y2z1^3
+    fp2_mul(&t3, &t3, &P->y);       // t3 = y1z2^3
+    fp2_sub(&t1, &t1, &t3);         // t1 = lambda1 = y2z1^3 - y1z2^3
+    fp2_mul(&t0, &t0, &Q->x);       // t0 = x2z1^2
+    fp2_mul(&t2, &t2, &P->x);       // t2 = x1z2^2
+    fp2_sub(&t4, &t0, &t2);         // t4 = lambda3 = x2z1^2 - x1z2^2
+    fp2_add(&t0, &t0, &t2);         // t0 = lambda2 = x2z1^2 + x1z2^2
+    fp2_mul(&t5, &P->z, &Q->z);     // t5 = z1z2
+    fp2_mul(&R->z, &t4, &t5);       // z3 = z1z2*lambda3
+    fp2_sqr(&t5, &t5);              // t5 = z1^2z2^2
+    fp2_mul(&t5, &AC->A, &t5);      // t5 = Az1^2z2^2
+    fp2_add(&t0, &t0, &t5);         // t0 = Az1^2z2^2 + lambda2
+    fp2_sqr(&t6, &t4);              // t6 = lambda3^2
+    fp2_mul(&t5, &t0, &t6);         // t5 = lambda3^2(Az1^2z2^2 + lambda2)
+    fp2_sqr(&R->x, &t1);            // x3 = lambda1^2
+    fp2_sub(&R->x, &R->x, &t5);     // x3 = lambda1^2 - lambda3^2(Az1^2z2^2 + lambda2)
+    fp2_mul(&t3, &t3, &t4);         // t3 = y1z2^3*lambda3
+    fp2_mul(&t3, &t3, &t6);         // t3 = y1z2^3*lambda3^3
+    fp2_mul(&t2, &t2, &t6);         // t2 = x1z2^2*lambda3^2
+    fp2_sub(&R->y, &t2, &R->x);     // y3 = x1z2^2*lambda3^2 - x3
+    fp2_mul(&R->y, &R->y, &t1);     // y3 = lambda1(x1z2^2*lambda3^2 - x3)
+    fp2_sub(&R->y, &R->y, &t3);     // y3 = lambda1(x1z2^2*lambda3^2 - x3) - y1z2^3*lambda3^3
+}
+
+void TPL(jac_point_t* Q, jac_point_t const* P, ec_curve_t const* AC)
+{ // Naive tripling on a Montgomery curve, representation in Jacobian coordinates (X:Y:Z) corresponding to (X/Z^2,Y/Z^3) 
+  // This version receives the coefficient value A 
+    jac_point_t R;
+
+    DBL(&R, P, AC);
+    ADD(Q, &R, P, AC);
+}
+
+
+void recover_y(fp2_t* y, fp2_t const* Px, ec_curve_t const* curve)
+{ // Recover y-coordinate of a point on the Montgomery curve y^2 = x^3 + Ax^2 + x
+    fp2_t t0;
+
+    fp2_sqr(&t0, Px);
+    fp2_mul(y, &t0, &curve->A);    // Ax^2
+    fp2_add(y, y, Px);             // Ax^2 + x
+    fp2_mul(&t0, &t0, Px);
+    fp2_add(y, y, &t0);            // x^3 + Ax^2 + x
+    fp2_sqrt(y);
+
+    //fp2_t t0, t1;
+
+    //fp2_sqr(&t0, &P->x);
+    //fp2_sqr(&t1, &P->z);
+    //fp2_mul(y, &t0, &t1);
+    //fp2_mul(y, y, &curve->A);    // AX^2Z^2
+    //fp2_mul(&t0, &t0, &P->x);
+    //fp2_add(y, y, &t0);          // X^3 + AX^2Z^2
+    //fp2_mul(&t0, &t1, &P->z);
+    //fp2_sqr(&t1, &t0);
+    //fp2_mul(&t1, &t1, &P->x);
+    //fp2_add(y, y, &t1);          // X^3 + AX^2Z^2 + XZ^6
+    //fp2_sqrt(y);
+}
+
+
+static int mp_compare(digit_t* a, digit_t* b, unsigned int nwords)
+{ // Multiprecision comparison, a=b? : (1) a>b, (0) a=b, (-1) a<b
+
+    for (int i = nwords-1; i >= 0; i--) {
+        if (a[i] > b[i]) return 1;
+        else if (a[i] < b[i]) return -1;
+    }
+    return 0;
+}
+
+static bool mp_is_zero(const digit_t* a, unsigned int nwords)
+{ // Is a multiprecision element zero?
+  // Returns 1 (true) if a=0, 0 (false) otherwise
+    digit_t r = 0;
+
+    for (unsigned int i = 0; i < nwords; i++)
+        r |= a[i] ^ 0;
+
+    return (bool)is_digit_zero_ct(r);
+}
+
+
+void jac_swap_points(jac_point_t* P, jac_point_t* Q, const digit_t option)
+{ // Swap points
+  // If option = 0 then P <- P and Q <- Q, else if option = 0xFF...FF then P <- Q and Q <- P
+    digit_t temp;
+
+    for (int i = 0; i < NWORDS_FIELD; i++) {
+        temp = option & (P->x.re[i] ^ Q->x.re[i]);
+        P->x.re[i] = temp ^ P->x.re[i];
+        Q->x.re[i] = temp ^ Q->x.re[i];
+        temp = option & (P->x.im[i] ^ Q->x.im[i]);
+        P->x.im[i] = temp ^ P->x.im[i];
+        Q->x.im[i] = temp ^ Q->x.im[i];
+        temp = option & (P->y.re[i] ^ Q->y.re[i]);
+        P->y.re[i] = temp ^ P->y.re[i];
+        Q->y.re[i] = temp ^ Q->y.re[i];
+        temp = option & (P->y.im[i] ^ Q->y.im[i]);
+        P->y.im[i] = temp ^ P->y.im[i];
+        Q->y.im[i] = temp ^ Q->y.im[i];
+        temp = option & (P->z.re[i] ^ Q->z.re[i]);
+        P->z.re[i] = temp ^ P->z.re[i];
+        Q->z.re[i] = temp ^ Q->z.re[i];
+        temp = option & (P->z.im[i] ^ Q->z.im[i]);
+        P->z.im[i] = temp ^ P->z.im[i];
+        Q->z.im[i] = temp ^ Q->z.im[i];
+    }
+}
+
+
+void jac_MUL(jac_point_t* Q, const jac_point_t* P, const digit_t* k, const ec_curve_t* curve)
+{
+    jac_point_t R0, R1;
+    digit_t mask;
+    unsigned int bit = 0, prevbit = 0, swap;
+
+    // R0 <- (0:1:0), R1 <- P
+    jac_init(&R0);
+    fp2_copy(&R1.x, &P->x);
+    fp2_copy(&R1.y, &P->y);
+    fp2_copy(&R1.z, &P->z);
+
+    // Main loop
+    // number of bits BITS = NWORDS_FIELD*RADIX
+    for (int i = NWORDS_FIELD*RADIX-1; i >= 0; i--) {                                          
+        bit = (k[i >> LOG2RADIX] >> (i & (RADIX-1))) & 1;                         
+        swap = bit ^ prevbit;
+        prevbit = bit;
+        mask = 0 - (digit_t)swap;
+
+        jac_swap_points(&R0, &R1, mask);
+        DBL(&R0,&R0,curve);
+        ADD(&R1,&R0,&R1,curve);
+    }
+    swap = 0 ^ prevbit;
+    mask = 0 - (digit_t)swap;
+    jac_swap_points(&R0, &R1, mask);
+
+    fp2_copy(&Q->x, &R0.x);
+    fp2_copy(&Q->y, &R0.y);
+    fp2_copy(&Q->z, &R0.z);
+}
+
+
+void DBLMUL(jac_point_t* R, const jac_point_t* P, const digit_t k, const jac_point_t* Q, const digit_t l, const ec_curve_t* curve)
+{  // Double-scalar multiplication R <- k*P + l*Q, fixed for 64-bit scalars
+    digit_t k_t, l_t;
+    jac_point_t PQ;
+
+    ADD(&PQ, P, Q, curve);
+    jac_init(R);
+
+    for (int i = 0; i < 64; i++) {
+        k_t = k >> (63-i);
+        k_t &= 0x01;
+        l_t = l >> (63-i);
+        l_t &= 0x01;
+        DBL(R, R, curve);
+        if (k_t == 1 && l_t == 1) {
+            ADD(R, R, &PQ, curve);
+        } else if (k_t == 1) {
+            ADD(R, R, P, curve);
+        } else if (l_t == 1) {
+            ADD(R, R, Q, curve);
+        }
+    }
+}
+
 
