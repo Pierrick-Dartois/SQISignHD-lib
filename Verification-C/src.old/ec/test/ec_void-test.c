@@ -47,8 +47,24 @@ bool ec_jac_test(){
 
     point_to_curve(&E0,&AC);
 
+    //fp2_tomont(&E0.A,&E0.A);
+    //fp2_tomont(&E0.C,&E0.C);
+    fp2_tomont(&jac_P.x,&jac_P.x);
+    fp2_tomont(&jac_P.y,&jac_P.y);
+    fp2_tomont(&jac_P.z,&jac_P.z);
+    fp2_tomont(&R.x,&R.x);
+    fp2_tomont(&R.y,&R.y);
+    fp2_tomont(&R.z,&R.z);
+
     DBL(&R, &jac_P, &E0);
 
+    fp2_frommont(&jac_P.x,&jac_P.x);
+    fp2_frommont(&jac_P.y,&jac_P.y);
+    fp2_frommont(&jac_P.z,&jac_P.z);
+    fp2_frommont(&R.x,&R.x);
+    fp2_frommont(&R.y,&R.y);
+    fp2_frommont(&R.z,&R.z);
+    
     return is_jac_equal(&R,&jac_twoP);
 }
 
