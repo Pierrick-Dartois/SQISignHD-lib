@@ -21,6 +21,9 @@
 #include <string.h>
 #include <assert.h>
 
+typedef uint64_t fiat_pHD512_montgomery_domain_field_element[NWORDS_FIELD];
+typedef uint64_t fiat_pHD512_non_montgomery_domain_field_element[NWORDS_FIELD];
+
 static __attribute__((constructor)) void _br2_preconditions(void) {
   static_assert(~(intptr_t)0 == -(intptr_t)1, "two's complement");
   assert(((void)"two's complement", ~(intptr_t)0 == -(intptr_t)1));
@@ -6063,23 +6066,23 @@ void fiat_pHD512_divstep(uint64_t* out1, uint64_t out2[9], uint64_t out3[9], uin
 
 #include <fp.h>
 
-const uint64_t p[NWORDS_FIELD] = { 0xa65f4ee938387923,
-                                   0x5eec151f0a69c447,
-                                   0x52e830945c1a0446,
+const uint64_t p[NWORDS_FIELD] = { 0xffffffffffffffff,
+                                   0xffffffffffffffff,
+                                   0xffffffffffffffff,
+                                   0xffffffffffffffff,
                                    0x80429e2d58ebb466,
-                                   0xffffffffffffffff,
-                                   0xffffffffffffffff,
-                                   0xffffffffffffffff,
-                                   0xffffffffffffffff};
+                                   0x52e830945c1a0446,
+                                   0x5eec151f0a69c447,
+                                   0xa65f4ee938387923};
 const uint64_t ZERO[NWORDS_FIELD] = { 0, 0, 0, 0, 0, 0, 0, 0 };
-const uint64_t ONE[NWORDS_FIELD] = { 0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000001 };
+const uint64_t ONE[NWORDS_FIELD] = { 0x1,
+                                     0x0,
+                                     0x0,
+                                     0x0,
+                                     0x7fbd61d2a7144b99,
+                                     0xad17cf6ba3e5fbb9,
+                                     0xa113eae0f5963bb8,
+                                     0x59a0b116c7c786dc };
 
 void
 fp_add(fp_t *out, const fp_t *a, const fp_t *b)

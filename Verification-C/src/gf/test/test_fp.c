@@ -61,6 +61,7 @@ fp_test(void)
     passed = 1;
     for (n = 0; n < TEST_LOOPS; n++) {
         fp_set_one(&a);
+        
         fp_add(&b, &a, &a);
         fp_set_small(&c, (uint32_t)2);
         if (fp_is_equal(&b, &c) == 0) {
@@ -292,7 +293,7 @@ fp_test(void)
     else {
         printf("  GF(p) inversion tests... FAILED");
         printf("\n");
-        //return false;
+        return false;
     }
     printf("\n");
 

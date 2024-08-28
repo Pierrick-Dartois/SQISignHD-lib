@@ -3,7 +3,7 @@
  * A custom SHA-3 / SHAKE implementation is used for pseudorandom (but
  * reproducible) generation of test values.
  */
-#include "sha3.h"
+#include <sha3.h>
 #include "test_utils.h"
 
 // Make n random-ish field elements (for tests only!).

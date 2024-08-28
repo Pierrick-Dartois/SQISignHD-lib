@@ -21,6 +21,9 @@
 #include <string.h>
 #include <assert.h>
 
+typedef uint64_t fiat_pHD384_montgomery_domain_field_element[NWORDS_FIELD];
+typedef uint64_t fiat_pHD384_non_montgomery_domain_field_element[NWORDS_FIELD];
+
 static __attribute__((constructor)) void _br2_preconditions(void) {
   static_assert(~(intptr_t)0 == -(intptr_t)1, "two's complement");
   assert(((void)"two's complement", ~(intptr_t)0 == -(intptr_t)1));
@@ -3853,19 +3856,20 @@ void fiat_pHD384_divstep(uint64_t* out1, uint64_t out2[7], uint64_t out3[7], uin
 
 #include <fp.h>
 
-const uint64_t p[NWORDS_FIELD] = { 0x412508a24fc64c3,
-                                   0xf96d653c9a6b76df,
-                                   0x21d47fd4347f03cc,
-                                   0x7fffffffffffffff,
+const uint64_t p[NWORDS_FIELD] = {0xffffffffffffffff,
                                    0xffffffffffffffff,
-                                   0xffffffffffffffff};
+                                   0x7fffffffffffffff,
+                                   0x21d47fd4347f03cc,
+                                   0xf96d653c9a6b76df,
+                                   0x412508a24fc64c3};
 const uint64_t ZERO[NWORDS_FIELD] = { 0, 0, 0, 0, 0, 0 };
-const uint64_t ONE[NWORDS_FIELD] = { 0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000000,
-                                     0x0000000000000001 };
+// Caution : In Montgomery form !
+const uint64_t ONE[NWORDS_FIELD] = { 0x3e,
+                                     0x0,
+                                     0x0,
+                                     0xce890a9b493d1479,
+                                     0x97817b5299f935f5,
+                                     0x3907e8b0adf9889};
 
 void
 fp_add(fp_t *out, const fp_t *a, const fp_t *b)
