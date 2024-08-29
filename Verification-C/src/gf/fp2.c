@@ -45,8 +45,9 @@ uint32_t
 fp2_is_one(const fp2_t *a)
 { // Is a GF(p^2) element one?
   // Returns 0xFF...FF (true) if a=1, 0 (false) otherwise
-
-    return fp_is_equal(&(a->re), &ONE) & fp_is_zero(&(a->im));
+    fp_t one;
+    fp_set_one(&one);
+    return fp_is_equal(&(a->re), &one) & fp_is_zero(&(a->im));
 }
 
 void

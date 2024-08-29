@@ -3863,13 +3863,14 @@ const uint64_t p[NWORDS_FIELD] = {0xffffffffffffffff,
                                    0xf96d653c9a6b76df,
                                    0x412508a24fc64c3};
 const uint64_t ZERO[NWORDS_FIELD] = { 0, 0, 0, 0, 0, 0 };
-// Caution : In Montgomery form !
-const uint64_t ONE[NWORDS_FIELD] = { 0x3e,
-                                     0x0,
-                                     0x0,
-                                     0xce890a9b493d1479,
-                                     0x97817b5299f935f5,
-                                     0x3907e8b0adf9889};
+/* Using this explicit constant depending on the internal representation (Montgomery) is bad practice. 
+We use fp_set_one instead. */
+//const uint64_t ONE[NWORDS_FIELD] = { 0x3e,
+                                     //0x0,
+                                     //0x0,
+                                     //0xce890a9b493d1479,
+                                     //0x97817b5299f935f5,
+                                     //0x3907e8b0adf9889};
 
 void
 fp_add(fp_t *out, const fp_t *a, const fp_t *b)

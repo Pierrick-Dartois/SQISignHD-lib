@@ -2187,11 +2187,12 @@ const uint64_t p[NWORDS_FIELD] = { 0xffffffffffffffff,
                                    0xa4382e87ff9dc589,
                                    0x2827baebd5c8e56e};
 const uint64_t ZERO[NWORDS_FIELD] = { 0, 0, 0, 0 };
-// Caution : In Montgomery form !
-const uint64_t ONE[NWORDS_FIELD] = { 0x6,
-                                     0x8000000000000000,
-                                     0x26aee8d0024d5ec8,
-                                     0xf119e78fd4a9f68};
+/* Using this explicit constant depending on the internal representation (Montgomery) is bad practice. 
+We use fp_set_one instead. */
+//const uint64_t ONE[NWORDS_FIELD] = { 0x6,
+                                     //0x8000000000000000,
+                                     //0x26aee8d0024d5ec8,
+                                     //0xf119e78fd4a9f68};
 
 #include <stdio.h>
 

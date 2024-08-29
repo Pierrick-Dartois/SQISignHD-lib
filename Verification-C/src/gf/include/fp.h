@@ -15,7 +15,7 @@
 
 typedef digit_t fp_t[NWORDS_FIELD]; // Datatype for representing field elements
 
-extern const uint64_t ONE[NWORDS_FIELD];
+//extern const uint64_t ONE[NWORDS_FIELD];
 extern const uint64_t ZERO[NWORDS_FIELD];
 extern const uint64_t p[NWORDS_FIELD];
 

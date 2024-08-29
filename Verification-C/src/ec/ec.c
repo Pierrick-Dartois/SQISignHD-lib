@@ -41,8 +41,10 @@ ec_normalize_curve_and_A24(ec_curve_t *E)
 
     if (!E->is_A24_computed_and_normalized) {
         // Now compute A24 = ((A + 2) / 4 : 1)
-        fp_add(&E->A24.x.re, &E->A.re, &ONE);     // re(A24.x) = re(A) + 1
-        fp_add(&E->A24.x.re, &E->A24.x.re, &ONE); // re(A24.x) = re(A) + 2
+        fp_t one;
+        fp_set_one(&one);
+        fp_add(&E->A24.x.re, &E->A.re, &one);     // re(A24.x) = re(A) + 1
+        fp_add(&E->A24.x.re, &E->A24.x.re, &one); // re(A24.x) = re(A) + 2
         fp_copy(&E->A24.x.im, &E->A.im);          // im(A24.x) = im(A)
 
         fp2_half(&E->A24.x, &E->A24.x); // (A + 2) / 2

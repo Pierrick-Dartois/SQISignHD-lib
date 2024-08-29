@@ -13,7 +13,8 @@ fp_test(void)
 { // Tests for the field arithmetic
     bool OK = true;
     int n, passed;
-    fp_t a, b, c, d, e, f;
+    fp_t a, b, c, d, e, f, one;
+    fp_set_one(&one);
 
     printf("\n-------------------------------------------------------------------------------------"
            "-------------------\n\n");
@@ -23,7 +24,7 @@ fp_test(void)
     passed = 1;
     for (n = 0; n < TEST_LOOPS; n++) {
         fp_random_test(&a);
-        fp_add(&b, &a, (fp_t *)&ONE);
+        fp_add(&b, &a, (fp_t *)&one);
         fp_set_zero(&c);
 
         if (fp_is_equal(&a, &a) == 0) {
@@ -43,7 +44,7 @@ fp_test(void)
             passed = 0;
             break;
         }
-        if (fp_is_zero((fp_t *)&ONE) != 0) {
+        if (fp_is_zero((fp_t *)&one) != 0) {
             passed = 0;
             break;
         }
@@ -274,9 +275,7 @@ fp_test(void)
         fp_inv(&b);
         fp_mul(&c, &a, &b); // c = a*a^-1
         
-        fp_t one;
-        fp_set_one(&one);
-        if (fp_is_equal(&c, &one)==0){//(fp_t *)&ONE) == 0) {
+        if (fp_is_equal(&c, &one)==0){
             passed = 0;
             break;
         }
