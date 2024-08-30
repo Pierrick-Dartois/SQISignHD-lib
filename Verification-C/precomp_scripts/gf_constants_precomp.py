@@ -35,7 +35,7 @@ def compute_cofactor_for_2f(p):
 
 	return N, bit_length, f
 
-def create_gf_constants(p,num=20,primename=None,path="../src/precomp"):
+def create_gf_constants_cfile(p,num=20,primename=None,path="../src/precomp"):
 	
 	nqr_table, z_nqr_table=compute_tables(p,num)
 	str_nqr_table='const fp2_t NQR_TABLE['+str(num)+'] = {'
@@ -78,15 +78,12 @@ def create_gf_constants(p,num=20,primename=None,path="../src/precomp"):
 	str_z_nqr_table=str_z_nqr_table[:-1]+'}'
 
 	p_cofactor_for_2f, P_COFACTOR_FOR_2F_BITLENGTH, POWER_OF_2 = compute_cofactor_for_2f(p)
-	str_p_cofactor_for_2f='const digit_t p_cofactor_for_2f[NWORDS_FIELD] = {'
+	NWORDS_P_COFACTOR_FOR_2F = ceil(P_COFACTOR_FOR_2F_BITLENGTH/64)
+	str_p_cofactor_for_2f='const digit_t p_cofactor_for_2f[NWORDS_P_COFACTOR_FOR_2F] = {'
 	str_hex_cofactor=hex(p_cofactor_for_2f)
-	for i in range(NWORDS_FIELD):
-		chunk=str_hex_cofactor[2+16*(NWORDS_FIELD-1-i):2+16*(NWORDS_FIELD-i)]
-		if chunk=='':
-			str_p_cofactor_for_2f+='0x0'
-		else:
-			str_p_cofactor_for_2f+='0x'+chunk
-		if i<NWORDS_FIELD-1:
+	for i in range(NWORDS_P_COFACTOR_FOR_2F):
+		str_p_cofactor_for_2f+='0x'+str_hex_cofactor[2+16*(NWORDS_P_COFACTOR_FOR_2F-1-i):2+16*(NWORDS_P_COFACTOR_FOR_2F-i)]
+		if i<NWORDS_P_COFACTOR_FOR_2F-1:
 			str_p_cofactor_for_2f+=', '
 		else:
 			str_p_cofactor_for_2f+='}'
@@ -100,6 +97,7 @@ def create_gf_constants(p,num=20,primename=None,path="../src/precomp"):
 		cfile.write('#include <stdint.h>\n')
 		cfile.write('#include <tutil.h>\n')
 		cfile.write('#include <fp2.h>\n')
+		cfile.write('#include "gf_constants.h"\n')
 		cfile.write('\n')
 		cfile.write(str_nqr_table+';\n')
 		cfile.write(str_z_nqr_table+';\n')
@@ -108,10 +106,45 @@ def create_gf_constants(p,num=20,primename=None,path="../src/precomp"):
 		cfile.write('const uint16_t P_COFACTOR_FOR_2F_BITLENGTH = '+str(P_COFACTOR_FOR_2F_BITLENGTH)+';\n')
 		cfile.write('const uint16_t POWER_OF_2 = '+str(POWER_OF_2)+';\n')
 
+	return NWORDS_P_COFACTOR_FOR_2F
+
+def create_gf_constants_header(d_nwords,d_prime_codes,num=20,path="../src/precomp"):
+	with open(path+'/gf_constants.h','w') as hfile:
+		hfile.write('#include <fp2.h>\n')
+
+		hfile.write('\n')
+
+		hfile.write('extern const fp2_t NQR_TABLE['+str(num)+'];\n')
+		hfile.write('extern const fp2_t Z_NQR_TABLE['+str(num)+'];\n')
+
+		hfile.write('\n')
+
+		count=0
+		for x in d_nwords:
+			if count==0:
+				hfile.write('#if PRIME_CODE == '+str(d_prime_codes[x])+'\n')
+			else:
+				hfile.write('#elif PRIME_CODE == '+str(d_prime_codes[x])+'\n')
+			hfile.write('\t#define NWORDS_P_COFACTOR_FOR_2F '+str(d_nwords[x])+'\n')
+			count+=1
+		hfile.write('#endif\n')
+
+		hfile.write('\n')
+
+		hfile.write('extern const digit_t p_cofactor_for_2f[NWORDS_P_COFACTOR_FOR_2F];\n')
+		hfile.write('extern const uint16_t P_COFACTOR_FOR_2F_BITLENGTH;\n')
+		hfile.write('extern const uint16_t POWER_OF_2;\n')
+
+
 if __name__=='__main__':
-	d_primes={'pHD256':13*2**126*3**78-1,'pHD384':2**191*3**118-1,'pHD512':31*2**256*3**158-1}
+	d_primes = {'pHD256':13*2**126*3**78-1,'pHD384':2**191*3**118-1,'pHD512':31*2**256*3**158-1}
+	d_prime_codes = {'pHD256':1,'pHD384':3,'pHD512':5}
+	d_nwords = {}
 	for x in d_primes:
-		create_gf_constants(d_primes[x],num=20,primename=x,path="../src/precomp")
+		nwords=create_gf_constants_cfile(d_primes[x],num=20,primename=x,path="../src/precomp")
+		d_nwords[x]=nwords
+	create_gf_constants_header(d_nwords,d_prime_codes,num=20,path="../src/precomp")
+
 
 
 

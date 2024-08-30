@@ -69,6 +69,7 @@ inner_test_generated_basis(ec_basis_t *basis, ec_curve_t *curve, unsigned int n)
         printf("Point P generated does not have order exactly 2^n\n");
         PASSED = 0;
     }
+    
     if (!ec_is_zero(&Q)) {
         printf("Point Q generated does not have order exactly 2^n\n");
         PASSED = 0;

@@ -88,6 +88,14 @@ fp_copy(fp_t *out, const fp_t *a)
 }
 
 void
+fp_set_external(fp_t *x, const fp_t *val)
+{
+    // Sets x to an external value val which is not in Montgomery form 
+    // and automatically converts it into Montgomery form
+    fp_tomont(x, val);
+}
+
+void
 fp_neg(fp_t *out, const fp_t *a)
 { // Modular negation, out = -a mod p
   // Input: a in [0, p-1]

@@ -136,7 +136,11 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
         // collect z2-value from table, we have 20 chances
         // and expect to be correct 50% of the time.
         if (hint < LEN_NQR_TABLE) {
-            z2 = Z_NQR_TABLE[hint];
+            fp2_set_external(&z2,&Z_NQR_TABLE[hint]);
+            fp2_t z3;
+            fp_frommont(&(z3.re),&(z2.re));
+            fp_frommont(&(z3.im),&(z2.im));
+            assert(fp2_is_equal(&z3,&Z_NQR_TABLE[hint]));
         }
 
         // Fallback method for when we're unlucky
@@ -158,8 +162,9 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
                 fp_add(&z2.re, &z2.re, &one);
 
                 // Now check whether z2 is a square and z1 is not
-                if (fp2_is_square(&z2) & ~fp2_is_square(&z1))
+                if (fp2_is_square(&z2) & ~fp2_is_square(&z1)){
                     break;
+                }
 
                 assert(hint < UINT_FAST8_MAX);
             }
@@ -173,6 +178,22 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
         if (is_on_curve(&x, curve)) {
             fp2_copy(&P->x, &x);
             fp2_set_one(&P->z);
+            
+            //fp_sub(&z1.re,&z2.re,&one);
+            //printf("%u\n",fp2_is_square(&z2));
+            //printf("%u\n",fp2_is_square(&z1));
+            //printf("%u\n",hint);
+            //fp_t z2_re;
+            //fp_copy(&z2_re,&z2.re);
+            //for(int i=0;i<NWORDS_FIELD;i++){
+                //printf("%llu\n",z2.re[i]);
+                //printf("%llu\n",z2_re[i]);
+            //}
+            //fp_frommont(&z2_re,&z2_re);
+            //printf("%llu\n",z2.re[0]);
+            //for(int i=0;i<NWORDS_FIELD;i++){
+                //printf("%llu\n",z2_re[i]);
+            //}
             break;
         }
 
@@ -196,7 +217,7 @@ ec_curve_to_point_2f_above_montgomery_from_hint(ec_point_t *P, ec_curve_t *curve
     // With 1/2^20 chance we can use the table look up
     fp2_t z1, z2;
     if (hint < LEN_NQR_TABLE) {
-        z2 = Z_NQR_TABLE[hint];
+        fp2_set_external(&z2,&Z_NQR_TABLE[hint]);
     }
     // Otherwise we create this using the form i + hint
     else {
@@ -210,6 +231,11 @@ ec_curve_to_point_2f_above_montgomery_from_hint(ec_point_t *P, ec_curve_t *curve
     // Set the point
     fp2_copy(&P->x, &x);
     fp2_set_one(&P->z);
+    //fp_t one;
+    //fp_set_one(&one);
+    //fp_sub(&z1.re,&z2.re,&one);
+    //printf("%u\n",fp2_is_square(&z2));
+    //printf("%u\n",fp2_is_square(&z1));
 }
 
 /// Finds a point of order k * 2^n where n is the largest power of two
@@ -229,7 +255,13 @@ ec_curve_to_point_2f_not_above_montgomery(ec_point_t *P, const ec_curve_t *curve
         // For each guess of an x, we expect it to be a point 1/2
         // the time, so our table look up will work with failure 2^20
         if (hint < LEN_NQR_TABLE) {
-            x = NQR_TABLE[hint];
+            x=NQR_TABLE[hint];
+            printf("%u\n",fp2_is_equal(&x,&NQR_TABLE[hint]));
+            fp2_set_external(&x,&NQR_TABLE[hint]);
+            fp2_t y;
+            fp_frommont(&(y.re),&(x.re));
+            fp_frommont(&(y.im),&(x.im));
+            assert(fp2_is_equal(&y,&NQR_TABLE[hint]));
         }
 
         // Fallback method in case we do not find a value!
@@ -250,8 +282,9 @@ ec_curve_to_point_2f_not_above_montgomery(ec_point_t *P, const ec_curve_t *curve
                 // TODO: could be made faster by adding one rather
                 // than setting each time, but this is OK for now.
                 fp_add(&x.re, &x.re, &one);
-                if (!fp2_is_square(&x))
+                if (!fp2_is_square(&x)){
                     break;
+                }
 
                 assert(hint < UINT_FAST8_MAX);
             }
@@ -261,6 +294,15 @@ ec_curve_to_point_2f_not_above_montgomery(ec_point_t *P, const ec_curve_t *curve
         if (is_on_curve(&x, curve)) {
             fp2_copy(&P->x, &x);
             fp2_set_one(&P->z);
+
+            //fp_t x_re;
+            //fp_copy(&x_re,&x.re);
+            //fp_frommont(&x_re,&x_re);
+            //printf("%llu\n",x.re[0]);
+            //printf("%llu\n",x_re[0]);
+            //for(int i=0;i<NWORDS_FIELD;i++){
+                //printf("%llu\n",x_re[i]);
+            //}
             break;
         }
         assert(hint < UINT_FAST8_MAX);
@@ -282,7 +324,7 @@ ec_curve_to_point_2f_not_above_montgomery_from_hint(ec_point_t *P,
     // If we got lucky (1/2^20) then we just grab an x-value
     // from the table
     if (hint < LEN_NQR_TABLE) {
-        x = NQR_TABLE[hint];
+        fp2_set_external(&x,&NQR_TABLE[hint]);
     }
     // Otherwise, we find points of the form
     // i + hint
@@ -293,6 +335,7 @@ ec_curve_to_point_2f_not_above_montgomery_from_hint(ec_point_t *P,
 
     fp2_copy(&P->x, &x);
     fp2_set_one(&P->z);
+    //printf("%u\n",fp2_is_square(&x));
 }
 
 // Helper function which given a point of order k*2^n with n maximal

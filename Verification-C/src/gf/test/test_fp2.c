@@ -18,6 +18,39 @@ fp2_test(void)
            "-------------------\n\n");
     printf("Testing arithmetic over GF(p^2): \n\n");
 
+    //Test Montgomery
+    passed =1;
+    for (n = 0; n < TEST_LOOPS; n++) {
+
+        fp2_random_test(&a);
+        fp_tomont(&(b.re),&(a.re));
+        fp_tomont(&(b.im),&(a.im));
+        fp_frommont(&(c.re),&(b.re));
+        fp_frommont(&(c.im),&(b.im));
+
+        if (fp2_is_equal(&a, &c) == 0) {
+            passed = 0;
+            break;
+        }
+
+        fp2_set_external(&d,&a);
+        fp_frommont(&(e.re),&(d.re));
+        fp_frommont(&(e.im),&(d.im));
+
+        if (fp2_is_equal(&a, &e) == 0) {
+            passed = 0;
+            break;
+        }
+    }
+    if (passed == 1)
+        printf("  GF(p^2) Montgomery conversion tests ............................................ PASSED");
+    else {
+        printf("  GF(p^2) Montgomery conversion tests... FAILED");
+        printf("\n");
+        return false;
+    }
+    printf("\n");
+
     // Addition in GF(p^2)
     passed = 1;
     for (n = 0; n < TEST_LOOPS; n++) {

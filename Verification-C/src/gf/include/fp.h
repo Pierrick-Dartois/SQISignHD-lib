@@ -27,6 +27,7 @@ void fp_set_one(fp_t *x);
 uint32_t fp_is_equal(const fp_t *a, const fp_t *b);
 uint32_t fp_is_zero(const fp_t *a);
 void fp_copy(fp_t *out, const fp_t *a);
+void fp_set_external(fp_t *x, const fp_t *val);
 
 void fp_encode(void *dst, const fp_t *a);
 void fp_decode_reduce(fp_t *d, const void *src, size_t len);

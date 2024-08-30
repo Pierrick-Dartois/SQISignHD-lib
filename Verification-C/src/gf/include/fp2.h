@@ -18,6 +18,7 @@ uint32_t fp2_is_zero(const fp2_t *a);
 uint32_t fp2_is_equal(const fp2_t *a, const fp2_t *b);
 uint32_t fp2_is_one(const fp2_t *a);
 void fp2_copy(fp2_t *x, const fp2_t *y);
+void fp2_set_external(fp2_t *x, const fp2_t *val);
 void fp2_add(fp2_t *x, const fp2_t *y, const fp2_t *z);
 void fp2_sub(fp2_t *x, const fp2_t *y, const fp2_t *z);
 void fp2_neg(fp2_t *x, const fp2_t *y);

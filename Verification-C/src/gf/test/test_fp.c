@@ -20,6 +20,7 @@ fp_test(void)
            "-------------------\n\n");
     printf("Testing field arithmetic over GF(p): \n\n");
 
+
     // Test equality
     passed = 1;
     for (n = 0; n < TEST_LOOPS; n++) {
@@ -53,6 +54,37 @@ fp_test(void)
         printf("  GF(p) equality tests ............................................ PASSED");
     else {
         printf("  GF(p) equality tests... FAILED");
+        printf("\n");
+        return false;
+    }
+    printf("\n");
+
+    //Test Montgomery
+    passed =1;
+    for (n = 0; n < TEST_LOOPS; n++) {
+        
+        fp_random_test(&a);
+        fp_tomont(&b,&a);
+        fp_frommont(&c,&b);
+
+        if (fp_is_equal(&a, &c) == 0) {
+            passed = 0;
+            break;
+        }
+
+        fp_set_external(&d,&a);
+        fp_frommont(&e,&d);
+
+        if (fp_is_equal(&a, &e) == 0) {
+            passed = 0;
+            break;
+        }
+
+    }
+    if (passed == 1)
+        printf("  GF(p) Montgomery conversion tests ............................................ PASSED");
+    else {
+        printf("  GF(p) Montgomery conversion tests... FAILED");
         printf("\n");
         return false;
     }

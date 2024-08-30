@@ -72,6 +72,15 @@ fp2_copy(fp2_t *x, const fp2_t *y)
 }
 
 void
+fp2_set_external(fp2_t *x, const fp2_t *val)
+{
+    // Sets x to an external value val which is not in Montgomery form 
+    // and automatically converts it into Montgomery form
+    fp_set_external(&(x->re),&(val->re));
+    fp_set_external(&(x->im),&(val->im));
+}
+
+void
 fp2_encode(void *dst, const fp2_t *a)
 {
     uint8_t *buf = dst;
