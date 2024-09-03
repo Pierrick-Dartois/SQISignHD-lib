@@ -136,11 +136,7 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
         // collect z2-value from table, we have 20 chances
         // and expect to be correct 50% of the time.
         if (hint < LEN_NQR_TABLE) {
-            fp2_set_external(&z2,&Z_NQR_TABLE[hint]);
-            fp2_t z3;
-            fp_frommont(&(z3.re),&(z2.re));
-            fp_frommont(&(z3.im),&(z2.im));
-            assert(fp2_is_equal(&z3,&Z_NQR_TABLE[hint]));
+            z2=Z_NQR_TABLE[hint];
         }
 
         // Fallback method for when we're unlucky
@@ -162,7 +158,7 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
                 fp_add(&z2.re, &z2.re, &one);
 
                 // Now check whether z2 is a square and z1 is not
-                if (fp2_is_square(&z2) & ~fp2_is_square(&z1)){
+                if (fp2_is_square(&z2) & !fp2_is_square(&z1)){
                     break;
                 }
 
@@ -178,22 +174,6 @@ ec_curve_to_point_2f_above_montgomery(ec_point_t *P, ec_curve_t *curve)
         if (is_on_curve(&x, curve)) {
             fp2_copy(&P->x, &x);
             fp2_set_one(&P->z);
-            
-            //fp_sub(&z1.re,&z2.re,&one);
-            //printf("%u\n",fp2_is_square(&z2));
-            //printf("%u\n",fp2_is_square(&z1));
-            //printf("%u\n",hint);
-            //fp_t z2_re;
-            //fp_copy(&z2_re,&z2.re);
-            //for(int i=0;i<NWORDS_FIELD;i++){
-                //printf("%llu\n",z2.re[i]);
-                //printf("%llu\n",z2_re[i]);
-            //}
-            //fp_frommont(&z2_re,&z2_re);
-            //printf("%llu\n",z2.re[0]);
-            //for(int i=0;i<NWORDS_FIELD;i++){
-                //printf("%llu\n",z2_re[i]);
-            //}
             break;
         }
 
@@ -217,7 +197,7 @@ ec_curve_to_point_2f_above_montgomery_from_hint(ec_point_t *P, ec_curve_t *curve
     // With 1/2^20 chance we can use the table look up
     fp2_t z1, z2;
     if (hint < LEN_NQR_TABLE) {
-        fp2_set_external(&z2,&Z_NQR_TABLE[hint]);
+        z2=Z_NQR_TABLE[hint];
     }
     // Otherwise we create this using the form i + hint
     else {
@@ -231,11 +211,6 @@ ec_curve_to_point_2f_above_montgomery_from_hint(ec_point_t *P, ec_curve_t *curve
     // Set the point
     fp2_copy(&P->x, &x);
     fp2_set_one(&P->z);
-    //fp_t one;
-    //fp_set_one(&one);
-    //fp_sub(&z1.re,&z2.re,&one);
-    //printf("%u\n",fp2_is_square(&z2));
-    //printf("%u\n",fp2_is_square(&z1));
 }
 
 /// Finds a point of order k * 2^n where n is the largest power of two
@@ -256,12 +231,6 @@ ec_curve_to_point_2f_not_above_montgomery(ec_point_t *P, const ec_curve_t *curve
         // the time, so our table look up will work with failure 2^20
         if (hint < LEN_NQR_TABLE) {
             x=NQR_TABLE[hint];
-            printf("%u\n",fp2_is_equal(&x,&NQR_TABLE[hint]));
-            fp2_set_external(&x,&NQR_TABLE[hint]);
-            fp2_t y;
-            fp_frommont(&(y.re),&(x.re));
-            fp_frommont(&(y.im),&(x.im));
-            assert(fp2_is_equal(&y,&NQR_TABLE[hint]));
         }
 
         // Fallback method in case we do not find a value!
@@ -294,15 +263,6 @@ ec_curve_to_point_2f_not_above_montgomery(ec_point_t *P, const ec_curve_t *curve
         if (is_on_curve(&x, curve)) {
             fp2_copy(&P->x, &x);
             fp2_set_one(&P->z);
-
-            //fp_t x_re;
-            //fp_copy(&x_re,&x.re);
-            //fp_frommont(&x_re,&x_re);
-            //printf("%llu\n",x.re[0]);
-            //printf("%llu\n",x_re[0]);
-            //for(int i=0;i<NWORDS_FIELD;i++){
-                //printf("%llu\n",x_re[i]);
-            //}
             break;
         }
         assert(hint < UINT_FAST8_MAX);
@@ -324,7 +284,7 @@ ec_curve_to_point_2f_not_above_montgomery_from_hint(ec_point_t *P,
     // If we got lucky (1/2^20) then we just grab an x-value
     // from the table
     if (hint < LEN_NQR_TABLE) {
-        fp2_set_external(&x,&NQR_TABLE[hint]);
+        x=NQR_TABLE[hint];
     }
     // Otherwise, we find points of the form
     // i + hint
@@ -335,7 +295,6 @@ ec_curve_to_point_2f_not_above_montgomery_from_hint(ec_point_t *P,
 
     fp2_copy(&P->x, &x);
     fp2_set_one(&P->z);
-    //printf("%u\n",fp2_is_square(&x));
 }
 
 // Helper function which given a point of order k*2^n with n maximal
@@ -410,4 +369,151 @@ ec_curve_to_basis_2f_from_hint(ec_basis_t *PQ2, ec_curve_t *curve, int f, const 
 
     // Copy points and compute the difference point
     compute_xonly_basis(PQ2, curve, &P, &Q);
+}
+
+// Methods for 3-torsion basis due to SQIsign-nist
+
+static void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3)
+{
+    /* ----------------------------------------------------------------------------- *
+     * Differential point tripling given the montgomery coefficient A3 = (A+2C:A-2C)
+     * ----------------------------------------------------------------------------- */
+
+    fp2_t t0, t1, t2, t3, t4;
+    fp2_sub(&t0, &P->x, &P->z);
+    fp2_sqr(&t2, &t0);
+    fp2_add(&t1, &P->x, &P->z);
+    fp2_sqr(&t3, &t1);
+    fp2_add(&t4, &t1, &t0);
+    fp2_sub(&t0, &t1, &t0);
+    fp2_sqr(&t1, &t4);
+    fp2_sub(&t1, &t1, &t3);
+    fp2_sub(&t1, &t1, &t2);
+    fp2_mul(&Q->x, &t3, &A3->x);
+    fp2_mul(&t3, &Q->x, &t3);
+    fp2_mul(&Q->z, &t2, &A3->z);
+    fp2_mul(&t2, &t2, &Q->z);
+    fp2_sub(&t3, &t2, &t3);
+    fp2_sub(&t2, &Q->x, &Q->z);
+    fp2_mul(&t1, &t2, &t1);
+    fp2_add(&t2, &t3, &t1);
+    fp2_sqr(&t2, &t2);
+    fp2_mul(&Q->x, &t2, &t4);
+    fp2_sub(&t1, &t3, &t1);
+    fp2_sqr(&t1, &t1);
+    fp2_mul(&Q->z, &t1, &t0);
+}
+
+void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
+
+    fp2_t x, t0, t1, t2;
+    ec_point_t P, Q, Q3, P3, A24, A3;
+
+    // Curve coefficient in the form A24 = (A+2C:4C)
+    fp2_add(&A24.z, &curve->C, &curve->C);
+    fp2_add(&A24.x, &curve->A, &A24.z);
+    fp2_add(&A24.z, &A24.z, &A24.z);
+
+    // Curve coefficient in the form A3 = (A+2C:A-2C)
+    fp2_sub(&A3.z, &A24.x, &A24.z);
+    fp2_copy(&A3.x, &A24.x);
+
+    fp_mont_setone(x.re);
+    fp_set(x.im, 0);
+
+    // Find P
+    while(1){
+        fp_add(x.im, x.re, x.im);
+
+        // Check if point is rational
+        fp2_sqr(&t0, &curve->C);
+        fp2_mul(&t1, &t0, &x);
+        fp2_mul(&t2, &curve->A, &curve->C);
+        fp2_add(&t1, &t1, &t2);
+        fp2_mul(&t1, &t1, &x);
+        fp2_add(&t1, &t1, &t0);
+        fp2_mul(&t1, &t1, &x);
+        if(fp2_is_square(&t1)){
+            fp2_copy(&P.x, &x);
+            fp_mont_setone(P.z.re);
+            fp_set(P.z.im, 0);
+        }
+        else
+            continue;
+
+        // Clear non-3 factors from the order
+        xMULv2(&P, &P, p_cofactor_for_3g, (int)P_COFACTOR_FOR_3G_BITLENGTH, &A24);
+
+        // Check if point has order 3^g
+        copy_point(&P3, &P);
+        for(int i = 0; i < POWER_OF_3 - 1; i++)
+            xTPL(&P3, &P3, &A3);
+        if(ec_is_zero(&P3))
+            continue;
+        else
+            break;
+    }
+    
+    // Find Q
+    while(1){
+        fp_add(x.im, x.re, x.im);
+
+        // Check if point is rational
+        fp2_sqr(&t0, &curve->C);
+        fp2_mul(&t1, &t0, &x);
+        fp2_mul(&t2, &curve->A, &curve->C);
+        fp2_add(&t1, &t1, &t2);
+        fp2_mul(&t1, &t1, &x);
+        fp2_add(&t1, &t1, &t0);
+        fp2_mul(&t1, &t1, &x);
+        if(fp2_is_square(&t1)){
+            fp2_copy(&Q.x, &x);
+            fp_mont_setone(Q.z.re);
+            fp_set(Q.z.im, 0);
+        }
+        else
+            continue;
+
+        // Clear non-3 factors from the order
+        xMULv2(&Q, &Q, p_cofactor_for_3g, (int)P_COFACTOR_FOR_3G_BITLENGTH, &A24);
+
+        // Check if point has order 3^g
+        copy_point(&Q3, &Q);
+        for(int i = 0; i < POWER_OF_3 - 1; i++)
+            xTPL(&Q3, &Q3, &A3);
+        if(ec_is_zero(&Q3))
+            continue;
+
+        // Check if point is orthogonal to P
+        if(is_point_equal(&P3, &Q3))
+            continue;
+        xDBLv2(&P3, &P3, &A24);
+        if(is_point_equal(&P3, &Q3))
+            continue;
+        else
+            break;
+    }
+
+    // Normalize points
+    ec_curve_t E;
+    fp2_mul(&t0, &P.z, &Q.z);
+    fp2_mul(&t1, &t0, &curve->C);
+    fp2_inv(&t1);
+    fp2_mul(&P.x, &P.x, &t1);
+    fp2_mul(&Q.x, &Q.x, &t1);
+    fp2_mul(&E.A, &curve->A, &t1);
+    fp2_mul(&P.x, &P.x, &Q.z);
+    fp2_mul(&P.x, &P.x, &curve->C);
+    fp2_mul(&Q.x, &Q.x, &P.z);
+    fp2_mul(&Q.x, &Q.x, &curve->C);
+    fp2_mul(&E.A, &E.A, &t0);
+    fp_mont_setone(P.z.re);
+    fp_set(P.z.im, 0);
+    fp2_copy(&Q.z, &P.z);
+    fp2_copy(&E.C, &P.z);
+
+    // Compute P-Q
+    difference_point(&PQ3->PmQ, &P, &Q, &E);
+    copy_point(&PQ3->P, &P);
+    copy_point(&PQ3->Q, &Q);
 }
