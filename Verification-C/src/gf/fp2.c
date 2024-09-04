@@ -339,3 +339,39 @@ fp2_print(char *name, const fp2_t *a)
     }
     printf("\n");
 }
+
+uint32_t
+fp2_is_cube(const fp2_t *a){
+    // Tests wheter a == 0 or a^(p^2-1)/3 == 1.
+    if(fp2_is_zero(a)){
+        return 1;
+    }
+
+    digit_t pp1_div3[NWORDS_FIELD], one[NWORDS_FIELD], three[NWORDS_FIELD];//, pm1[NWORDS_FIELD];
+    fp2_t a_p2m1_div3, a_inv, one_fp2;
+
+    mp_set_small(one,1,NWORDS_FIELD);
+    mp_set_small(three,3,NWORDS_FIELD);
+
+    mp_add(pp1_div3,p,one,NWORDS_FIELD);
+    mp_div(pp1_div3,pp1_div3,three,NWORDS_FIELD);
+
+    //mp_sub(pm1,p,one,NWORDS_FIELD);
+
+    fp2_copy(&a_inv,a);
+    fp2_inv(&a_inv);
+
+    // a^p=(x0+i*x1)^p=x0-i*x1
+    fp_copy(&(a_p2m1_div3.re),&(a->re));
+    fp_neg(&(a_p2m1_div3.im),&(a->im));
+
+    //a^(p-1)=a^p/a
+    fp2_mul(&a_p2m1_div3,&a_p2m1_div3,&a_inv);
+
+    //fp2_pow_vartime(&a_p2m1_div3, a, pm1, NWORDS_FIELD);
+    fp2_pow_vartime(&a_p2m1_div3, &a_p2m1_div3, pp1_div3, NWORDS_FIELD);
+
+    fp2_set_one(&one_fp2);
+
+    return fp2_is_equal(&a_p2m1_div3,&one_fp2);
+}

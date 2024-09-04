@@ -287,6 +287,27 @@ fp2_test(void)
     }
     printf("\n");
 
+    //Cubic detection in GF(p^2)
+    passed = 1;
+    for (n = 0; n < TEST_LOOPS; n++) {
+        fp2_random_test(&a);
+
+        fp2_sqr(&c, &a); // c = a^2
+        fp2_mul(&c, &c, &a); // c = a^3
+        if (fp2_is_cube(&c) == 0) {
+            passed = 0;
+            break;
+        }
+    }
+    if (passed == 1)
+        printf("  Cube detection tests.......................................... PASSED");
+    else {
+        printf("  Cube detection tests... FAILED");
+        printf("\n");
+        return false;
+    }
+    printf("\n");
+
     return OK;
 }
 
@@ -434,6 +455,23 @@ fp2_run(void)
     fp_encode(tmp, &(a.re));
     qsort(cycle_runs + 10, 10, sizeof cycle_runs[0], cmp_u64);
     printf("  Square checking runs in ........................................... %" PRIu64
+           " cycles, (%u ignore me)\n",
+           cycle_runs[4] / BENCH_LOOPS,
+           tmp[0]);
+
+    // GF(p^2) is_cube
+    for (i = 0; i < 20; i++) {
+        cycles1 = cpucycles();
+        for (n = 0; n < BENCH_LOOPS; n++) {
+            fp2_is_cube(&a);
+            fp2_add(&a, &b, &a);
+        }
+        cycles2 = cpucycles();
+        cycle_runs[i] = cycles2 - cycles1;
+    }
+    fp_encode(tmp, &(a.re));
+    qsort(cycle_runs + 10, 10, sizeof cycle_runs[0], cmp_u64);
+    printf("  Cube checking runs in ........................................... %" PRIu64
            " cycles, (%u ignore me)\n",
            cycle_runs[4] / BENCH_LOOPS,
            tmp[0]);

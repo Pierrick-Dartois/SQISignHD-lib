@@ -22,9 +22,14 @@ void select_ct(digit_t *c,
                const digit_t mask,
                const int nwords);
 void swap_ct(digit_t *a, digit_t *b, const digit_t option, const int nwords);
-int mp_compare(digit_t *a, digit_t *b, unsigned int nwords);
+int mp_compare(const digit_t *a, const digit_t *b, unsigned int nwords);
 bool mp_is_zero(const digit_t *a, unsigned int nwords);
 void mp_mul2(digit_t *c, const digit_t *a, const digit_t *b);
+void mp_set_zero(digit_t *a, unsigned int nwords);
+void mp_set_small(digit_t *a, const digit_t b, unsigned int nwords);
+void mp_set_bit(digit_t *a, int pos);
+void mp_copy(digit_t *a, const digit_t *b,  unsigned int nwords);
+void mp_div(digit_t *q, const digit_t *a, const digit_t *b, const unsigned int nwords);
 
 /********************** Constant-time unsigned comparisons ***********************/
 

@@ -118,7 +118,7 @@ swap_ct(digit_t *a, digit_t *b, const digit_t option, const int nwords)
 }
 
 int
-mp_compare(digit_t *a, digit_t *b, unsigned int nwords)
+mp_compare(const digit_t *a, const digit_t *b, unsigned int nwords)
 { // Multiprecision comparison, a=b? : (1) a>b, (0) a=b, (-1) a<b
 
     for (int i = nwords - 1; i >= 0; i--) {
@@ -159,4 +159,68 @@ mp_mul2(digit_t *c, const digit_t *a, const digit_t *b)
     c[1] = t0[1];
     c[2] = t2[0];
     c[3] = t2[1];
+}
+
+void
+mp_set_zero(digit_t *a, unsigned int nwords){
+    for(int i=0;i<nwords;i++){
+        a[i]=0;
+    }
+}
+
+void 
+mp_set_small(digit_t *a, const digit_t b, unsigned int nwords){
+    a[0]=b;
+    for(int i=1;i<nwords;i++){
+        a[i]=0;
+    }
+}
+
+void 
+mp_set_bit(digit_t *a, int pos){
+    int i_word, pos_in_word;
+    digit_t b;
+
+    i_word = pos/RADIX;
+    pos_in_word = pos%RADIX;
+
+    b = 1ULL<<pos_in_word;
+    a[i_word] = a[i_word] + b;
+}
+
+void 
+mp_copy(digit_t *a, const digit_t *b,  unsigned int nwords){
+    for(int i=0;i<nwords;i++){
+        a[i]=b[i];
+    }
+}
+
+void 
+mp_div(digit_t *q, const digit_t *a, const digit_t *b, const unsigned int nwords){
+    // Euclidean division a=bq+r
+    digit_t r[nwords], b_shifted[nwords], temp[nwords];
+    int pos=0;
+
+    mp_copy(b_shifted,b,nwords);
+    mp_set_zero(q,nwords);
+    mp_set_zero(r,nwords);
+
+    if(mp_compare(a,b,nwords)>=0){
+        mp_sub(r,a,b,nwords);
+        while(mp_compare(r,b_shifted,nwords)==1){
+            pos++;
+            mp_shiftl(b_shifted,1,nwords);
+            mp_sub(r,a,b_shifted,nwords);
+        }
+        mp_set_bit(q,pos);
+
+        while(mp_compare(r,b,nwords)>=0){
+            while(mp_compare(r,b_shifted,nwords)==-1){
+                pos--;
+                mp_shiftr(b_shifted,1,nwords);
+            }
+            mp_sub(r,r,b_shifted,nwords);
+            mp_set_bit(q,pos);
+        }
+    }
 }

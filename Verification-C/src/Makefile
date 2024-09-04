@@ -47,7 +47,17 @@ test_basis.exe: ${TARGETS_BASIS}
 clean_ec:
 	rm test_arith.exe test_basis.exe
 
+## Basis mp aithmetic
 
+TARGETS_MP = gf/mp.c gf/test/test_mp.c
+
+test_mp: test_mp.exe
+
+test_mp.exe: ${TARGETS_MP}
+	${CC} ${CFLAGS_GF} -o test_mp.exe ${TARGETS_MP}
+
+clean_mp:
+	rm test_mp.exe
 
 
 
