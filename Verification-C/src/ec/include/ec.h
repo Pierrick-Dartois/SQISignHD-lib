@@ -351,6 +351,11 @@ void ec_curve_to_basis_2f_from_hint(ec_basis_t *PQ2,
                                     int f,
                                     const uint8_t hint[2]);
 
+/** 
+ * @brief Generate a 3^g-torsion basis 
+ **/
+void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve);
+
 /** @defgroup ec_isog_t Isogenies
  * @{
  */

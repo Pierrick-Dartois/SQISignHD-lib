@@ -41,6 +41,24 @@ uint16_t compute_cofactor(uint64_t * cofactor,const uint64_t * p){
 	return power_of_2;
 }
 
+uint16_t compute_cofactor_3g(uint64_t * cofactor,const uint64_t * p){
+	uint64_t q[NWORDS_FIELD], r[NWORDS_FIELD], one[NWORDS_FIELD], three[NWORDS_FIELD];
+
+	mp_set_small(one,1,NWORDS_FIELD);
+	mp_add(cofactor,p,one,NWORDS_FIELD);
+
+	mp_set_small(three,3,NWORDS_FIELD);
+	uint16_t power_of_3=0;
+
+	mp_div_with_remainder(q,r,cofactor,three,NWORDS_FIELD);
+	while(mp_is_zero(r,NWORDS_FIELD)==1){
+		mp_copy(cofactor,q,NWORDS_FIELD);
+		mp_div_with_remainder(q,r,cofactor,three,NWORDS_FIELD);
+		power_of_3++;
+	}
+	return power_of_3;
+}
+
 uint16_t compute_nbits(uint64_t * cofactor){
 	uint16_t nbits=NWORDS_FIELD*RADIX;
 	uint8_t is_one=0;
@@ -159,12 +177,42 @@ void write_cfile(const char filename[],const int num){
 		}
 	}
 
+	uint64_t cofactor_3g[NWORDS_FIELD];
+	uint16_t power_of_3, nbits_3;
+	power_of_3=compute_cofactor_3g(cofactor_3g,p);
+	nbits_3=compute_nbits(cofactor_3g);
+	
+	uint8_t NWORDS_P_COFACTOR_FOR_3G;
+	//Ceiling formula
+	NWORDS_P_COFACTOR_FOR_3G=(nbits_3/RADIX)+!!(nbits_3%RADIX);
+
+	fprintf(fptr,"\n%s","const digit_t p_cofactor_for_3g[");
+	fprintf(fptr,"%u",NWORDS_P_COFACTOR_FOR_3G);
+	fprintf(fptr,"%s","] = {");
+	for(int i=0;i<NWORDS_P_COFACTOR_FOR_3G;i++){
+		fprintf(fptr,"0x%01llx",cofactor_3g[i]);
+		if(i<NWORDS_P_COFACTOR_FOR_3G-1){
+			fprintf(fptr,"%s",", ");
+		}
+		else{
+			fprintf(fptr,"%s\n","};");
+		}
+	}
+
 	fprintf(fptr,"%s","const uint16_t P_COFACTOR_FOR_2F_BITLENGTH = ");
 	fprintf(fptr,"%hu",nbits);
 	fprintf(fptr,"%s\n",";");
 
 	fprintf(fptr,"%s","const uint16_t POWER_OF_2 = ");
 	fprintf(fptr,"%hu",power_of_2);
+	fprintf(fptr,"%s\n",";");
+
+	fprintf(fptr,"%s","const uint16_t P_COFACTOR_FOR_3G_BITLENGTH = ");
+	fprintf(fptr,"%hu",nbits_3);
+	fprintf(fptr,"%s\n",";");
+
+	fprintf(fptr,"%s","const uint16_t POWER_OF_3 = ");
+	fprintf(fptr,"%hu",power_of_3);
 	fprintf(fptr,"%s\n",";");
 }
 

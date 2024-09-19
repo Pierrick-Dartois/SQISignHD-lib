@@ -98,6 +98,34 @@ is_on_curve(fp2_t *x, const ec_curve_t *curve)
     return fp2_is_square(&t0);
 }
 
+// Given an x-coordinate, computes the y coordinate. Assumes C=1.
+static void
+y_coordinate(fp2_t *y, const fp2_t *x, const ec_curve_t *curve)
+{
+    assert(fp2_is_one(&curve->C));
+
+    fp_t one;
+    fp_set_one(&one);
+
+    fp2_add(y, x, &curve->A);   // x + (A/C)
+    fp2_mul(y, y, x);         // x^2 + (A/C)*x
+    fp_add(&(y->re), &(y->re), &one); // x^2 + (A/C)*x + 1
+    fp2_mul(y, y, x);         // x^3 + (A/C)*x^2 + x
+
+    fp2_sqrt(&y);
+}
+
+static void
+normalize_point(ec_point_t *P)
+{
+    fp2_t z_inv;
+
+    fp2_copy(&z_inv,&(P->z));
+    fp2_inv(&z_inv);
+    fp2_mul(&(P->x),&(P->x),&z_inv);
+    fp2_set_one(&(P->z));
+}
+
 static void
 compute_alpha(fp2_t *alpha, ec_curve_t *curve)
 {
@@ -404,115 +432,174 @@ static void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3)
     fp2_mul(&Q->z, &t1, &t0);
 }
 
+bool ec_curve_to_3_torsion_point(ec_point_t* P3,ec_point_t* R3,const ec_curve_t* curve, const ec_point_t* A3){
+    // P3: point of 3-torsion
+    // R3: basis point of 3^**-torsion (if found)
+    // Returns True if R3 has been found
+    // !!! Assumes curve is normalized (C=1) !!!
+
+    ec_point_t P, PTPL;
+    fp2_t x;
+    uint_fast8_t hint = 0;
+
+    for(;;++hint){
+        assert(hint < UINT_FAST8_MAX);
+        // Finding a point of the form x=i+hint, z=1
+        for(;;++hint){
+            assert(hint < UINT_FAST8_MAX);
+            fp_set_one(&x.im);
+            fp_set_small(&x.re, hint);
+
+            if (is_on_curve(&x, curve)) {
+                fp2_copy(&P->x, &x);
+                fp2_set_one(&P->z);
+                break;
+            }
+        }
+
+        ec_mul(&P, p_cofactor_for_3g, P_COFACTOR_FOR_3G_BITLENGTH, &P, curve);
+        if(ec_is_zero(&P)){
+            continue;
+        }
+
+        fp2_copy(&(R3->x),&(P.x));
+        fp2_copy(&(R3->z),&(P.z));
+
+        int i=0;
+        for(;;i++){
+            xTPL(PTPL, P, A3);
+            if(ec_is_zero(&PTPL)){
+                break;
+            }
+            else{
+                fp2_copy(&(P.x),&(PTPL.x));
+                fp2_copy(&(P.z),&(PTPL.z));
+            }
+        }
+        
+        fp2_copy(&(P3->x),&(P.x));
+        fp2_copy(&(P3->z),&(P.z));
+        if(i==POWER_OF_3){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+}
+
+void ec_curve_tangent_at_point(fp2_t *lambda, fp2_t *mu, const ec_point_t *P, const ec_curve_t * curve){
+    // !!! Assumes curve is normalized (C=1) !!!
+    
+    // Compute y_P
+    //fp2_t y;
+    //normalize_point(P);
+    //y_coordinate(&y,&(P->x),curve);
+
+    // Compute lambda
+    fp2_t t0, t1, t2;
+
+    fp2_sqr(&t0,&(P->z)); //z^2
+    fp2_sqr(&t2,&(P->x)); //x^2
+    fp2_sub(mu,&t0,&t2); //z^2-x^2
+    fp2_mul(mu,mu,&(P->x)); //mu=z^2x-x^3
+
+    fp2_add(&t1,&t2,&t2); //2x^2
+    fp2_add(&t2,&t1,&t2); //3x^2
+    fp2_mul(&t1,&(curve->A),&(P->x)); //Ax
+    fp2_mul(&t1,&t1,&(P->z)); //Axz
+    fp2_add(&t1,&t1,&t1); //2Axz
+    fp2_add(lambda,&t0,&t1); //2Axz+z^2
+    fp2_add(lambda,lambda,&t2); //lambda=3x^2+2Axz+z^2
+}
+
 void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
 
-    fp2_t x, t0, t1, t2;
-    ec_point_t P, Q, Q3, P3, A24, A3;
+    fp2_t lambda, mu, y, t0;
+    ec_point_t P, Q, Q3, P3, A3;
+    ec_curve_t E;
+    bool found_P;
 
-    // Curve coefficient in the form A24 = (A+2C:4C)
-    fp2_add(&A24.z, &curve->C, &curve->C);
-    fp2_add(&A24.x, &curve->A, &A24.z);
-    fp2_add(&A24.z, &A24.z, &A24.z);
+    // Normalizing the curve
+    copy_curve(&E,curve);
+    ec_normalize_curve_and_A24(&E);
 
     // Curve coefficient in the form A3 = (A+2C:A-2C)
-    fp2_sub(&A3.z, &A24.x, &A24.z);
-    fp2_copy(&A3.x, &A24.x);
+    fp2_sub(&A3.z, &(E->A24.x), &(E->A24.z));
+    fp2_copy(&A3.x, &(E->A24.x));
 
-    fp_mont_setone(x.re);
-    fp_set(x.im, 0);
+    // Computing P3 of 3-torsion and maybe the first basis point P
+    found_P=ec_curve_to_3_torsion_point(&P3,&P,&E,&A3);
+    ec_curve_tangent_at_point(&lambda, &mu, &P3, &E);
 
-    // Find P
-    while(1){
-        fp_add(x.im, x.re, x.im);
+    //Computing Q
+    uint_fast8_t hint = 0;
 
-        // Check if point is rational
-        fp2_sqr(&t0, &curve->C);
-        fp2_mul(&t1, &t0, &x);
-        fp2_mul(&t2, &curve->A, &curve->C);
-        fp2_add(&t1, &t1, &t2);
-        fp2_mul(&t1, &t1, &x);
-        fp2_add(&t1, &t1, &t0);
-        fp2_mul(&t1, &t1, &x);
-        if(fp2_is_square(&t1)){
-            fp2_copy(&P.x, &x);
-            fp_mont_setone(P.z.re);
-            fp_set(P.z.im, 0);
+    for(;;++hint){
+        assert(hint < UINT_FAST8_MAX);
+        // Finding a point of the form x=i+hint, z=1
+        for(;;++hint){
+            assert(hint < UINT_FAST8_MAX);
+            fp_set_one(&x.im);
+            fp_set_small(&x.re, hint);
+
+            if (is_on_curve(&x, &E)) {
+                fp2_copy(&Q->x, &x);
+                fp2_set_one(&Q->z);
+                break;
+            }
         }
-        else
-            continue;
 
-        // Clear non-3 factors from the order
-        xMULv2(&P, &P, p_cofactor_for_3g, (int)P_COFACTOR_FOR_3G_BITLENGTH, &A24);
+        ec_mul(&Q, p_cofactor_for_3g, P_COFACTOR_FOR_3G_BITLENGTH, &Q, &E);
+        
+        // Testing if Q\in [3]E
+        normalize_point(&Q);
+        y_coordinate(&y,&Q,&E);
+        fp2_mul(&t0,&lambda,&(Q->x)); //lambda*x
+        fp2_add(&t0,&t0,&mu); //lambda*x+mu
+        fp2_sub(&t0,&y,&t0); //y-(lambda*x+mu)
 
-        // Check if point has order 3^g
-        copy_point(&P3, &P);
-        for(int i = 0; i < POWER_OF_3 - 1; i++)
-            xTPL(&P3, &P3, &A3);
-        if(ec_is_zero(&P3))
-            continue;
-        else
+        if(fp2_is_cube(&t0)){
             break;
-    }
-    
-    // Find Q
-    while(1){
-        fp_add(x.im, x.re, x.im);
-
-        // Check if point is rational
-        fp2_sqr(&t0, &curve->C);
-        fp2_mul(&t1, &t0, &x);
-        fp2_mul(&t2, &curve->A, &curve->C);
-        fp2_add(&t1, &t1, &t2);
-        fp2_mul(&t1, &t1, &x);
-        fp2_add(&t1, &t1, &t0);
-        fp2_mul(&t1, &t1, &x);
-        if(fp2_is_square(&t1)){
-            fp2_copy(&Q.x, &x);
-            fp_mont_setone(Q.z.re);
-            fp_set(Q.z.im, 0);
         }
-        else
-            continue;
-
-        // Clear non-3 factors from the order
-        xMULv2(&Q, &Q, p_cofactor_for_3g, (int)P_COFACTOR_FOR_3G_BITLENGTH, &A24);
-
-        // Check if point has order 3^g
-        copy_point(&Q3, &Q);
-        for(int i = 0; i < POWER_OF_3 - 1; i++)
-            xTPL(&Q3, &Q3, &A3);
-        if(ec_is_zero(&Q3))
-            continue;
-
-        // Check if point is orthogonal to P
-        if(is_point_equal(&P3, &Q3))
-            continue;
-        xDBLv2(&P3, &P3, &A24);
-        if(is_point_equal(&P3, &Q3))
-            continue;
-        else
-            break;
     }
 
-    // Normalize points
-    ec_curve_t E;
-    fp2_mul(&t0, &P.z, &Q.z);
-    fp2_mul(&t1, &t0, &curve->C);
-    fp2_inv(&t1);
-    fp2_mul(&P.x, &P.x, &t1);
-    fp2_mul(&Q.x, &Q.x, &t1);
-    fp2_mul(&E.A, &curve->A, &t1);
-    fp2_mul(&P.x, &P.x, &Q.z);
-    fp2_mul(&P.x, &P.x, &curve->C);
-    fp2_mul(&Q.x, &Q.x, &P.z);
-    fp2_mul(&Q.x, &Q.x, &curve->C);
-    fp2_mul(&E.A, &E.A, &t0);
-    fp_mont_setone(P.z.re);
-    fp_set(P.z.im, 0);
-    fp2_copy(&Q.z, &P.z);
-    fp2_copy(&E.C, &P.z);
+    //Computing P if needed
+    if(found_P==0){
+        hint = 0;
+
+        for(;;++hint){
+            assert(hint < UINT_FAST8_MAX);
+            // Finding a point of the form x=i+hint, z=1
+            for(;;++hint){
+                assert(hint < UINT_FAST8_MAX);
+                fp_set_one(&x.im);
+                fp_set_small(&x.re, hint);
+
+                if (is_on_curve(&x, &E)) {
+                    fp2_copy(&P->x, &x);
+                    fp2_set_one(&P->z);
+                    break;
+                }
+            }
+
+            ec_mul(&P, p_cofactor_for_3g, P_COFACTOR_FOR_3G_BITLENGTH, &P, &E);
+        
+            // Testing if P\in [3]E
+            normalize_point(&P);
+            y_coordinate(&y,&P,&E);
+            fp2_mul(&t0,&lambda,&(P->x)); //lambda*x
+            fp2_add(&t0,&t0,&mu); //lambda*x+mu
+            fp2_sub(&t0,&y,&t0); //y-(lambda*x+mu)
+
+            if(fp2_is_cube(&t0)){
+                break;
+            }
+        }
+    }
 
     // Compute P-Q
+    // TODO: reuse computed sqrts for P and Q
     difference_point(&PQ3->PmQ, &P, &Q, &E);
     copy_point(&PQ3->P, &P);
     copy_point(&PQ3->Q, &Q);

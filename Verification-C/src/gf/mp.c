@@ -224,3 +224,33 @@ mp_div(digit_t *q, const digit_t *a, const digit_t *b, const unsigned int nwords
         }
     }
 }
+
+void 
+mp_div_with_remainder(digit_t *q, digit_t *r, const digit_t *a, const digit_t *b, const unsigned int nwords){
+    // Euclidean division a=bq+r
+    digit_t b_shifted[nwords], temp[nwords];
+    int pos=0;
+
+    mp_copy(b_shifted,b,nwords);
+    mp_set_zero(q,nwords);
+    mp_set_zero(r,nwords);
+
+    if(mp_compare(a,b,nwords)>=0){
+        mp_sub(r,a,b,nwords);
+        while(mp_compare(r,b_shifted,nwords)==1){
+            pos++;
+            mp_shiftl(b_shifted,1,nwords);
+            mp_sub(r,a,b_shifted,nwords);
+        }
+        mp_set_bit(q,pos);
+
+        while(mp_compare(r,b,nwords)>=0){
+            while(mp_compare(r,b_shifted,nwords)==-1){
+                pos--;
+                mp_shiftr(b_shifted,1,nwords);
+            }
+            mp_sub(r,r,b_shifted,nwords);
+            mp_set_bit(q,pos);
+        }
+    }
+}
