@@ -109,6 +109,57 @@ inner_test_hint_basis(ec_basis_t *basis, ec_basis_t *basis_hint)
     return PASSED;
 }
 
+int
+inner_test_basis_3(ec_basis_t *basis, ec_curve_t *curve, unsigned int n)
+{
+    int i;
+    int PASSED = 1;
+
+    ec_point_t P, Q, A3;
+    copy_point(&P, &basis->P);
+    copy_point(&Q, &basis->Q);
+
+    fp2_sub(&A3.z, &(curve->A24.x), &(curve->A24.z));
+    fp2_copy(&A3.x, &(curve->A24.x));
+
+    // Triple points to get point of order 3
+    for (i = 0; i < n - 1; i++) {
+        xTPL(&P, &P, &A3);
+        xTPL(&Q, &Q, &A3);
+    }
+    if (ec_is_zero(&P)) {
+        printf("Point P generated does not have full order\n");
+        PASSED = 0;
+    }
+    if (ec_is_zero(&Q)) {
+        printf("Point Q generated does not have full order\n");
+        PASSED = 0;
+    }
+    if (ec_is_equal(&P, &Q)) {
+        printf("Points P, Q are linearly dependent\n");
+        PASSED = 0;
+    }
+
+    // This should give the identity
+    xTPL(&P, &P, &A3);
+    xTPL(&Q, &Q, &A3);
+    if (!ec_is_zero(&P)) {
+        printf("Point P generated does not have order exactly 3^n\n");
+        PASSED = 0;
+    }
+    
+    if (!ec_is_zero(&Q)) {
+        printf("Point Q generated does not have order exactly 3^n\n");
+        PASSED = 0;
+    }
+
+    if (PASSED == 0) {
+        printf("Test failed with n = %d\n", n);
+    }
+
+    return PASSED;
+}
+
 /******************************
 Test wrapper functions
 ******************************/
@@ -164,6 +215,27 @@ test_basis_generation_with_hints(unsigned int n)
     check_2 = inner_test_hint_basis(&basis, &basis_hint);
 
     return check_1 && check_2;
+}
+
+int
+test_basis_generation_3()
+{
+    ec_basis_t basis;
+    ec_curve_t curve;
+
+    ec_curve_init(&curve);
+
+    // Set a supersingular elliptic curve
+    // E : y^2 = x^3 + 6*x^2 + x
+    fp2_set_small(&(curve.A), 6);
+    fp2_set_one(&(curve.C));
+    ec_curve_normalize_A24(&curve);
+
+    // Generate a basis
+    ec_curve_to_basis_3(&basis, &curve);
+
+    // Test result
+    return inner_test_basis_3(&basis, &curve, POWER_OF_3);
 }
 
 void
@@ -240,13 +312,17 @@ test_basis(void)
 {
     int passed;
 
-    // Test full order
+    // Test full order 2-torsion
     passed = test_basis_generation(POWER_OF_2);
     passed &= test_basis_generation_with_hints(POWER_OF_2);
 
-    // Test partial order
+    // Test partial order 2-torsion
     passed &= test_basis_generation(POWER_OF_2>>1);
     passed &= test_basis_generation_with_hints(POWER_OF_2>>1);
+
+    // Test 3-torsion (full order)
+    printf("Starting 3-torsion tests.\n");
+    passed &= test_basis_generation_3();
 
     return passed;
 }

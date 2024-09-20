@@ -47,7 +47,7 @@ test_basis.exe: ${TARGETS_BASIS}
 clean_ec:
 	rm test_arith.exe test_basis.exe
 
-## Basis mp aithmetic
+## Basic mp arithmetic
 
 TARGETS_MP = gf/mp.c gf/test/test_mp.c
 

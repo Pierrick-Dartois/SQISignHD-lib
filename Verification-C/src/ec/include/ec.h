@@ -259,6 +259,8 @@ void xADD(ec_point_t *R, const ec_point_t *P, const ec_point_t *Q, const ec_poin
 void xDBL_A24(ec_point_t *Q, const ec_point_t *P, const ec_point_t *A24);
 void xDBL_A24_normalized(ec_point_t *Q, const ec_point_t *P, const ec_point_t *A24);
 
+void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3);
+
 /**
  * @brief Point doubling
  *

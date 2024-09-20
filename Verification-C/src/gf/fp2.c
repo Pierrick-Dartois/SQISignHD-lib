@@ -347,14 +347,14 @@ fp2_is_cube(const fp2_t *a){
         return 1;
     }
 
-    digit_t pp1_div3[NWORDS_FIELD], one[NWORDS_FIELD], three[NWORDS_FIELD];//, pm1[NWORDS_FIELD];
+    digit_t pp1[NWORDS_FIELD], pp1_div3[NWORDS_FIELD], one[NWORDS_FIELD], three[NWORDS_FIELD];//, pm1[NWORDS_FIELD];
     fp2_t a_p2m1_div3, a_inv, one_fp2;
 
     mp_set_small(one,1,NWORDS_FIELD);
     mp_set_small(three,3,NWORDS_FIELD);
 
-    mp_add(pp1_div3,p,one,NWORDS_FIELD);
-    mp_div(pp1_div3,pp1_div3,three,NWORDS_FIELD);
+    mp_add(pp1,p,one,NWORDS_FIELD);
+    mp_div(pp1_div3,pp1,three,NWORDS_FIELD);
 
     //mp_sub(pm1,p,one,NWORDS_FIELD);
 
@@ -367,6 +367,14 @@ fp2_is_cube(const fp2_t *a){
 
     //a^(p-1)=a^p/a
     fp2_mul(&a_p2m1_div3,&a_p2m1_div3,&a_inv);
+
+    //for(int i=0;i<NWORDS_FIELD;i++){
+        //printf("%llu\n",a_p2m1_div3.re[i]);
+    //}
+
+    //for(int i=0;i<NWORDS_FIELD;i++){
+        //printf("%llu\n",a_p2m1_div3.im[i]);
+    //}
 
     //fp2_pow_vartime(&a_p2m1_div3, a, pm1, NWORDS_FIELD);
     fp2_pow_vartime(&a_p2m1_div3, &a_p2m1_div3, pp1_div3, NWORDS_FIELD);

@@ -11,7 +11,7 @@ bool
 fp2_test(void)
 { // Tests for the GF(p^2) arithmetic
     bool OK = true;
-    int n, passed;
+    int n, passed, one_non_cube;
     fp2_t a, b, c, d, e, f;
 
     printf("\n-------------------------------------------------------------------------------------"
@@ -289,6 +289,7 @@ fp2_test(void)
 
     //Cubic detection in GF(p^2)
     passed = 1;
+    one_non_cube = 0;
     for (n = 0; n < TEST_LOOPS; n++) {
         fp2_random_test(&a);
 
@@ -298,7 +299,12 @@ fp2_test(void)
             passed = 0;
             break;
         }
+
+        if (fp2_is_cube(&a) == 0) {
+            one_non_cube =1;
+        }
     }
+    passed = passed & one_non_cube;
     if (passed == 1)
         printf("  Cube detection tests.......................................... PASSED");
     else {

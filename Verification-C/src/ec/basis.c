@@ -112,7 +112,7 @@ y_coordinate(fp2_t *y, const fp2_t *x, const ec_curve_t *curve)
     fp_add(&(y->re), &(y->re), &one); // x^2 + (A/C)*x + 1
     fp2_mul(y, y, x);         // x^3 + (A/C)*x^2 + x
 
-    fp2_sqrt(&y);
+    fp2_sqrt(y);
 }
 
 static void
@@ -401,7 +401,7 @@ ec_curve_to_basis_2f_from_hint(ec_basis_t *PQ2, ec_curve_t *curve, int f, const 
 
 // Methods for 3-torsion basis due to SQIsign-nist
 
-static void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3)
+void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3)
 {
     /* ----------------------------------------------------------------------------- *
      * Differential point tripling given the montgomery coefficient A3 = (A+2C:A-2C)
@@ -432,7 +432,7 @@ static void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3)
     fp2_mul(&Q->z, &t1, &t0);
 }
 
-bool ec_curve_to_3_torsion_point(ec_point_t* P3,ec_point_t* R3,const ec_curve_t* curve, const ec_point_t* A3){
+bool ec_curve_to_3_torsion_point(ec_point_t* P3,ec_point_t* R3,ec_curve_t* curve, const ec_point_t* A3){
     // P3: point of 3-torsion
     // R3: basis point of 3^**-torsion (if found)
     // Returns True if R3 has been found
@@ -451,8 +451,8 @@ bool ec_curve_to_3_torsion_point(ec_point_t* P3,ec_point_t* R3,const ec_curve_t*
             fp_set_small(&x.re, hint);
 
             if (is_on_curve(&x, curve)) {
-                fp2_copy(&P->x, &x);
-                fp2_set_one(&P->z);
+                fp2_copy(&P.x, &x);
+                fp2_set_one(&P.z);
                 break;
             }
         }
@@ -467,7 +467,7 @@ bool ec_curve_to_3_torsion_point(ec_point_t* P3,ec_point_t* R3,const ec_curve_t*
 
         int i=0;
         for(;;i++){
-            xTPL(PTPL, P, A3);
+            xTPL(&PTPL, &P, A3);
             if(ec_is_zero(&PTPL)){
                 break;
             }
@@ -492,31 +492,37 @@ void ec_curve_tangent_at_point(fp2_t *lambda, fp2_t *mu, const ec_point_t *P, co
     // !!! Assumes curve is normalized (C=1) !!!
     
     // Compute y_P
-    //fp2_t y;
-    //normalize_point(P);
-    //y_coordinate(&y,&(P->x),curve);
+    fp2_t y;
+    ec_point_t P1;
+    copy_point(&P1,P);
+    normalize_point(&P1);
+    y_coordinate(&y,&(P1.x),curve);
 
     // Compute lambda
-    fp2_t t0, t1, t2;
+    fp2_t t0, t1, t2, dbl_y_inv;
 
-    fp2_sqr(&t0,&(P->z)); //z^2
-    fp2_sqr(&t2,&(P->x)); //x^2
-    fp2_sub(mu,&t0,&t2); //z^2-x^2
-    fp2_mul(mu,mu,&(P->x)); //mu=z^2x-x^3
+    fp2_add(&dbl_y_inv,&y,&y); //2y
+    fp2_inv(&dbl_y_inv); //1/(2y)
+
+    fp2_set_one(&t0); //1
+    fp2_sqr(&t2,&(P1.x)); //x^2
+    fp2_sub(mu,&t0,&t2); //1-x^2
+    fp2_mul(mu,mu,&(P1.x)); //x-x^3
+    fp2_mul(mu,mu,&dbl_y_inv); //mu=(x-x^3)/(2y)
 
     fp2_add(&t1,&t2,&t2); //2x^2
     fp2_add(&t2,&t1,&t2); //3x^2
-    fp2_mul(&t1,&(curve->A),&(P->x)); //Ax
-    fp2_mul(&t1,&t1,&(P->z)); //Axz
-    fp2_add(&t1,&t1,&t1); //2Axz
-    fp2_add(lambda,&t0,&t1); //2Axz+z^2
-    fp2_add(lambda,lambda,&t2); //lambda=3x^2+2Axz+z^2
+    fp2_mul(&t1,&(curve->A),&(P1.x)); //Ax
+    fp2_add(&t1,&t1,&t1); //2Ax
+    fp2_add(lambda,&t0,&t1); //2Ax+1
+    fp2_add(lambda,lambda,&t2); //3x^2+2Ax+1
+    fp2_mul(lambda,lambda,&dbl_y_inv); //lambda=(3x^2+2Ax+1)/(2y)
 }
 
 void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
 
-    fp2_t lambda, mu, y, t0;
-    ec_point_t P, Q, Q3, P3, A3;
+    fp2_t x, lambda, mu, y, t0;
+    ec_point_t P, Q, Q3, P3, R3, S3, A3;
     ec_curve_t E;
     bool found_P;
 
@@ -525,49 +531,17 @@ void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
     ec_normalize_curve_and_A24(&E);
 
     // Curve coefficient in the form A3 = (A+2C:A-2C)
-    fp2_sub(&A3.z, &(E->A24.x), &(E->A24.z));
-    fp2_copy(&A3.x, &(E->A24.x));
+    fp2_sub(&A3.z, &(E.A24.x), &(E.A24.z));
+    fp2_copy(&A3.x, &(E.A24.x));
 
     // Computing P3 of 3-torsion and maybe the first basis point P
     found_P=ec_curve_to_3_torsion_point(&P3,&P,&E,&A3);
     ec_curve_tangent_at_point(&lambda, &mu, &P3, &E);
 
-    //Computing Q
+    //Computing P if needed
     uint_fast8_t hint = 0;
 
-    for(;;++hint){
-        assert(hint < UINT_FAST8_MAX);
-        // Finding a point of the form x=i+hint, z=1
-        for(;;++hint){
-            assert(hint < UINT_FAST8_MAX);
-            fp_set_one(&x.im);
-            fp_set_small(&x.re, hint);
-
-            if (is_on_curve(&x, &E)) {
-                fp2_copy(&Q->x, &x);
-                fp2_set_one(&Q->z);
-                break;
-            }
-        }
-
-        ec_mul(&Q, p_cofactor_for_3g, P_COFACTOR_FOR_3G_BITLENGTH, &Q, &E);
-        
-        // Testing if Q\in [3]E
-        normalize_point(&Q);
-        y_coordinate(&y,&Q,&E);
-        fp2_mul(&t0,&lambda,&(Q->x)); //lambda*x
-        fp2_add(&t0,&t0,&mu); //lambda*x+mu
-        fp2_sub(&t0,&y,&t0); //y-(lambda*x+mu)
-
-        if(fp2_is_cube(&t0)){
-            break;
-        }
-    }
-
-    //Computing P if needed
     if(found_P==0){
-        hint = 0;
-
         for(;;++hint){
             assert(hint < UINT_FAST8_MAX);
             // Finding a point of the form x=i+hint, z=1
@@ -577,8 +551,8 @@ void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
                 fp_set_small(&x.re, hint);
 
                 if (is_on_curve(&x, &E)) {
-                    fp2_copy(&P->x, &x);
-                    fp2_set_one(&P->z);
+                    fp2_copy(&P.x, &x);
+                    fp2_set_one(&P.z);
                     break;
                 }
             }
@@ -587,14 +561,69 @@ void ec_curve_to_basis_3(ec_basis_t* PQ3, const ec_curve_t* curve){
         
             // Testing if P\in [3]E
             normalize_point(&P);
-            y_coordinate(&y,&P,&E);
-            fp2_mul(&t0,&lambda,&(P->x)); //lambda*x
+            y_coordinate(&y,&(P.x),&E);
+            fp2_mul(&t0,&lambda,&(P.x)); //lambda*x
             fp2_add(&t0,&t0,&mu); //lambda*x+mu
             fp2_sub(&t0,&y,&t0); //y-(lambda*x+mu)
 
-            if(fp2_is_cube(&t0)){
+            if(!fp2_is_cube(&t0)){
                 break;
             }
+        }
+
+        // R3=3^(POWER_OF_3-1)*P
+        fp2_copy(&R3.x, &P.x);
+        fp2_copy(&R3.z, &P.z);
+        for(int i=0;i<POWER_OF_3-1;i++){
+            xTPL(&R3,&R3,&A3);
+        }
+    }
+    else{
+        // R3=3^(POWER_OF_3-1)*P=P3 (found_P==1)
+        fp2_copy(&R3.x, &P3.x);
+        fp2_copy(&R3.z, &P3.z);
+    }
+
+    //Computing Q
+    hint = 0;
+    for(;;++hint){
+        assert(hint < UINT_FAST8_MAX);
+        // Finding a point of the form x=i+hint, z=1
+        for(;;++hint){
+            assert(hint < UINT_FAST8_MAX);
+            fp_set_one(&x.im);
+            fp_set_small(&x.re, hint);
+
+            if (is_on_curve(&x, &E)) {
+                fp2_copy(&Q.x, &x);
+                fp2_set_one(&Q.z);
+                break;
+            }
+        }
+
+        ec_mul(&Q, p_cofactor_for_3g, P_COFACTOR_FOR_3G_BITLENGTH, &Q, &E);
+        
+        // Testing if Q\in [3]E
+        normalize_point(&Q);
+        y_coordinate(&y,&(Q.x),&E);
+        fp2_mul(&t0,&lambda,&(Q.x)); //lambda*x
+        fp2_add(&t0,&t0,&mu); //lambda*x+mu
+        fp2_sub(&t0,&y,&t0); //y-(lambda*x+mu)
+
+        if(fp2_is_cube(&t0)){
+            continue;
+        }
+
+        // Testing if P and Q are independent
+        // S3=3^(POWER_OF_3-1)*Q
+        fp2_copy(&S3.x, &Q.x);
+        fp2_copy(&S3.z, &Q.z);
+        for(int i=0;i<POWER_OF_3-1;i++){
+            xTPL(&S3,&S3,&A3);
+        }
+
+        if(!ec_is_equal(&R3, &S3)){
+            break;
         }
     }
 
