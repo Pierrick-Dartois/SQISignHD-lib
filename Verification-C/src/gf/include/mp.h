@@ -31,6 +31,7 @@ void mp_set_bit(digit_t *a, int pos);
 void mp_copy(digit_t *a, const digit_t *b,  unsigned int nwords);
 void mp_div(digit_t *q, const digit_t *a, const digit_t *b, const unsigned int nwords);
 void mp_div_with_remainder(digit_t *q, digit_t *r, const digit_t *a, const digit_t *b, const unsigned int nwords);
+uint16_t mp_nbits(const uint64_t * a, const unsigned int nwords);
 
 /********************** Constant-time unsigned comparisons ***********************/
 

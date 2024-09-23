@@ -34,9 +34,10 @@ clean_gf:
 
 TARGETS_ARITH = gf/fp.c gf/fp2.c gf/mp.c common/sha3.c gf/primes/${PRIME}.c ec/ec.c ec/test/curve-arith-test.c ec/test/test_extras.c
 TARGETS_BASIS = gf/fp.c gf/fp2.c gf/mp.c common/sha3.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/test/basis-gen-test.c ec/test/test_extras.c
+TARGETS_PAIRING = gf/fp.c gf/fp2.c gf/mp.c common/sha3.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/biextension.c ec/test/pairing-test.c
 CFLAGS_EC = ${CFLAGS_GF} -Iec/include -Iprecomp
 
-test_ec: test_arith.exe test_basis.exe
+test_ec: test_arith.exe test_basis.exe test_pairing.exe
 
 test_arith.exe: ${TARGETS_ARITH}
 	${CC} ${CFLAGS_EC} ${V_DEFS_PRIME} -o test_arith.exe ${TARGETS_ARITH}
@@ -44,8 +45,11 @@ test_arith.exe: ${TARGETS_ARITH}
 test_basis.exe: ${TARGETS_BASIS}
 	${CC} ${CFLAGS_EC} ${V_DEFS_PRIME} -o test_basis.exe ${TARGETS_BASIS}
 
+test_pairing.exe: ${TARGETS_PAIRING}
+	${CC} ${CFLAGS_EC} ${V_DEFS_PRIME} -o test_pairing.exe ${TARGETS_PAIRING}
+
 clean_ec:
-	rm test_arith.exe test_basis.exe
+	rm test_arith.exe test_basis.exe test_pairing.exe
 
 ## Basic mp arithmetic
 
