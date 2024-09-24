@@ -1,5 +1,6 @@
 // TODO this should be its own module
 #include <mp.h>
+#include <stdio.h>
 
 // The below functions were taken from the GF module
 
@@ -260,7 +261,7 @@ uint16_t mp_nbits(const uint64_t * a, const unsigned int nwords){
     uint8_t is_one=0;
     uint64_t mask;
     for(int i=0;i<nwords;i++){
-        for(int j=0;j<nwords;j++){
+        for(int j=0;j<RADIX;j++){
             // 1ULL otherwise, he cannot shift more than 32 bits... C is so wierd...
             mask=1ULL<<(RADIX-1-j);
             is_one=(mask&a[nwords-1-i])>>(RADIX-1-j);

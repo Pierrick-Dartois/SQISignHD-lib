@@ -122,16 +122,18 @@ biext_ladder_2e(uint64_t e,
 
 // iterative biextension double and add
 static void
-biext_ladder(uint64_t *n,
+biext_ladder(uint64_t* n, const unsigned int nwords,
     ec_point_t *PnQ,
     ec_point_t *nQ,
     const ec_point_t *PQ,
     const ec_point_t *Q,
     const fp2_t *ixP,
     const fp2_t *ixQ,
-    const ec_point_t *A24)
+    const ec_point_t *A24, const ec_point_t *P)
 {
-    const unsigned int nwords=sizeof(n)/RADIX;
+    // non-cubical points (to test)
+    ec_point_t ncnm1Q, ncnQ, ncPnQ;
+
     unsigned int bj,j,k;
     uint64_t mask;
     uint64_t one[nwords], nm1[nwords];
@@ -148,18 +150,47 @@ biext_ladder(uint64_t *n,
     for(int i=1;i<nbits;i++){
         j=nbits-i-1;
         k=j%RADIX;
-        mask=1ULL<<(RADIX-1-k);
-        bj=(mask&nm1[j/RADIX])>>(RADIX-1-k);
+        mask=1ULL<<k;
+        bj=(mask&nm1[j/RADIX])>>k;
 
         if(bj){
-            cubicalADD(&nm1Q, &nm1Q, nQ, ixQ);
+            cubicalADD(&nm1Q, nQ, &nm1Q, ixQ);
             cubicalDBLADD(PnQ, nQ, PnQ, nQ, ixP, A24);
         }
         else{
-            cubicalDBLADD(PnQ, nQ, PnQ, &nm1Q, ixP, A24);
-            cubicalDBL(&nm1Q, &nm1Q, A24);
+            cubicalADD(nQ, nQ, &nm1Q, ixQ);
+            cubicalDBLADD(PnQ, &nm1Q, PnQ, &nm1Q, ixP, A24);
         }
     }
+    assert(ec_is_equal(&nm1Q,Q));
+
+    // Operations on non-cubical points
+    copy_point(&ncPnQ, PQ);
+    copy_point(&ncnQ, Q);
+    copy_point(&ncnm1Q, Q);
+    //cubicalDBLADD(PnQ, nQ, PnQ, nQ, ixP, A24);
+    xDBLADD(&ncnQ, &ncPnQ, &ncnQ, &ncPnQ, P, A24);
+    for(int i=1;i<nbits;i++){
+        j=nbits-i-1;
+        k=j%RADIX;
+        mask=1ULL<<k;
+        bj=(mask&nm1[j/RADIX])>>k;
+
+        if(bj){
+            //cubicalADD(&nm1Q, nQ, &nm1Q, ixQ);
+            //cubicalDBLADD(PnQ, nQ, PnQ, nQ, ixP, A24);
+            xADD(&ncnm1Q, &ncnQ, &ncnm1Q, Q);
+            xDBLADD(&ncnQ, &ncPnQ, &ncnQ, &ncPnQ, P, A24);
+        }
+        else{
+            //cubicalADD(nQ, nQ, &nm1Q, ixQ);
+            //cubicalDBLADD(PnQ, &nm1Q, PnQ, &nm1Q, ixP, A24);
+            xADD(&ncnQ, &ncnQ, &ncnm1Q, Q);
+            xDBLADD(&ncnm1Q, &ncPnQ, &ncnm1Q, &ncPnQ, P, A24);
+        }
+    }
+    printf("%u\n",ec_is_zero(&ncnQ));
+    printf("%u\n",ec_is_equal(&ncPnQ,P));
 }
 
 // Compute the ratio X/Z above as a (X:Z) point to avoid a division
@@ -254,7 +285,7 @@ monodromy_odd_i(ec_point_t *R, const weil_params_t *weil_data, bool swap_PQ)
 {
     fp2_t ixP, ixQ;
     ec_point_t P, Q, PnQ, nQ;
-    const unsigned int nwords=sizeof(weil_data->n)/RADIX;
+    const unsigned int nwords=weil_data->nwords;
     uint64_t m[nwords];
     mp_copy(m,weil_data->n,nwords);
 
@@ -275,7 +306,7 @@ monodromy_odd_i(ec_point_t *R, const weil_params_t *weil_data, bool swap_PQ)
     }
 
     // Compute the biextension ladder P + [n]Q
-    biext_ladder(m, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->A24);
+    biext_ladder(m, nwords, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->A24, &P);
     point_ratio(R, &PnQ, &nQ, &P);
 }
 
@@ -366,12 +397,13 @@ weil_n(fp2_t *r, weil_params_t *weil_data,  bool odd)
 }
 
 void
-weil(fp2_t *r, uint64_t *n, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E)
+weil(fp2_t *r, uint64_t *n, unsigned int nwords, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E)
 {
     weil_params_t weil_data;
     // Construct the structure for the Weil pairing
     // Set (PX/PZ : 1), (QX : QZ : 1), PZ/PX and QZ/QX
-    weil_data.n = n;
+    weil_data.n=n;
+    weil_data.nwords=nwords;
     cubical_normalization(&weil_data, P, Q);
     copy_point(&weil_data.PQ, PQ);
 

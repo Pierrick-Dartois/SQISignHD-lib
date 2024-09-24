@@ -258,6 +258,26 @@ void ec_normalize_point(ec_point_t *P);
 void xADD(ec_point_t *R, const ec_point_t *P, const ec_point_t *Q, const ec_point_t *PQ);
 void xDBL_A24(ec_point_t *Q, const ec_point_t *P, const ec_point_t *A24);
 void xDBL_A24_normalized(ec_point_t *Q, const ec_point_t *P, const ec_point_t *A24);
+void xDBLMUL(ec_point_t *S,
+        const ec_point_t *P,
+        const digit_t *k,
+        const ec_point_t *Q,
+        const digit_t *l,
+        const ec_point_t *PQ,
+        const int kbits,
+        const ec_curve_t *curve);
+void xDBLADD(ec_point_t *R,
+        ec_point_t *S,
+        const ec_point_t *P,
+        const ec_point_t *Q,
+        const ec_point_t *PQ,
+        const ec_point_t *A24);
+void xDBLADD_normalized(ec_point_t *R,
+                   ec_point_t *S,
+                   const ec_point_t *P,
+                   const ec_point_t *Q,
+                   const ec_point_t *PQ,
+                   const ec_point_t *A24);
 
 void xTPL(ec_point_t* Q, const ec_point_t* P, const ec_point_t* A3);
 

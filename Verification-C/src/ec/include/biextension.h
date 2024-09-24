@@ -8,6 +8,7 @@ typedef struct weil_params
 {
     uint64_t e;     // When points have order 2^e
     uint64_t *n;    // When points have order n
+    unsigned int nwords; // Number of woeds of the multiprecision integer n
     ec_point_t P;   // x(P)
     ec_point_t Q;   // x(Q)
     ec_point_t PQ;  // x(P-Q) = (PQX/PQZ : 1)
@@ -43,7 +44,7 @@ typedef struct weil_dlog_params
 void weil_2e(fp2_t *r, uint64_t e, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E);
 
 // Computes e = e_n(P, Q) using biextension ladder
-void weil(fp2_t *r, uint64_t *n, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E);
+void weil(fp2_t *r, uint64_t *n, unsigned int nwords, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E);
 
 // Given two bases <P, Q> and <R, S> computes scalars
 // such that R = [r1]P + [r2]Q, S = [s1]P + [s2]Q

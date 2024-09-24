@@ -27,7 +27,7 @@ int test_weil_pairing_2f(unsigned int n){
 
     copy_point(&P,&basis.P);
     copy_point(&Q,&basis.Q);
-    copy_point(&PQ,&basis.PmQ);
+    xADD(&PQ,&basis.P,&basis.Q,&basis.PmQ);
 
     xADD(&dblPQ, &PQ, &P, &Q);
     xADD(&PdblQ, &PQ, &Q, &P);
@@ -70,14 +70,16 @@ int test_weil_pairing_3g(){
 	int PASSED = 1;
 
 	fp2_t wPQ, wQP, w2PQ, wP2Q, wP2P, wPQ_sqr, wPQwQP;
-	ec_point_t P, Q, PQ, dblP, dblQ, dblPQ, PdblQ;
+	ec_point_t P, Q, PQ, dblP, dblQ, dblPQ, PdblQ, S;
 	ec_basis_t basis;
     ec_curve_t curve;
     const unsigned int nwords=NWORDS_FIELD/2+1;
-    uint64_t n[nwords],m[nwords];
+    uint64_t n[nwords],m[nwords],one[nwords];
+
+    mp_set_small(one,1,nwords);
 
     mp_set_small(n,3,nwords);
-    for(int i=0;i<POWER_OF_3;i++){
+    for(int i=0;i<POWER_OF_3-1;i++){
     	mp_add(m,n,n,nwords);
     	mp_add(n,m,n,nwords);
     }
@@ -95,18 +97,28 @@ int test_weil_pairing_3g(){
 
     copy_point(&P,&basis.P);
     copy_point(&Q,&basis.Q);
-    copy_point(&PQ,&basis.PmQ);
+    xADD(&PQ,&basis.P,&basis.Q,&basis.PmQ);
 
     xADD(&dblPQ, &PQ, &P, &Q);
     xADD(&PdblQ, &PQ, &Q, &P);
     xDBL_A24_normalized(&dblP, &P, &curve.A24);
     xDBL_A24_normalized(&dblQ, &Q, &curve.A24);
 
-    weil(&wPQ, n, &P, &Q, &PQ, &curve);
-    weil(&wQP, n, &Q, &P, &PQ, &curve);
-    weil(&w2PQ, n, &dblP, &Q, &dblPQ, &curve);
-    weil(&wP2Q, n, &P, &dblQ, &PdblQ, &curve);
-    weil(&wP2P, n, &P, &dblP, &P, &curve);
+    int nbits=mp_nbits(n, nwords);
+
+    xDBLMUL(&S,&P,one,&Q,n,&PQ,nbits,&curve);
+    printf("%u\n",ec_is_equal(&S,&P));
+
+    printf("wPQ\n");
+    weil(&wPQ, n, nwords, &P, &Q, &PQ, &curve);
+    printf("wQP\n");
+    weil(&wQP, n, nwords, &Q, &P, &PQ, &curve);
+    printf("w2PQ\n");
+    weil(&w2PQ, n, nwords, &dblP, &Q, &dblPQ, &curve);
+    printf("wP2Q\n");
+    weil(&wP2Q, n, nwords, &P, &dblQ, &PdblQ, &curve);
+    printf("wP2P\n");
+    weil(&wP2P, n, nwords, &P, &dblP, &P, &curve);
 
     fp2_sqr(&wPQ_sqr,&wPQ);
     fp2_mul(&wPQwQP,&wPQ,&wQP);
