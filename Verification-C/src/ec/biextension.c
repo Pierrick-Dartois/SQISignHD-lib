@@ -129,14 +129,13 @@ biext_ladder(uint64_t* n, const unsigned int nwords,
     const ec_point_t *Q,
     const fp2_t *ixP,
     const fp2_t *ixQ,
-    const ec_point_t *A24, const ec_point_t *P)
+    const fp2_t *ixPQ,
+    const ec_point_t *A24)
 {
-    // non-cubical points (to test)
-    ec_point_t ncnm1Q, ncnQ, ncPnQ;
 
     unsigned int bj,j,k;
     uint64_t mask;
-    uint64_t one[nwords], nm1[nwords];
+    uint64_t one[nwords], nm1[nwords], m[nwords];
     ec_point_t nm1Q;
 
     mp_set_small(one,1,nwords);
@@ -159,38 +158,9 @@ biext_ladder(uint64_t* n, const unsigned int nwords,
         }
         else{
             cubicalADD(nQ, nQ, &nm1Q, ixQ);
-            cubicalDBLADD(PnQ, &nm1Q, PnQ, &nm1Q, ixP, A24);
+            cubicalDBLADD(PnQ, &nm1Q, PnQ, &nm1Q, ixPQ, A24);
         }
     }
-    assert(ec_is_equal(&nm1Q,Q));
-
-    // Operations on non-cubical points
-    copy_point(&ncPnQ, PQ);
-    copy_point(&ncnQ, Q);
-    copy_point(&ncnm1Q, Q);
-    //cubicalDBLADD(PnQ, nQ, PnQ, nQ, ixP, A24);
-    xDBLADD(&ncnQ, &ncPnQ, &ncnQ, &ncPnQ, P, A24);
-    for(int i=1;i<nbits;i++){
-        j=nbits-i-1;
-        k=j%RADIX;
-        mask=1ULL<<k;
-        bj=(mask&nm1[j/RADIX])>>k;
-
-        if(bj){
-            //cubicalADD(&nm1Q, nQ, &nm1Q, ixQ);
-            //cubicalDBLADD(PnQ, nQ, PnQ, nQ, ixP, A24);
-            xADD(&ncnm1Q, &ncnQ, &ncnm1Q, Q);
-            xDBLADD(&ncnQ, &ncPnQ, &ncnQ, &ncPnQ, P, A24);
-        }
-        else{
-            //cubicalADD(nQ, nQ, &nm1Q, ixQ);
-            //cubicalDBLADD(PnQ, &nm1Q, PnQ, &nm1Q, ixP, A24);
-            xADD(&ncnQ, &ncnQ, &ncnm1Q, Q);
-            xDBLADD(&ncnm1Q, &ncPnQ, &ncnm1Q, &ncPnQ, P, A24);
-        }
-    }
-    printf("%u\n",ec_is_zero(&ncnQ));
-    printf("%u\n",ec_is_equal(&ncPnQ,P));
 }
 
 // Compute the ratio X/Z above as a (X:Z) point to avoid a division
@@ -306,7 +276,41 @@ monodromy_odd_i(ec_point_t *R, const weil_params_t *weil_data, bool swap_PQ)
     }
 
     // Compute the biextension ladder P + [n]Q
-    biext_ladder(m, nwords, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->A24, &P);
+    biext_ladder(m, nwords, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->ixPQ, &weil_data->A24);
+    point_ratio(R, &PnQ, &nQ, &P);
+}
+
+// Compute the monodromy of P+[n]Q with n even
+static void
+monodromy_even_i(ec_point_t *R, const weil_params_t *weil_data, bool swap_PQ)
+{
+    fp2_t ixP, ixQ;
+    ec_point_t P, Q, PnQ, nQ;
+    const unsigned int nwords=weil_data->nwords;
+    uint64_t m[nwords];
+    mp_copy(m,weil_data->n,nwords);
+    mp_shiftr(m,1,nwords);
+
+    // When we compute the Weil pairing we need both P + [n]Q and
+    // Q + [n]P which we can do easily with biext_ladder() below
+    // we use a bool to decide wether to use Q, ixP or P, ixQ in the
+    // ladder and P or Q in translation.
+    if (!swap_PQ) {
+        copy_point(&P, &weil_data->P);
+        copy_point(&Q, &weil_data->Q);
+        fp2_copy(&ixP, &weil_data->ixP);
+        fp2_copy(&ixQ, &weil_data->ixQ);
+    } else {
+        copy_point(&P, &weil_data->Q);
+        copy_point(&Q, &weil_data->P);
+        fp2_copy(&ixP, &weil_data->ixQ);
+        fp2_copy(&ixQ, &weil_data->ixP);
+    }
+
+    // Compute the biextension ladder P + [n]Q
+    biext_ladder(m, nwords, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->ixPQ, &weil_data->A24);
+    translate(&PnQ, &nQ);
+    translate(&nQ, &nQ);
     point_ratio(R, &PnQ, &nQ, &P);
 }
 
@@ -330,6 +334,33 @@ cubical_normalization(weil_params_t *weil_data, const ec_point_t *P, const ec_po
     fp2_mul(&weil_data->Q.x, &Q->x, &t[3]);
     fp2_set_one(&weil_data->P.z);
     fp2_set_one(&weil_data->Q.z);
+}
+
+// Normalize the points and also store 1/x(P), 1/x(Q), 1/x(P+Q) (generic case)
+static void
+cubical_normalization_gen(weil_params_t *weil_data, const ec_point_t *P, const ec_point_t *Q, const ec_point_t *PQ)
+{
+    fp2_t t[6];
+    fp2_copy(&t[0], &P->x);
+    fp2_copy(&t[1], &P->z);
+    fp2_copy(&t[2], &Q->x);
+    fp2_copy(&t[3], &Q->z);
+    fp2_copy(&t[4], &PQ->x);
+    fp2_copy(&t[5], &PQ->z);
+    fp2_batched_inv(t, 6);
+
+    // Store PZ / PX and QZ / QX and PQZ / PQX
+    fp2_mul(&weil_data->ixP, &P->z, &t[0]);
+    fp2_mul(&weil_data->ixQ, &Q->z, &t[2]);
+    fp2_mul(&weil_data->ixPQ, &PQ->z, &t[4]);
+
+    // Store x(P), x(Q), x(P+Q) normalised to (X/Z : 1)
+    fp2_mul(&weil_data->P.x, &P->x, &t[1]);
+    fp2_mul(&weil_data->Q.x, &Q->x, &t[3]);
+    fp2_mul(&weil_data->PQ.x, &PQ->x, &t[5]);
+    fp2_set_one(&weil_data->P.z);
+    fp2_set_one(&weil_data->Q.z);
+    fp2_set_one(&weil_data->PQ.z);
 }
 
 // Weil pairing, PQ should be P+Q in (X:Z) coordinates
@@ -367,7 +398,7 @@ weil_2e(fp2_t *r, uint64_t e, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_c
     ec_curve_normalize_A24(E);
     copy_point(&weil_data.A24, &E->A24);
 
-    // Compute the Weil pairing e_(2^n)(P, Q)
+    // Compute the Weil pairing e_(2^e)(P, Q)
     weil_2e_n(r, &weil_data);
 }
 
@@ -384,8 +415,8 @@ weil_n(fp2_t *r, weil_params_t *weil_data,  bool odd)
         monodromy_odd_i(&R1, weil_data, false);
     }
     else{
-        printf("Not implemented for n values of n.\n");
-        exit(EXIT_FAILURE);
+        monodromy_even_i(&R0, weil_data, true);
+        monodromy_even_i(&R1, weil_data, false);
     }
 
     // TODO: check if that's the Weil pairing or its inverse
@@ -404,8 +435,7 @@ weil(fp2_t *r, uint64_t *n, unsigned int nwords, ec_point_t *P, ec_point_t *Q, e
     // Set (PX/PZ : 1), (QX : QZ : 1), PZ/PX and QZ/QX
     weil_data.n=n;
     weil_data.nwords=nwords;
-    cubical_normalization(&weil_data, P, Q);
-    copy_point(&weil_data.PQ, PQ);
+    cubical_normalization_gen(&weil_data, P, Q, PQ);
 
     // Ensure the input curve has A24 normalised and store
     // in a struct

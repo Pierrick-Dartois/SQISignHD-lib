@@ -352,7 +352,7 @@ xMUL_A24_normalized(ec_point_t *Q,
     fp2_copy(&Q->z, &R0.z);
 }
 
-// Compute S = k*P + l*Q, with PQ = P+Q
+// Compute S = k*P + l*Q, with PQ = P-Q
 void
 xDBLMUL(ec_point_t *S,
         const ec_point_t *P,

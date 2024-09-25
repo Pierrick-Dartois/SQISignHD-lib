@@ -6,6 +6,25 @@
 #include <sha3.h>
 #include "test_utils.h"
 
+// Make random-ish multi-precision elements (for tests only!).
+
+void 
+mp_random_test(uint64_t *a, unsigned int nwords){
+    shake_context sc;
+    uint8_t tmp[nwords];
+    uint64_t z;
+
+    z = cpucycles();
+    shake_init(&sc, 256);
+    for (int i = 0; i < 8; i++) {
+        tmp[i] = (uint8_t)(z >> (8 * i));
+    }
+    shake_inject(&sc, tmp, 8);
+    shake_flip(&sc);
+    shake_extract(&sc, tmp, sizeof(tmp));
+    mp_decode(a, tmp, nwords);
+}
+
 // Make n random-ish field elements (for tests only!).
 void
 fp_random_test(fp_t *a)

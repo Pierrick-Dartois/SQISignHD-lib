@@ -7,13 +7,14 @@
 typedef struct weil_params
 {
     uint64_t e;     // When points have order 2^e
-    uint64_t *n;    // When points have order n
-    unsigned int nwords; // Number of woeds of the multiprecision integer n
+    uint64_t *n;    // When points have order n (for the generic case only)
+    unsigned int nwords; // Number of words of the multiprecision integer n
     ec_point_t P;   // x(P)
     ec_point_t Q;   // x(Q)
-    ec_point_t PQ;  // x(P-Q) = (PQX/PQZ : 1)
+    ec_point_t PQ;  // x(P+Q) = (PQX/PQZ : 1)
     fp2_t ixP;      // PZ/PX
     fp2_t ixQ;      // QZ/QX
+    fp2_t ixPQ;     // z(P+Q)/x(P+Q) (for the generic case only)
     ec_point_t A24; // ((A+2)/4 : 1)
 } weil_params_t;
 

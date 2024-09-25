@@ -275,3 +275,22 @@ uint16_t mp_nbits(const uint64_t * a, const unsigned int nwords){
     }
     return nbits;
 }
+
+// Little-endian decoding of a 64-bit integer.
+static inline uint64_t
+mp_dec64le(const void *src)
+{
+    const uint8_t *buf = src;
+    return (uint64_t)buf[0] | ((uint64_t)buf[1] << 8) | ((uint64_t)buf[2] << 16) |
+           ((uint64_t)buf[3] << 24) | ((uint64_t)buf[4] << 32) | ((uint64_t)buf[5] << 40) |
+           ((uint64_t)buf[6] << 48) | ((uint64_t)buf[7] << 56);
+}
+
+void 
+mp_decode(digit_t *d, const void *src, unsigned int nwords){
+    const uint8_t *buf = src;
+
+    for (int i = 0; i < nwords; i++) {
+        d[i] = mp_dec64le(buf + i * 8);
+    }
+}
