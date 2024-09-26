@@ -162,6 +162,28 @@ mp_mul2(digit_t *c, const digit_t *a, const digit_t *b)
     c[3] = t2[1];
 }
 
+void 
+mp_mul(digit_t *c, const digit_t *a, const digit_t *b, unsigned int nwords){
+    // Multiprecision multiplication truncated at nwords
+    const unsigned int cnwords;
+    digit_t temp[cnwords];
+    uint64_t mask;
+    uint8_t is_one=0;
+
+    mp_copy(temp,a,nwords);
+
+    for(int i=0;i<nwords;i++){
+        for(int j=0;j<RADIX;j++){
+            mask=1ULL<<j;
+            is_one=(mask&b[i])>>j;
+            if(is_one){
+                mp_add(c,c,temp,nwords);
+            }
+            mp_shiftl(temp,1,nwords);
+        }
+    }
+}
+
 void
 mp_set_zero(digit_t *a, unsigned int nwords){
     for(int i=0;i<nwords;i++){

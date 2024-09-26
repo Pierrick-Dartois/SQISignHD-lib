@@ -287,7 +287,7 @@ int test_weil_dlog_2f(unsigned int n){
     ec_point_t R, S, RmS;
     ec_basis_t PQ, RS;
     ec_curve_t curve;
-    const unsigned int nwords=(n*DIGIT_LEN)/RADIX+!!((n*DIGIT_LEN)%RADIX);
+    const unsigned int nwords=n/RADIX+!!(n%RADIX);
     uint64_t r1[nwords], r2[nwords], s1[nwords], s2[nwords], cr1[nwords], cr2[nwords], cs1[nwords], cs2[nwords], r1ms1[nwords], r2ms2[nwords];
 
     ec_curve_init(&curve);
@@ -302,21 +302,23 @@ int test_weil_dlog_2f(unsigned int n){
     ec_curve_to_basis_2f(&PQ, &curve, n);
 
     // Compute r1, r2, s1, s2, r1ps1, r2ps2
-    mp_random_test(r1,nwords);
-    mp_random_test(r2,nwords);
-    mp_random_test(s1,nwords);
-    mp_random_test(s2,nwords);
+    for(int i=0;i<nwords;i++){
+        r1[i]=rand();
+        r2[i]=rand();
+        s1[i]=rand();
+        s2[i]=rand();
+    }
     mp_sub(r1ms1,r1,s1,nwords);
     mp_sub(r2ms2,r2,s2,nwords);
 
     // Compute R, S
-    xDBLMUL(&R,&PQ.P,r1,&PQ.Q,r2,&PQ.PmQ,nwords,&curve);
-    xDBLMUL(&S,&PQ.P,s1,&PQ.Q,s2,&PQ.PmQ,nwords,&curve);
-    //xDBLMUL(&RmS,&PQ.P,r1ms1,&PQ.Q,r2ms2,&PQ.PmQ,nwords,&curve);
+    xDBLMUL(&R,&PQ.P,r1,&PQ.Q,r2,&PQ.PmQ,nwords*RADIX,&curve);
+    xDBLMUL(&S,&PQ.P,s1,&PQ.Q,s2,&PQ.PmQ,nwords*RADIX,&curve);
+    xDBLMUL(&RmS,&PQ.P,r1ms1,&PQ.Q,r2ms2,&PQ.PmQ,nwords*RADIX,&curve);
 
     copy_point(&RS.P,&R);
     copy_point(&RS.Q,&S);
-    //copy_point(&RS.PmQ,&RmS);
+    copy_point(&RS.PmQ,&RmS);
 
     ec_dlog_2_weil(cr1,cr2,cs1,cs2,&PQ,&RS,&curve,n);
 

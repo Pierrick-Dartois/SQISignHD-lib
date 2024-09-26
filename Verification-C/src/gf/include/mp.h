@@ -12,6 +12,7 @@ digit_t mp_shiftr(digit_t *x, const unsigned int shift, const unsigned int nword
 void multiple_mp_shiftl(digit_t *x, const unsigned int shift, const unsigned int nwords);
 void mp_shiftl(digit_t *x, const unsigned int shift, const unsigned int nwords);
 void MUL(digit_t *out, const digit_t a, const digit_t b);
+void mp_mul(digit_t *c, const digit_t *a, const digit_t *b, unsigned int nwords);
 
 // Functions taken from the EC module
 

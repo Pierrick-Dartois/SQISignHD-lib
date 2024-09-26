@@ -536,6 +536,93 @@ fp2_dlog_2e(digit_t *scal, const fp2_t *f, const fp2_t *g_inverse, int e)
     return ok;
 }
 
+// Iterative and general discrete log functions
+static bool fp2_dlog_l(int k, const fp2_t *h, const fp2_t *g, int l){
+    // Discrete log in a group of (prime) order l
+    // Finds k\in{0,...,l-1} such that h=g^k.
+    bool ok=false;
+
+    if(fp2_is_one(h)){
+        k=0;
+        ok=true;
+    }
+
+    if(fp2_is_equal(g,h)){
+        k=1;
+        ok=true;
+    }
+
+    if(l>2){
+        fp2_t gpow;
+
+        fp2_sqr(&gpow,g);
+        if(fp2_is_equal(&gpow,h)){
+            k=2;
+            ok=true;
+        }
+
+        for(int i=3;i<l;i++){
+            fp2_mul(&gpow,&gpow,g);
+            if(fp2_is_equal(&gpow,h)){
+                k=i;
+                ok=true;
+            }
+        }
+    }
+    return ok;
+}
+
+static bool fp2_dlog_le(digit_t *k, const fp2_t *h, const fp2_t *g_inv, int l, int e, unsigned int nwords){
+    // Discrete log in a group of (prime) order l^e
+    // Finds k\in{0,...,l^e-1} such that h=g^k.
+    // !!! Takes g^-1 on entry !!!
+
+    bool ok=true;
+    const unsigned int ce=e;
+    const unsigned int cnwords=nwords;
+
+    fp2_t g_inv_pows[ce], beta, gamma;
+    digit_t tabl[1], tab_i[1], tabll[cnwords], shift_tabl[cnwords], temp[cnwords];
+    int dlog[e], dlog_i;
+
+    tabl[0]=l;
+
+    fp2_copy(&g_inv_pows[0],g_inv);
+    if(e>1){
+        for(int i=1;i<e;i++){
+            fp2_pow_vartime(&g_inv_pows[i],&g_inv_pows[i-1],tabl,1);
+        }
+    }
+
+    fp2_set_one(&gamma);
+    for(int i=0;i<e;i++){
+        if(i>0){
+            tab_i[0]=dlog[i-1];
+            fp2_pow_vartime(&beta,&g_inv_pows[i-1],tab_i,1);
+            fp2_mul(&gamma,&beta,&gamma);
+        }
+        fp2_copy(&beta,&gamma);
+        for(int j=0;j<e-i-1;j++){
+            fp2_pow_vartime(&beta,&beta,tabl,1);
+        }
+        ok=fp2_dlog_l(dlog_i, &beta, &g_inv_pows[e-1], l);
+        dlog[i]=(dlog_i==0)?0:(l-dlog_i);
+    }
+
+    mp_set_small(k,0,nwords);
+    mp_set_small(tabll,l,nwords);
+    mp_set_small(shift_tabl,1,nwords);
+    for(int i=0;i<e;i++){
+        mp_set_small(temp,dlog[i],nwords);
+        mp_mul(temp,shift_tabl,temp,nwords);
+        printf("Before.\n");
+        mp_add(k,temp,k,nwords);
+        mp_mul(shift_tabl,shift_tabl,tabl,nwords);
+    }
+
+    return ok;
+}
+
 // Normalize the bases (P, Q), (R, S) and store their inverse
 // and additionally normalise the curve to (A/C : 1)
 static void
@@ -612,7 +699,7 @@ compute_difference_points(weil_dlog_params_t *weil_dlog_data, ec_curve_t *curve)
 
 // Inline all the Weil pairing computations done in ec_dlog_2_weil
 static void
-weil_dlog(digit_t *r1, digit_t *r2, digit_t *s1, digit_t *s2, weil_dlog_params_t *weil_dlog_data)
+weil_dlog(digit_t *r1, digit_t *r2, digit_t *s1, digit_t *s2, weil_dlog_params_t *weil_dlog_data, ec_curve_t *curve)
 {
 
     ec_point_t nP, nQ, nR, nS, nPQ, PnQ, nPR, PnR, nPS, PnS, nRQ, RnQ, nSQ, SnQ;
@@ -670,7 +757,9 @@ weil_dlog(digit_t *r1, digit_t *r2, digit_t *s1, digit_t *s2, weil_dlog_params_t
     fp2_t w1[5], w2[5];
 
     // e(P, Q) = w0
+    printf("1\n");
     point_ratio(&T0, &nPQ, &nP, &weil_dlog_data->PQ.Q);
+    printf("2\n");
     point_ratio(&T1, &PnQ, &nQ, &weil_dlog_data->PQ.P);
     // For the first element we need it's inverse for
     // fp2_dlog_2e so we swap w1 and w2 here to save inversions
@@ -678,25 +767,33 @@ weil_dlog(digit_t *r1, digit_t *r2, digit_t *s1, digit_t *s2, weil_dlog_params_t
     fp2_mul(&w1[0], &T1.x, &T0.z);
 
     // e(P,R) = w0^r2
+    printf("3\n");
     point_ratio(&T0, &nPR, &nP, &weil_dlog_data->RS.P);
+    printf("4\n");
     point_ratio(&T1, &PnR, &nR, &weil_dlog_data->PQ.P);
     fp2_mul(&w1[1], &T0.x, &T1.z);
     fp2_mul(&w2[1], &T1.x, &T0.z);
 
     // e(R,Q) = w0^r1
+    printf("5\n");
     point_ratio(&T0, &nRQ, &nR, &weil_dlog_data->PQ.Q);
+    printf("6\n");
     point_ratio(&T1, &RnQ, &nQ, &weil_dlog_data->RS.P);
     fp2_mul(&w1[2], &T0.x, &T1.z);
     fp2_mul(&w2[2], &T1.x, &T0.z);
 
     // e(P,S) = w0^s2
+    printf("7\n");
     point_ratio(&T0, &nPS, &nP, &weil_dlog_data->RS.Q);
+    printf("8\n");
     point_ratio(&T1, &PnS, &nS, &weil_dlog_data->PQ.P);
     fp2_mul(&w1[3], &T0.x, &T1.z);
     fp2_mul(&w2[3], &T1.x, &T0.z);
 
     // e(S,Q) = w0^s1
+    printf("9\n");
     point_ratio(&T0, &nSQ, &nS, &weil_dlog_data->PQ.Q);
+    printf("10\n");
     point_ratio(&T1, &SnQ, &nQ, &weil_dlog_data->RS.Q);
     fp2_mul(&w1[4], &T0.x, &T1.z);
     fp2_mul(&w2[4], &T1.x, &T0.z);
@@ -706,10 +803,38 @@ weil_dlog(digit_t *r1, digit_t *r2, digit_t *s1, digit_t *s2, weil_dlog_params_t
         fp2_mul(&w1[i], &w1[i], &w2[i]);
     }
 
+    fp2_t w10_inv, w11_test, w12_test, w13_test, w14_test, w10_2e, w10_k, w10_k_test;
+
     fp2_dlog_2e(r2, &w1[1], &w1[0], weil_dlog_data->e);
+    fp2_copy(&w10_inv, &w1[0]);
+    fp2_inv(&w10_inv);
+    fp2_pow_vartime(&w11_test, &w10_inv, r2, 2);
+    printf("%u\n",fp2_is_equal(&w11_test,&w1[1]));
+    printf("%llu\n",r2[0]);
     fp2_dlog_2e(r1, &w1[2], &w1[0], weil_dlog_data->e);
+    fp2_pow_vartime(&w12_test, &w10_inv, r1, 2);
+    printf("%u\n",fp2_is_equal(&w12_test,&w1[2]));
+    printf("%llu\n",r1[0]);
     fp2_dlog_2e(s2, &w1[3], &w1[0], weil_dlog_data->e);
+    fp2_pow_vartime(&w13_test, &w10_inv, s2, 2);
+    printf("%u\n",fp2_is_equal(&w13_test,&w1[3]));
+    printf("%llu\n",s2[0]);
     fp2_dlog_2e(s1, &w1[4], &w1[0], weil_dlog_data->e);
+    fp2_pow_vartime(&w14_test, &w10_inv, s1, 2);
+    printf("%u\n",fp2_is_equal(&w14_test,&w1[4]));
+    printf("%llu\n",s1[0]);
+
+    uint64_t k[2], k_test[2], l[2];
+    k[0]=rand();//+(rand()>>32);
+    k[1]=rand();//+(rand()>>32);
+    mp_copy(l,k,2);
+
+    fp2_pow_vartime(&w10_k, &w1[0], k, 2);
+    fp2_dlog_2e(k_test, &w10_k, &w1[0], weil_dlog_data->e);
+    fp2_dlog_le(k_test, &w10_k, &w1[0], 2, weil_dlog_data->e, 2);    
+    fp2_pow_vartime(&w10_k_test, &w10_inv, k_test, 2);
+
+    printf("%u\n",fp2_is_equal(&w10_k_test,&w10_k));
 }
 
 void
@@ -736,7 +861,11 @@ ec_dlog_2_weil(digit_t *r1,
     cubical_normalization_dlog(&weil_dlog_data, curve);
     compute_difference_points(&weil_dlog_data, curve);
 
-    weil_dlog(r1, r2, s1, s2, &weil_dlog_data);
+    weil_dlog(r1, r2, s1, s2, &weil_dlog_data, curve);
+    printf("%llu\n",r2[0]);
+    printf("%llu\n",r1[0]);
+    printf("%llu\n",s2[0]);
+    printf("%llu\n",s1[0]);
 
 #ifndef NDEBUG
     ec_point_t test;
