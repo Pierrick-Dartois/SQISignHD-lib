@@ -165,11 +165,12 @@ mp_mul2(digit_t *c, const digit_t *a, const digit_t *b)
 void 
 mp_mul(digit_t *c, const digit_t *a, const digit_t *b, unsigned int nwords){
     // Multiprecision multiplication truncated at nwords
-    const unsigned int cnwords;
+    const unsigned int cnwords=nwords;
     digit_t temp[cnwords];
     uint64_t mask;
     uint8_t is_one=0;
 
+    mp_set_zero(c,nwords);
     mp_copy(temp,a,nwords);
 
     for(int i=0;i<nwords;i++){

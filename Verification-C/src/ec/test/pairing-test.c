@@ -281,10 +281,10 @@ int test_weil_pairing_2f3g(){
     return passed;
 }
 
-int test_weil_dlog_2f(unsigned int n){
+int test_multiple_weil_dlog_2f(unsigned int n){
     int passed = 1;
 
-    ec_point_t R, S, RmS;
+    ec_point_t R, S, RmS, test;
     ec_basis_t PQ, RS;
     ec_curve_t curve;
     const unsigned int nwords=n/RADIX+!!(n%RADIX);
@@ -320,29 +320,62 @@ int test_weil_dlog_2f(unsigned int n){
     copy_point(&RS.Q,&S);
     copy_point(&RS.PmQ,&RmS);
 
-    ec_dlog_2_weil(cr1,cr2,cs1,cs2,&PQ,&RS,&curve,n);
+    ec_dlog_2_weil(cr1,cr2,cs1,cs2,&PQ,&RS,&curve,n,nwords);
 
-    if(mp_compare(cr1,r1,nwords)!=0){
-        printf("Wrong value for r1.\n");
+    xDBLMUL(&test,&PQ.P,cr1,&PQ.Q,cr2,&PQ.PmQ,nwords*RADIX,&curve);
+
+    if(ec_is_equal(&test,&R)==0){
+        printf("Wrong value for R.\n");
         passed = 0;
     }
 
-    if(mp_compare(cr2,r2,nwords)!=0){
-        printf("Wrong value for r2.\n");
-        passed = 0;
-    }
+    ec_biscalar_mul(&test, cs1, cs2, n, &PQ, &curve);
 
-    if(mp_compare(cs1,s1,nwords)!=0){
-        printf("Wrong value for s1.\n");
-        passed = 0;
-    }
-
-    if(mp_compare(cs2,s2,nwords)!=0){
-        printf("Wrong value for s2.\n");
+    if(ec_is_equal(&test,&S)==0){
+        printf("Wrong value for S.\n");
         passed = 0;
     }
 
     return passed;
+
+}
+
+int test_signle_weil_dlog_3g(unsigned int n){
+    int passed = 1;
+
+    fp2_t wPQ, wRP, wRQ;
+    ec_point_t P, Q, PQ, R;
+    ec_basis_t basis;
+    ec_curve_t curve;
+    const unsigned int nwords=NWORDS_FIELD/2+1;
+    uint64_t n[nwords], m[nwords], one[nwords], r1[nwords], r2[nwords];
+
+    mp_set_small(one,1,nwords);
+
+    mp_set_small(n,3,nwords);
+    for(int i=0;i<POWER_OF_3-1;i++){
+        mp_add(m,n,n,nwords);
+        mp_add(n,m,n,nwords);
+    }
+
+    ec_curve_init(&curve);
+
+    // Set a supersingular elliptic curve
+    // E : y^2 = x^3 + 6*x^2 + x
+    fp2_set_small(&(curve.A), 6);
+    fp2_set_one(&(curve.C));
+    ec_curve_normalize_A24(&curve);
+
+    // Generate a basis
+    ec_curve_to_basis_3(&basis, &curve);
+
+    copy_point(&P,&basis.P);
+    copy_point(&Q,&basis.Q);
+    xADD(&PQ,&basis.P,&basis.Q,&basis.PmQ);
+
+    xDBLMUL(&R,&P,r1,&Q,r2,&basis.PmQ,nwords*RADIX,&curve);
+
+    
 
 }
 
@@ -354,10 +387,10 @@ main(void)
     ok = test_weil_pairing_2f(POWER_OF_2);
     printf("Testing full 3^g-torsion basis.\n");
     ok = ok&test_weil_pairing_3g();
-    printf("Testing full 2^f3^g-torsion basis.\n");
+    printf("Testing full 2^f*3^g-torsion basis.\n");
     ok = ok&test_weil_pairing_2f3g();
-    printf("Testing full 2^f-torsion discrete log.\n");
-    ok = ok&test_weil_dlog_2f(POWER_OF_2);
+    printf("Testing full 2^f-torsion multiple discrete log.\n");
+    ok = ok&test_multiple_weil_dlog_2f(POWER_OF_2);
 
     if (!ok) {
         printf("Tests failed!\n");

@@ -419,6 +419,11 @@ void DBL(jac_point_t *Q, const jac_point_t *P, const ec_curve_t *AC);
 void lift_basis_normalized(jac_point_t *P, jac_point_t *Q, ec_basis_t *B, ec_curve_t *E);
 void lift_basis(jac_point_t *P, jac_point_t *Q, ec_basis_t *B, ec_curve_t *E);
 
+// Given a point in x-only, lift to a Jacobian point
+void lift_point_normalized(jac_point_t *P, const ec_point_t *Q, const ec_curve_t *E);
+void lift_point(jac_point_t *P, ec_point_t *Q, ec_curve_t *E);
+
+
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Test functions for printing and order checking, only used in debug mode

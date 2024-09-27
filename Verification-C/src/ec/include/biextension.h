@@ -56,6 +56,7 @@ void ec_dlog_2_weil(digit_t *r1,
                     ec_basis_t *PQ,
                     ec_basis_t *RS,
                     ec_curve_t *curve,
-                    int e);
+                    int e,
+                    unsigned int nwords);
 
 #endif

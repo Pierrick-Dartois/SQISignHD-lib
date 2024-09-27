@@ -30,6 +30,7 @@ void fp2_sqrt(fp2_t *x);
 void fp2_half(fp2_t *x, const fp2_t *y);
 void fp2_batched_inv(fp2_t *x, int len);
 void fp2_pow_vartime(fp2_t *out, const fp2_t *x, const digit_t *exp, const int size);
+void fp2_pow_small(fp2_t *out, const fp2_t *x, const int exp, const int nbits);
 void fp2_print(char *name, const fp2_t *a);
 void fp2_encode(void *dst, const fp2_t *a);
 void fp2_decode(fp2_t *d, const void *src);

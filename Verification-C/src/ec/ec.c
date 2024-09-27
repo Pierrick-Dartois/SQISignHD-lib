@@ -755,6 +755,29 @@ lift_basis(jac_point_t *P, jac_point_t *Q, ec_basis_t *B, ec_curve_t *E)
     lift_basis_normalized(P, Q, B, E);
 }
 
+void 
+lift_point_normalized(jac_point_t *P, const ec_point_t *Q, const ec_curve_t *E)
+{
+    fp2_copy(&P->x,&Q->x);
+    recover_y(&P->y, &Q->x, E);
+}
+
+void
+lift_point(jac_point_t *P, ec_point_t *Q, ec_curve_t *E)
+{
+    fp2_t inverses[2];
+    fp2_copy(&inverses[0], &Q->z);
+    fp2_copy(&inverses[1], &E->C);
+
+    fp2_batched_inv(inverses, 2);
+
+    fp2_mul(&Q->x,&Q->x,&inverses[0]);
+    fp2_set_one(&Q->z);
+    fp2_mul(&E->A,&E->A,&inverses[1]);
+
+    lift_point_normalized(P, Q, E);
+}
+
 // WRAPPERS to export
 
 void

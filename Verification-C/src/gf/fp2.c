@@ -321,6 +321,23 @@ fp2_pow_vartime(fp2_t *out, const fp2_t *x, const digit_t *exp, const int size)
 }
 
 void
+fp2_pow_small(fp2_t *out, const fp2_t *x, const int exp, const int nbits){
+    fp2_t acc;
+    digit_t bit;
+
+    fp2_copy(&acc, x);
+    fp2_set_one(out);
+
+    for (int i = 0; i < nbits; i++) {
+        bit = (exp >> i) & 1;
+        if (bit == 1) {
+            fp2_mul(out, out, &acc);
+        }
+        fp2_sqr(&acc, &acc);
+    }
+}
+
+void
 fp2_print(char *name, const fp2_t *a)
 {
     printf("%s0x", name);
