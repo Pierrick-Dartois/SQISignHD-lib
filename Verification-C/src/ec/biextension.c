@@ -275,6 +275,8 @@ monodromy_odd_i(ec_point_t *R, const weil_params_t *weil_data, bool swap_PQ)
         fp2_copy(&ixQ, &weil_data->ixP);
     }
 
+    
+
     // Compute the biextension ladder P + [n]Q
     biext_ladder(m, nwords, &PnQ, &nQ, &weil_data->PQ, &Q, &ixP, &ixQ, &weil_data->ixPQ, &weil_data->A24);
     point_ratio(R, &PnQ, &nQ, &P);
@@ -347,7 +349,7 @@ cubical_normalization_gen(weil_params_t *weil_data, const ec_point_t *P, const e
     fp2_copy(&t[3], &Q->z);
     fp2_copy(&t[4], &PQ->x);
     fp2_copy(&t[5], &PQ->z);
-    fp2_batched_inv(t, 6);
+    fp2_batched_inv(t, 6);  
 
     // Store PZ / PX and QZ / QX and PQZ / PQX
     fp2_mul(&weil_data->ixP, &P->z, &t[0]);
@@ -431,6 +433,7 @@ void
 weil(fp2_t *r, uint64_t *n, unsigned int nwords, ec_point_t *P, ec_point_t *Q, ec_point_t *PQ, ec_curve_t *E)
 {
     weil_params_t weil_data;
+    
     // Construct the structure for the Weil pairing
     // Set (PX/PZ : 1), (QX : QZ : 1), PZ/PX and QZ/QX
     weil_data.n=n;
@@ -927,41 +930,41 @@ void
 ec_single_dlog_le_weil(digit_t *r1,
                digit_t *r2,
                ec_basis_t *PQ,
-               ec_point *R,
+               ec_point_t *R,
                ec_curve_t *curve,
                int l,
                int e, 
                unsigned int nwords){
 
-    fp2_t wPQ, wPR, wQR;
-    jac_point xyP, xyQ, xyR, xyPpR, xyQpR;
-    ec_point_t PQ, PpR, QpR;
+    fp2_t wPQ, wRP, wRQ;
+    jac_point_t xyP, xyQ, xyR, xyPpR, xyQpR;
+    ec_point_t PpQ, PpR, QpR;
     const unsigned int cnwords=nwords;
     digit_t n[cnwords], tabl[cnwords], temp[cnwords];
 
     mp_set_small(n,l,nwords);
     mp_set_small(tabl,l,nwords);
 
-    for(int i=0;i<POWER_OF_3-1;i++){
+    for(int i=0;i<e-1;i++){
         mp_copy(temp,n,nwords);
         mp_mul(n,temp,tabl,nwords);
     }
 
-    ec_curve_normalize_A24(curve);
-    
+    lift_point(&xyR, R, curve);
+    //ec_curve_normalize_A24(curve);-> curve already normalized in lift_point
     lift_basis_normalized(&xyP, &xyQ, PQ, curve);
-    lift_point_normalized(&xyR, R, curve);
+    
 
     ADD(&xyPpR, &xyP, &xyR, curve);
     ADD(&xyQpR, &xyQ, &xyR, curve);
 
     jac_to_xz(&PpR, &xyPpR);
     jac_to_xz(&QpR, &xyQpR);
-    xADD(&PQ,&PQ->P,&PQ->Q,&PQ->PmQ);
+    xADD(&PpQ,&PQ->P,&PQ->Q,&PQ->PmQ);
 
-    weil(&wPQ, n, nwords, &PQ->P, &PQ->Q, &PQ, E);
-    weil(&wRP, n, nwords, &R, &PQ->P, &PpR, E);
-    weil(&wRQ, n, nwords, &R, &PQ->Q, &QpR, E);
+    weil(&wPQ, n, nwords, &PQ->P, &PQ->Q, &PpQ, curve);
+    weil(&wRP, n, nwords, R, &PQ->P, &PpR, curve);
+    weil(&wRQ, n, nwords, R, &PQ->Q, &QpR, curve);
 
     //e_n(R,P)=e_n(P,Q)^{-r2}
     fp2_dlog_le(r2, &wRP, &wPQ, l, e, nwords);

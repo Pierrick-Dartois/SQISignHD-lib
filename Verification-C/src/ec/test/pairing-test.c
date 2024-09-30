@@ -340,15 +340,15 @@ int test_multiple_weil_dlog_2f(unsigned int n){
 
 }
 
-int test_signle_weil_dlog_3g(unsigned int n){
+int test_signle_weil_dlog_3g(){
     int passed = 1;
 
     fp2_t wPQ, wRP, wRQ;
-    ec_point_t P, Q, PQ, R;
+    ec_point_t P, Q, PQ, R, test;
     ec_basis_t basis;
     ec_curve_t curve;
     const unsigned int nwords=NWORDS_FIELD/2+1;
-    uint64_t n[nwords], m[nwords], one[nwords], r1[nwords], r2[nwords];
+    uint64_t n[nwords], m[nwords], one[nwords], r1[nwords], r2[nwords], cr1[nwords], cr2[nwords];
 
     mp_set_small(one,1,nwords);
 
@@ -373,10 +373,23 @@ int test_signle_weil_dlog_3g(unsigned int n){
     copy_point(&Q,&basis.Q);
     xADD(&PQ,&basis.P,&basis.Q,&basis.PmQ);
 
+    for(int i=0;i<nwords;i++){
+        r1[i]=rand();
+        r2[i]=rand();
+    }
+
     xDBLMUL(&R,&P,r1,&Q,r2,&basis.PmQ,nwords*RADIX,&curve);
 
-    
+    ec_single_dlog_le_weil(cr1,cr2,&basis,&R,&curve,3,POWER_OF_3,nwords);
 
+    xDBLMUL(&test,&basis.P,cr1,&basis.Q,cr2,&basis.PmQ,nwords*RADIX,&curve);
+
+    if(ec_is_equal(&test,&R)==0){
+        printf("Wrong value for R.\n");
+        passed = 0;
+    }
+
+    return passed;
 }
 
 int
@@ -391,6 +404,8 @@ main(void)
     ok = ok&test_weil_pairing_2f3g();
     printf("Testing full 2^f-torsion multiple discrete log.\n");
     ok = ok&test_multiple_weil_dlog_2f(POWER_OF_2);
+    printf("Testing full 3^g-torsion multiple discrete log.\n");
+    ok = ok&test_signle_weil_dlog_3g();
 
     if (!ok) {
         printf("Tests failed!\n");

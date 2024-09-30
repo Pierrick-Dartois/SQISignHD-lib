@@ -59,4 +59,15 @@ void ec_dlog_2_weil(digit_t *r1,
                     int e,
                     unsigned int nwords);
 
+// Given a basis (P, Q) of E[l^e] and R\in E[l^e] computes scalars
+// such that R = [r1]P + [r2]Q.
+void ec_single_dlog_le_weil(digit_t *r1,
+               digit_t *r2,
+               ec_basis_t *PQ,
+               ec_point_t *R,
+               ec_curve_t *curve,
+               int l,
+               int e, 
+               unsigned int nwords);
+
 #endif

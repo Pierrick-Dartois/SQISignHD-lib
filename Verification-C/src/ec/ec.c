@@ -760,6 +760,7 @@ lift_point_normalized(jac_point_t *P, const ec_point_t *Q, const ec_curve_t *E)
 {
     fp2_copy(&P->x,&Q->x);
     recover_y(&P->y, &Q->x, E);
+    fp2_set_one(&P->z);
 }
 
 void
