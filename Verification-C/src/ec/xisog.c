@@ -102,6 +102,7 @@ xisog_3(ec_kps_t *kps, ec_point_t *B24, const ec_point_t P)
 
     kpsK[1]=K;
     kps->K=kpsK;
+    kps->d=1;
 
     fp2_sqr(&r1,&K.x); // r1=K1^2 ((x-z)^2)
     fp2_sqr(&r2,&K.z); // r2=K2^2 ((x+z)^2)

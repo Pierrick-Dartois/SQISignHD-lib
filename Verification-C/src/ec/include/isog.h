@@ -20,6 +20,26 @@ typedef struct
     ec_point_t *K;
     unsigned int d;
 } ec_kps_t;
+// Structure for a 2-isogeny chain
+typedef struct
+{
+    ec_curve_t domain;
+    ec_curve_t codomain;
+    ec_kps2_t *kps;
+    ec_point_t *A24;// Also contains A24 of domain and codomain
+    bool *is_singular;// is_singular[i] is True if the i-th isogeny of the chain has kernel (0,0) 
+    unsigned int len;
+} ec_2_isog_chain_t;
+// Structure for a (2d+1)-isogeny chain
+typedef struct
+{
+    ec_curve_t domain;
+    ec_curve_t codomain;
+    ec_kps_t *kps;
+    ec_point_t *A24;// Also contains A24 of domain and codomain
+    unsigned int len;
+} ec_odd_isog_chain_t;
+
 
 void xisog_2(ec_kps2_t *kps, ec_point_t *B, const ec_point_t P); // degree-2 isogeny construction
 void xisog_2_singular(ec_kps2_t *kps, ec_point_t *B24, ec_point_t A24);
@@ -50,5 +70,7 @@ static void ec_eval_even_strategy(ec_curve_t *image,
                                   ec_point_t *A24,
                                   const ec_point_t *kernel,
                                   const int isog_len);
+
+
 
 #endif

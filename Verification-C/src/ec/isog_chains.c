@@ -1,6 +1,7 @@
 #include "isog.h"
 #include <assert.h>
 
+/*
 // since we use degree 4 isogeny steps, we need to handle the odd case with care
 static void
 ec_eval_even_strategy(ec_curve_t *image,
@@ -155,6 +156,7 @@ ec_eval_even_strategy(ec_curve_t *image,
     // should we normalise it here, or do it later?
     image->is_A24_computed_and_normalized = false;
 }
+*/
 
 void
 ec_eval_even(ec_curve_t *image, ec_isog_even_t *phi, ec_point_t *points, unsigned short length)
@@ -276,4 +278,82 @@ ec_iso_eval(ec_point_t *P, ec_isom_t *isom)
     fp2_mul(&tmp, &P->z, &isom->Nz);
     fp2_sub(&P->x, &P->x, &tmp);
     fp2_mul(&P->z, &P->z, &isom->D);
+}
+
+void
+ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int len,
+    const unsigned int *strategy)
+{
+    ec_kps2_t kps[len];
+    ec_point_t A24[len+1];
+    bool is_singular[len];
+
+    unsigned int log2_of_e, // Height of the strategy tree topology
+        strat_idx = 0, // Current element of the strategy to be used
+        block = 0, // Keeps track of point order
+        current = 0; // Number of points being carried
+
+    for (tmp = len, log2_of_e = 0; tmp > 0; tmp >>= 1, ++log2_of_e)
+        ;
+    log2_of_e *= 2;
+
+    ec_point_t kernel_elements[log2_of_e];
+    unsigned int XDBLs[log2_of_e]; // Number of doubles performed
+
+    AC_to_A24(&A24[0],domain);
+    copy_point(&kernel_elements[0], kernel);
+
+    for(int k=0;k<len;k++){
+        while(block!=len-1-k){
+            current += 1;
+
+            // Append the last kernel element and performs the doublings
+            copy_point(&kernel_elements[current],&kernel_elements[current-1]);
+            for(j=0;j<strategy[strat_idx];j++){
+                xDBL_A24(&kernel_elements[current],&kernel_elements[current],&A24[k]);
+            }
+
+            // Update bookkeeping variables
+            XDBLs[current]=strategy[strat_idx];
+            block+=strategy[strat_idx];
+            strat_idx+=1;
+        }
+
+        if(fp2_is_zero(&kernel_elements[current].x)){
+            xisog_2_singular(&kps[k], &A24[k+1], A24[k]);
+            xeval_2_singular(kernel_elements, kernel_elements, current, &kps[k]);
+            is_singular[k]=true;
+        }
+        else{
+            xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
+            xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
+            is_singular[k]=false;
+        }
+
+        block -= XDBLs[current];
+        XDBLs[current] = 0;
+        current -= 1;
+    }
+
+
+    chain->kps=kps;
+    chain->A24=A24;
+    chain->is_singular=is_singular;
+    chain->len=len;
+    chain->domain=domain;
+    A24_toAC(&chain->codomain,&A24[len]);
+}
+
+void 
+ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t *chain)
+{
+    copy_point(Q,P);
+    for(int i=0;i<chain->len;i++){
+        if(chain->is_singular[i]){
+            xeval_2_singular(Q, Q, 1, &chain->kps[i]);
+        }
+        else{
+            xeval_2(Q, Q, 1, &chain->kps[i]);
+        }
+    }
 }

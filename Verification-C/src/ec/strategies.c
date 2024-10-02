@@ -1,5 +1,6 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include <stdlib.h>//malloc and free
+#include <strategies.h>
+//#include <stdio.h>
 
 void optimised_strategies(unsigned int **strategies, float *cost, unsigned int n, const float mul_c, const float eval_c)
 {
@@ -116,77 +117,32 @@ void optimised_strategy_with_first_eval(unsigned int *S, unsigned int n, const f
 	}
 }
 
-void optimised_strategies_with_splitting(unsigned int **strategies_left, float *cost_left, 
-	unsigned int **strategies_right, float *cost_right, unsigned int n, unsigned int m, const float mul_c,
-	const float eval_c)
-{
-	// Left strategies are given. This function fills in the right strategies only.
-	int b;
-	float min_cost, cur_cost;
 
-	// Copy left strategies to fill in right strategies up to index n-m.
-	for(int i=0;i<n-m;i++){
-		for(int j=0;j<i;j++){
-			strategies_right[i][j]=strategies_left[i][j];
-		}
-		cost_right[i]=cost_left[i];
-	}
-
-	// Fill the right strategies until index m-1. Usually never used (except when n-m<m-1).
-	for(int i=n-m;i<m-1;i++){
-		b=0;
-		min_cost=cost_right[i-1]+cost_right[0]+(b+1)*mul_c+(i-b)*eval_c;
-		for(int j=1;j<i;j++){
-			cur_cost=cost_right[i-1-j]+cost_right[j]+(j+1)*mul_c+(i-j)*eval_c;
-			if(cur_cost<min_cost){
-				b=j;
-				min_cost=cur_cost;
-			}
-		}
-
-		cost_right[i]=min_cost;
-
-		strategies_right[i]=(unsigned int *)malloc(i*sizeof(unsigned int));
-		strategies_right[i][0]=b+1;
-		for(int k=0;k<i-1-b;k++){
-			strategies_right[i][k+1]=strategies_right[i-1-b][k];
-		}
-		for(int k=0;k<b;k++){
-			strategies_right[i][k+i-b]=strategies_right[b][k];
-		}
-	}
-
-	// 
-
-
-
-}
-
-void optimised_strategies_with_first_eval_and_splitting(unsigned int *S, unsigned int n, unsigned int m, const float mul_c, 
+void optimised_strategy_with_first_eval_and_splitting(unsigned int *S, unsigned int n, unsigned int m, const float mul_c, 
 	const float eval_c, const float first_eval_c)
 {
 	const unsigned int cn=n, cm=m;
 	unsigned int *strategies_left[cn];
-	unsigned int *strategies_middle[cn-cm-2];
-	float cost_left[cn], cost_middle[cn-cm-2];
+	unsigned int *strategies_middle[cn-cm-1];
+	float cost_left[cn], cost_middle[cn-cm-1];
 	// strat_R_split[l] contains all strategies of length <=n-2 with constraint l+1 steps before the end with l\in{0,...,m-1}.
 	unsigned int **strat_R_split[cm];
 	float *cost_R_split[cm];
 	unsigned int b, l;
 	float min_cost, cur_cost;
 
-	optimised_strategies_with_first_eval(strategies_left, cost_left, strategies_middle, cost_middle, n-m, mul_c, 
+	optimised_strategies_with_first_eval(strategies_left, cost_left, strategies_middle, cost_middle, n-m+1, mul_c, 
 		eval_c, first_eval_c);
 
 	// Filling in strat_R_split
 	for(l=0;l<m;l++){
-		strat_R_split[l]=(unsigned int **)malloc((n-m+l-1)*sizeof(void *));
-		cost_R_split[l]=(float *)malloc((n-m+l-1)*sizeof(float));
+		strat_R_split[l]=(unsigned int **)malloc((n-m+l)*sizeof(void *));
+		cost_R_split[l]=(float *)malloc((n-m+l)*sizeof(float));
 
 		strat_R_split[l][0]=(unsigned int *)malloc(0);
 		cost_R_split[l][0]=0;
 		if(l==0){
-			for(int i=1;i<n-m+l-1;i++){
+			for(int i=1;i<n-m+l;i++){
 				strat_R_split[l][i]=(unsigned int *)malloc(i*sizeof(unsigned int));
 				b=0;
 				min_cost=cost_middle[i-1-b]+cost_R_split[0][b]+(b+1)*mul_c+(i-b)*eval_c;
@@ -210,7 +166,7 @@ void optimised_strategies_with_first_eval_and_splitting(unsigned int *S, unsigne
 			}
 		}
 		else{
-			for(int i=1;i<n-m+l-1;i++){
+			for(int i=1;i<n-m+l;i++){
 				strat_R_split[l][i]=(unsigned int *)malloc(i*sizeof(unsigned int));
 				b=0;
 				min_cost=cost_R_split[l-b-1][i-1-b]+cost_middle[b]+(b+1)*mul_c+(i-b)*eval_c;
@@ -250,6 +206,8 @@ void optimised_strategies_with_first_eval_and_splitting(unsigned int *S, unsigne
 		}
 	}
 
+
+
 	// Filling in the last element of strategies_left
 	for(int i=n-m;i<n;i++){
 		strategies_left[i]=(unsigned int *)malloc(i*sizeof(unsigned int));
@@ -272,22 +230,23 @@ void optimised_strategies_with_first_eval_and_splitting(unsigned int *S, unsigne
 			strategies_left[i][k+1]=strategies_left[i-1-b][k];
 		}
 		for(int k=0;k<b;k++){
-			strategies_left[i][k+i-1]=strat_R_split[l][b][k];
+			strategies_left[i][k+i-b]=strat_R_split[l][b][k];
 		}
 	}
 
 	//Filling in S
 	for(int i=0;i<n;i++){
-		S[i]=strategies_left[i];
+		S[i]=strategies_left[n-1][i];
 	}
 
 
 	// Cleaning-up memory
 	for(int l=0;l<m;l++){
 		free(cost_R_split[l]);
-		for(int i=1;i<n-m+l-1;i++){
+		for(int i=1;i<n-m+l;i++){
 			free(strat_R_split[l][i]);
 		}
+		free(strat_R_split[l]);
 	}
 	for(int i=0;i<n;i++){
 		free(strategies_left[i]);
@@ -295,16 +254,22 @@ void optimised_strategies_with_first_eval_and_splitting(unsigned int *S, unsigne
 }
 
 int main(){
-	unsigned int S0[127], S1[127];
-	optimised_strategy(S0,128,1.0,1.0);
-	optimised_strategy_with_first_eval(S1, 128, 1.0, 1.0, 1.0);
-	printf("Simple strategy:\n");
-	for(int i=0;i<127;i++){
-		printf("%i\n",S0[i]);
-	}
-	printf("Strategy with constraint at the beginning:\n");
-	for(int i=0;i<127;i++){
-		printf("%i\n",S1[i]);
-	}
-	printf("%lu\n",sizeof(void *));
+	int n=25;
+	int tab[n];
+	//unsigned int S0[127], S1[127], S2[127];
+	//optimised_strategy(S0,128,1.0,1.0);
+	//optimised_strategy_with_first_eval(S1, 128, 1.0, 1.0, 10.0);
+	//optimised_strategy_with_first_eval_and_splitting(S2,128,4,1.0,1.0,10.0);
+	//printf("Simple strategy:\n");
+	//for(int i=0;i<127;i++){
+		//printf("%i\n",S0[i]);
+	//}
+	//printf("Strategy with constraint at the beginning:\n");
+	//for(int i=0;i<127;i++){
+		//printf("%i\n",S1[i]);
+	//}
+	//printf("Strategy with constraint at the beginning and m steps before the end:\n");
+	//for(int i=0;i<127;i++){
+		//printf("%i\n",S2[i]);
+	//}
 }
