@@ -156,7 +156,6 @@ ec_eval_even_strategy(ec_curve_t *image,
     // should we normalise it here, or do it later?
     image->is_A24_computed_and_normalized = false;
 }
-*/
 
 void
 ec_eval_even(ec_curve_t *image, ec_isog_even_t *phi, ec_point_t *points, unsigned short length)
@@ -164,6 +163,7 @@ ec_eval_even(ec_curve_t *image, ec_isog_even_t *phi, ec_point_t *points, unsigne
     ec_curve_normalize_A24(&phi->curve);
     ec_eval_even_strategy(image, points, length, &phi->curve.A24, &phi->kernel, phi->length);
 }
+*/
 
 // naive implementation
 void
@@ -288,7 +288,8 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     ec_point_t A24[len+1];
     bool is_singular[len];
 
-    unsigned int log2_of_e, // Height of the strategy tree topology
+    unsigned int tmp,
+        log2_of_e, // Height of the strategy tree topology
         strat_idx = 0, // Current element of the strategy to be used
         block = 0, // Keeps track of point order
         current = 0; // Number of points being carried
@@ -309,7 +310,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
 
             // Append the last kernel element and performs the doublings
             copy_point(&kernel_elements[current],&kernel_elements[current-1]);
-            for(j=0;j<strategy[strat_idx];j++){
+            for(int j=0;j<strategy[strat_idx];j++){
                 xDBL_A24(&kernel_elements[current],&kernel_elements[current],&A24[k]);
             }
 
@@ -327,6 +328,9 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
         else{
             xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
             xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
+            ec_point_t test;
+            xeval_2(&test, &kernel_elements[current], 1, &kps[k]);
+            printf("%i %u\n",k,ec_is_zero(&test));
             is_singular[k]=false;
         }
 
@@ -340,8 +344,8 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     chain->A24=A24;
     chain->is_singular=is_singular;
     chain->len=len;
-    chain->domain=domain;
-    A24_toAC(&chain->codomain,&A24[len]);
+    copy_curve(&chain->domain,domain);
+    A24_to_AC(&chain->codomain,&A24[len]);
 }
 
 void 

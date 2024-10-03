@@ -423,6 +423,9 @@ void lift_basis(jac_point_t *P, jac_point_t *Q, ec_basis_t *B, ec_curve_t *E);
 void lift_point_normalized(jac_point_t *P, const ec_point_t *Q, const ec_curve_t *E);
 void lift_point(jac_point_t *P, ec_point_t *Q, ec_curve_t *E);
 
+// Check if a non-normalized point is on a non-normalized curve
+uint32_t ec_is_on_curve(const ec_point_t *P, const ec_curve_t *E);
+
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

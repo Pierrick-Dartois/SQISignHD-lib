@@ -779,6 +779,32 @@ lift_point(jac_point_t *P, ec_point_t *Q, ec_curve_t *E)
     lift_point_normalized(P, Q, E);
 }
 
+uint32_t
+ec_is_on_curve(const ec_point_t *P, const ec_curve_t *E)
+{
+    if(ec_is_zero(P)){
+        return 1;
+    }
+
+    fp2_t t0, t1, t2, z2;
+
+    fp2_sqr(&t0,&P->x); // x^2
+    fp2_mul(&t1,&t0,&E->A); // Ax^2
+    fp2_mul(&t1,&t0,&P->z); // Ax^2z
+    fp2_mul(&t2,&E->C,&P->x); // Cx
+    fp2_mul(&t0,&t0,&t2); // Cx^3
+    fp2_sqr(&z2,&P->z); // z^2
+    fp2_mul(&t2,&t2,&z2); // Cz^2x
+    fp2_add(&t0,&t0,&t1); // Cx^3+Ax^2z
+    fp2_add(&t0,&t0,&t2); // Cx^3+Ax^2z+Cxz^2 (=Cy^2z)
+
+    fp2_mul(&t1,&E->C,&P->z); // Cz
+    fp2_inv(&t1); // 1/(Cz)
+    fp2_mul(&t0,&t0,&t1); // y^2
+
+    return fp2_is_square(&t0);
+}
+
 // WRAPPERS to export
 
 void

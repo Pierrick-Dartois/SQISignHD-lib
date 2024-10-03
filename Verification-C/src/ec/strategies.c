@@ -253,9 +253,9 @@ void optimised_strategy_with_first_eval_and_splitting(unsigned int *S, unsigned 
 	}
 }
 
-int main(){
-	int n=25;
-	int tab[n];
+//int main(){
+	//int n=25;
+	//int tab[n];
 	//unsigned int S0[127], S1[127], S2[127];
 	//optimised_strategy(S0,128,1.0,1.0);
 	//optimised_strategy_with_first_eval(S1, 128, 1.0, 1.0, 10.0);
@@ -272,4 +272,4 @@ int main(){
 	//for(int i=0;i<127;i++){
 		//printf("%i\n",S2[i]);
 	//}
-}
+//}

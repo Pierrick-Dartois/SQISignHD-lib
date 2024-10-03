@@ -64,13 +64,19 @@ void xisog_odd(ec_kps_t *kps, ec_point_t *B24, const ec_point_t P, ec_point_t A2
 void xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps);
 
 // Strategy-based 4-isogeny chain
+/*
 static void ec_eval_even_strategy(ec_curve_t *image,
                                   ec_point_t *points,
                                   unsigned short points_len,
                                   ec_point_t *A24,
                                   const ec_point_t *kernel,
                                   const int isog_len);
+*/
 
+void ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int len,
+    const unsigned int *strategy);
+
+void ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t *chain);
 
 
 #endif
