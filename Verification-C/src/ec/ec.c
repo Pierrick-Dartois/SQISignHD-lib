@@ -780,29 +780,43 @@ lift_point(jac_point_t *P, ec_point_t *Q, ec_curve_t *E)
 }
 
 uint32_t
-ec_is_on_curve(const ec_point_t *P, const ec_curve_t *E)
+ec_is_on_curve_normalized(const ec_point_t *P, const ec_curve_t *E)
 {
     if(ec_is_zero(P)){
         return 1;
     }
 
-    fp2_t t0, t1, t2, z2;
+    assert(fp2_is_one(&E->C));
+    assert(fp2_is_one(&P->z));
+    fp2_t t0;
 
-    fp2_sqr(&t0,&P->x); // x^2
-    fp2_mul(&t1,&t0,&E->A); // Ax^2
-    fp2_mul(&t1,&t0,&P->z); // Ax^2z
-    fp2_mul(&t2,&E->C,&P->x); // Cx
-    fp2_mul(&t0,&t0,&t2); // Cx^3
-    fp2_sqr(&z2,&P->z); // z^2
-    fp2_mul(&t2,&t2,&z2); // Cz^2x
-    fp2_add(&t0,&t0,&t1); // Cx^3+Ax^2z
-    fp2_add(&t0,&t0,&t2); // Cx^3+Ax^2z+Cxz^2 (=Cy^2z)
+    fp_t one;
+    fp_set_one(&one);
 
-    fp2_mul(&t1,&E->C,&P->z); // Cz
-    fp2_inv(&t1); // 1/(Cz)
-    fp2_mul(&t0,&t0,&t1); // y^2
+    fp2_add(&t0, &P->x, &E->A);   // x + (A/C)
+    fp2_mul(&t0, &t0, &P->x);         // x^2 + (A/C)*x
+    fp_add(&t0.re, &t0.re, &one); // x^2 + (A/C)*x + 1
+    fp2_mul(&t0, &t0, &P->x);         // x^3 + (A/C)*x^2 + x
 
     return fp2_is_square(&t0);
+}
+
+uint32_t
+ec_is_on_curve(ec_point_t *P, ec_curve_t *E)
+{
+    if(ec_is_zero(P)){
+        return 1;
+    }
+
+    // Normalize point and curve if they are not normalized
+    if(!fp2_is_one(&E->C)){
+        ec_normalize_curve(E);
+    }
+    if(!fp2_is_one(&P->z)){
+        ec_normalize_point(P);
+    }
+
+    return ec_is_on_curve_normalized(P, E);
 }
 
 // WRAPPERS to export

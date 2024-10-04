@@ -285,7 +285,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     const unsigned int *strategy)
 {
     ec_kps2_t kps[len];
-    ec_point_t A24[len+1];
+    ec_point_t A24[len+1], test;
     bool is_singular[len];
 
     unsigned int tmp,
@@ -303,6 +303,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
 
     AC_to_A24(&A24[0],domain);
     copy_point(&kernel_elements[0], kernel);
+    copy_point(&test, kernel);
 
     for(int k=0;k<len;k++){
         while(block!=len-1-k){
@@ -323,14 +324,13 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
         if(fp2_is_zero(&kernel_elements[current].x)){
             xisog_2_singular(&kps[k], &A24[k+1], A24[k]);
             xeval_2_singular(kernel_elements, kernel_elements, current, &kps[k]);
+            xeval_2_singular(&test, &test, 1, &kps[k]);
             is_singular[k]=true;
         }
         else{
             xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
             xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
-            ec_point_t test;
-            xeval_2(&test, &kernel_elements[current], 1, &kps[k]);
-            printf("%i %u\n",k,ec_is_zero(&test));
+            xeval_2(&test, &test, 1, &kps[k]);
             is_singular[k]=false;
         }
 
@@ -339,11 +339,17 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
         current -= 1;
     }
 
-
-    chain->kps=kps;
-    chain->A24=A24;
-    chain->is_singular=is_singular;
     chain->len=len;
+    chain->kps=(ec_kps2_t *)malloc(len*sizeof(ec_kps2_t));
+    chain->is_singular=(bool *)malloc(len*sizeof(bool));
+    chain->A24=(ec_point_t *)malloc((len+1)*sizeof(ec_point_t));
+    //kps;
+    for(int i=0;i<len;i++){
+        copy_point(&chain->kps[i].K,&kps[i].K);
+        chain->is_singular[i]=is_singular[i];
+        copy_point(&chain->A24[i],&A24[i]);
+    }
+    copy_point(&chain->A24[len],&A24[len]);
     copy_curve(&chain->domain,domain);
     A24_to_AC(&chain->codomain,&A24[len]);
 }

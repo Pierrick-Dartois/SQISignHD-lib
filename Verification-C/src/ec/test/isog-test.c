@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <inttypes.h>
 #include <gf_constants.h>
+#include <assert.h>
+
 
 int ec_2_isog_chain_test(unsigned int n){
 	int passed = 1;
@@ -47,16 +49,15 @@ int ec_2_isog_chain_test(unsigned int n){
         xDBL_A24(&dblsQ,&dblsQ,&A24);
     }
 
-    printf("%u\n",ec_is_zero(&dblsP));
-    printf("%u\n",ec_is_zero(&dblsQ));
+    //printf("%u\n",ec_is_zero(&dblsP));
+    //printf("%u\n",ec_is_zero(&dblsQ));
 
     xisog_2(&rho, &B24, dblsP);
     A24_to_AC(&E1,&B24);
     xeval_2(&rhodblsP, &dblsP, 1, &rho);
     xeval_2(&rhodblsQ, &dblsQ, 1, &rho);
-    printf("rho(P)=0 ? %u\n",ec_is_zero(&rhodblsP));
-    printf("rho(Q) is on curve ? %u\n",ec_is_on_curve(&rhodblsQ,&E1));
-    printf("%u\n",ec_is_zero(&rhodblsQ));
+    //printf("rho(P)=0 ? %u\n",ec_is_zero(&rhodblsP));
+    //printf("rho(Q) is on curve ? %u\n",ec_is_on_curve(&rhodblsQ,&E1));
 
 
     // Strategy

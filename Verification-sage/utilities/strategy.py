@@ -92,7 +92,7 @@ def optimised_strategies_with_first_eval(n,mul_c=1,first_eval_c=1):
     mul_c  = mul_c
 
     S_left = {1:[], 2:[1]} # Optimal strategies "on the left" i.e. meeting the first left edge 
-    S_right = {1:[]} # Optimal strategies "on the right" i.e. not meeting the fisrt left edge
+    S_right = {1:[]} # Optimal strategies "on the right" i.e. not meeting the first left edge
     C_left = {1:0, 2:mul_c+first_eval_c } # Cost of strategies on the left
     C_right = {1:0 } # Cost of strategies on the right
     for i in range(2, n+1):
