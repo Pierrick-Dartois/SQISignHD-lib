@@ -1,5 +1,6 @@
 #include "isog.h"
 #include <assert.h>
+#include <mp.h>
 
 /*
 // since we use degree 4 isogeny steps, we need to handle the odd case with care
@@ -285,7 +286,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     const unsigned int *strategy)
 {
     ec_kps2_t kps[len];
-    ec_point_t A24[len+1], test;
+    ec_point_t A24[len+1];
     bool is_singular[len];
 
     unsigned int tmp,
@@ -303,7 +304,6 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
 
     AC_to_A24(&A24[0],domain);
     copy_point(&kernel_elements[0], kernel);
-    copy_point(&test, kernel);
 
     for(int k=0;k<len;k++){
         while(block!=len-1-k){
@@ -366,4 +366,106 @@ ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t
             xeval_2(Q, Q, 1, &chain->kps[i]);
         }
     }
+}
+
+static int nbits_int(int a){
+    int nbits_max=sizeof(a)*DIGIT_LEN;
+    int nbits=nbits_max;
+    uint8_t is_one=0;
+
+    for(int j=0;j<nbits_max;j++){
+        is_one=(a>>(nbits_max-1-j))&1;
+        if(is_one){
+            return nbits;
+        }
+        else{
+            nbits--;
+        }
+    }
+    return nbits;
+}
+
+void
+ec_odd_isog_chain (ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int l, 
+    unsigned int len, const unsigned int *strategy)
+{
+    ec_kps_t kps[len];
+    ec_point_t A24[len+1], A3;
+    digit_t tabl[1];
+    int nbits_l=nbits_int(l);
+
+    mp_set_small(tabl,l,1);
+
+    unsigned int tmp,
+        log2_of_e, // Height of the strategy tree topology
+        strat_idx = 0, // Current element of the strategy to be used
+        block = 0, // Keeps track of point order
+        current = 0; // Number of points being carried
+
+    for (tmp = len, log2_of_e = 0; tmp > 0; tmp >>= 1, ++log2_of_e)
+        ;
+    log2_of_e *= 2;
+
+    ec_point_t kernel_elements[log2_of_e];
+    unsigned int XDBLs[log2_of_e]; // Number of doubles performed
+
+    AC_to_A24(&A24[0],domain);
+    copy_point(&kernel_elements[0], kernel);
+
+    for(int k=0;k<len;k++){
+        while(block!=len-1-k){
+            current += 1;
+
+            // Append the last kernel element and performs the doublings
+            copy_point(&kernel_elements[current],&kernel_elements[current-1]);
+            if(l==3){
+                fp2_copy(&A3.x,&A24[k].x);// A+2C
+                fp2_sub(&A3.z,&A24[k].x,&A24[k].z);// A-2C = A+2C - 4C
+                for(int j=0;j<strategy[strat_idx];j++){
+                    xTPL(&kernel_elements[current],&kernel_elements[current],&A3);
+                }
+            }
+            else{
+                for(int j=0;j<strategy[strat_idx];j++){
+                    xMUL_A24(&kernel_elements[current],&kernel_elements[current],tabl,nbits_l,&A24[k]);
+                }
+            }
+
+            // Update bookkeeping variables
+            XDBLs[current]=strategy[strat_idx];
+            block+=strategy[strat_idx];
+            strat_idx+=1;
+        }
+
+        if(fp2_is_zero(&kernel_elements[current].x)){
+            xisog_2_singular(&kps[k], &A24[k+1], A24[k]);
+            xeval_2_singular(kernel_elements, kernel_elements, current, &kps[k]);
+            xeval_2_singular(&test, &test, 1, &kps[k]);
+            is_singular[k]=true;
+        }
+        else{
+            xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
+            xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
+            xeval_2(&test, &test, 1, &kps[k]);
+            is_singular[k]=false;
+        }
+
+        block -= XDBLs[current];
+        XDBLs[current] = 0;
+        current -= 1;
+    }
+
+    chain->len=len;
+    chain->kps=(ec_kps2_t *)malloc(len*sizeof(ec_kps2_t));
+    chain->is_singular=(bool *)malloc(len*sizeof(bool));
+    chain->A24=(ec_point_t *)malloc((len+1)*sizeof(ec_point_t));
+    //kps;
+    for(int i=0;i<len;i++){
+        copy_point(&chain->kps[i].K,&kps[i].K);
+        chain->is_singular[i]=is_singular[i];
+        copy_point(&chain->A24[i],&A24[i]);
+    }
+    copy_point(&chain->A24[len],&A24[len]);
+    copy_curve(&chain->domain,domain);
+    A24_to_AC(&chain->codomain,&A24[len]);
 }
