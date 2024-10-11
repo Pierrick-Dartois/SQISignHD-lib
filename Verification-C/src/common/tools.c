@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
+#include <tutil.h>
 
 static clock_t global_timer;
 
@@ -86,4 +88,21 @@ two_adic_valuation(int n)
         count++;
     }
     return count;
+}
+
+int nbits_int(int a){
+    int nbits_max=sizeof(a)*DIGIT_LEN;
+    int nbits=nbits_max;
+    uint8_t is_one=0;
+
+    for(int j=0;j<nbits_max;j++){
+        is_one=(a>>(nbits_max-1-j))&1;
+        if(is_one){
+            return nbits;
+        }
+        else{
+            nbits--;
+        }
+    }
+    return nbits;
 }

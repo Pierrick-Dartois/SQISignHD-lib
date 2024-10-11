@@ -34,8 +34,8 @@ clean_gf:
 
 TARGETS_ARITH = gf/fp.c gf/fp2.c gf/mp.c common/sha3.c gf/primes/${PRIME}.c ec/ec.c ec/test/curve-arith-test.c ec/test/test_extras.c
 TARGETS_BASIS = gf/fp.c gf/fp2.c gf/mp.c common/sha3.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/test/basis-gen-test.c ec/test/test_extras.c
-TARGETS_PAIRING = gf/fp.c gf/fp2.c gf/mp.c gf/test/test_utils.c common/sha3.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/biextension.c ec/test/pairing-test.c
-TARGETS_ISOG = gf/fp.c gf/fp2.c gf/mp.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/xisog.c ec/xeval.c ec/isog_chains.c ec/test/isog-test.c ec/strategies.c
+TARGETS_PAIRING = gf/fp.c gf/fp2.c gf/mp.c gf/test/test_utils.c common/sha3.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/biextension.c ec/test/pairing-test.c common/tools.c
+TARGETS_ISOG = gf/fp.c gf/fp2.c gf/mp.c precomp/gf_constants_${PRIME}.c gf/primes/${PRIME}.c ec/ec.c ec/basis.c ec/xisog.c ec/xeval.c ec/isog_chains.c ec/test/isog-test.c ec/strategies.c common/tools.c
 CFLAGS_EC = ${CFLAGS_GF} -Iec/include -Iprecomp -Igf/test
 
 test_ec: test_arith.exe test_basis.exe test_pairing.exe test_isog.exe

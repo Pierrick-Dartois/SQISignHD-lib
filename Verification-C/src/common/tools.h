@@ -36,6 +36,7 @@
 
 // TODO: Seems like a weird place for this?
 int two_adic_valuation(int n);
+int nbits_int(int a);
 
 clock_t tic(void);
 float tac(void);                             /* time in ms since last tic */

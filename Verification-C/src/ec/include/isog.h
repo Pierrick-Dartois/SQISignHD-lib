@@ -18,7 +18,6 @@ typedef struct
 typedef struct
 {
     ec_point_t *K;
-    unsigned int d;
 } ec_kps_t;
 // Structure for a 2-isogeny chain
 typedef struct
@@ -36,8 +35,9 @@ typedef struct
     ec_curve_t domain;
     ec_curve_t codomain;
     ec_kps_t *kps;
-    ec_point_t *A24;// Also contains A24 of domain and codomain
+    ec_point_t *A24; // Also contains A24 of domain and codomain
     unsigned int len;
+    unsigned int d;
 } ec_odd_isog_chain_t;
 
 
@@ -60,8 +60,8 @@ void xeval_4_singular(ec_point_t *R,
 void xisog_3(ec_kps_t *kps, ec_point_t *B24, const ec_point_t P);
 void xeval_3(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps);
 
-void xisog_odd(ec_kps_t *kps, ec_point_t *B24, const ec_point_t P, ec_point_t A24, unsigned int d);
-void xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps);
+void xisog_odd(ec_kps_t *kps, ec_point_t *B24, const ec_point_t P, const ec_point_t *A24, ec_point_t P2, unsigned int d);
+void xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps, unsigned int d);
 
 // Strategy-based 4-isogeny chain
 /*
@@ -77,6 +77,11 @@ void ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec
     const unsigned int *strategy);
 
 void ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t *chain);
+
+void ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int l, 
+    unsigned int len, const unsigned int *strategy);
+
+void ec_eval_odd_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_odd_isog_chain_t *chain);
 
 
 #endif

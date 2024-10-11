@@ -1,6 +1,7 @@
 #include "isog.h"
 #include <assert.h>
 #include <mp.h>
+#include <tools.h>
 
 /*
 // since we use degree 4 isogeny steps, we need to handle the odd case with care
@@ -288,6 +289,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     ec_kps2_t kps[len];
     ec_point_t A24[len+1];
     bool is_singular[len];
+    ec_curve_t E;
 
     unsigned int tmp,
         log2_of_e, // Height of the strategy tree topology
@@ -324,15 +326,15 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
         if(fp2_is_zero(&kernel_elements[current].x)){
             xisog_2_singular(&kps[k], &A24[k+1], A24[k]);
             xeval_2_singular(kernel_elements, kernel_elements, current, &kps[k]);
-            xeval_2_singular(&test, &test, 1, &kps[k]);
             is_singular[k]=true;
         }
         else{
             xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
             xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
-            xeval_2(&test, &test, 1, &kps[k]);
             is_singular[k]=false;
         }
+        A24_to_AC(&E,&A24[k+1]);
+        printf("%u\n",ec_is_on_curve(&kernel_elements[0],&E));
 
         block -= XDBLs[current];
         XDBLs[current] = 0;
@@ -368,33 +370,38 @@ ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t
     }
 }
 
-static int nbits_int(int a){
-    int nbits_max=sizeof(a)*DIGIT_LEN;
-    int nbits=nbits_max;
-    uint8_t is_one=0;
+void
+ec_2_torsion_point(ec_point_t *P, const ec_curve_t *E)
+{
+    // Returns a non-zero 2-torsion point of E !=(0,0).
+    fp2_t t0, t1, t2;
 
-    for(int j=0;j<nbits_max;j++){
-        is_one=(a>>(nbits_max-1-j))&1;
-        if(is_one){
-            return nbits;
-        }
-        else{
-            nbits--;
-        }
-    }
-    return nbits;
+    fp2_add(&t0,&E->C,&E->C); // 2C
+    fp2_add(&t1,&E->A,&t0); // A+2C
+    fp2_sub(&t2,&E->A,&t0); // A-2C
+    fp2_mul(&t1,&t1,&t2); // (A+2C)(A-2C)
+    fp2_sqrt(&t1); // \sqrt((A+2C)(A-2C))
+    fp2_add(&P->x,&t1,&E->A); // x = A+\sqrt((A+2C)(A-2C))
+    fp2_neg(&P->z,&t0); // z = -2C
 }
 
 void
-ec_odd_isog_chain (ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int l, 
+ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_curve_t *domain, unsigned int l, 
     unsigned int len, const unsigned int *strategy)
 {
     ec_kps_t kps[len];
-    ec_point_t A24[len+1], A3;
+    ec_point_t A24[len+1], A3, P2;
     digit_t tabl[1];
-    int nbits_l=nbits_int(l);
+    int nbits_l=nbits_int(l), d=(l-1)/2;
+    ec_curve_t E;
 
-    mp_set_small(tabl,l,1);
+    if(l!=3){
+        ec_2_torsion_point(&P2,domain);
+        // A point of 2-torsion should be propagated through the chain when l>3
+        mp_set_small(tabl,l,1);
+    }
+
+    
 
     unsigned int tmp,
         log2_of_e, // Height of the strategy tree topology
@@ -416,7 +423,7 @@ ec_odd_isog_chain (ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec
         while(block!=len-1-k){
             current += 1;
 
-            // Append the last kernel element and performs the doublings
+            // Append the last kernel element and performs the l-multiplications
             copy_point(&kernel_elements[current],&kernel_elements[current-1]);
             if(l==3){
                 fp2_copy(&A3.x,&A24[k].x);// A+2C
@@ -437,17 +444,18 @@ ec_odd_isog_chain (ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec
             strat_idx+=1;
         }
 
-        if(fp2_is_zero(&kernel_elements[current].x)){
-            xisog_2_singular(&kps[k], &A24[k+1], A24[k]);
-            xeval_2_singular(kernel_elements, kernel_elements, current, &kps[k]);
-            xeval_2_singular(&test, &test, 1, &kps[k]);
-            is_singular[k]=true;
+
+
+        if(l==3){
+            xisog_3(&kps[k], &A24[k+1], kernel_elements[current]);
+            xeval_3(kernel_elements, kernel_elements, current, &kps[k]);
+            A24_to_AC(&E,&A24[k+1]);
+            printf("%u\n",ec_is_on_curve(&kernel_elements[0],&E));
         }
         else{
-            xisog_2(&kps[k], &A24[k+1], kernel_elements[current]);
-            xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
-            xeval_2(&test, &test, 1, &kps[k]);
-            is_singular[k]=false;
+            xisog_odd(&kps[k], &A24[k+1], kernel_elements[current], &A24[k], P2, d);
+            xeval_odd(&P2, &P2, 1, &kps[k], d);
+            xeval_odd(kernel_elements, kernel_elements, current, &kps[k], d);
         }
 
         block -= XDBLs[current];
@@ -456,16 +464,30 @@ ec_odd_isog_chain (ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec
     }
 
     chain->len=len;
-    chain->kps=(ec_kps2_t *)malloc(len*sizeof(ec_kps2_t));
-    chain->is_singular=(bool *)malloc(len*sizeof(bool));
+    chain->d=d;
+    chain->kps=(ec_kps_t *)malloc(len*sizeof(ec_kps_t));
     chain->A24=(ec_point_t *)malloc((len+1)*sizeof(ec_point_t));
     //kps;
     for(int i=0;i<len;i++){
-        copy_point(&chain->kps[i].K,&kps[i].K);
-        chain->is_singular[i]=is_singular[i];
+        chain->kps[i]=kps[i];
         copy_point(&chain->A24[i],&A24[i]);
     }
     copy_point(&chain->A24[len],&A24[len]);
     copy_curve(&chain->domain,domain);
     A24_to_AC(&chain->codomain,&A24[len]);
+    printf("%llu\n",chain->codomain.A.re[0]);
+}
+
+void 
+ec_eval_odd_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_odd_isog_chain_t *chain)
+{
+    copy_point(Q,P);
+    for(int i=0;i<chain->len;i++){
+        if(chain->d==1){
+            xeval_3(Q, Q, 1, &chain->kps[i]);
+        }
+        else{
+            xeval_odd(Q, Q, 1, &chain->kps[i], chain->d);
+        }
+    }
 }

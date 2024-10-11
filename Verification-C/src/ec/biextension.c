@@ -2,6 +2,7 @@
 #include <mp.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <tools.h>
 
 /*
  * We implement the biextension arithmetic by using the cubical torsor representation. For now only
@@ -571,6 +572,7 @@ static int fp2_dlog_l(const fp2_t *h, const fp2_t *g, int l){
     return k;
 }
 
+/* Called from <tools.h>
 static int nbits_int(int a){
     int nbits_max=sizeof(a)*DIGIT_LEN;
     int nbits=nbits_max;
@@ -587,6 +589,7 @@ static int nbits_int(int a){
     }
     return nbits;
 }
+*/
 
 static void fp2_dlog_le(digit_t *k, const fp2_t *h, const fp2_t *g_inv, int l, int e, unsigned int nwords){
     // Discrete log in a group of (prime) order l^e

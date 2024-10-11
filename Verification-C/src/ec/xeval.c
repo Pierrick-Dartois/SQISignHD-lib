@@ -129,7 +129,7 @@ criss_cross(fp2_t *t1, fp2_t *t2, const fp2_t *a, const fp2_t *b, const fp2_t *c
 
 // (2d+1)-isogeny evaluation https://eprint.iacr.org/2017/504.pdf (Algoritm 3)
 void
-xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps)
+xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps, unsigned int d)
 {
     fp2_t x_dual, z_dual, t0, t1;
 
@@ -137,7 +137,7 @@ xeval_odd(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kp
         fp2_add(&x_dual,&Q[j].x,&Q[j].z);
         fp2_sub(&z_dual,&Q[j].x,&Q[j].z);
         criss_cross(&R[j].x,&R[j].z,&kps->K[0].x,&kps->K[0].z,&x_dual,&z_dual);
-        for(int i=1;i<kps->d;i++){
+        for(int i=1;i<d;i++){
             criss_cross(&t0,&t1,&kps->K[i].x,&kps->K[i].z,&x_dual,&z_dual);
             fp2_mul(&R[j].x,&R[j].x,&t0);
             fp2_mul(&R[j].z,&R[j].z,&t1);
