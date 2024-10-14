@@ -83,5 +83,7 @@ void ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, cons
 
 void ec_eval_odd_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_odd_isog_chain_t *chain);
 
+void del_2_isog_chain(ec_2_isog_chain_t *chain);
+void del_odd_isog_chain(ec_odd_isog_chain_t *chain);
 
 #endif

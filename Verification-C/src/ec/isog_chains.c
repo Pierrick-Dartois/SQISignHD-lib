@@ -289,7 +289,6 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     ec_kps2_t kps[len];
     ec_point_t A24[len+1];
     bool is_singular[len];
-    ec_curve_t E;
 
     unsigned int tmp,
         log2_of_e, // Height of the strategy tree topology
@@ -333,8 +332,6 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
             xeval_2(kernel_elements, kernel_elements, current, &kps[k]);
             is_singular[k]=false;
         }
-        A24_to_AC(&E,&A24[k+1]);
-        printf("%u\n",ec_is_on_curve(&kernel_elements[0],&E));
 
         block -= XDBLs[current];
         XDBLs[current] = 0;
@@ -353,6 +350,7 @@ ec_2_isog_chain(ec_2_isog_chain_t *chain,const ec_point_t *kernel, const ec_curv
     }
     copy_point(&chain->A24[len],&A24[len]);
     copy_curve(&chain->domain,domain);
+    ec_curve_init(&chain->codomain);
     A24_to_AC(&chain->codomain,&A24[len]);
 }
 
@@ -361,6 +359,7 @@ ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t
 {
     copy_point(Q,P);
     for(int i=0;i<chain->len;i++){
+        //printf("%llu\n",chain->kps[i].K.x.re[0]);
         if(chain->is_singular[i]){
             xeval_2_singular(Q, Q, 1, &chain->kps[i]);
         }
@@ -368,6 +367,13 @@ ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t
             xeval_2(Q, Q, 1, &chain->kps[i]);
         }
     }
+}
+
+void
+del_2_isog_chain(ec_2_isog_chain_t *chain){
+    free(chain->kps);
+    free(chain->is_singular);
+    free(chain->A24);
 }
 
 void
@@ -474,6 +480,7 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
     }
     copy_point(&chain->A24[len],&A24[len]);
     copy_curve(&chain->domain,domain);
+    ec_curve_init(&chain->codomain);
     A24_to_AC(&chain->codomain,&A24[len]);
     printf("%llu\n",chain->codomain.A.re[0]);
 }
@@ -490,4 +497,15 @@ ec_eval_odd_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_odd_isog_cha
             xeval_odd(Q, Q, 1, &chain->kps[i], chain->d);
         }
     }
+}
+
+void
+del_odd_isog_chain(ec_odd_isog_chain_t *chain){
+    if(chain->d!=1){
+        for(int i=0;i<chain->len;i++){
+            free(chain->kps[i].K);
+        }
+    }
+    free(chain->kps);
+    free(chain->A24);
 }
