@@ -115,6 +115,21 @@ xeval_3(ec_point_t *R, ec_point_t *const Q, const int lenQ, const ec_kps_t *kps)
         fp2_sub(&r1,&r3,&r1); // r1=r3-r1 (2(x3z-z3x))
         fp2_sqr(&r1,&r1); // r1=r1^2 (4(x3z-z3x)^2)
         fp2_mul(&R[j].z,&r1,&Q[j].z); //z'=r1.z (4z(x3z-z3x)^2). OK
+        
+        /*
+        fp2_add(&x3,&kps->K[0].x,&kps->K[0].z);
+        fp2_sub(&z3,&kps->K[0].z,&kps->K[0].x);
+        fp2_mul(&t1,&x3,&x); // x3*x
+        fp2_mul(&t2,&z3,&z); // z3*z
+        fp2_sub(&t1,&t1,&t2); // x3*x-z3*z
+        fp2_sqr(&t1,&t1); // (x3*x-z3*z)^2
+        fp2_mul(&resx,&t1,&x); // x(x3*x-z3*z)^2
+        fp2_mul(&t1,&z3,&x); // z3*x
+        fp2_mul(&t2,&x3,&z); // x3*z
+        fp2_sub(&t1,&t1,&t2); // z3*x-x3*z
+        fp2_sqr(&t1,&t1); // (z3*x-x3*z)^2
+        fp2_mul(&resz,&t1,&z); // z(z3*x-x3*z)^2
+        */
     }
 }
 

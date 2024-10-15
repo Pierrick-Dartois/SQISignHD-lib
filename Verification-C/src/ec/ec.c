@@ -23,9 +23,7 @@ ec_curve_normalize_A24(ec_curve_t *E)
 {
     if (!E->is_A24_computed_and_normalized) {
         AC_to_A24(&E->A24, E);
-        printf("%llu\n",E->A24.x.re[0]);
         ec_normalize_point(&E->A24);
-        printf("%llu\n",E->A24.x.re[0]);
         E->is_A24_computed_and_normalized = true;
     }
     assert(fp2_is_one(&E->A24.z));
@@ -396,9 +394,6 @@ xMUL_A24(ec_point_t *Q,
     ec_point_t R0, R1;
     digit_t mask;
     unsigned int bit = 0, prevbit = 0, swap;
-
-    // Assert A24 hs been normalised
-    assert(fp2_is_one(&A24->z));
 
     // R0 <- (1:0), R1 <- P
     ec_point_init(&R0);
@@ -951,18 +946,13 @@ ec_mul(ec_point_t *res,
        const ec_point_t *P,
        ec_curve_t *curve)
 {
-    printf("%llu\n",curve->A.re[0]);
     // For large scalars it's worth normalising anyway
     if (kbits > 50) {
-        printf("Hello\n");
         ec_curve_normalize_A24(curve);
     }
 
     // When A24 is computed and normalised we save some Fp2 multiplications
     if (curve->is_A24_computed_and_normalized) {
-        printf("Hello\n");
-        printf("%llu\n",curve->A.re[0]);
-        printf("%llu\n",curve->A24.x.re[0]);
         xMUL_A24_normalized(res, P, scalar, kbits, &curve->A24);
     }
     // Else compute A24 on the fly, should we check if we have A24 but not

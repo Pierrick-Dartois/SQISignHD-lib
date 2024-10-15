@@ -359,7 +359,6 @@ ec_eval_2_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_2_isog_chain_t
 {
     copy_point(Q,P);
     for(int i=0;i<chain->len;i++){
-        //printf("%llu\n",chain->kps[i].K.x.re[0]);
         if(chain->is_singular[i]){
             xeval_2_singular(Q, Q, 1, &chain->kps[i]);
         }
@@ -374,6 +373,64 @@ del_2_isog_chain(ec_2_isog_chain_t *chain){
     free(chain->kps);
     free(chain->is_singular);
     free(chain->A24);
+}
+
+void 
+mod_pol_3(fp2_t *res, const fp2_t *j1, const fp2_t *j2)
+{
+    digit_t coeffs[5][5];
+    fp2_t Phi3[5][5], t0;
+
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            coeffs[i][j]=0;
+        }
+    }
+
+    coeffs[1][0]=28311552000000000; //1855425871872000000000/2<<16
+    coeffs[0][1]=28311552000000000; //1855425871872000000000/2<<16
+    coeffs[1][1]=770845966336000000; //-
+    coeffs[2][0]=452984832000000;
+    coeffs[0][2]=452984832000000;
+    coeffs[2][1]=8900222976000;
+    coeffs[1][2]=8900222976000;
+    coeffs[2][2]=2587918086;
+    coeffs[3][0]=36864000;
+    coeffs[0][3]=36864000;
+    coeffs[3][1]=1069956;//-
+    coeffs[1][3]=1069956;//-
+    coeffs[3][2]=2232;
+    coeffs[2][3]=2232;
+    coeffs[3][3]=1;//-
+    coeffs[4][0]=1;
+    coeffs[0][4]=1;
+
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            fp2_set_small(&Phi3[i][j],coeffs[i][j]);
+        }
+    }
+    fp2_neg(&Phi3[1][1],&Phi3[1][1]);
+    fp2_neg(&Phi3[3][1],&Phi3[3][1]);
+    fp2_neg(&Phi3[1][3],&Phi3[1][3]);
+    fp2_neg(&Phi3[3][3],&Phi3[3][3]);
+
+    for(int i=0;i<16;i++){// *2>>16
+        fp2_add(&Phi3[1][0],&Phi3[1][0],&Phi3[1][0]);
+    }
+    fp2_copy(&Phi3[0][1],&Phi3[1][0]);
+
+    fp2_set_zero(res);
+
+    for(int i=4;i>=0;i--){
+        fp2_set_zero(&t0);
+        for(int j=4;j>=0;j--){
+            fp2_mul(&t0,&t0,j2);
+            fp2_add(&t0,&t0,&Phi3[i][j]);
+        }
+        fp2_mul(res,res,j1);
+        fp2_add(res,res,&t0);
+    }
 }
 
 void
@@ -396,10 +453,11 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
     unsigned int len, const unsigned int *strategy)
 {
     ec_kps_t kps[len];
-    ec_point_t A24[len+1], A3, P2;
+    ec_point_t A24[len+1], A3, P2, test;
     digit_t tabl[1];
     int nbits_l=nbits_int(l), d=(l-1)/2;
-    ec_curve_t E;
+    ec_curve_t E1, E2;
+    fp2_t j1, j2, phi3j1j2;
 
     if(l!=3){
         ec_2_torsion_point(&P2,domain);
@@ -420,7 +478,7 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
     log2_of_e *= 2;
 
     ec_point_t kernel_elements[log2_of_e];
-    unsigned int XDBLs[log2_of_e]; // Number of doubles performed
+    unsigned int XDBLs[log2_of_e]; // Number of multiplications performed
 
     AC_to_A24(&A24[0],domain);
     copy_point(&kernel_elements[0], kernel);
@@ -453,10 +511,23 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
 
 
         if(l==3){
+            printf("ker[%i]=%llu\n",k,kernel_elements[current].x.re[0]);
             xisog_3(&kps[k], &A24[k+1], kernel_elements[current]);
+            fp2_copy(&A3.x,&A24[k].x);// A+2C
+            fp2_sub(&A3.z,&A24[k].x,&A24[k].z);// A-2C = A+2C - 4C
+            xTPL(&test,&kernel_elements[current],&A3);
+            printf("%u\n",ec_is_zero(&test));
             xeval_3(kernel_elements, kernel_elements, current, &kps[k]);
-            A24_to_AC(&E,&A24[k+1]);
-            printf("%u\n",ec_is_on_curve(&kernel_elements[0],&E));
+            //xeval_3(&test,&kernel_elements[current],1,&kps[k]);
+            //printf("%u\n",ec_is_zero(&test));
+            //ec_curve_init(&E1);
+            //ec_curve_init(&E2);
+            //A24_to_AC(&E1,&A24[k]);
+            //A24_to_AC(&E2,&A24[k+1]);
+            //ec_j_inv(&j1,&E1);
+            //ec_j_inv(&j2,&E2);
+            //mod_pol_3(&phi3j1j2,&j1,&j2);
+            //printf("%u\n",fp2_is_zero(&phi3j1j2));
         }
         else{
             xisog_odd(&kps[k], &A24[k+1], kernel_elements[current], &A24[k], P2, d);
@@ -482,7 +553,6 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
     copy_curve(&chain->domain,domain);
     ec_curve_init(&chain->codomain);
     A24_to_AC(&chain->codomain,&A24[len]);
-    printf("%llu\n",chain->codomain.A.re[0]);
 }
 
 void 
@@ -501,10 +571,8 @@ ec_eval_odd_isog_chain(ec_point_t *Q, const ec_point_t *P, const ec_odd_isog_cha
 
 void
 del_odd_isog_chain(ec_odd_isog_chain_t *chain){
-    if(chain->d!=1){
-        for(int i=0;i<chain->len;i++){
-            free(chain->kps[i].K);
-        }
+    for(int i=0;i<chain->len;i++){
+        free(chain->kps[i].K);
     }
     free(chain->kps);
     free(chain->A24);
