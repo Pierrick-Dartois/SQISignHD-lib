@@ -375,6 +375,7 @@ del_2_isog_chain(ec_2_isog_chain_t *chain){
     free(chain->A24);
 }
 
+/* 3rd modular polynomial. Not used anymore.
 void 
 mod_pol_3(fp2_t *res, const fp2_t *j1, const fp2_t *j2)
 {
@@ -415,7 +416,7 @@ mod_pol_3(fp2_t *res, const fp2_t *j1, const fp2_t *j2)
     fp2_neg(&Phi3[1][3],&Phi3[1][3]);
     fp2_neg(&Phi3[3][3],&Phi3[3][3]);
 
-    for(int i=0;i<16;i++){// *2>>16
+    for(int i=0;i<16;i++){// *2<<16
         fp2_add(&Phi3[1][0],&Phi3[1][0],&Phi3[1][0]);
     }
     fp2_copy(&Phi3[0][1],&Phi3[1][0]);
@@ -432,6 +433,7 @@ mod_pol_3(fp2_t *res, const fp2_t *j1, const fp2_t *j2)
         fp2_add(res,res,&t0);
     }
 }
+*/
 
 void
 ec_2_torsion_point(ec_point_t *P, const ec_curve_t *E)
@@ -453,11 +455,9 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
     unsigned int len, const unsigned int *strategy)
 {
     ec_kps_t kps[len];
-    ec_point_t A24[len+1], A3, P2, test;
+    ec_point_t A24[len+1], A3, P2;
     digit_t tabl[1];
     int nbits_l=nbits_int(l), d=(l-1)/2;
-    ec_curve_t E1, E2;
-    fp2_t j1, j2, phi3j1j2;
 
     if(l!=3){
         ec_2_torsion_point(&P2,domain);
@@ -511,23 +511,8 @@ ec_odd_isog_chain(ec_odd_isog_chain_t *chain,const ec_point_t *kernel, const ec_
 
 
         if(l==3){
-            printf("ker[%i]=%llu\n",k,kernel_elements[current].x.re[0]);
             xisog_3(&kps[k], &A24[k+1], kernel_elements[current]);
-            fp2_copy(&A3.x,&A24[k].x);// A+2C
-            fp2_sub(&A3.z,&A24[k].x,&A24[k].z);// A-2C = A+2C - 4C
-            xTPL(&test,&kernel_elements[current],&A3);
-            printf("%u\n",ec_is_zero(&test));
             xeval_3(kernel_elements, kernel_elements, current, &kps[k]);
-            //xeval_3(&test,&kernel_elements[current],1,&kps[k]);
-            //printf("%u\n",ec_is_zero(&test));
-            //ec_curve_init(&E1);
-            //ec_curve_init(&E2);
-            //A24_to_AC(&E1,&A24[k]);
-            //A24_to_AC(&E2,&A24[k+1]);
-            //ec_j_inv(&j1,&E1);
-            //ec_j_inv(&j2,&E2);
-            //mod_pol_3(&phi3j1j2,&j1,&j2);
-            //printf("%u\n",fp2_is_zero(&phi3j1j2));
         }
         else{
             xisog_odd(&kps[k], &A24[k+1], kernel_elements[current], &A24[k], P2, d);

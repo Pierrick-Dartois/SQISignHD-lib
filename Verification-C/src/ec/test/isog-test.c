@@ -144,44 +144,14 @@ int ec_odd_isog_chain_test(unsigned int n){
     optimised_strategy(strategy,n, 4*M+2*S, 7*M+5*S);
 
     // Compute isogeny with kernel <R>.
-    printf("Chain.\n");
     ec_odd_isog_chain(&phi,&R,&curve,3,n,strategy);
 
-    printf("Naive chain.\n");
-
-    copy_point(&tmp,&R);
-    AC_to_A24(&A24,&curve);
-    for(int k=0;k<n;k++){
-        fp2_copy(&A3.x,&A24.x);// A+2C
-        fp2_sub(&A3.z,&A24.x,&A24.z);// A-2C = A+2C - 4C
-        copy_point(&ker,&tmp);
-        for(int j=0;j<n-k-1;j++){
-            xTPL(&ker,&ker,&A3);
-        }
-        printf("ker[%i]=%llu\n",k,ker.x.re[0]);
-        xTPL(&test,&ker,&A3);
-        printf("%u\n",ec_is_zero(&test));
-        xisog_3(&kps, &A24, ker);
-        xeval_3(&tmp, &tmp, 1, &kps);
-    }
-
-    // Evaluate phi(Q), phi(R) 
-    printf("phi(P).\n");
+    // Evaluate phi(P), phi(Q), phi(R) 
     ec_eval_odd_isog_chain(&phiP,&basis.P,&phi);
-    printf("phi(Q).\n");
     ec_eval_odd_isog_chain(&phiQ,&basis.Q,&phi);
-    printf("phi(R).\n");
     ec_eval_odd_isog_chain(&phiR,&R,&phi);
 
     ec_mul(&lambphiQ,lambda,nwords*RADIX,&phiQ,&phi.codomain);
-    //xMUL(&lambphiQ,&phiQ,lambda,nwords*RADIX,&phi.codomain);
-
-    // Compute isogeny with kernel <Q>.
-    //ec_odd_isog_chain(&phi,&R,&curve,3,n,strategy,false);
-
-    // Evaluate psi(P), psi(Q) 
-    //ec_eval_odd_isog_chain(&phiQ,&basis.Q,&phi,false);
-    //ec_eval_odd_isog_chain(&phiR,&R,&phi,false);
 
     if(!ec_is_on_curve(&phiQ,&phi.codomain)){
         printf("phi(Q) not on image curve.\n");
