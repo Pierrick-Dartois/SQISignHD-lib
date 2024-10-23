@@ -101,4 +101,12 @@ void double_point(theta_point_t *out, theta_structure_t *A, const theta_point_t 
  */
 void double_iter(theta_point_t *out, theta_structure_t *A, const theta_point_t *in, int exp);
 
+/**
+ * @brief Copies a theta point.
+ * 
+ * @param out Output: the copied theta point.
+ * @param in: the theta point to copy.
+ **/
+void copy_theta_point(theta_point_t *out, const theta_point_t *in);
+
 #endif

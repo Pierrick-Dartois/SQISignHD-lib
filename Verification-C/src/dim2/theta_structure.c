@@ -100,3 +100,12 @@ double_iter(theta_point_t *out, theta_structure_t *A, const theta_point_t *in, i
         }
     }
 }
+
+void
+copy_theta_point(theta_point_t *out, const theta_point_t *in)
+{
+    fp2_copy(&out->x,&in->x);
+    fp2_copy(&out->y,&in->y);
+    fp2_copy(&out->z,&in->z);
+    fp2_copy(&out->t,&in->t);
+}

@@ -161,9 +161,12 @@ typedef struct theta_gluing
     theta_couple_jac_point_t xyK2_4;
     theta_point_t T1_8;
     theta_point_t T2_8;
-    basis_change_matrix_t M;
+    fp2_t M[4][4];
     theta_point_t precomputation;
     theta_point_t codomain;
+    theta_point_t np_domain;
+    theta_point_t prod_null_point;
+    int zero_idx;
 } theta_gluing_t;
 
 /** @brief Type for standard (2,2) theta isogeny *
@@ -193,9 +196,12 @@ typedef struct theta_isogeny
  */
 typedef struct theta_splitting
 {
-    basis_change_matrix_t M;
-    theta_structure_t B;
-
+    fp2_t M[4][4];
+    //theta_structure_t B;
+    theta_point_t domain;
+    theta_couple_curve_t codomain;
+    theta_point_t precomputation;
+    theta_point_t prod_null_point;
 } theta_splitting_t;
 
 /** @brief Type for chain of (2,2) theta isogenies with preimage by 4 multiplication above *

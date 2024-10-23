@@ -198,6 +198,35 @@ fp2_batched_inv(fp2_t *x, int len)
     }
 }
 
+void
+fp2_proj_batched_inv(fp2_t *x, int len)
+{
+
+    fp2_t t1[len], t2[len];
+    fp2_t inverse;
+
+    // x = x0,...,xn
+    // t1 = x0, x0*x1, ... ,x0 * x1 * ... * xn
+    fp2_copy(&t1[0], &x[0]);
+    for (int i = 1; i < len; i++) {
+        fp2_mul(&t1[i], &t1[i - 1], &x[i]);
+    }
+
+    // t2 = 1, xn , x(n-1)*xn, ... , x1*...*xn
+    fp2_set_one(&t2[0]);
+    fp2_copy(&t2[1],&x[len-1]);
+    for (int i = 2; i < len; i++) {
+        fp2_mul(&t2[i], &t2[i - 1], &x[len - i]);
+    }
+
+    // x = x1*...*xn, x0*x2*...*xn, ... , x0*...*x(n-1)
+    fp2_copy(&x[0], &t2[len - 1]);
+    for (int i = 1; i < len; i++) {
+        fp2_mul(&x[i], &t1[i - 1], &t2[len - i - 1]);
+    }
+}
+
+
 uint32_t
 fp2_is_square(const fp2_t *x)
 {
