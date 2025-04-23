@@ -1,7 +1,9 @@
 #include "quaternion_tests.h"
 
 // run all tests in module
-int main(){
+int
+main()
+{
     int res = 0;
     printf("Running quaternion module unit tests\n");
     res = res | quat_test_finit();
@@ -13,8 +15,8 @@ int main(){
     res = res | quat_test_lattice();
     res = res | quat_test_lideal();
     res = res | quat_test_with_randomization();
-    if(res != 0){
+    if (res != 0) {
         printf("\nSome tests failed!\n");
     }
-    return(res);
+    return (res);
 }

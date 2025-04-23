@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_id2iso_lvl5.a CMakeFiles/sqisign_id2iso_lvl5.dir/__/id2isox/id2iso.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_id2iso_lvl5.a

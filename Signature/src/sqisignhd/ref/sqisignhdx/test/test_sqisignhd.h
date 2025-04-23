@@ -3,6 +3,8 @@
 #include <klpt.h>
 #include <sqisignhd.h>
 #include <id2iso.h>
+#include <dim2id2iso.h>
+#include <hd.h>
 #include <quaternion_data.h>
 #include <endomorphism_action.h>
 
@@ -11,6 +13,5 @@
  * @defgroup sqisignhd_tests Test functions for protocols
  * @{
  */
-int test_doublepath();
 /** @}
  */

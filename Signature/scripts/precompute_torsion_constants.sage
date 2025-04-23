@@ -7,7 +7,7 @@ if not require_version(9, 8, print_message=True):
 
 ################################################################
 
-from parameters import p, B, f, Tpls, Tmin, Dcom, Dchall
+from parameters import p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk_com
 
 ################################################################
 
@@ -50,6 +50,7 @@ objs = ObjectFormatter([
         Object('ibz_t', 'DEGREE_COMMITMENT_PLUS', Ibz(gcd(Dcom, Tpls))),
         Object('ibz_t', 'DEGREE_COMMITMENT_MINUS', Ibz(gcd(Dcom, Tmin))),
         Object('ibz_t', 'DEGREE_CHALLENGE', Ibz(Dchall)),
+        Object('ibz_t', 'FIXED_DEGREE_SK_COM', Ibz(N_sk_com)),
     ])
 
 with open('include/torsion_constants.h','w') as hfile:

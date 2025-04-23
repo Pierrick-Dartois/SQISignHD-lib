@@ -3,6 +3,7 @@ set(SOURCE_FILES_COMMON_SYS
     aes_c.c 
     fips202.c 
     mem.c
+    tools.c
 )
 
 add_library(sqisign_common_sys ${SOURCE_FILES_COMMON_SYS})
@@ -14,6 +15,7 @@ set(SOURCE_FILES_COMMON_TEST
     aes_c.c 
     fips202.c 
     mem.c
+    tools.c
 )
 
 add_library(sqisign_common_test ${SOURCE_FILES_COMMON_TEST})

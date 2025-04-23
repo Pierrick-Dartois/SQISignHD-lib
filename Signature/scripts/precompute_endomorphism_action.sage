@@ -85,11 +85,13 @@ while True:
     if not (T<<f).divides(o):
         continue
     Q *= o // (T<<f)
-    Q.set_order(T<<f)
-    if order_from_multiple(P.weil_pairing(Q, T<<f), T<<f, plist, operation='*') == T<<f:
+    # Q.set_order(T<<f)
+    if order_from_multiple(P.weil_pairing(Q, T<<f), T<<f, operation='*') == T<<f:
         break
+
 def dlp(P, Q, R):
     n = P.order()
+    assert(n != 0)
     assert P.order() == Q.order()
     assert (order_from_multiple(R, p^2-1, plist)).divides(P.order())
     e = Fp2(P.weil_pairing(Q, n))

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_ec_lvl5.a CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_ec_lvl5.a

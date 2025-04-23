@@ -4,7 +4,9 @@
 #include <string.h>
 #include <rng.h>
 
-static int test_ibq_consts() {
+static int
+test_ibq_consts()
+{
     int ret = 0;
     ibq_t t;
     ibz_t tmp1, tmp2, tmp3;
@@ -100,14 +102,16 @@ err:
 /**
  * Tests ibz_sqrt_mod_p and ibz_sqrt_mod_2p
  * Allows to provide the number of repetitions and the bit-size of the primes.
-*/
-static int test_ibz_sqrt_mod_p_2p(int reps, int prime_n) {
+ */
+static int
+test_ibz_sqrt_mod_p_2p(int reps, int prime_n)
+{
     gmp_randstate_t state;
     gmp_randinit_mt(state);
     gmp_randseed_ui(state, 1); // set static seed
 
     int ret = 0;
-    
+
     // Initialize GMP variables
     mpz_t prime, a, prime_minus_a, asq, sqrt, tmp;
     mpz_t prime_p4m3, prime_p5m8, prime_p1m8;
@@ -130,9 +134,9 @@ static int test_ibz_sqrt_mod_p_2p(int reps, int prime_n) {
 
     for (int r = 0; r < reps; ++r) {
         mpz_urandomb(prime, state, n);
-    
+
         int p4m3 = 0, p5m8 = 0, p1m8 = 0;
-    
+
         while (p4m3 == 0 || p5m8 == 0 || p1m8 == 0) {
             mpz_nextprime(prime, prime);
 
@@ -186,7 +190,14 @@ static int test_ibz_sqrt_mod_p_2p(int reps, int prime_n) {
 
             if (no_sqrt || (mpz_cmp(sqrt, a) && mpz_cmp(sqrt, prime_minus_a))) {
                 printf("Test sqrt_mod_2p failed\n");
-                gmp_printf("prime = %Zx\nprime_x2 = %Zx\nsqrt = %Zx\na = %Zx\na^2=%Zx\np - a = %Zx\n", *primes[i], *primes_x2[i], sqrt, a, asq, prime_minus_a);
+                gmp_printf(
+                    "prime = %Zx\nprime_x2 = %Zx\nsqrt = %Zx\na = %Zx\na^2=%Zx\np - a = %Zx\n",
+                    *primes[i],
+                    *primes_x2[i],
+                    sqrt,
+                    a,
+                    asq,
+                    prime_minus_a);
                 ret = -1;
                 goto err;
             }
@@ -208,19 +219,20 @@ err:
     mpz_clear(sqrt);
     mpz_clear(tmp);
     return ret;
-        
 }
 
 /**
  * Tests CRT
-*/
-static int test_ibz_crt(int reps, int prime_n) {
+ */
+static int
+test_ibz_crt(int reps, int prime_n)
+{
     gmp_randstate_t state;
     gmp_randinit_mt(state);
     gmp_randseed_ui(state, 1); // set static seed
 
     int ret = 0;
-    
+
     // Initialize GMP variables
     mpz_t prime1, prime2, prime1xprime2, crt, a, b, tst;
     mpz_init(prime1);
@@ -273,11 +285,13 @@ err:
     return ret;
 }
 
-static int test_ibz_constants() {
+static int
+test_ibz_constants()
+{
     int ret = 0;
-    const ibz_t* zero = &ibz_const_zero;
-    const ibz_t* one = &ibz_const_one;
-    const ibz_t* two = &ibz_const_two;
+    const ibz_t *zero = &ibz_const_zero;
+    const ibz_t *one = &ibz_const_one;
+    const ibz_t *two = &ibz_const_two;
 
     mpz_t tmp;
     mpz_init(tmp);
@@ -290,7 +304,9 @@ static int test_ibz_constants() {
     return ret;
 }
 
-static int test_ibz_rand_interval(int reps) {
+static int
+test_ibz_rand_interval(int reps)
+{
     int ret = 0;
     mpz_t low, high, rand;
     mpz_init(low);
@@ -321,7 +337,9 @@ err:
     return ret;
 }
 
-static int test_ibz_rand_interval_i(int reps) {
+static int
+test_ibz_rand_interval_i(int reps)
+{
     int ret = 0;
     int64_t low, high;
     mpz_t rand;
@@ -330,8 +348,10 @@ static int test_ibz_rand_interval_i(int reps) {
     for (int i = 0; i < reps; ++i) {
         randombytes((unsigned char *)&low, sizeof(int64_t));
         randombytes((unsigned char *)&high, sizeof(int64_t));
-        if (low < 0) low = -low;
-        if (high < 0) high = -high;
+        if (low < 0)
+            low = -low;
+        if (high < 0)
+            high = -high;
         if (low > high) {
             int64_t tmp = low;
             low = high;
@@ -351,7 +371,6 @@ static int test_ibz_rand_interval_i(int reps) {
             gmp_printf("rand: %Zx\n", rand);
             goto err;
         }
-
     }
 
 err:
@@ -359,7 +378,9 @@ err:
     return ret;
 }
 
-static int test_ibz_rand_interval_minm_m(int reps) {
+static int
+test_ibz_rand_interval_minm_m(int reps)
+{
     int ret = 0;
     int64_t m;
     mpz_t rand;
@@ -367,7 +388,8 @@ static int test_ibz_rand_interval_minm_m(int reps) {
 
     for (int i = 0; i < reps; ++i) {
         randombytes((unsigned char *)&m, sizeof(int64_t));
-        if (m < 0) m = -m;
+        if (m < 0)
+            m = -m;
         m >>= 1; // less than 64 bit
 
         if (m < 0) {
@@ -382,7 +404,7 @@ static int test_ibz_rand_interval_minm_m(int reps) {
         } else {
             ret = 0;
         }
-        
+
         if (mpz_cmp_si(rand, -m) < 0 || mpz_cmp_si(rand, m) > 0) {
             ret = -1;
             gmp_printf("rand: %Zx\n", rand);
@@ -395,7 +417,9 @@ err:
     return ret;
 }
 
-static int test_ibz_copy_digits() {
+static int
+test_ibz_copy_digits()
+{
     int ret = 0;
     digit_t d1[] = { 0x12345678 };
     digit_t d2[] = { 2, 1 };
@@ -404,8 +428,8 @@ static int test_ibz_copy_digits() {
     const char d1str[] = "12345678";
     const char d2str[] = "10000000000000002";
 
-    char d1_intbig_str[80] = {0};
-    char d2_intbig_str[80] = {0};
+    char d1_intbig_str[80] = { 0 };
+    char d2_intbig_str[80] = { 0 };
 
     mpz_t d1_intbig, d2_intbig;
     mpz_init(d1_intbig);
@@ -415,7 +439,7 @@ static int test_ibz_copy_digits() {
     ibz_copy_digits(&d2_intbig, d2, 2);
 
     gmp_sprintf(d1_intbig_str, "%Zx", d1_intbig);
-    gmp_sprintf(d2_intbig_str, "%Zx", d2_intbig);    
+    gmp_sprintf(d2_intbig_str, "%Zx", d2_intbig);
 
     if (memcmp(d1str, d1_intbig_str, 8)) {
         ret = -1;
@@ -431,7 +455,9 @@ err:
     return ret;
 }
 
-static int test_ibz_to_digits() {
+static int
+test_ibz_to_digits()
+{
     int ret = 0;
     mpz_t d1_intbig, d2_intbig, zero_intbig;
     mpz_t d1_intbig_rec, d2_intbig_rec, zero_intbig_rec, cof, cof2;
@@ -448,8 +474,10 @@ static int test_ibz_to_digits() {
     mpz_init(cof);
     mpz_init(cof2);
 
-    size_t d1_digits = (mpz_sizeinbase(d1_intbig, 2) + sizeof(digit_t)*8 - 1) / (sizeof(digit_t)*8);
-    size_t d2_digits = (mpz_sizeinbase(d2_intbig, 2) + sizeof(digit_t)*8 - 1) / (sizeof(digit_t)*8);
+    size_t d1_digits =
+        (mpz_sizeinbase(d1_intbig, 2) + sizeof(digit_t) * 8 - 1) / (sizeof(digit_t) * 8);
+    size_t d2_digits =
+        (mpz_sizeinbase(d2_intbig, 2) + sizeof(digit_t) * 8 - 1) / (sizeof(digit_t) * 8);
 
     digit_t d1[d1_digits];
     digit_t d2[d2_digits];
@@ -470,8 +498,9 @@ static int test_ibz_to_digits() {
         goto err;
     }
 
-
-    digit_t p_cofactor_for_3g[5] = { 0x0000000000000000,0x74f9dace0d9ec800,0x63a25b437f655001,0x0000000000000019, 0 };
+    digit_t p_cofactor_for_3g[5] = {
+        0x0000000000000000, 0x74f9dace0d9ec800, 0x63a25b437f655001, 0x0000000000000019, 0
+    };
     digit_t p_cofactor_for_3g_rec[5] = { 0 };
     ibz_copy_digits(&cof, p_cofactor_for_3g, 5);
     ibz_printf("cof: %Zx\n", cof);
@@ -484,19 +513,19 @@ static int test_ibz_to_digits() {
         goto err;
     }
 
-    digit_t da[2] = {0,0};
+    digit_t da[2] = { 0, 0 };
 
     mpz_t strval, strval_check;
     mpz_init(strval_check);
     mpz_init_set_str(strval, "1617406613339667622221321", 10);
-    ibz_to_digits(da,&strval);
+    ibz_to_digits(da, &strval);
     ibz_copy_digits(&strval_check, da, 2);
     ibz_printf("strval:       %Zd\nstrval_check: %Zd\n", strval, strval_check);
     if (ibz_cmp(&strval, &strval_check)) {
         ret = -1;
         goto err;
     }
-    
+
 err:
     mpz_clear(d1_intbig);
     mpz_clear(d2_intbig);
@@ -511,41 +540,53 @@ err:
     return ret;
 }
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char *argv[])
+{
     int ret = 0;
     if (argc < 3) {
-        printf("Please enter an integer argument for the number of repetitions, and one for the prime size in bits.\n");
+        printf("Please enter an integer argument for the number of repetitions, and one for the "
+               "prime size in bits.\n");
         exit(1);
     }
     int reps = atoi(argv[1]);
     int prime_n = atoi(argv[2]);
 
     ret = test_ibq_consts();
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_sqrt_mod_p_2p(reps, prime_n);
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_crt(reps, prime_n);
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_constants();
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_rand_interval(reps);
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_rand_interval_i(reps);
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_rand_interval_minm_m(reps);
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_copy_digits();
-    if (ret) goto err;
+    if (ret)
+        goto err;
 
     ret = test_ibz_to_digits();
-    if (ret) goto err;
+    if (ret)
+        goto err;
 err:
     return ret;
 }

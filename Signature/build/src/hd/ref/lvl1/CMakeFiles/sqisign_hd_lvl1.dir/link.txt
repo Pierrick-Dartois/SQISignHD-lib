@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_hd_lvl1.a CMakeFiles/sqisign_hd_lvl1.dir/__/hdx/hd.c.o CMakeFiles/sqisign_hd_lvl1.dir/__/hdx/theta_structure.c.o CMakeFiles/sqisign_hd_lvl1.dir/__/hdx/theta_isogenies.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_hd_lvl1.a

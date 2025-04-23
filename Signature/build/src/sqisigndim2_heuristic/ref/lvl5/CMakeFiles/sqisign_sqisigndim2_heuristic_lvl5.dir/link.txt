@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_sqisigndim2_heuristic_lvl5.a CMakeFiles/sqisign_sqisigndim2_heuristic_lvl5.dir/__/sqisigndim2_heuristicx/sign.c.o CMakeFiles/sqisign_sqisigndim2_heuristic_lvl5.dir/__/sqisigndim2_heuristicx/keygen.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_sqisigndim2_heuristic_lvl5.a

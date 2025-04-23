@@ -1,11 +1,14 @@
 #include "quaternion_tests.h"
 
-//void ibz_mat_howell(int rows, int cols, ibz_t howell[rows][rows+1], const ibz_t mat[rows][cols], ibz_t *mod)
-int quat_test_ibz_mat_howell(){
+// void ibz_mat_howell(int rows, int cols, ibz_t howell[rows][rows+1], const ibz_t mat[rows][cols],
+// ibz_t *mod)
+int
+quat_test_ibz_mat_howell()
+{
     int res = 0;
 
     // Examples from Mulders & Storjohan
-    
+
     ibz_t mod;
     ibz_t stormin[3][3], stormout[3][4], stormtrans[4][4], expected[3][4];
     ibz_init(&mod);
@@ -25,7 +28,7 @@ int quat_test_ibz_mat_howell(){
     ibz_set(&expected[0][2], 4);
     ibz_set(&expected[1][2], 1);
     ibz_set(&expected[2][3], 1);
-    
+
     ibz_set(&stormin[0][0], 4);
     ibz_set(&stormin[1][0], 1);
     ibz_set(&stormin[2][1], 5);
@@ -104,15 +107,15 @@ int quat_test_ibz_mat_howell(){
     ibz_set(&exp[2][5], 1);
     ibz_set(&exp[3][5], 1);
     ibz_set(&exp[4][5], 1);
-    
+
     zeros = ibz_mat_howell(5, 3, out, trans, in, &mod);
     res |= zeros != 2;
-    
+
     for (int i = 0; i < 5; i++)
         for (int j = 0; j < 6; j++)
             res |= ibz_cmp(&out[i][j], &exp[i][j]);
-    
-    if (res != 0){
+
+    if (res != 0) {
         printf("Quaternion unit test ibz_mat_howell failed\n");
     }
     for (int i = 0; i < 5; i++) {
@@ -130,9 +133,11 @@ int quat_test_ibz_mat_howell(){
     return res;
 }
 
-
-//void ibz_mat_right_ker_mod(int rows, int cols, ibz_t ker[cols][rows], const ibz_t mat[rows][cols], ibz_t *mod)
-int quat_test_ibz_mat_right_ker_mod() {
+// void ibz_mat_right_ker_mod(int rows, int cols, ibz_t ker[cols][rows], const ibz_t
+// mat[rows][cols], ibz_t *mod)
+int
+quat_test_ibz_mat_right_ker_mod()
+{
     int res = 0;
 
     // An example computed in Pari
@@ -190,9 +195,8 @@ int quat_test_ibz_mat_right_ker_mod() {
         // self-testing thanks to assertions
         ibz_mat_right_ker_mod(5, 3, ker, mat, &mod);
     }
-             
-    
-    if (res != 0){
+
+    if (res != 0) {
         printf("Quaternion unit test ibz_mat_howell failed\n");
     }
     for (int i = 0; i < 5; i++) {
@@ -209,10 +213,12 @@ int quat_test_ibz_mat_right_ker_mod() {
 }
 
 // run all previous tests
-int quat_test_matkermod(){
+int
+quat_test_matkermod()
+{
     int res = 0;
     printf("\nRunning quaternion tests of matkermod\n");
     res = res | quat_test_ibz_mat_howell();
     res = res | quat_test_ibz_mat_right_ker_mod();
-    return(res);
+    return (res);
 }

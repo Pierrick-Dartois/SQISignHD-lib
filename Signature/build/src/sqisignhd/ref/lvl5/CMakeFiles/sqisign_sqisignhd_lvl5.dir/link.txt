@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_sqisignhd_lvl5.a CMakeFiles/sqisign_sqisignhd_lvl5.dir/__/sqisignhdx/sign.c.o CMakeFiles/sqisign_sqisignhd_lvl5.dir/__/sqisignhdx/keygen.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_sqisignhd_lvl5.a

@@ -2,33 +2,39 @@
 
 // TODO deduplicate with id2ker_odd.c
 
-
-static void random_scalar(ibz_t *k)
+static void
+random_scalar(ibz_t *k)
 {
     ibz_pow(k, &ibz_const_two, 123);
     ibz_rand_interval(k, &ibz_const_zero, k);
 }
 
-
 // defined in src/klpt/ref/generic/tools.c
 int represent_integer(quat_alg_elem_t *gamma, ibz_t *n_gamma, const quat_alg_t *Bpoo);
 
 // I will have norm dividing 2^f, whereas J will have norm dividing T
-static void random_pair_of_equivalent_ideals(quat_left_ideal_t *I, quat_left_ideal_t *J)
+static void
+random_pair_of_equivalent_ideals(quat_left_ideal_t *I, quat_left_ideal_t *J)
 {
     ibz_t normIJ;
     ibz_init(&normIJ);
-    ibz_pow(&normIJ, &ibz_const_two, TORSION_PLUS_EVEN_POWER - (rand() % 5));   // arbitrarily divide out some powers of 2
+    ibz_pow(&normIJ,
+            &ibz_const_two,
+            TORSION_PLUS_EVEN_POWER - (rand() % 5)); // arbitrarily divide out some powers of 2
     ibz_mul(&normIJ, &normIJ, &TORSION_ODD);
 
-// arbitrarily divide out one of the prime powers
-{
-ibz_t rem;
-ibz_init(&rem);
-ibz_div(&normIJ, &rem, &normIJ, &TORSION_ODD_PRIMEPOWERS[rand() % sizeof(TORSION_ODD_PRIMEPOWERS)/sizeof(*TORSION_ODD_PRIMEPOWERS)]);
-assert(ibz_is_zero(&rem));
-ibz_finalize(&rem);
-}
+    // arbitrarily divide out one of the prime powers
+    {
+        ibz_t rem;
+        ibz_init(&rem);
+        ibz_div(&normIJ,
+                &rem,
+                &normIJ,
+                &TORSION_ODD_PRIMEPOWERS[rand() % sizeof(TORSION_ODD_PRIMEPOWERS) /
+                                         sizeof(*TORSION_ODD_PRIMEPOWERS)]);
+        assert(ibz_is_zero(&rem));
+        ibz_finalize(&rem);
+    }
 
     quat_alg_elem_t genI;
     quat_alg_elem_init(&genI);
@@ -38,7 +44,7 @@ ibz_finalize(&rem);
         assert(r);
     }
 
-//   quat_alg_elem_print(&genI);
+    //   quat_alg_elem_print(&genI);
 
     quat_alg_elem_t genJ;
     quat_alg_elem_init(&genJ);
@@ -66,8 +72,8 @@ ibz_finalize(&rem);
     ibz_finalize(&normIJ);
 }
 
-
-int _id2iso_test_id2kerdlogs_even()
+int
+_id2iso_test_id2kerdlogs_even()
 {
     int res = 1;
 
@@ -78,19 +84,19 @@ int _id2iso_test_id2kerdlogs_even()
         random_pair_of_equivalent_ideals(&ideal, &ignored);
         quat_left_ideal_finalize(&ignored);
     }
-//    quat_left_ideal_print(&ideal);
+    //    quat_left_ideal_print(&ideal);
 
     ibz_vec_2_t vec1, vec2;
     ibz_vec_2_init(&vec1);
     ibz_vec_2_init(&vec2);
 
     // call it twice and make sure we get equivalent results
-    void id2iso_ideal_to_kernel_dlogs_even(ibz_vec_2_t *vec, const quat_left_ideal_t *lideal);
+    void id2iso_ideal_to_kernel_dlogs_even(ibz_vec_2_t * vec, const quat_left_ideal_t *lideal);
     id2iso_ideal_to_kernel_dlogs_even(&vec1, &ideal);
     id2iso_ideal_to_kernel_dlogs_even(&vec2, &ideal);
 
-//    ibz_printf("vec1 = (%Zd, %Zd)\n", &vec1[0], &vec1[1]);
-//    ibz_printf("vec2 = (%Zd, %Zd)\n", &vec2[0], &vec2[1]);
+    //    ibz_printf("vec1 = (%Zd, %Zd)\n", &vec1[0], &vec1[1]);
+    //    ibz_printf("vec2 = (%Zd, %Zd)\n", &vec2[0], &vec2[1]);
 
     ibz_t lhs, rhs;
     ibz_init(&lhs);
@@ -99,8 +105,8 @@ int _id2iso_test_id2kerdlogs_even()
     ibz_mul(&rhs, &vec2[0], &vec1[1]);
     ibz_mod(&lhs, &lhs, &ideal.norm);
     ibz_mod(&rhs, &rhs, &ideal.norm);
-//   ibz_printf("lhs = %Zd\n", &lhs);
-//   ibz_printf("rhs = %Zd\n", &rhs);
+    //   ibz_printf("lhs = %Zd\n", &lhs);
+    //   ibz_printf("rhs = %Zd\n", &rhs);
     res &= !ibz_cmp(&lhs, &rhs);
     ibz_finalize(&lhs);
     ibz_finalize(&rhs);
@@ -115,7 +121,8 @@ int _id2iso_test_id2kerdlogs_even()
 
 #include <endomorphism_action.h>
 
-int _id2iso_test_id2ker_even()
+int
+_id2iso_test_id2ker_even()
 {
     int res = 1;
 
@@ -128,8 +135,8 @@ int _id2iso_test_id2ker_even()
 
         random_pair_of_equivalent_ideals(&ideal1, &ideal2);
 
-//        quat_left_ideal_print(&ideal1);
-//        quat_left_ideal_print(&ideal2);
+        //        quat_left_ideal_print(&ideal1);
+        //        quat_left_ideal_print(&ideal2);
 
         id2iso_ideal_to_isogeny_even(&isog1, &ideal1);
         id2iso_ideal_to_isogeny_odd(&isog2, &CURVE_E0, &BASIS_ODD_PLUS, &BASIS_ODD_MINUS, &ideal2);
@@ -140,7 +147,8 @@ int _id2iso_test_id2ker_even()
                 printf("norm of ideal1 is >1 but kernel is trivial; something is wrong!\n");
                 res &= 0;
             }
-            if (!ibz_is_one(&ideal2.norm) && fp2_is_zero(&isog2.ker_plus.z) && fp2_is_zero(&isog2.ker_minus.z)) {
+            if (!ibz_is_one(&ideal2.norm) && fp2_is_zero(&isog2.ker_plus.z) &&
+                fp2_is_zero(&isog2.ker_minus.z)) {
                 printf("norm of ideal2 is >1 but kernel is trivial; something is wrong!\n");
                 res &= 0;
             }
@@ -149,10 +157,14 @@ int _id2iso_test_id2ker_even()
         quat_left_ideal_finalize(&ideal1);
         quat_left_ideal_finalize(&ideal2);
     }
-//   printf("2-isogeny length: %lu\n", (unsigned long) isog1.length);
+    //   printf("2-isogeny length: %lu\n", (unsigned long) isog1.length);
 
     {
         ec_curve_t curve1, curve2;
+
+        ec_curve_init(&curve1);
+        ec_curve_init(&curve2);
+
         ec_eval_even(&curve1, &isog1, NULL, 0);
         ec_eval_odd(&curve2, &isog2, NULL, 0);
 
@@ -171,8 +183,9 @@ int _id2iso_test_id2ker_even()
     return res;
 }
 
-
-int id2iso_test_id2ker_even() {
+int
+id2iso_test_id2ker_even()
+{
     int res = 1;
     printf("\n \nRunning id2iso tests for ideal_to_kernel_even() \n \n");
 

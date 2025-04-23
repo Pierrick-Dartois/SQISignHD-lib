@@ -1,6 +1,8 @@
 #include <string.h>
 
-int sqisign_keypair(unsigned char *pk, unsigned char *sk) { 
+int
+sqisign_keypair(unsigned char *pk, unsigned char *sk)
+{
     int ret = 0;
     // secret_key_t skt;
     // public_key_t pkt = { 0 };
@@ -14,9 +16,13 @@ int sqisign_keypair(unsigned char *pk, unsigned char *sk) {
     return ret;
 }
 
-int sqisign_sign(unsigned char *sm,
-              unsigned long long *smlen, const unsigned char *m,
-              unsigned long long mlen, const unsigned char *sk) {
+int
+sqisign_sign(unsigned char *sm,
+             unsigned long long *smlen,
+             const unsigned char *m,
+             unsigned long long mlen,
+             const unsigned char *sk)
+{
     int ret = 0;
     // secret_key_t skt;
     // public_key_t pkt = { 0 };
@@ -36,9 +42,13 @@ int sqisign_sign(unsigned char *sm,
     return ret;
 }
 
-int sqisign_open(unsigned char *m,
-              unsigned long long *mlen, const unsigned char *sm,
-              unsigned long long smlen, const unsigned char *pk) { 
+int
+sqisign_open(unsigned char *m,
+             unsigned long long *mlen,
+             const unsigned char *sm,
+             unsigned long long smlen,
+             const unsigned char *pk)
+{
     int ret = 0;
     // public_key_t pkt = { 0 };
     // signature_t sigt;
@@ -58,9 +68,13 @@ int sqisign_open(unsigned char *m,
     return ret;
 }
 
-int sqisign_verify(const unsigned char *m,
-                unsigned long long mlen, const unsigned char *sig,
-                unsigned long long siglen, const unsigned char *pk) {
+int
+sqisign_verify(const unsigned char *m,
+               unsigned long long mlen,
+               const unsigned char *sig,
+               unsigned long long siglen,
+               const unsigned char *pk)
+{
 
     int ret = 0;
     // public_key_t pkt = { 0 };
@@ -75,4 +89,3 @@ int sqisign_verify(const unsigned char *m,
     // signature_finalize(&sigt);
     return ret;
 }
-

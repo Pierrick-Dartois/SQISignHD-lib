@@ -13,6 +13,7 @@ negl = 2**-64   #TODO optimize
 ################################################################
 
 logp = ceil(log(p, 2))
+loglogp = ceil(log(logp,2))
 logT = ceil(log(Tpls*Tmin, 2))
 tors2val = (p+1).valuation(2)
 
@@ -81,6 +82,17 @@ defs['SQISIGN_random_length'] = 0
 defs['SQISIGN_signing_total_length'] = defs['KLPT_signing_klpt_length']
 defs['SQISIGN_signing_length'] = ZZ(defs['SQISIGN_signing_total_length'] / tors2val)
 defs['SQISIGN_keygen_length'] = ZZ(defs['KLPT_keygen_length'] / tors2val)
+
+# dim2 signature constants 
+
+defs['SQIsign2D_small_fixed_deg_exp'] = ceil(tors2val/2) + 26
+defs['SQIsign2D_response_heuristic_bound'] = ceil(logp/2)
+defs['SQIsign2D_heuristic_challenge_length'] = ceil(tors2val - defs['SQIsign2D_response_heuristic_bound'])
+defs['SQIsign2D_heuristic_challenge_hash_iteration'] = max(1,2**(ceil(logp/2) - defs['SQIsign2D_heuristic_challenge_length'])) 
+defs['SQIsign2D_backtracking_bound']=2*loglogp
+defs['SQIsign2D_response_length'] = ceil(logp/2) + 2 
+
+
 
 # prime data for Cornacchia
 

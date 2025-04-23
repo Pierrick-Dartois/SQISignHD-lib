@@ -1,12 +1,15 @@
 #include "id2iso_tests.h"
 
-static void random_scalar(ibz_t *k)
+static void
+random_scalar(ibz_t *k)
 {
     ibz_pow(k, &ibz_const_two, 123);
     ibz_rand_interval(k, &ibz_const_zero, k);
 }
 
-int _id2iso_test_ker2id() {
+int
+_id2iso_test_ker2id()
+{
     int res = 1;
 
     ibz_vec_2_t vec2, vec3;
@@ -32,22 +35,23 @@ int _id2iso_test_ker2id() {
         ibz_finalize(&three);
         ibz_finalize(&gcd);
     }
-//    ibz_printf("vec2 = (%Zd,%Zd)\n", &vec2[0], &vec2[1]);
-//    ibz_printf("vec3 = (%Zd,%Zd)\n", &vec3[0], &vec3[1]);
+    //    ibz_printf("vec2 = (%Zd,%Zd)\n", &vec2[0], &vec2[1]);
+    //    ibz_printf("vec3 = (%Zd,%Zd)\n", &vec3[0], &vec3[1]);
 
     quat_left_ideal_t I;
     quat_left_ideal_init(&I);
     id2iso_kernel_dlogs_to_ideal(&I, &vec2, &vec3);
-//    quat_left_ideal_print(&I);
+    //    quat_left_ideal_print(&I);
     quat_left_ideal_finalize(&I);
 
-    //TODO FIXME this really only tests that the function doesn't crash
+    // TODO FIXME this really only tests that the function doesn't crash
 
     return res;
 }
 
-
-int id2iso_test_ker2id() {
+int
+id2iso_test_ker2id()
+{
     int res = 1;
     printf("\n \nRunning id2iso tests for kernel_dlogs_to_ideal() \n \n");
 

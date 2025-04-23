@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_gf_lvl1.a CMakeFiles/sqisign_gf_lvl1.dir/__/gfx/fp2.c.o CMakeFiles/sqisign_gf_lvl1.dir/__/gfx/fp.c.o CMakeFiles/sqisign_gf_lvl1.dir/__/gfx/mp.c.o CMakeFiles/sqisign_gf_lvl1.dir/fp_p5248.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_gf_lvl1.a

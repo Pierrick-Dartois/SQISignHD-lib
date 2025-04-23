@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_common_sys.a CMakeFiles/sqisign_common_sys.dir/randombytes_system.c.o CMakeFiles/sqisign_common_sys.dir/aes_c.c.o CMakeFiles/sqisign_common_sys.dir/fips202.c.o CMakeFiles/sqisign_common_sys.dir/mem.c.o CMakeFiles/sqisign_common_sys.dir/tools.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_common_sys.a

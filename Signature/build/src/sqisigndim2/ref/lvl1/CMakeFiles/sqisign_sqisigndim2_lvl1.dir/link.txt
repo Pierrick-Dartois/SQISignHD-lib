@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_sqisigndim2_lvl1.a CMakeFiles/sqisign_sqisigndim2_lvl1.dir/__/sqisigndim2x/sign.c.o CMakeFiles/sqisign_sqisigndim2_lvl1.dir/__/sqisigndim2x/keygen.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_sqisigndim2_lvl1.a
