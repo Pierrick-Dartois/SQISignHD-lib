@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/gf/ref/lvl5/test//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/gf/ref/lvl5/test//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/clean
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/rule
 .PHONY : src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ sqisign_test_gf_lvl5_fp: src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp
 
 # fast build rule for target.
 sqisign_test_gf_lvl5_fp/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build
 .PHONY : sqisign_test_gf_lvl5_fp/fast
 
 # Convenience name for target.
 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/rule
 .PHONY : src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/rule
 
 # Convenience name for target.
@@ -151,7 +151,7 @@ sqisign_test_gf_lvl5_fp2: src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_f
 
 # fast build rule for target.
 sqisign_test_gf_lvl5_fp2/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build
 .PHONY : sqisign_test_gf_lvl5_fp2/fast
 
 __/__/gfx/test/sha3.o: __/__/gfx/test/sha3.c.o
@@ -159,8 +159,8 @@ __/__/gfx/test/sha3.o: __/__/gfx/test/sha3.c.o
 
 # target to build an object file
 __/__/gfx/test/sha3.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.o
 .PHONY : __/__/gfx/test/sha3.c.o
 
 __/__/gfx/test/sha3.i: __/__/gfx/test/sha3.c.i
@@ -168,8 +168,8 @@ __/__/gfx/test/sha3.i: __/__/gfx/test/sha3.c.i
 
 # target to preprocess a source file
 __/__/gfx/test/sha3.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.i
 .PHONY : __/__/gfx/test/sha3.c.i
 
 __/__/gfx/test/sha3.s: __/__/gfx/test/sha3.c.s
@@ -177,8 +177,8 @@ __/__/gfx/test/sha3.s: __/__/gfx/test/sha3.c.s
 
 # target to generate assembly for a file
 __/__/gfx/test/sha3.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/sha3.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/sha3.c.s
 .PHONY : __/__/gfx/test/sha3.c.s
 
 __/__/gfx/test/test_fp.o: __/__/gfx/test/test_fp.c.o
@@ -186,7 +186,7 @@ __/__/gfx/test/test_fp.o: __/__/gfx/test/test_fp.c.o
 
 # target to build an object file
 __/__/gfx/test/test_fp.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.o
 .PHONY : __/__/gfx/test/test_fp.c.o
 
 __/__/gfx/test/test_fp.i: __/__/gfx/test/test_fp.c.i
@@ -194,7 +194,7 @@ __/__/gfx/test/test_fp.i: __/__/gfx/test/test_fp.c.i
 
 # target to preprocess a source file
 __/__/gfx/test/test_fp.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.i
 .PHONY : __/__/gfx/test/test_fp.c.i
 
 __/__/gfx/test/test_fp.s: __/__/gfx/test/test_fp.c.s
@@ -202,7 +202,7 @@ __/__/gfx/test/test_fp.s: __/__/gfx/test/test_fp.c.s
 
 # target to generate assembly for a file
 __/__/gfx/test/test_fp.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_fp.c.s
 .PHONY : __/__/gfx/test/test_fp.c.s
 
 __/__/gfx/test/test_fp2.o: __/__/gfx/test/test_fp2.c.o
@@ -210,7 +210,7 @@ __/__/gfx/test/test_fp2.o: __/__/gfx/test/test_fp2.c.o
 
 # target to build an object file
 __/__/gfx/test/test_fp2.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.o
 .PHONY : __/__/gfx/test/test_fp2.c.o
 
 __/__/gfx/test/test_fp2.i: __/__/gfx/test/test_fp2.c.i
@@ -218,7 +218,7 @@ __/__/gfx/test/test_fp2.i: __/__/gfx/test/test_fp2.c.i
 
 # target to preprocess a source file
 __/__/gfx/test/test_fp2.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.i
 .PHONY : __/__/gfx/test/test_fp2.c.i
 
 __/__/gfx/test/test_fp2.s: __/__/gfx/test/test_fp2.c.s
@@ -226,7 +226,7 @@ __/__/gfx/test/test_fp2.s: __/__/gfx/test/test_fp2.c.s
 
 # target to generate assembly for a file
 __/__/gfx/test/test_fp2.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_fp2.c.s
 .PHONY : __/__/gfx/test/test_fp2.c.s
 
 __/__/gfx/test/test_utils.o: __/__/gfx/test/test_utils.c.o
@@ -234,8 +234,8 @@ __/__/gfx/test/test_utils.o: __/__/gfx/test/test_utils.c.o
 
 # target to build an object file
 __/__/gfx/test/test_utils.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.o
 .PHONY : __/__/gfx/test/test_utils.c.o
 
 __/__/gfx/test/test_utils.i: __/__/gfx/test/test_utils.c.i
@@ -243,8 +243,8 @@ __/__/gfx/test/test_utils.i: __/__/gfx/test/test_utils.c.i
 
 # target to preprocess a source file
 __/__/gfx/test/test_utils.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.i
 .PHONY : __/__/gfx/test/test_utils.c.i
 
 __/__/gfx/test/test_utils.s: __/__/gfx/test/test_utils.c.s
@@ -252,8 +252,8 @@ __/__/gfx/test/test_utils.s: __/__/gfx/test/test_utils.c.s
 
 # target to generate assembly for a file
 __/__/gfx/test/test_utils.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp.dir/__/__/gfx/test/test_utils.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/build.make src/gf/ref/lvl5/test/CMakeFiles/sqisign_test_gf_lvl5_fp2.dir/__/__/gfx/test/test_utils.c.s
 .PHONY : __/__/gfx/test/test_utils.c.s
 
 # Help Target
@@ -290,6 +290,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

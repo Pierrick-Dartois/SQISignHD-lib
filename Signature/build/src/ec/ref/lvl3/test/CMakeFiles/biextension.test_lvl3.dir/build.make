@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/depend.make
@@ -70,18 +70,18 @@ include src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/progress.make
 include src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/flags.make
 
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o: src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/flags.make
-src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c
+src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o: src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o -MF CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o.d -o CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o -MF CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o.d -o CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c
 
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c > CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c > CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i
 
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c -o CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c -o CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s
 
 # Object files for target biextension.test_lvl3
 biextension_test_lvl3_OBJECTS = \
@@ -100,18 +100,18 @@ src/ec/ref/lvl3/test/biextension.test_lvl3: src/precomp/ref/lvl3/libsqisign_prec
 src/ec/ref/lvl3/test/biextension.test_lvl3: src/gf/ref/lvl3/libsqisign_gf_lvl3.a
 src/ec/ref/lvl3/test/biextension.test_lvl3: src/intbig/ref/generic/libsqisign_intbig_generic.a
 src/ec/ref/lvl3/test/biextension.test_lvl3: src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable biextension.test_lvl3"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/biextension.test_lvl3.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable biextension.test_lvl3"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/biextension.test_lvl3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build: src/ec/ref/lvl3/test/biextension.test_lvl3
 .PHONY : src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build
 
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test && $(CMAKE_COMMAND) -P CMakeFiles/biextension.test_lvl3.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test && $(CMAKE_COMMAND) -P CMakeFiles/biextension.test_lvl3.dir/cmake_clean.cmake
 .PHONY : src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/clean
 
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/lvl3/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/lvl3/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/depend
 

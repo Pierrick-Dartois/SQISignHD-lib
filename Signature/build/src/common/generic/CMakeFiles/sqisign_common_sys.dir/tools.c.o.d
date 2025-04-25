@@ -1,5 +1,5 @@
 src/common/generic/CMakeFiles/sqisign_common_sys.dir/tools.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/tools.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/tools.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/cdefs.h \

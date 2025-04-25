@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/depend.make
@@ -70,46 +70,46 @@ include src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/progress.make
 include src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/flags.make
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/flags.make
-src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/hd.c
+src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/hd.c
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/hd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/hd.c
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/hd.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/hd.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.i
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/hd.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/hd.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/hd.c.s
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/flags.make
-src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c
+src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.i
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_structure.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_structure.c.s
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/flags.make
-src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c
+src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o -MF CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o.d -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c > CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.i
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/theta_isogenies.c -o CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.s
 
 # Object files for target sqisign_hd_lvl5
 sqisign_hd_lvl5_OBJECTS = \
@@ -125,19 +125,19 @@ src/hd/ref/lvl5/libsqisign_hd_lvl5.a: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5
 src/hd/ref/lvl5/libsqisign_hd_lvl5.a: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/__/hdx/theta_isogenies.c.o
 src/hd/ref/lvl5/libsqisign_hd_lvl5.a: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/build.make
 src/hd/ref/lvl5/libsqisign_hd_lvl5.a: src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libsqisign_hd_lvl5.a"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_hd_lvl5.dir/cmake_clean_target.cmake
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_hd_lvl5.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libsqisign_hd_lvl5.a"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_hd_lvl5.dir/cmake_clean_target.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_hd_lvl5.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/build: src/hd/ref/lvl5/libsqisign_hd_lvl5.a
 .PHONY : src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/build
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_hd_lvl5.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_hd_lvl5.dir/cmake_clean.cmake
 .PHONY : src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/clean
 
 src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/lvl5 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/lvl5 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/hd/ref/lvl5/CMakeFiles/sqisign_hd_lvl5.dir/depend
 

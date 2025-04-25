@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
-BuildDirectory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+SourceDirectory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+BuildDirectory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/Applications/CMake.app/Contents/bin/cmake" "/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature"
+ConfigureCommand: "/Applications/CMake.app/Contents/bin/cmake" "/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature"
 MakeCommand: /Applications/CMake.app/Contents/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 

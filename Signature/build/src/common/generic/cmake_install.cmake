@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic
+# Install script for directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl1.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl1.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl1.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl1.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ sqisign_lvl1: src/CMakeFiles/sqisign_lvl1.dir/rule
 
 # fast build rule for target.
 sqisign_lvl1/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/build
 .PHONY : sqisign_lvl1/fast
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl1_test.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl1_test.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl1_test.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl1_test.dir/rule
 
 # Convenience name for target.
@@ -151,12 +151,12 @@ sqisign_lvl1_test: src/CMakeFiles/sqisign_lvl1_test.dir/rule
 
 # fast build rule for target.
 sqisign_lvl1_test/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/build
 .PHONY : sqisign_lvl1_test/fast
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl3.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl3.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl3.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl3.dir/rule
 
 # Convenience name for target.
@@ -165,12 +165,12 @@ sqisign_lvl3: src/CMakeFiles/sqisign_lvl3.dir/rule
 
 # fast build rule for target.
 sqisign_lvl3/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/build
 .PHONY : sqisign_lvl3/fast
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl3_test.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl3_test.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl3_test.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl3_test.dir/rule
 
 # Convenience name for target.
@@ -179,12 +179,12 @@ sqisign_lvl3_test: src/CMakeFiles/sqisign_lvl3_test.dir/rule
 
 # fast build rule for target.
 sqisign_lvl3_test/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/build
 .PHONY : sqisign_lvl3_test/fast
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl5.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl5.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl5.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl5.dir/rule
 
 # Convenience name for target.
@@ -193,12 +193,12 @@ sqisign_lvl5: src/CMakeFiles/sqisign_lvl5.dir/rule
 
 # fast build rule for target.
 sqisign_lvl5/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/build
 .PHONY : sqisign_lvl5/fast
 
 # Convenience name for target.
 src/CMakeFiles/sqisign_lvl5_test.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl5_test.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/sqisign_lvl5_test.dir/rule
 .PHONY : src/CMakeFiles/sqisign_lvl5_test.dir/rule
 
 # Convenience name for target.
@@ -207,7 +207,7 @@ sqisign_lvl5_test: src/CMakeFiles/sqisign_lvl5_test.dir/rule
 
 # fast build rule for target.
 sqisign_lvl5_test/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/build
 .PHONY : sqisign_lvl5_test/fast
 
 sqisign.o: sqisign.c.o
@@ -215,12 +215,12 @@ sqisign.o: sqisign.c.o
 
 # target to build an object file
 sqisign.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.o
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.o
 .PHONY : sqisign.c.o
 
 sqisign.i: sqisign.c.i
@@ -228,12 +228,12 @@ sqisign.i: sqisign.c.i
 
 # target to preprocess a source file
 sqisign.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.i
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.i
 .PHONY : sqisign.c.i
 
 sqisign.s: sqisign.c.s
@@ -241,12 +241,12 @@ sqisign.s: sqisign.c.s
 
 # target to generate assembly for a file
 sqisign.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.s
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1.dir/build.make src/CMakeFiles/sqisign_lvl1.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl1_test.dir/build.make src/CMakeFiles/sqisign_lvl1_test.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3.dir/build.make src/CMakeFiles/sqisign_lvl3.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl3_test.dir/build.make src/CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5.dir/build.make src/CMakeFiles/sqisign_lvl5.dir/sqisign.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/sqisign_lvl5_test.dir/build.make src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.s
 .PHONY : sqisign.c.s
 
 # Help Target
@@ -278,6 +278,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

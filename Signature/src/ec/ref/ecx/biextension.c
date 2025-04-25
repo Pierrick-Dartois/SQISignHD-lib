@@ -415,7 +415,7 @@ fp2_dlog_2e(digit_t *scal, const fp2_t *f, const fp2_t *g, int e)
     return ok;
 }
 
-// compute the decomputation of basis on the basis PQ
+// compute the decomposition of basis on the basis PQ
 // note that basis might not actually be a basis (the order might me smaller than 2^e)
 void
 ec_dlog_2_weil_old(digit_t *scalarP1,
@@ -481,6 +481,58 @@ ec_dlog_2_weil_old(digit_t *scalarP1,
     assert(ec_is_equal(&test_comput, &basis->P));
     ec_biscalar_mul(&test_comput, curve, scalarP2, scalarQ2, PQ);
     assert(ec_is_equal(&test_comput, &basis->Q));
+#endif
+}
+
+// compute the decomposition of R in the basis PQ
+void
+ec_dlog_2_weil_single_point(digit_t *scalarP,
+                   digit_t *scalarQ,
+                   ec_basis_t *PQ,
+                   ec_point_t *R,
+                   ec_curve_t *curve,
+                   int e)
+{
+
+    assert(test_point_order_twof(&PQ->Q, curve, e));
+
+    fp2_t w0, w;
+    ec_point_t AC, A24;
+    ec_point_t PmR, RmQ;
+    jac_point_t xyP, xyQ, xyR, temp;
+
+    // we start by computing the different weil pairings
+
+    // precomputing the correct curve data
+    fp2_copy(&AC.x, &curve->A);
+    fp2_copy(&AC.z, &curve->C);
+    A24_from_AC(&A24, &AC);
+
+    // lifting the two basis points
+    lift_basis(&xyP, &xyQ, PQ, curve);
+    lift_point(&xyR, R, curve);
+
+    // computation of the differences
+    jac_neg(&temp, &xyR);
+    ADD(&temp, &temp, &xyP, curve);
+    jac_to_xz(&PmR, &temp);
+    jac_neg(&temp, &xyQ);
+    ADD(&temp, &temp, &xyR, curve);
+    jac_to_xz(&RmQ, &temp);
+
+    // computation of the reference weil pairing
+    weil(&w0, e, &PQ->P, &PQ->Q, &PQ->PmQ, &A24);
+    // e(P,R) = w0^scalarQ
+    weil(&w, e, &PQ->P, R, &PmR, &A24);
+    fp2_dlog_2e(scalarQ, &w, &w0, e);
+    // e(R,Q) = w0^scalarP
+    weil(&w, e, R, &PQ->Q, &RmQ, &A24);
+    fp2_dlog_2e(scalarP, &w, &w0, e);
+
+#ifndef NDEBUG
+    ec_point_t test_comput;
+    ec_biscalar_mul(&test_comput, curve, scalarP, scalarQ, PQ);
+    assert(ec_is_equal(&test_comput, R));
 #endif
 }
 

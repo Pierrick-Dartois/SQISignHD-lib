@@ -4,7 +4,7 @@
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 C_DEFINES = -DRADIX_64 -DTARGET_AMD64 -DTARGET_OS_UNIX
 
-C_INCLUDES = -I/usr/local/include -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/lvl3/common -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/lvl3/include -I/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/include
+C_INCLUDES = -I/usr/local/include -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/lvl3/common -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/lvl3/include -I/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/include
 
 C_FLAGS =   -O3 -std=c99 -Wno-error=strict-prototypes -fvisibility=hidden -funroll-loops -Wno-error=implicit-function-declaration -Wno-error=attributes -std=gnu99 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7
 

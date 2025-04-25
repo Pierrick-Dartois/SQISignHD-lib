@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/depend.make
@@ -70,144 +70,144 @@ include src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/pro
 include src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/algebra.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/algebra.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/algebra.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/algebra.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/algebra.c > CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/algebra.c > CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/algebra.c -o CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/algebra.c -o CMakeFiles/sqisign_quaternion_generic.dir/algebra.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/ideal.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/ideal.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/ideal.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/ideal.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/ideal.c > CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/ideal.c > CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/ideal.c -o CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/ideal.c -o CMakeFiles/sqisign_quaternion_generic.dir/ideal.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim4.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim4.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim4.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim4.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim4.c > CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim4.c > CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim4.c -o CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim4.c -o CMakeFiles/sqisign_quaternion_generic.dir/dim4.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim2.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim2.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim2.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim2.c > CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim2.c > CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/dim2.c -o CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/dim2.c -o CMakeFiles/sqisign_quaternion_generic.dir/dim2.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/integers.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/integers.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/integers.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/integers.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/integers.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/integers.c > CMakeFiles/sqisign_quaternion_generic.dir/integers.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/integers.c > CMakeFiles/sqisign_quaternion_generic.dir/integers.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/integers.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/integers.c -o CMakeFiles/sqisign_quaternion_generic.dir/integers.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/integers.c -o CMakeFiles/sqisign_quaternion_generic.dir/integers.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lattice.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lattice.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lattice.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lattice.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lattice.c > CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lattice.c > CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lattice.c -o CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lattice.c -o CMakeFiles/sqisign_quaternion_generic.dir/lattice.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/finit.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/finit.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/finit.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/finit.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/finit.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/finit.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/finit.c > CMakeFiles/sqisign_quaternion_generic.dir/finit.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/finit.c > CMakeFiles/sqisign_quaternion_generic.dir/finit.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/finit.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/finit.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/finit.c -o CMakeFiles/sqisign_quaternion_generic.dir/finit.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/finit.c -o CMakeFiles/sqisign_quaternion_generic.dir/finit.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/printer.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/printer.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/printer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/printer.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/printer.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/printer.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/printer.c > CMakeFiles/sqisign_quaternion_generic.dir/printer.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/printer.c > CMakeFiles/sqisign_quaternion_generic.dir/printer.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/printer.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/printer.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/printer.c -o CMakeFiles/sqisign_quaternion_generic.dir/printer.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/printer.c -o CMakeFiles/sqisign_quaternion_generic.dir/printer.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lll.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lll.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lll.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/lll.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lll.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/lll.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lll.c > CMakeFiles/sqisign_quaternion_generic.dir/lll.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lll.c > CMakeFiles/sqisign_quaternion_generic.dir/lll.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/lll.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/lll.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/lll.c -o CMakeFiles/sqisign_quaternion_generic.dir/lll.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/lll.c -o CMakeFiles/sqisign_quaternion_generic.dir/lll.c.s
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/flags.make
-src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c
+src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o -MF CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o.d -o CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c > CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c > CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.i
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c -o CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/matkermod.c -o CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.s
 
 # Object files for target sqisign_quaternion_generic
 sqisign_quaternion_generic_OBJECTS = \
@@ -237,19 +237,19 @@ src/quaternion/ref/generic/libsqisign_quaternion_generic.a: src/quaternion/ref/g
 src/quaternion/ref/generic/libsqisign_quaternion_generic.a: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/matkermod.c.o
 src/quaternion/ref/generic/libsqisign_quaternion_generic.a: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/build.make
 src/quaternion/ref/generic/libsqisign_quaternion_generic.a: src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C static library libsqisign_quaternion_generic.a"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_quaternion_generic.dir/cmake_clean_target.cmake
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_quaternion_generic.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C static library libsqisign_quaternion_generic.a"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_quaternion_generic.dir/cmake_clean_target.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_quaternion_generic.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/build: src/quaternion/ref/generic/libsqisign_quaternion_generic.a
 .PHONY : src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/build
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_quaternion_generic.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_quaternion_generic.dir/cmake_clean.cmake
 .PHONY : src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/clean
 
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/depend
 

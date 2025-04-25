@@ -1,5 +1,5 @@
 src/gf/ref/lvl3/test/CMakeFiles/sqisign_test_gf_lvl3_fp2.dir/__/__/gfx/test/sha3.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/gfx/test/sha3.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/gfx/test/sha3.c \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \
@@ -42,4 +42,4 @@ src/gf/ref/lvl3/test/CMakeFiles/sqisign_test_gf_lvl3_fp2.dir/__/__/gfx/test/sha3
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/gfx/test/sha3.h
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/gfx/test/sha3.h

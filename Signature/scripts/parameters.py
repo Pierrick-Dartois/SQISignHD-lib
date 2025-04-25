@@ -29,8 +29,12 @@ Tmin = prod(l**e for l,e in zip(Lmin,Emin))
 
 Dcom = (Tpls*Tmin).prime_to_m_part(2)
 Dchall = 2**((p+1).valuation(2))
-N_sk_com = previous_prime(2**(4*(32*lvl+96)))
+lamb = 32*lvl+96
+N_sk = previous_prime(2**(4*lamb))
+e_resp_hd = lamb+ceil(log(2*lamb)/log(2))
+e_chal_hd = lamb
+e_sig_pt_order = ceil(e_resp_hd/2)+2 
 # prod(l**(p+1).valuation(l) for l in (2))
 
-__all__ = ['lvl', 'p', 'B', 'f', 'exp3', 'Tpls', 'Tmin', 'Dcom', 'Dchall', 'N_sk_com']
+__all__ = ['lvl', 'p', 'B', 'f', 'exp3', 'Tpls', 'Tmin', 'Dcom', 'Dchall', 'N_sk','e_resp_hd','e_chal_hd','e_sig_pt_order']
 

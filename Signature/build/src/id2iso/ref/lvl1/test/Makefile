@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/id2iso/ref/lvl1/test//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/id2iso/ref/lvl1/test//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/clean
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/rule
 .PHONY : src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ sqisign_test_id2iso_lvl1: src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2is
 
 # fast build rule for target.
 sqisign_test_id2iso_lvl1/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build
 .PHONY : sqisign_test_id2iso_lvl1/fast
 
 __/__/id2isox/test/id2ker_even.o: __/__/id2isox/test/id2ker_even.c.o
@@ -145,7 +145,7 @@ __/__/id2isox/test/id2ker_even.o: __/__/id2isox/test/id2ker_even.c.o
 
 # target to build an object file
 __/__/id2isox/test/id2ker_even.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.o
 .PHONY : __/__/id2isox/test/id2ker_even.c.o
 
 __/__/id2isox/test/id2ker_even.i: __/__/id2isox/test/id2ker_even.c.i
@@ -153,7 +153,7 @@ __/__/id2isox/test/id2ker_even.i: __/__/id2isox/test/id2ker_even.c.i
 
 # target to preprocess a source file
 __/__/id2isox/test/id2ker_even.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.i
 .PHONY : __/__/id2isox/test/id2ker_even.c.i
 
 __/__/id2isox/test/id2ker_even.s: __/__/id2isox/test/id2ker_even.c.s
@@ -161,7 +161,7 @@ __/__/id2isox/test/id2ker_even.s: __/__/id2isox/test/id2ker_even.c.s
 
 # target to generate assembly for a file
 __/__/id2isox/test/id2ker_even.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_even.c.s
 .PHONY : __/__/id2isox/test/id2ker_even.c.s
 
 __/__/id2isox/test/id2ker_odd.o: __/__/id2isox/test/id2ker_odd.c.o
@@ -169,7 +169,7 @@ __/__/id2isox/test/id2ker_odd.o: __/__/id2isox/test/id2ker_odd.c.o
 
 # target to build an object file
 __/__/id2isox/test/id2ker_odd.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.o
 .PHONY : __/__/id2isox/test/id2ker_odd.c.o
 
 __/__/id2isox/test/id2ker_odd.i: __/__/id2isox/test/id2ker_odd.c.i
@@ -177,7 +177,7 @@ __/__/id2isox/test/id2ker_odd.i: __/__/id2isox/test/id2ker_odd.c.i
 
 # target to preprocess a source file
 __/__/id2isox/test/id2ker_odd.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.i
 .PHONY : __/__/id2isox/test/id2ker_odd.c.i
 
 __/__/id2isox/test/id2ker_odd.s: __/__/id2isox/test/id2ker_odd.c.s
@@ -185,7 +185,7 @@ __/__/id2isox/test/id2ker_odd.s: __/__/id2isox/test/id2ker_odd.c.s
 
 # target to generate assembly for a file
 __/__/id2isox/test/id2ker_odd.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/id2ker_odd.c.s
 .PHONY : __/__/id2isox/test/id2ker_odd.c.s
 
 __/__/id2isox/test/ker2id.o: __/__/id2isox/test/ker2id.c.o
@@ -193,7 +193,7 @@ __/__/id2isox/test/ker2id.o: __/__/id2isox/test/ker2id.c.o
 
 # target to build an object file
 __/__/id2isox/test/ker2id.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.o
 .PHONY : __/__/id2isox/test/ker2id.c.o
 
 __/__/id2isox/test/ker2id.i: __/__/id2isox/test/ker2id.c.i
@@ -201,7 +201,7 @@ __/__/id2isox/test/ker2id.i: __/__/id2isox/test/ker2id.c.i
 
 # target to preprocess a source file
 __/__/id2isox/test/ker2id.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.i
 .PHONY : __/__/id2isox/test/ker2id.c.i
 
 __/__/id2isox/test/ker2id.s: __/__/id2isox/test/ker2id.c.s
@@ -209,7 +209,7 @@ __/__/id2isox/test/ker2id.s: __/__/id2isox/test/ker2id.c.s
 
 # target to generate assembly for a file
 __/__/id2isox/test/ker2id.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/ker2id.c.s
 .PHONY : __/__/id2isox/test/ker2id.c.s
 
 __/__/id2isox/test/test_id2iso.o: __/__/id2isox/test/test_id2iso.c.o
@@ -217,7 +217,7 @@ __/__/id2isox/test/test_id2iso.o: __/__/id2isox/test/test_id2iso.c.o
 
 # target to build an object file
 __/__/id2isox/test/test_id2iso.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.o
 .PHONY : __/__/id2isox/test/test_id2iso.c.o
 
 __/__/id2isox/test/test_id2iso.i: __/__/id2isox/test/test_id2iso.c.i
@@ -225,7 +225,7 @@ __/__/id2isox/test/test_id2iso.i: __/__/id2isox/test/test_id2iso.c.i
 
 # target to preprocess a source file
 __/__/id2isox/test/test_id2iso.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.i
 .PHONY : __/__/id2isox/test/test_id2iso.c.i
 
 __/__/id2isox/test/test_id2iso.s: __/__/id2isox/test/test_id2iso.c.s
@@ -233,7 +233,7 @@ __/__/id2isox/test/test_id2iso.s: __/__/id2isox/test/test_id2iso.c.s
 
 # target to generate assembly for a file
 __/__/id2isox/test/test_id2iso.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/build.make src/id2iso/ref/lvl1/test/CMakeFiles/sqisign_test_id2iso_lvl1.dir/__/__/id2isox/test/test_id2iso.c.s
 .PHONY : __/__/id2isox/test/test_id2iso.c.s
 
 # Help Target
@@ -269,6 +269,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

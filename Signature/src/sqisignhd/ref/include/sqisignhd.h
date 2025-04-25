@@ -23,6 +23,7 @@
 #include <id2iso.h>
 #include <hd.h>
 #include <dim2id2iso.h>
+#include <biextension.h>
 
 /** @defgroup sqisignhd_sqisignhd SQIsigndim2_heuristic protocols
  * @{
@@ -43,16 +44,28 @@ typedef struct signature
 {
     ec_curve_t E_com; /// the montgomery A coefficient for commitment curve
 
-    int two_resp_length;
+    // Hints to recover the basis
     int *hint_com;
-    ibz_t x;
-    int hint_b;
-    ibz_t b0;
-    ibz_t d0;
-    ibz_t b1;
-    ibz_t d1;
-    ibz_t c0_adjust;
-    ibz_t e0_adjust;
+    int *hint_chal;
+
+    // Image point coefficients
+    ibz_t a;
+    ibz_t b;
+    ibz_t c_or_d;
+
+    // Degree of the response
+    ibz_t q;
+    
+    /// REMOVE: this old stuff
+    ///int two_resp_length;
+    ///ibz_t x;
+    ///int hint_b;
+    ///ibz_t b0;
+    ///ibz_t d0;
+    ///ibz_t b1;
+    ///ibz_t d1;
+    ///ibz_t c0_adjust;
+    ///ibz_t e0_adjust;
 
 } signature_t;
 

@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/clean
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/preinstall
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/rule:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/rule
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/rule
 .PHONY : src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ sqisign_test_intbig: src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.
 
 # fast build rule for target.
 sqisign_test_intbig/fast:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build
 .PHONY : sqisign_test_intbig/fast
 
 test_intbig.o: test_intbig.c.o
@@ -145,7 +145,7 @@ test_intbig.o: test_intbig.c.o
 
 # target to build an object file
 test_intbig.c.o:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o
 .PHONY : test_intbig.c.o
 
 test_intbig.i: test_intbig.c.i
@@ -153,7 +153,7 @@ test_intbig.i: test_intbig.c.i
 
 # target to preprocess a source file
 test_intbig.c.i:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i
 .PHONY : test_intbig.c.i
 
 test_intbig.s: test_intbig.c.s
@@ -161,7 +161,7 @@ test_intbig.s: test_intbig.c.s
 
 # target to generate assembly for a file
 test_intbig.c.s:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build.make src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s
 .PHONY : test_intbig.c.s
 
 # Help Target
@@ -188,6 +188,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

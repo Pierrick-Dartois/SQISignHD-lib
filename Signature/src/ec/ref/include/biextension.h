@@ -17,4 +17,12 @@ void ec_dlog_2_weil(digit_t *scalarP1,
                     ec_curve_t *curve,
                     int e);
 
+void
+ec_dlog_2_weil_single_point(digit_t *scalarP,
+                   digit_t *scalarQ,
+                   ec_basis_t *PQ,
+                   ec_point_t *R,
+                   ec_curve_t *curve,
+                   int e);
+
 #endif

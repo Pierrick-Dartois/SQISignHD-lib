@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/common/generic/CMakeFiles/sqisign_common_test.dir/depend.make
@@ -70,74 +70,74 @@ include src/common/generic/CMakeFiles/sqisign_common_test.dir/progress.make
 include src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
-src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c
+src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c
 src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o -MF CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o.d -o CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o -MF CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o.d -o CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c > CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c > CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.i
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c -o CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c -o CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.s
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
-src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/aes_c.c
+src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/aes_c.c
 src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o -MF CMakeFiles/sqisign_common_test.dir/aes_c.c.o.d -o CMakeFiles/sqisign_common_test.dir/aes_c.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/aes_c.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.o -MF CMakeFiles/sqisign_common_test.dir/aes_c.c.o.d -o CMakeFiles/sqisign_common_test.dir/aes_c.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/aes_c.c
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_common_test.dir/aes_c.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/aes_c.c > CMakeFiles/sqisign_common_test.dir/aes_c.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/aes_c.c > CMakeFiles/sqisign_common_test.dir/aes_c.c.i
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/aes_c.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_common_test.dir/aes_c.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/aes_c.c -o CMakeFiles/sqisign_common_test.dir/aes_c.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/aes_c.c -o CMakeFiles/sqisign_common_test.dir/aes_c.c.s
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
-src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/fips202.c
+src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/fips202.c
 src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o -MF CMakeFiles/sqisign_common_test.dir/fips202.c.o.d -o CMakeFiles/sqisign_common_test.dir/fips202.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/fips202.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o -MF CMakeFiles/sqisign_common_test.dir/fips202.c.o.d -o CMakeFiles/sqisign_common_test.dir/fips202.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/fips202.c
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_common_test.dir/fips202.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/fips202.c > CMakeFiles/sqisign_common_test.dir/fips202.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/fips202.c > CMakeFiles/sqisign_common_test.dir/fips202.c.i
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_common_test.dir/fips202.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/fips202.c -o CMakeFiles/sqisign_common_test.dir/fips202.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/fips202.c -o CMakeFiles/sqisign_common_test.dir/fips202.c.s
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
-src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/mem.c
+src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/mem.c
 src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o -MF CMakeFiles/sqisign_common_test.dir/mem.c.o.d -o CMakeFiles/sqisign_common_test.dir/mem.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/mem.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.o -MF CMakeFiles/sqisign_common_test.dir/mem.c.o.d -o CMakeFiles/sqisign_common_test.dir/mem.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/mem.c
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_common_test.dir/mem.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/mem.c > CMakeFiles/sqisign_common_test.dir/mem.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/mem.c > CMakeFiles/sqisign_common_test.dir/mem.c.i
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/mem.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_common_test.dir/mem.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/mem.c -o CMakeFiles/sqisign_common_test.dir/mem.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/mem.c -o CMakeFiles/sqisign_common_test.dir/mem.c.s
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/flags.make
-src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/tools.c
+src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/tools.c
 src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o: src/common/generic/CMakeFiles/sqisign_common_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o -MF CMakeFiles/sqisign_common_test.dir/tools.c.o.d -o CMakeFiles/sqisign_common_test.dir/tools.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/tools.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o -MF CMakeFiles/sqisign_common_test.dir/tools.c.o.d -o CMakeFiles/sqisign_common_test.dir/tools.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/tools.c
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_common_test.dir/tools.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/tools.c > CMakeFiles/sqisign_common_test.dir/tools.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/tools.c > CMakeFiles/sqisign_common_test.dir/tools.c.i
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_common_test.dir/tools.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/tools.c -o CMakeFiles/sqisign_common_test.dir/tools.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/tools.c -o CMakeFiles/sqisign_common_test.dir/tools.c.s
 
 # Object files for target sqisign_common_test
 sqisign_common_test_OBJECTS = \
@@ -157,19 +157,19 @@ src/common/generic/libsqisign_common_test.a: src/common/generic/CMakeFiles/sqisi
 src/common/generic/libsqisign_common_test.a: src/common/generic/CMakeFiles/sqisign_common_test.dir/tools.c.o
 src/common/generic/libsqisign_common_test.a: src/common/generic/CMakeFiles/sqisign_common_test.dir/build.make
 src/common/generic/libsqisign_common_test.a: src/common/generic/CMakeFiles/sqisign_common_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libsqisign_common_test.a"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_common_test.dir/cmake_clean_target.cmake
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_common_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libsqisign_common_test.a"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_common_test.dir/cmake_clean_target.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_common_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/common/generic/CMakeFiles/sqisign_common_test.dir/build: src/common/generic/libsqisign_common_test.a
 .PHONY : src/common/generic/CMakeFiles/sqisign_common_test.dir/build
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_common_test.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_common_test.dir/cmake_clean.cmake
 .PHONY : src/common/generic/CMakeFiles/sqisign_common_test.dir/clean
 
 src/common/generic/CMakeFiles/sqisign_common_test.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/generic/CMakeFiles/sqisign_common_test.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/generic/CMakeFiles/sqisign_common_test.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/common/generic/CMakeFiles/sqisign_common_test.dir/depend
 

@@ -1,6 +1,6 @@
 src/gf/ref/lvl3/CMakeFiles/sqisign_gf_lvl3.dir/__/gfx/fp.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/gfx/fp.c \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/gfx/fp.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_int8_t.h \
@@ -75,6 +75,6 @@ src/gf/ref/lvl3/CMakeFiles/sqisign_gf_lvl3.dir/__/gfx/fp.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/fp_constants.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/mp.h
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/fp_constants.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/mp.h

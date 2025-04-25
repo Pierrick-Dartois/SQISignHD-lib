@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/depend.make
@@ -70,18 +70,18 @@ include src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/progress.make
 include src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/flags.make
 
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o: src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/flags.make
-src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c
+src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o: src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o -MF CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o.d -o CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o -MF CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o.d -o CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c
 
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c > CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c > CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.i
 
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c -o CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/hdx/test/hd_test.c -o CMakeFiles/sqisign_test_hd_lvl1.dir/__/__/hdx/test/hd_test.c.s
 
 # Object files for target sqisign_test_hd_lvl1
 sqisign_test_hd_lvl1_OBJECTS = \
@@ -104,18 +104,18 @@ src/hd/ref/lvl1/test/sqisign_test_hd_lvl1: /usr/local/lib/libgmp.dylib
 src/hd/ref/lvl1/test/sqisign_test_hd_lvl1: src/common/generic/libsqisign_common_sys.a
 src/hd/ref/lvl1/test/sqisign_test_hd_lvl1: src/precomp/ref/lvl1/libsqisign_precomp_lvl1.a
 src/hd/ref/lvl1/test/sqisign_test_hd_lvl1: src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_hd_lvl1"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_hd_lvl1.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_hd_lvl1"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_hd_lvl1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/build: src/hd/ref/lvl1/test/sqisign_test_hd_lvl1
 .PHONY : src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/build
 
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_hd_lvl1.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_hd_lvl1.dir/cmake_clean.cmake
 .PHONY : src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/clean
 
 src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/lvl1/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/lvl1/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/hd/ref/lvl1/test/CMakeFiles/sqisign_test_hd_lvl1.dir/depend
 

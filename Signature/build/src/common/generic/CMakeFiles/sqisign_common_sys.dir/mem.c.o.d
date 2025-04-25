@@ -1,5 +1,5 @@
 src/common/generic/CMakeFiles/sqisign_common_sys.dir/mem.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/mem.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/mem.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types.h \

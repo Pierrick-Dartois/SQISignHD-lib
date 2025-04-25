@@ -1,5 +1,5 @@
 src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/randombytes_ctrdrbg.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types.h \
@@ -33,7 +33,7 @@ src/common/generic/CMakeFiles/sqisign_common_test.dir/randombytes_ctrdrbg.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/aes.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/aes.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \

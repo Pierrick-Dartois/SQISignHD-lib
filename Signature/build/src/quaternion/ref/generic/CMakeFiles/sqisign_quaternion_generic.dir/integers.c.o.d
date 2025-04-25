@@ -1,7 +1,7 @@
 src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/integers.c \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/integers.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
   /usr/local/include/gmp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
@@ -37,9 +37,9 @@ src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/assert.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/internal.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/internal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
@@ -86,7 +86,7 @@ src/quaternion/ref/generic/CMakeFiles/sqisign_quaternion_generic.dir/integers.c.
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_ssize_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tools.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tools.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_clock_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_time_t.h \

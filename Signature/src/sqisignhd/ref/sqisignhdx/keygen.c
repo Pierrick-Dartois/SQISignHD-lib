@@ -37,15 +37,15 @@ protocols_keygen(public_key_t *pk, secret_key_t *sk)
 
     int found = 1;
 
-    ibz_t n; //replaced by FIXED_DEGREE_SK_COM
+    ibz_t n; //replaced by FIXED_DEGREE_SK
     ec_basis_t B_can_two, B_0_two;
 
-    ibz_init(&n); //replaced by FIXED_DEGREE_SK_COM
-    ibz_copy(&n,&FIXED_DEGREE_SK_COM);
+    ibz_init(&n); //replaced by FIXED_DEGREE_SK
+    ibz_copy(&n,&FIXED_DEGREE_SK);
 
     // generate a random ideal of random norm for the secret ideal
     // TODO make a clean function for all of that and
-    //generate_random_prime(&n, 1, ibz_bitsize(&QUATALG_PINFTY.p) / 2); //replaced by FIXED_DEGREE_SK_COM
+    //generate_random_prime(&n, 1, ibz_bitsize(&QUATALG_PINFTY.p) / 2); //replaced by FIXED_DEGREE_SK
     sampling_random_ideal_O0(&sk->secret_ideal, &n, 1);
 
     // ideal to isogeny clapotis
@@ -62,6 +62,7 @@ protocols_keygen(public_key_t *pk, secret_key_t *sk)
     copy_point(&sk->canonical_basis.Q, &B_can_two.Q);
     copy_point(&sk->canonical_basis.PmQ, &B_can_two.PmQ);
 
+    // !!! Notation should be mat_BA0_to_BAcan
     change_of_basis_matrix_two(
         &(sk->mat_BAcan_to_BA0_two), &B_can_two, &B_0_two, &(sk->curve), TORSION_PLUS_EVEN_POWER);
 
@@ -72,7 +73,7 @@ protocols_keygen(public_key_t *pk, secret_key_t *sk)
     fp2_set_one(&pk->curve.C);
     fp2_mul(&pk->curve.A, &temp, &sk->curve.A);
 
-    ibz_finalize(&n); //replaced by FIXED_DEGREE_SK_COM
+    ibz_finalize(&n); //replaced by FIXED_DEGREE_SK
 
     return;
 }

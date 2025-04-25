@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic
-# Build directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic
+# Source directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic
+# Build directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

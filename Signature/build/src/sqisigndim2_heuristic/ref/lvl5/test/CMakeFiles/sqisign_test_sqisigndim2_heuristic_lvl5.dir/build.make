@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/depend.make
@@ -70,18 +70,18 @@ include src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisignd
 include src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/flags.make
 
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o: src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/flags.make
-src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c
+src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o: src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o -MF CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o.d -o CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o -MF CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o.d -o CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c
 
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c > CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c > CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.i
 
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c -o CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c -o CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/__/__/sqisigndim2_heuristicx/test/test_sqisigndim2_heuristic.c.s
 
 # Object files for target sqisign_test_sqisigndim2_heuristic_lvl5
 sqisign_test_sqisigndim2_heuristic_lvl5_OBJECTS = \
@@ -107,19 +107,19 @@ src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5:
 src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5: src/precomp/ref/lvl5/libsqisign_precomp_lvl5.a
 src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5: src/gf/ref/lvl5/libsqisign_gf_lvl5.a
 src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5: src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_sqisigndim2_heuristic_lvl5"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/link.txt --verbose=$(VERBOSE)
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Applications/CMake.app/Contents/bin/cmake -E copy /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/test/sqisign2d_heuristic_lvl5
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_sqisigndim2_heuristic_lvl5"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && /Applications/CMake.app/Contents/bin/cmake -E copy /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/test/sqisign2d_heuristic_lvl5
 
 # Rule to build all files generated by this target.
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/build: src/sqisigndim2_heuristic/ref/lvl5/test/sqisign_test_sqisigndim2_heuristic_lvl5
 .PHONY : src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/build
 
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/cmake_clean.cmake
 .PHONY : src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/clean
 
 src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/lvl5/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/lvl5/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/sqisigndim2_heuristic/ref/lvl5/test/CMakeFiles/sqisign_test_sqisigndim2_heuristic_lvl5.dir/depend
 

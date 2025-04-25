@@ -7,7 +7,7 @@ if not require_version(9, 8, print_message=True):
 
 ################################################################
 
-from parameters import p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk_com
+from parameters import p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk, e_resp_hd, e_chal_hd, e_sig_pt_order
 
 ################################################################
 
@@ -50,7 +50,13 @@ objs = ObjectFormatter([
         Object('ibz_t', 'DEGREE_COMMITMENT_PLUS', Ibz(gcd(Dcom, Tpls))),
         Object('ibz_t', 'DEGREE_COMMITMENT_MINUS', Ibz(gcd(Dcom, Tmin))),
         Object('ibz_t', 'DEGREE_CHALLENGE', Ibz(Dchall)),
-        Object('ibz_t', 'FIXED_DEGREE_SK_COM', Ibz(N_sk_com)),
+        Object('ibz_t', 'FIXED_DEGREE_SK', Ibz(N_sk)),
+        Object('uint64_t', 'EXPONENT_RESP_HD', int(e_resp_hd)),
+        Object('ibz_t', 'DEGREE_RESP_HD', Ibz(2^e_resp_hd)),
+        Object('uint64_t', 'EXPONENT_CHAL_HD', int(e_chal_hd)),
+        Object('ibz_t', 'DEGREE_CHAL_HD', Ibz(2^e_chal_hd)),
+        Object('uint64_t', 'EXPONENT_SIGN_PT_ORDER_HD', int(e_sig_pt_order)),
+        Object('ibz_t', 'SIGN_PT_ORDER_HD', Ibz(2^e_sig_pt_order)),
     ])
 
 with open('include/torsion_constants.h','w') as hfile:

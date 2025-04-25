@@ -1,7 +1,7 @@
 src/sqisigndim2_heuristic/ref/lvl1/CMakeFiles/sqisign_sqisigndim2_heuristic_lvl1.dir/__/sqisigndim2_heuristicx/keygen.c.o: \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/keygen.c \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisigndim2_heuristic/ref/include/sqisigndim2_heuristic.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/sqisigndim2_heuristicx/keygen.c \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisigndim2_heuristic/ref/include/sqisigndim2_heuristic.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
   /usr/local/include/gmp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
@@ -37,17 +37,17 @@ src/sqisigndim2_heuristic/ref/lvl1/CMakeFiles/sqisign_sqisigndim2_heuristic_lvl1
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/assert.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/klpt_constants.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/quaternion_data.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/torsion_constants.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/include/rng.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/endomorphism_action.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/ec.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp2.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/klpt_constants.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/quaternion_data.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/torsion_constants.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/include/rng.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/endomorphism_action.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/ec.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp2.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
@@ -94,8 +94,8 @@ src/sqisigndim2_heuristic/ref/lvl1/CMakeFiles/sqisign_sqisigndim2_heuristic_lvl1
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/fp_constants.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/mp.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/fp_constants.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/mp.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_va_list.h \
@@ -103,18 +103,18 @@ src/sqisigndim2_heuristic/ref/lvl1/CMakeFiles/sqisign_sqisigndim2_heuristic_lvl1
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_off_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_stdio.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/ec_params.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tools.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/ec_params.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tools.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_clock_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_time_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_timespec.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/encoded_sizes.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/klpt/ref/include/klpt.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/id2iso/ref/include/id2iso.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/hd/ref/include/hd.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/curve_extras.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/include/dim2id2iso.h \
-  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/biextension.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/include/encoded_sizes.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/klpt/ref/include/klpt.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/id2iso/ref/include/id2iso.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/hd/ref/include/hd.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/curve_extras.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/include/dim2id2iso.h \
+  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/biextension.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/inttypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/inttypes.h

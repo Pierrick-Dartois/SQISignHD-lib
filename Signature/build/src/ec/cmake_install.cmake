@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec
+# Install script for directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/cmake_install.cmake")
 
 endif()
 

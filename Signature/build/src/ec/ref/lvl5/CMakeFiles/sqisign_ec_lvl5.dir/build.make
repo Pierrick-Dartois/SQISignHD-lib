@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/depend.make
@@ -70,102 +70,102 @@ include src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/progress.make
 include src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/ec.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/ec.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/ec.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/ec.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/ec.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/ec.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/ec.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/ec.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/kps.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/kps.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/kps.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/kps.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/kps.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/kps.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/kps.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/kps.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xisog.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xisog.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xisog.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xisog.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xisog.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xisog.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xisog.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xisog.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xeval.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xeval.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xeval.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xeval.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xeval.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xeval.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/xeval.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/xeval.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/isog_chains.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/basis.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/basis.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/basis.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/basis.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/basis.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/basis.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/basis.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/basis.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/flags.make
-src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/biextension.c
+src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/biextension.c
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/biextension.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o -MF CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o.d -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/biextension.c
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/biextension.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/biextension.c > CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/biextension.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/biextension.c -o CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s
 
 # Object files for target sqisign_ec_lvl5
 sqisign_ec_lvl5_OBJECTS = \
@@ -189,19 +189,19 @@ src/ec/ref/lvl5/libsqisign_ec_lvl5.a: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5
 src/ec/ref/lvl5/libsqisign_ec_lvl5.a: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o
 src/ec/ref/lvl5/libsqisign_ec_lvl5.a: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make
 src/ec/ref/lvl5/libsqisign_ec_lvl5.a: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C static library libsqisign_ec_lvl5.a"
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_ec_lvl5.dir/cmake_clean_target.cmake
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_ec_lvl5.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C static library libsqisign_ec_lvl5.a"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_ec_lvl5.dir/cmake_clean_target.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_ec_lvl5.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build: src/ec/ref/lvl5/libsqisign_ec_lvl5.a
 .PHONY : src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/clean:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_ec_lvl5.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_ec_lvl5.dir/cmake_clean.cmake
 .PHONY : src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/clean
 
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/depend:
-	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/lvl5 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/lvl5 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/depend
 
