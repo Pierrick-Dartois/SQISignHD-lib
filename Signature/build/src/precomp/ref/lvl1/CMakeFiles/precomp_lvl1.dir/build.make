@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Utility rule file for precomp_lvl1.
 
@@ -66,14 +66,14 @@ include src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/compiler_depend.make
 # Include the progress variables for this target.
 include src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/progress.make
 
-src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1/sqisign_parameters.txt
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_torsion_constants.sage
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_klpt_constants.sage
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_sizes.sage
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_quaternion_data.sage
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_endomorphism_action.sage
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/ec_params.py
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/scripts/precompute_gf_constants.sage
+src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/sqisign_parameters.txt
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_torsion_constants.sage
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_klpt_constants.sage
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_sizes.sage
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_quaternion_data.sage
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_endomorphism_action.sage
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/ec_params.py
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 && /usr/local/bin/sage /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/scripts/precompute_gf_constants.sage
 
 precomp_lvl1: src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1
 precomp_lvl1: src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/build.make
@@ -84,10 +84,10 @@ src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/build: precomp_lvl1
 .PHONY : src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/build
 
 src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl1 && $(CMAKE_COMMAND) -P CMakeFiles/precomp_lvl1.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl1 && $(CMAKE_COMMAND) -P CMakeFiles/precomp_lvl1.dir/cmake_clean.cmake
 .PHONY : src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/clean
 
 src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl1 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl1 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl1 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/precomp/ref/lvl1/CMakeFiles/precomp_lvl1.dir/depend
 

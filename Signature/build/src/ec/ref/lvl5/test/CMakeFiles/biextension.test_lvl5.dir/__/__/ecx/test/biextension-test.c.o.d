@@ -1,5 +1,5 @@
 src/ec/ref/lvl5/test/CMakeFiles/biextension.test_lvl5.dir/__/__/ecx/test/biextension-test.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/ecx/test/biextension-test.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types.h \
@@ -50,9 +50,9 @@ src/ec/ref/lvl5/test/CMakeFiles/biextension.test_lvl5.dir/__/__/ecx/test/biexten
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uint64_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/biextension.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp2.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/biextension.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp2.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/wait.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_pid_t.h \
@@ -91,15 +91,15 @@ src/ec/ref/lvl5/test/CMakeFiles/biextension.test_lvl5.dir/__/__/ecx/test/biexten
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/fp_constants.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/mp.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/ec.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/ec_params.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tools.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/curve_extras.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/torsion_constants.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/fp_constants.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/mp.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/ec.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/ec_params.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tools.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/curve_extras.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/torsion_constants.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
   /usr/local/include/gmp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/limits.h \
@@ -107,5 +107,5 @@ src/ec/ref/lvl5/test/CMakeFiles/biextension.test_lvl5.dir/__/__/ecx/test/biexten
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/syslimits.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/endomorphism_action.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/endomorphism_action.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h

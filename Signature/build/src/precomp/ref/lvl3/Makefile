@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/clean
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/rule
 .PHONY : src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ sqisign_precomp_lvl3: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/r
 
 # fast build rule for target.
 sqisign_precomp_lvl3/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build
 .PHONY : sqisign_precomp_lvl3/fast
 
 # Convenience name for target.
 src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/rule
 .PHONY : src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/rule
 
 # Convenience name for target.
@@ -151,7 +151,7 @@ precomp_lvl3: src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/rule
 
 # fast build rule for target.
 precomp_lvl3/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/precomp_lvl3.dir/build
 .PHONY : precomp_lvl3/fast
 
 endomorphism_action.o: endomorphism_action.c.o
@@ -159,7 +159,7 @@ endomorphism_action.o: endomorphism_action.c.o
 
 # target to build an object file
 endomorphism_action.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o
 .PHONY : endomorphism_action.c.o
 
 endomorphism_action.i: endomorphism_action.c.i
@@ -167,7 +167,7 @@ endomorphism_action.i: endomorphism_action.c.i
 
 # target to preprocess a source file
 endomorphism_action.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i
 .PHONY : endomorphism_action.c.i
 
 endomorphism_action.s: endomorphism_action.c.s
@@ -175,7 +175,7 @@ endomorphism_action.s: endomorphism_action.c.s
 
 # target to generate assembly for a file
 endomorphism_action.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s
 .PHONY : endomorphism_action.c.s
 
 gf_constants.o: gf_constants.c.o
@@ -183,7 +183,7 @@ gf_constants.o: gf_constants.c.o
 
 # target to build an object file
 gf_constants.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o
 .PHONY : gf_constants.c.o
 
 gf_constants.i: gf_constants.c.i
@@ -191,7 +191,7 @@ gf_constants.i: gf_constants.c.i
 
 # target to preprocess a source file
 gf_constants.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i
 .PHONY : gf_constants.c.i
 
 gf_constants.s: gf_constants.c.s
@@ -199,7 +199,7 @@ gf_constants.s: gf_constants.c.s
 
 # target to generate assembly for a file
 gf_constants.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s
 .PHONY : gf_constants.c.s
 
 klpt_constants.o: klpt_constants.c.o
@@ -207,7 +207,7 @@ klpt_constants.o: klpt_constants.c.o
 
 # target to build an object file
 klpt_constants.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o
 .PHONY : klpt_constants.c.o
 
 klpt_constants.i: klpt_constants.c.i
@@ -215,7 +215,7 @@ klpt_constants.i: klpt_constants.c.i
 
 # target to preprocess a source file
 klpt_constants.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i
 .PHONY : klpt_constants.c.i
 
 klpt_constants.s: klpt_constants.c.s
@@ -223,7 +223,7 @@ klpt_constants.s: klpt_constants.c.s
 
 # target to generate assembly for a file
 klpt_constants.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s
 .PHONY : klpt_constants.c.s
 
 quaternion_data.o: quaternion_data.c.o
@@ -231,7 +231,7 @@ quaternion_data.o: quaternion_data.c.o
 
 # target to build an object file
 quaternion_data.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o
 .PHONY : quaternion_data.c.o
 
 quaternion_data.i: quaternion_data.c.i
@@ -239,7 +239,7 @@ quaternion_data.i: quaternion_data.c.i
 
 # target to preprocess a source file
 quaternion_data.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i
 .PHONY : quaternion_data.c.i
 
 quaternion_data.s: quaternion_data.c.s
@@ -247,7 +247,7 @@ quaternion_data.s: quaternion_data.c.s
 
 # target to generate assembly for a file
 quaternion_data.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s
 .PHONY : quaternion_data.c.s
 
 torsion_constants.o: torsion_constants.c.o
@@ -255,7 +255,7 @@ torsion_constants.o: torsion_constants.c.o
 
 # target to build an object file
 torsion_constants.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o
 .PHONY : torsion_constants.c.o
 
 torsion_constants.i: torsion_constants.c.i
@@ -263,7 +263,7 @@ torsion_constants.i: torsion_constants.c.i
 
 # target to preprocess a source file
 torsion_constants.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i
 .PHONY : torsion_constants.c.i
 
 torsion_constants.s: torsion_constants.c.s
@@ -271,7 +271,7 @@ torsion_constants.s: torsion_constants.c.s
 
 # target to generate assembly for a file
 torsion_constants.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s
 .PHONY : torsion_constants.c.s
 
 # Help Target
@@ -311,6 +311,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

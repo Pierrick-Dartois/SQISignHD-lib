@@ -1,5 +1,5 @@
 src/CMakeFiles/sqisign_lvl5_test.dir/sqisign.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/sqisign.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisign.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types.h \

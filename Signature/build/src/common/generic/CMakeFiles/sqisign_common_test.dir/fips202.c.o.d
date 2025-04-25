@@ -1,5 +1,5 @@
 src/common/generic/CMakeFiles/sqisign_common_test.dir/fips202.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/fips202.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/fips202.c \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \

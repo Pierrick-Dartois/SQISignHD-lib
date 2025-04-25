@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/clean
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,17 +113,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dim2id2iso/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -146,6 +146,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

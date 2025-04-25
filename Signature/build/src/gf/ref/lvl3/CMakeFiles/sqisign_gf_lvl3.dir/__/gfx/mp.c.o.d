@@ -1,8 +1,8 @@
 src/gf/ref/lvl3/CMakeFiles/sqisign_gf_lvl3.dir/__/gfx/mp.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/gfx/mp.c \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/mp.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/gfx/mp.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/mp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdbool.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \

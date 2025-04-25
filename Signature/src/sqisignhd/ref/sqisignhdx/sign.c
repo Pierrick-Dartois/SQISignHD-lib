@@ -49,6 +49,21 @@ secret_sig_finalize(signature_t *sig)
     //ibz_finalize(&sig->c0_adjust);
 }
 
+void
+fprint_signature(FILE *p_file, const signature_t *sig)
+{
+    fprintf(p_file, "A_com = ");
+    fp2_print_to_file(p_file,&(sig->E_com.A));
+    ibz_fprintf(p_file,"a = %Zx\n",sig->a);
+    ibz_fprintf(p_file,"b = %Zx\n",sig->b);
+    ibz_fprintf(p_file,"c_or_d = %Zx\n",sig->c_or_d);
+    ibz_fprintf(p_file,"q = %Zx\n",sig->q);
+    fprintf(p_file, "hint_com_P = %u\n",(sig->hint_com[0]));
+    fprintf(p_file, "hint_com_Q = %u\n",(sig->hint_com[1]));
+    fprintf(p_file, "hint_chal_P = %u\n",(sig->hint_chal[0]));
+    fprintf(p_file, "hint_chal_Q = %u\n",(sig->hint_chal[1]));
+}
+
 static void
 ibz_vec_2_print2(char *name, const ibz_vec_2_t *vec)
 {

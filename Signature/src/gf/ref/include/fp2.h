@@ -29,6 +29,7 @@ void fp2_half(fp2_t *x, const fp2_t *y);
 void fp2_batched_inv(fp2_t *x, int len);
 void fp2_pow_vartime(fp2_t *out, const fp2_t *x, const digit_t *exp, const int size);
 void fp2_print(char *name, const fp2_t *a);
+void fp2_print_to_file(FILE *p_file, const fp2_t *a);
 void fp2_encode(void *dst, const fp2_t *a);
 void fp2_decode(fp2_t *d, const void *src);
 void fp2_select(fp2_t *d, const fp2_t *a0, const fp2_t *a1, uint32_t ctl);

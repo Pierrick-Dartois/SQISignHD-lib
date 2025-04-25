@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/depend.make
@@ -70,18 +70,18 @@ include src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir
 include src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/flags.make
 
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o: src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/flags.make
-src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c
+src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o: src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o -MF CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o.d -o CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o -MF CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o.d -o CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c
 
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c > CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c > CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.i
 
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c -o CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/dim2id2isox/test/test_dim2id2iso.c -o CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/__/__/dim2id2isox/test/test_dim2id2iso.c.s
 
 # Object files for target sqisign_test_dim2id2iso_lvl5
 sqisign_test_dim2id2iso_lvl5_OBJECTS = \
@@ -107,18 +107,18 @@ src/dim2id2iso/ref/lvl5/test/sqisign_test_dim2id2iso_lvl5: src/ec/ref/lvl5/libsq
 src/dim2id2iso/ref/lvl5/test/sqisign_test_dim2id2iso_lvl5: src/precomp/ref/lvl5/libsqisign_precomp_lvl5.a
 src/dim2id2iso/ref/lvl5/test/sqisign_test_dim2id2iso_lvl5: src/gf/ref/lvl5/libsqisign_gf_lvl5.a
 src/dim2id2iso/ref/lvl5/test/sqisign_test_dim2id2iso_lvl5: src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_dim2id2iso_lvl5"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_dim2id2iso_lvl5"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/build: src/dim2id2iso/ref/lvl5/test/sqisign_test_dim2id2iso_lvl5
 .PHONY : src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/build
 
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/cmake_clean.cmake
 .PHONY : src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/clean
 
 src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/dim2id2iso/ref/lvl5/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/dim2id2iso/ref/lvl5/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/dim2id2iso/ref/lvl5/test/CMakeFiles/sqisign_test_dim2id2iso_lvl5.dir/depend
 

@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Utility rule file for precomp.
 
@@ -74,10 +74,10 @@ src/precomp/ref/CMakeFiles/precomp.dir/build: precomp
 .PHONY : src/precomp/ref/CMakeFiles/precomp.dir/build
 
 src/precomp/ref/CMakeFiles/precomp.dir/clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref && $(CMAKE_COMMAND) -P CMakeFiles/precomp.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref && $(CMAKE_COMMAND) -P CMakeFiles/precomp.dir/cmake_clean.cmake
 .PHONY : src/precomp/ref/CMakeFiles/precomp.dir/clean
 
 src/precomp/ref/CMakeFiles/precomp.dir/depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/CMakeFiles/precomp.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/CMakeFiles/precomp.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/precomp/ref/CMakeFiles/precomp.dir/depend
 

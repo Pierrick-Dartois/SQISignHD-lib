@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl3/test//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl3/test//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/clean
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/rule
 .PHONY : src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ biextension.test_lvl3: src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir
 
 # fast build rule for target.
 biextension.test_lvl3/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build
 .PHONY : biextension.test_lvl3/fast
 
 # Convenience name for target.
 src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/rule
 .PHONY : src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/rule
 
 # Convenience name for target.
@@ -151,7 +151,7 @@ basis-gen.test_lvl3: src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/rul
 
 # fast build rule for target.
 basis-gen.test_lvl3/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build
 .PHONY : basis-gen.test_lvl3/fast
 
 __/__/ecx/test/basis-gen-test.o: __/__/ecx/test/basis-gen-test.c.o
@@ -159,7 +159,7 @@ __/__/ecx/test/basis-gen-test.o: __/__/ecx/test/basis-gen-test.c.o
 
 # target to build an object file
 __/__/ecx/test/basis-gen-test.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.o
 .PHONY : __/__/ecx/test/basis-gen-test.c.o
 
 __/__/ecx/test/basis-gen-test.i: __/__/ecx/test/basis-gen-test.c.i
@@ -167,7 +167,7 @@ __/__/ecx/test/basis-gen-test.i: __/__/ecx/test/basis-gen-test.c.i
 
 # target to preprocess a source file
 __/__/ecx/test/basis-gen-test.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.i
 .PHONY : __/__/ecx/test/basis-gen-test.c.i
 
 __/__/ecx/test/basis-gen-test.s: __/__/ecx/test/basis-gen-test.c.s
@@ -175,7 +175,7 @@ __/__/ecx/test/basis-gen-test.s: __/__/ecx/test/basis-gen-test.c.s
 
 # target to generate assembly for a file
 __/__/ecx/test/basis-gen-test.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/basis-gen.test_lvl3.dir/__/__/ecx/test/basis-gen-test.c.s
 .PHONY : __/__/ecx/test/basis-gen-test.c.s
 
 __/__/ecx/test/biextension-test.o: __/__/ecx/test/biextension-test.c.o
@@ -183,7 +183,7 @@ __/__/ecx/test/biextension-test.o: __/__/ecx/test/biextension-test.c.o
 
 # target to build an object file
 __/__/ecx/test/biextension-test.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.o
 .PHONY : __/__/ecx/test/biextension-test.c.o
 
 __/__/ecx/test/biextension-test.i: __/__/ecx/test/biextension-test.c.i
@@ -191,7 +191,7 @@ __/__/ecx/test/biextension-test.i: __/__/ecx/test/biextension-test.c.i
 
 # target to preprocess a source file
 __/__/ecx/test/biextension-test.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.i
 .PHONY : __/__/ecx/test/biextension-test.c.i
 
 __/__/ecx/test/biextension-test.s: __/__/ecx/test/biextension-test.c.s
@@ -199,7 +199,7 @@ __/__/ecx/test/biextension-test.s: __/__/ecx/test/biextension-test.c.s
 
 # target to generate assembly for a file
 __/__/ecx/test/biextension-test.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/build.make src/ec/ref/lvl3/test/CMakeFiles/biextension.test_lvl3.dir/__/__/ecx/test/biextension-test.c.s
 .PHONY : __/__/ecx/test/biextension-test.c.s
 
 # Help Target
@@ -230,6 +230,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

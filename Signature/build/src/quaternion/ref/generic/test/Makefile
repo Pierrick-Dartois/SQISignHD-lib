@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/ref/generic/test//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/ref/generic/test//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/clean
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/rule
 .PHONY : src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ sqisign_test_quaternion: src/quaternion/ref/generic/test/CMakeFiles/sqisign_test
 
 # fast build rule for target.
 sqisign_test_quaternion/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build
 .PHONY : sqisign_test_quaternion/fast
 
 algebra.o: algebra.c.o
@@ -145,7 +145,7 @@ algebra.o: algebra.c.o
 
 # target to build an object file
 algebra.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.o
 .PHONY : algebra.c.o
 
 algebra.i: algebra.c.i
@@ -153,7 +153,7 @@ algebra.i: algebra.c.i
 
 # target to preprocess a source file
 algebra.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.i
 .PHONY : algebra.c.i
 
 algebra.s: algebra.c.s
@@ -161,7 +161,7 @@ algebra.s: algebra.c.s
 
 # target to generate assembly for a file
 algebra.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/algebra.c.s
 .PHONY : algebra.c.s
 
 dim2.o: dim2.c.o
@@ -169,7 +169,7 @@ dim2.o: dim2.c.o
 
 # target to build an object file
 dim2.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.o
 .PHONY : dim2.c.o
 
 dim2.i: dim2.c.i
@@ -177,7 +177,7 @@ dim2.i: dim2.c.i
 
 # target to preprocess a source file
 dim2.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.i
 .PHONY : dim2.c.i
 
 dim2.s: dim2.c.s
@@ -185,7 +185,7 @@ dim2.s: dim2.c.s
 
 # target to generate assembly for a file
 dim2.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim2.c.s
 .PHONY : dim2.c.s
 
 dim4.o: dim4.c.o
@@ -193,7 +193,7 @@ dim4.o: dim4.c.o
 
 # target to build an object file
 dim4.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.o
 .PHONY : dim4.c.o
 
 dim4.i: dim4.c.i
@@ -201,7 +201,7 @@ dim4.i: dim4.c.i
 
 # target to preprocess a source file
 dim4.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.i
 .PHONY : dim4.c.i
 
 dim4.s: dim4.c.s
@@ -209,7 +209,7 @@ dim4.s: dim4.c.s
 
 # target to generate assembly for a file
 dim4.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/dim4.c.s
 .PHONY : dim4.c.s
 
 finit.o: finit.c.o
@@ -217,7 +217,7 @@ finit.o: finit.c.o
 
 # target to build an object file
 finit.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.o
 .PHONY : finit.c.o
 
 finit.i: finit.c.i
@@ -225,7 +225,7 @@ finit.i: finit.c.i
 
 # target to preprocess a source file
 finit.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.i
 .PHONY : finit.c.i
 
 finit.s: finit.c.s
@@ -233,7 +233,7 @@ finit.s: finit.c.s
 
 # target to generate assembly for a file
 finit.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/finit.c.s
 .PHONY : finit.c.s
 
 ideal.o: ideal.c.o
@@ -241,7 +241,7 @@ ideal.o: ideal.c.o
 
 # target to build an object file
 ideal.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.o
 .PHONY : ideal.c.o
 
 ideal.i: ideal.c.i
@@ -249,7 +249,7 @@ ideal.i: ideal.c.i
 
 # target to preprocess a source file
 ideal.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.i
 .PHONY : ideal.c.i
 
 ideal.s: ideal.c.s
@@ -257,7 +257,7 @@ ideal.s: ideal.c.s
 
 # target to generate assembly for a file
 ideal.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/ideal.c.s
 .PHONY : ideal.c.s
 
 integers.o: integers.c.o
@@ -265,7 +265,7 @@ integers.o: integers.c.o
 
 # target to build an object file
 integers.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.o
 .PHONY : integers.c.o
 
 integers.i: integers.c.i
@@ -273,7 +273,7 @@ integers.i: integers.c.i
 
 # target to preprocess a source file
 integers.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.i
 .PHONY : integers.c.i
 
 integers.s: integers.c.s
@@ -281,7 +281,7 @@ integers.s: integers.c.s
 
 # target to generate assembly for a file
 integers.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/integers.c.s
 .PHONY : integers.c.s
 
 lattice.o: lattice.c.o
@@ -289,7 +289,7 @@ lattice.o: lattice.c.o
 
 # target to build an object file
 lattice.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.o
 .PHONY : lattice.c.o
 
 lattice.i: lattice.c.i
@@ -297,7 +297,7 @@ lattice.i: lattice.c.i
 
 # target to preprocess a source file
 lattice.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.i
 .PHONY : lattice.c.i
 
 lattice.s: lattice.c.s
@@ -305,7 +305,7 @@ lattice.s: lattice.c.s
 
 # target to generate assembly for a file
 lattice.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/lattice.c.s
 .PHONY : lattice.c.s
 
 matkermod.o: matkermod.c.o
@@ -313,7 +313,7 @@ matkermod.o: matkermod.c.o
 
 # target to build an object file
 matkermod.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.o
 .PHONY : matkermod.c.o
 
 matkermod.i: matkermod.c.i
@@ -321,7 +321,7 @@ matkermod.i: matkermod.c.i
 
 # target to preprocess a source file
 matkermod.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.i
 .PHONY : matkermod.c.i
 
 matkermod.s: matkermod.c.s
@@ -329,7 +329,7 @@ matkermod.s: matkermod.c.s
 
 # target to generate assembly for a file
 matkermod.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/matkermod.c.s
 .PHONY : matkermod.c.s
 
 randomized.o: randomized.c.o
@@ -337,7 +337,7 @@ randomized.o: randomized.c.o
 
 # target to build an object file
 randomized.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.o
 .PHONY : randomized.c.o
 
 randomized.i: randomized.c.i
@@ -345,7 +345,7 @@ randomized.i: randomized.c.i
 
 # target to preprocess a source file
 randomized.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.i
 .PHONY : randomized.c.i
 
 randomized.s: randomized.c.s
@@ -353,7 +353,7 @@ randomized.s: randomized.c.s
 
 # target to generate assembly for a file
 randomized.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/randomized.c.s
 .PHONY : randomized.c.s
 
 test_quaternions.o: test_quaternions.c.o
@@ -361,7 +361,7 @@ test_quaternions.o: test_quaternions.c.o
 
 # target to build an object file
 test_quaternions.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.o
 .PHONY : test_quaternions.c.o
 
 test_quaternions.i: test_quaternions.c.i
@@ -369,7 +369,7 @@ test_quaternions.i: test_quaternions.c.i
 
 # target to preprocess a source file
 test_quaternions.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.i
 .PHONY : test_quaternions.c.i
 
 test_quaternions.s: test_quaternions.c.s
@@ -377,7 +377,7 @@ test_quaternions.s: test_quaternions.c.s
 
 # target to generate assembly for a file
 test_quaternions.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/build.make src/quaternion/ref/generic/test/CMakeFiles/sqisign_test_quaternion.dir/test_quaternions.c.s
 .PHONY : test_quaternions.c.s
 
 # Help Target
@@ -431,6 +431,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

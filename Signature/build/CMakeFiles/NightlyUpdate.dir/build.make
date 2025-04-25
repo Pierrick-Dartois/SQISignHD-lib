@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Utility rule file for NightlyUpdate.
 
@@ -82,6 +82,6 @@ CMakeFiles/NightlyUpdate.dir/clean:
 .PHONY : CMakeFiles/NightlyUpdate.dir/clean
 
 CMakeFiles/NightlyUpdate.dir/depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles/NightlyUpdate.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles/NightlyUpdate.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/NightlyUpdate.dir/depend
 

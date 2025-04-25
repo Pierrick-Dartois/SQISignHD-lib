@@ -120,8 +120,11 @@ void secret_key_finalize(secret_key_t *sk);
 void secret_sig_init(signature_t *sig);
 void secret_sig_finalize(signature_t *sig);
 
-void print_signature(const signature_t *sig);
-void print_public_key(const public_key_t *pk);
+//void print_signature(const signature_t *sig);
+//void print_public_key(const public_key_t *pk);
+void fprint_signature(FILE *p_file, const signature_t *sig);
+void fprint_public_key(FILE *p_file, const public_key_t *pk);
+
 
 /** @defgroup signature The signature protocol
  * @{

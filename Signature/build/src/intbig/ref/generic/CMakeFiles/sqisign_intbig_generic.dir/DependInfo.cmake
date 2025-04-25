@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/intbig.c" "src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o" "gcc" "src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o.d"
+  "/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/intbig.c" "src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o" "gcc" "src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

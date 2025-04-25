@@ -1,6 +1,6 @@
 src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/intbig.c \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/intbig.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
   /usr/local/include/gmp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
@@ -36,8 +36,8 @@ src/intbig/ref/generic/CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/include/rng.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/include/rng.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \

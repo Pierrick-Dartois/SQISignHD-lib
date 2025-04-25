@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref
+# Install script for directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl1/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl5/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl1/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl5/cmake_install.cmake")
 
 endif()
 

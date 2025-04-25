@@ -255,6 +255,7 @@ int64_t ibz_get(const ibz_t *i);
 
 // void ibz_printf(const char* format, ...);
 #define ibz_printf gmp_printf
+#define ibz_fprintf gmp_fprintf
 
 /** @brief generate random value in [a, b]
  *  assumed that a >= 0 and b >= 0 and a < b

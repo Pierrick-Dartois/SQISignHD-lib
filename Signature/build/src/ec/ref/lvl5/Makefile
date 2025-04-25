@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/ref/lvl5//CMakeFiles/progress.marks
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/ref/lvl5//CMakeFiles/progress.marks
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/clean
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,22 +113,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/preinstall
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/rule:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/rule
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/rule
 .PHONY : src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ sqisign_ec_lvl5: src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/rule
 
 # fast build rule for target.
 sqisign_ec_lvl5/fast:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build
 .PHONY : sqisign_ec_lvl5/fast
 
 __/ecx/basis.o: __/ecx/basis.c.o
@@ -145,7 +145,7 @@ __/ecx/basis.o: __/ecx/basis.c.o
 
 # target to build an object file
 __/ecx/basis.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.o
 .PHONY : __/ecx/basis.c.o
 
 __/ecx/basis.i: __/ecx/basis.c.i
@@ -153,7 +153,7 @@ __/ecx/basis.i: __/ecx/basis.c.i
 
 # target to preprocess a source file
 __/ecx/basis.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.i
 .PHONY : __/ecx/basis.c.i
 
 __/ecx/basis.s: __/ecx/basis.c.s
@@ -161,7 +161,7 @@ __/ecx/basis.s: __/ecx/basis.c.s
 
 # target to generate assembly for a file
 __/ecx/basis.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/basis.c.s
 .PHONY : __/ecx/basis.c.s
 
 __/ecx/biextension.o: __/ecx/biextension.c.o
@@ -169,7 +169,7 @@ __/ecx/biextension.o: __/ecx/biextension.c.o
 
 # target to build an object file
 __/ecx/biextension.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.o
 .PHONY : __/ecx/biextension.c.o
 
 __/ecx/biextension.i: __/ecx/biextension.c.i
@@ -177,7 +177,7 @@ __/ecx/biextension.i: __/ecx/biextension.c.i
 
 # target to preprocess a source file
 __/ecx/biextension.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.i
 .PHONY : __/ecx/biextension.c.i
 
 __/ecx/biextension.s: __/ecx/biextension.c.s
@@ -185,7 +185,7 @@ __/ecx/biextension.s: __/ecx/biextension.c.s
 
 # target to generate assembly for a file
 __/ecx/biextension.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/biextension.c.s
 .PHONY : __/ecx/biextension.c.s
 
 __/ecx/ec.o: __/ecx/ec.c.o
@@ -193,7 +193,7 @@ __/ecx/ec.o: __/ecx/ec.c.o
 
 # target to build an object file
 __/ecx/ec.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.o
 .PHONY : __/ecx/ec.c.o
 
 __/ecx/ec.i: __/ecx/ec.c.i
@@ -201,7 +201,7 @@ __/ecx/ec.i: __/ecx/ec.c.i
 
 # target to preprocess a source file
 __/ecx/ec.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.i
 .PHONY : __/ecx/ec.c.i
 
 __/ecx/ec.s: __/ecx/ec.c.s
@@ -209,7 +209,7 @@ __/ecx/ec.s: __/ecx/ec.c.s
 
 # target to generate assembly for a file
 __/ecx/ec.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/ec.c.s
 .PHONY : __/ecx/ec.c.s
 
 __/ecx/isog_chains.o: __/ecx/isog_chains.c.o
@@ -217,7 +217,7 @@ __/ecx/isog_chains.o: __/ecx/isog_chains.c.o
 
 # target to build an object file
 __/ecx/isog_chains.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.o
 .PHONY : __/ecx/isog_chains.c.o
 
 __/ecx/isog_chains.i: __/ecx/isog_chains.c.i
@@ -225,7 +225,7 @@ __/ecx/isog_chains.i: __/ecx/isog_chains.c.i
 
 # target to preprocess a source file
 __/ecx/isog_chains.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.i
 .PHONY : __/ecx/isog_chains.c.i
 
 __/ecx/isog_chains.s: __/ecx/isog_chains.c.s
@@ -233,7 +233,7 @@ __/ecx/isog_chains.s: __/ecx/isog_chains.c.s
 
 # target to generate assembly for a file
 __/ecx/isog_chains.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/isog_chains.c.s
 .PHONY : __/ecx/isog_chains.c.s
 
 __/ecx/kps.o: __/ecx/kps.c.o
@@ -241,7 +241,7 @@ __/ecx/kps.o: __/ecx/kps.c.o
 
 # target to build an object file
 __/ecx/kps.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.o
 .PHONY : __/ecx/kps.c.o
 
 __/ecx/kps.i: __/ecx/kps.c.i
@@ -249,7 +249,7 @@ __/ecx/kps.i: __/ecx/kps.c.i
 
 # target to preprocess a source file
 __/ecx/kps.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.i
 .PHONY : __/ecx/kps.c.i
 
 __/ecx/kps.s: __/ecx/kps.c.s
@@ -257,7 +257,7 @@ __/ecx/kps.s: __/ecx/kps.c.s
 
 # target to generate assembly for a file
 __/ecx/kps.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/kps.c.s
 .PHONY : __/ecx/kps.c.s
 
 __/ecx/xeval.o: __/ecx/xeval.c.o
@@ -265,7 +265,7 @@ __/ecx/xeval.o: __/ecx/xeval.c.o
 
 # target to build an object file
 __/ecx/xeval.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.o
 .PHONY : __/ecx/xeval.c.o
 
 __/ecx/xeval.i: __/ecx/xeval.c.i
@@ -273,7 +273,7 @@ __/ecx/xeval.i: __/ecx/xeval.c.i
 
 # target to preprocess a source file
 __/ecx/xeval.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.i
 .PHONY : __/ecx/xeval.c.i
 
 __/ecx/xeval.s: __/ecx/xeval.c.s
@@ -281,7 +281,7 @@ __/ecx/xeval.s: __/ecx/xeval.c.s
 
 # target to generate assembly for a file
 __/ecx/xeval.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xeval.c.s
 .PHONY : __/ecx/xeval.c.s
 
 __/ecx/xisog.o: __/ecx/xisog.c.o
@@ -289,7 +289,7 @@ __/ecx/xisog.o: __/ecx/xisog.c.o
 
 # target to build an object file
 __/ecx/xisog.c.o:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.o
 .PHONY : __/ecx/xisog.c.o
 
 __/ecx/xisog.i: __/ecx/xisog.c.i
@@ -297,7 +297,7 @@ __/ecx/xisog.i: __/ecx/xisog.c.i
 
 # target to preprocess a source file
 __/ecx/xisog.c.i:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.i
 .PHONY : __/ecx/xisog.c.i
 
 __/ecx/xisog.s: __/ecx/xisog.c.s
@@ -305,7 +305,7 @@ __/ecx/xisog.s: __/ecx/xisog.c.s
 
 # target to generate assembly for a file
 __/ecx/xisog.c.s:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(MAKE) $(MAKESILENT) -f src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/build.make src/ec/ref/lvl5/CMakeFiles/sqisign_ec_lvl5.dir/__/ecx/xisog.c.s
 .PHONY : __/ecx/xisog.c.s
 
 # Help Target
@@ -350,6 +350,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

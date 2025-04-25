@@ -75,11 +75,17 @@ test_sqisign(int repeat, uint64_t bench)
 
     float ms;
 
+    FILE *p_file_pk;
+    FILE *p_file_sign;
+    p_file_pk = fopen("Public_keys.txt", "w");
+    p_file_sign = fopen("Signatures.txt", "w");
+
     printf("\n\nBenchmarking signatures\n");
     t = tic();
     t0 = rdtsc();
     for (int i = 0; i < bench; ++i) {
         protocols_keygen(&pk, &sk);
+        fprint_public_key(p_file_pk, &pk);
     }
     t1 = rdtsc();
     // ms = tac();
@@ -91,6 +97,7 @@ test_sqisign(int repeat, uint64_t bench)
     t0 = rdtsc();
     for (int i = 0; i < bench; ++i) {
         int val = protocols_sign(&sig, &pk, &sk, msg, 32, 0);
+        fprint_signature(p_file_sign, &sig);
     }
     t1 = rdtsc();
     // ms = tac();

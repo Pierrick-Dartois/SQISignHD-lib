@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend.make
@@ -69,109 +69,109 @@ include src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h, /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && echo Please\ run\ manually:\ make\ precomp
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h, /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && echo Please\ run\ manually:\ make\ precomp
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h
 
-/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h
+/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E touch_nocreate /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.i
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/gf_constants.c.s
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.i
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/torsion_constants.c.s
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c > CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c > CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.i
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c -o CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c -o CMakeFiles/sqisign_precomp_lvl3.dir/quaternion_data.c.s
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c > CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c > CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.i
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c -o CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c -o CMakeFiles/sqisign_precomp_lvl3.dir/endomorphism_action.c.s
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/flags.make
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o -MF CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o.d -o CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c > CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.i
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c -o CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.s
 
 # Object files for target sqisign_precomp_lvl3
 sqisign_precomp_lvl3_OBJECTS = \
@@ -191,29 +191,29 @@ src/precomp/ref/lvl3/libsqisign_precomp_lvl3.a: src/precomp/ref/lvl3/CMakeFiles/
 src/precomp/ref/lvl3/libsqisign_precomp_lvl3.a: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/klpt_constants.c.o
 src/precomp/ref/lvl3/libsqisign_precomp_lvl3.a: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build.make
 src/precomp/ref/lvl3/libsqisign_precomp_lvl3.a: src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libsqisign_precomp_lvl3.a"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_precomp_lvl3.dir/cmake_clean_target.cmake
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_precomp_lvl3.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C static library libsqisign_precomp_lvl3.a"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_precomp_lvl3.dir/cmake_clean_target.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_precomp_lvl3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build: src/precomp/ref/lvl3/libsqisign_precomp_lvl3.a
 .PHONY : src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/build
 
 src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_precomp_lvl3.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_precomp_lvl3.dir/cmake_clean.cmake
 .PHONY : src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/clean
 
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
-src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl3 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3 /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/DependInfo.cmake "--color=$(COLOR)"
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/endomorphism_action.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/gf_constants.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/ec_params.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/encoded_sizes.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/endomorphism_action.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/klpt_constants.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/quaternion_data.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/include/torsion_constants.h
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/klpt_constants.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/quaternion_data.c
+src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3/torsion_constants.c
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl3 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3 /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/precomp/ref/lvl3/CMakeFiles/sqisign_precomp_lvl3.dir/depend
 

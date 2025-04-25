@@ -31,6 +31,15 @@ secret_key_finalize(secret_key_t *sk)
     ibz_mat_2x2_finalize(&(sk->mat_BAcan_to_BA0_two));
 }
 
+void 
+fprint_public_key(FILE *p_file,const public_key_t *pk)
+{
+    fprintf(p_file, "A_pk = ");
+    fp2_print_to_file(p_file,&(pk->curve.A));
+    fprintf(p_file, "hint_pk_P = %u\n",pk->hint_pk[0]);
+    fprintf(p_file, "hint_pk_Q = %u\n",pk->hint_pk[1]);
+}
+
 void
 protocols_keygen(public_key_t *pk, secret_key_t *sk)
 {

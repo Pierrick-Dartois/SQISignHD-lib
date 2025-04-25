@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src
+# Install script for directory: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,19 +39,19 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/common/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/quaternion/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/precomp/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/klpt/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/gf/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/ec/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/id2iso/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/hd/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/dim2id2iso/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisigndim2_heuristic/cmake_install.cmake")
-  include("/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/sqisignhd/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/common/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/quaternion/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/precomp/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/klpt/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/gf/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/ec/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/id2iso/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/hd/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/dim2id2iso/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisigndim2_heuristic/cmake_install.cmake")
+  include("/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/sqisignhd/cmake_install.cmake")
 
 endif()
 

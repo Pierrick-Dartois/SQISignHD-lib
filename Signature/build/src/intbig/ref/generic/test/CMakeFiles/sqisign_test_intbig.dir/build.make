@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature
+CMAKE_SOURCE_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build
+CMAKE_BINARY_DIR = /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build
 
 # Include any dependencies generated for this target.
 include src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/depend.make
@@ -70,18 +70,18 @@ include src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/progress.
 include src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/flags.make
 
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o: src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/flags.make
-src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o: /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c
+src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o: /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o: src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o -MF CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o.d -o CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o -c /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o -MF CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o.d -o CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.o -c /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c
 
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c > CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c > CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.i
 
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c -o CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/test/test_intbig.c -o CMakeFiles/sqisign_test_intbig.dir/test_intbig.c.s
 
 # Object files for target sqisign_test_intbig
 sqisign_test_intbig_OBJECTS = \
@@ -96,18 +96,18 @@ src/intbig/ref/generic/test/sqisign_test_intbig: src/intbig/ref/generic/libsqisi
 src/intbig/ref/generic/test/sqisign_test_intbig: /usr/local/lib/libgmp.dylib
 src/intbig/ref/generic/test/sqisign_test_intbig: src/common/generic/libsqisign_common_sys.a
 src/intbig/ref/generic/test/sqisign_test_intbig: src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_intbig"
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_intbig.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sqisign_test_intbig"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sqisign_test_intbig.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build: src/intbig/ref/generic/test/sqisign_test_intbig
 .PHONY : src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/build
 
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/clean:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_intbig.dir/cmake_clean.cmake
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test && $(CMAKE_COMMAND) -P CMakeFiles/sqisign_test_intbig.dir/cmake_clean.cmake
 .PHONY : src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/clean
 
 src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/depend:
-	cd /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/build/src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/build/src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/intbig/ref/generic/test/CMakeFiles/sqisign_test_intbig.dir/depend
 

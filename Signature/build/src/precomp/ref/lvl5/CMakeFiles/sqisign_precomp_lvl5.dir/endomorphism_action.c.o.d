@@ -1,5 +1,5 @@
 src/precomp/ref/lvl5/CMakeFiles/sqisign_precomp_lvl5.dir/endomorphism_action.c.o: \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/endomorphism_action.c \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/endomorphism_action.c \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/stdint.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdint.h \
@@ -28,8 +28,8 @@ src/precomp/ref/lvl5/CMakeFiles/sqisign_precomp_lvl5.dir/endomorphism_action.c.o
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_uintptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/endomorphism_action.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/endomorphism_action.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \
   /usr/local/include/gmp.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/limits.h \
@@ -37,10 +37,10 @@ src/precomp/ref/lvl5/CMakeFiles/sqisign_precomp_lvl5.dir/endomorphism_action.c.o
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/syslimits.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tutil.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/ec/ref/include/ec.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp2.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/fp.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tutil.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/ec/ref/include/ec.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp2.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/fp.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/AvailabilityVersions.h \
@@ -87,8 +87,8 @@ src/precomp/ref/lvl5/CMakeFiles/sqisign_precomp_lvl5.dir/endomorphism_action.c.o
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_strings.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_common.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_string.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/fp_constants.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/gf/ref/include/mp.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/fp_constants.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/gf/ref/include/mp.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_va_list.h \
@@ -96,11 +96,11 @@ src/precomp/ref/lvl5/CMakeFiles/sqisign_precomp_lvl5.dir/endomorphism_action.c.o
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_off_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/secure/_stdio.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/precomp/ref/lvl5/include/ec_params.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/common/generic/include/tools.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl5/include/ec_params.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/tools.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/time.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_clock_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_time_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_timespec.h \
-  /Users/pierrick/Documents/SQisign/SQISignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/assert.h
