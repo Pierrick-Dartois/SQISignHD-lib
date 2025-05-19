@@ -21,6 +21,7 @@ secret_sig_init(signature_t *sig)
     ibz_init(&sig->b);
     ibz_init(&sig->c_or_d);
     ibz_init(&sig->q);
+    ibz_vec_2_init(&sig->vec_chal);
     //ibz_init(&sig->x);
     //ibz_init(&sig->b0);
     //ibz_init(&sig->d0);
@@ -40,6 +41,7 @@ secret_sig_finalize(signature_t *sig)
     ibz_finalize(&sig->b);
     ibz_finalize(&sig->c_or_d);
     ibz_finalize(&sig->q);
+    ibz_vec_2_finalize(&sig->vec_chal);
     //ibz_finalize(&sig->x);
     //ibz_finalize(&sig->b0);
     //ibz_finalize(&sig->d0);
@@ -62,6 +64,8 @@ fprint_signature(FILE *p_file, const signature_t *sig)
     fprintf(p_file, "hint_com_Q = %u\n",(sig->hint_com[1]));
     fprintf(p_file, "hint_chal_P = %u\n",(sig->hint_chal[0]));
     fprintf(p_file, "hint_chal_Q = %u\n",(sig->hint_chal[1]));
+    ibz_fprintf(p_file, "vec_chal[0] = %Zx\n",(sig->vec_chal[0]));
+    ibz_fprintf(p_file, "vec_chal[1] = %Zx\n",(sig->vec_chal[1]));
 }
 
 static void
@@ -286,6 +290,10 @@ hash_to_challenge(ibz_vec_2_t *scalars,
                message,
                length); // TODO use defined constant
     }
+    //for(int i=0;i<FP2_ENCODED_BYTES + FP2_ENCODED_BYTES + length;i++){
+        //printf("%c",buf[i]);
+    //}
+    //printf("\n");
 
     // TODO(security) omit some vectors, notably (a,1) with gcd(a,6)!=1 but also things like (2,3)?
     {
@@ -302,6 +310,7 @@ hash_to_challenge(ibz_vec_2_t *scalars,
 
         ibz_set(&(*scalars)[1], 1); // FIXME
         ibz_copy_digit_array(&(*scalars)[1], digits);
+        //ibz_printf("%Zx\n",(*scalars)[1]);
     }
 
     ibz_set(&((*scalars)[0]), 1);
@@ -488,6 +497,25 @@ protocols_sign(signature_t *sig,
         ibz_neg(&mat_B_chal_can_to_B_chal_pk[1][1],&tmp);
     }
 
+    fp2_print("A_chal = ",&Echall.A);
+
+    fp2_t j3;
+    ec_j_inv(&j3,&Echall);
+    fp2_print("j(E_chal) = ",&j3);
+
+    fp2_t xP_pk, xQ_pk;
+
+    fp2_copy(&xP_pk,&sk->canonical_basis.P.z);
+    fp2_inv(&xP_pk);
+    fp2_mul(&xP_pk,&xP_pk,&sk->canonical_basis.P.x);
+    fp2_copy(&xQ_pk,&sk->canonical_basis.Q.z);
+    fp2_inv(&xQ_pk);
+    fp2_mul(&xQ_pk,&xQ_pk,&sk->canonical_basis.Q.x);
+    fp2_print("xP_pk = ",&xP_pk);
+    fp2_print("xQ_pk = ",&xQ_pk);
+
+
+
     //printf("After challenge basis push\n");
 
 
@@ -649,7 +677,7 @@ protocols_sign(signature_t *sig,
     // Degree q of the response
     ibz_copy(&sig->q,&degree_full_resp);
 
-    // setting sig->E_com
+    // Setting sig->E_com
     fp2_t temp_fp2;
     fp2_copy(&temp_fp2, &E_com.C);
     fp2_inv(&temp_fp2);
@@ -658,6 +686,9 @@ protocols_sign(signature_t *sig,
     ec_point_init(&sig->E_com.A24);
     sig->E_com.is_A24_computed_and_normalized = 0;
 
+    // Setting challenge
+    ibz_copy(&sig->vec_chal[0],&vec_chall[0]);
+    ibz_copy(&sig->vec_chal[1],&vec_chall[1]);
 
     /*
 #ifndef NDEBUG

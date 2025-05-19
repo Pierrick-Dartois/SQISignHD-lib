@@ -98,6 +98,8 @@ src/sqisignhd/ref/lvl1/test/CMakeFiles/sqisign_test_sqisignhd_lvl1.dir/__/__/sqi
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/inttypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/locale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_locale.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/precomp/ref/lvl1/include/gf_constants.h \
+  /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/common/generic/include/fips202.h \
   /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/sqisignhd/ref/sqisignhdx/test/test_sqisignhd.h \
   /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/quaternion/ref/generic/include/quaternion.h \
   /Users/pierrick/Documents/SQIsign/SQIsignHD-lib/Signature/src/intbig/ref/generic/include/intbig.h \

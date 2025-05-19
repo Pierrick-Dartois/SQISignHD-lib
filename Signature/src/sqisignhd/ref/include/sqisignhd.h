@@ -55,6 +55,10 @@ typedef struct signature
 
     // Degree of the response
     ibz_t q;
+
+    // Challenge: extra information that should not appear if only the 
+    // SHAKE256 could be consistently implemented between C and python...
+    ibz_vec_2_t vec_chal;
     
     /// REMOVE: this old stuff
     ///int two_resp_length;

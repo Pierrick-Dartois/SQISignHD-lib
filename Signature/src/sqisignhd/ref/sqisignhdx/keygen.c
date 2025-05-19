@@ -20,6 +20,11 @@ public_key_finalize(public_key_t *pk)
 void
 secret_key_init(secret_key_t *sk)
 {
+    ec_point_init(&sk->curve.A24);
+    sk->curve.is_A24_computed_and_normalized = 0;
+    ec_point_init(&sk->canonical_basis.P);
+    ec_point_init(&sk->canonical_basis.Q);
+    ec_point_init(&sk->canonical_basis.PmQ);
     quat_left_ideal_init(&(sk->secret_ideal));
     ibz_mat_2x2_init(&(sk->mat_BAcan_to_BA0_two));
 }

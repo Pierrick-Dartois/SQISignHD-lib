@@ -4,6 +4,8 @@
 #include <inttypes.h>
 #include <locale.h>
 #include <time.h>
+#include <gf_constants.h>
+#include <fips202.h>
 
 #include "test_sqisignhd.h"
 #include <tools.h>
@@ -52,8 +54,42 @@ test_sqisign(int repeat, uint64_t bench)
     // printf("Printing details of first signature\n");
     // int val = protocols_sign(&sig, &pk, &sk, msg, 32, 1);
     setlocale(LC_NUMERIC, "");
-    uint64_t t0, t1;
+    uint64_t t0, t1, dt_kg, dt_sig, dt_ms_kg, dt_ms_sig;
     clock_t t;
+
+    //unsigned char *buf = malloc(FP2_ENCODED_BYTES + FP2_ENCODED_BYTES + 32);
+    //{
+        //fp2_encode(buf, &NQR_TABLE[0]);
+        //fp2_encode(buf + FP2_ENCODED_BYTES, &NQR_TABLE[1]); // TODO use defined constant
+        //memcpy(buf + FP2_ENCODED_BYTES + FP2_ENCODED_BYTES,
+               //msg,
+               //32); // TODO use defined constant
+    //}
+    //for(int i=0;i<FP2_ENCODED_BYTES + FP2_ENCODED_BYTES + 32;i++){
+        //printf("%x",buf[i]);
+    //}
+    //printf("\n");
+
+    //digit_t digits[NWORDS_FIELD];
+
+    // FIXME should use SHAKE128 for smaller parameter sets?
+    //  TODO we want to use a bit differently (first we hash first half and then derive the
+    //  second half)
+    //SHAKE256((void *)digits, sizeof(digits), buf, FP2_ENCODED_BYTES + FP2_ENCODED_BYTES + 32);
+
+    //ibz_t scalars;
+    //ibz_init(&scalars);
+    //ibz_copy_digit_array(&scalars, digits);
+    //ibz_printf("%Zx\n",scalars);
+
+    //printf("\nNQR_TABLE\n");
+    //for (int i = 0; i < 20; ++i) {
+        //fp2_print("",&NQR_TABLE[i]);
+    //}
+    //printf("\nZ_NQR_TABLE\n");
+    //for (int i = 0; i < 20; ++i) {
+        //fp2_print("",&Z_NQR_TABLE[i]);
+    //}
 
     printf("\n\nTesting signatures\n");
     for (int i = 0; i < repeat; ++i) {
@@ -81,29 +117,36 @@ test_sqisign(int repeat, uint64_t bench)
     p_file_sign = fopen("Signatures.txt", "w");
 
     printf("\n\nBenchmarking signatures\n");
-    t = tic();
-    t0 = rdtsc();
+    dt_kg = 0;
+    dt_sig = 0;
+    dt_ms_kg = 0;
+    dt_ms_sig = 0;
     for (int i = 0; i < bench; ++i) {
+        t = tic();
+        t0 = rdtsc();
         protocols_keygen(&pk, &sk);
+        t1 = rdtsc();
+        ms = (1000. * (float)(clock()-t) / CLOCKS_PER_SEC);
+        dt_kg = dt_kg+t1-t0;
+        dt_ms_kg = dt_ms_kg+ms;
         fprint_public_key(p_file_pk, &pk);
-    }
-    t1 = rdtsc();
-    // ms = tac();
-    ms = (1000. * (float)(clock() - t) / CLOCKS_PER_SEC);
-    printf("Average keygen time [%.2f ms]\n", (float)(ms / bench));
-    printf("\x1b[34mAvg keygen: %'" PRIu64 " cycles\x1b[0m\n", (t1 - t0) / bench);
 
-    t = tic();
-    t0 = rdtsc();
-    for (int i = 0; i < bench; ++i) {
+        t = tic();
+        t0 = rdtsc();
         int val = protocols_sign(&sig, &pk, &sk, msg, 32, 0);
+        t1 = rdtsc();
+        ms = (1000. * (float)(clock()-t) / CLOCKS_PER_SEC);
+        dt_sig = dt_sig+t1-t0;
+        dt_ms_sig = dt_ms_sig+ms;
         fprint_signature(p_file_sign, &sig);
+
     }
-    t1 = rdtsc();
-    // ms = tac();
-    ms = (1000. * (float)(clock() - t) / CLOCKS_PER_SEC);
-    printf("Average signature time [%.2f ms]\n", (float)(ms / bench));
-    printf("\x1b[34mAvg signature: %'" PRIu64 " cycles\x1b[0m\n", (t1 - t0) / bench);
+    
+    printf("Average keygen time [%.2f ms]\n", (float)(dt_ms_kg / bench));
+    printf("\x1b[34mAvg keygen: %'" PRIu64 " cycles\x1b[0m\n", dt_kg / bench);
+
+    printf("Average signature time [%.2f ms]\n", (float)(dt_ms_sig / bench));
+    printf("\x1b[34mAvg signature: %'" PRIu64 " cycles\x1b[0m\n", dt_sig / bench);
 
     public_key_finalize(&pk);
     secret_key_finalize(&sk);
