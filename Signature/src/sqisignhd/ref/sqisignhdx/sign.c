@@ -171,7 +171,7 @@ is_good_norm(ibz_t *N)
 
     if (ibz_cmp(&DEGREE_RESP_HD, N) < 0) {
         ibz_printf(
-            "WARNING: short vectors not short enough...\n2-pow = %Zd\nnorm = %Zd\n", &DEGREE_RESP_HD, &N);
+            "WARNING: short vectors not short enough...\n2-pow = %Zd\nnorm = %Zd\n", &DEGREE_RESP_HD, N);
         // assert(0);
         ibz_finalize(&sum_of_squares_candidate);
         return 0;
@@ -435,7 +435,7 @@ protocols_sign(signature_t *sig,
 
     ec_dbl_iter(&phi_chall.kernel, TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Epk, &phi_chall.kernel);
 
-    //ec_curve_t Echall;// = Epk;
+    //ec_curve_t Echall;
     //ec_point_t points[3]; 
     //copy_point(&points[0],&B_pk_can.P);
     //copy_point(&points[1],&B_pk_can.Q);
@@ -449,7 +449,7 @@ protocols_sign(signature_t *sig,
     //copy_point(&B_chal_pk.PmQ,&points[2]);
 
     ec_basis_t B_chal_can;
-    ec_curve_t Echall;// = Epk;
+    ec_curve_t Echall;
     ec_point_t R; 
     //printf("Before challenge basis push\n");
     // Computation of mat_B_chal_can_to_B_chal_pk, the matrix of B_chal_pk=phi_chal(B_pk_can) in B_chal_can
@@ -460,12 +460,34 @@ protocols_sign(signature_t *sig,
         // We compute phi_chal(Q_pk) to obtain c, d and then a, b.
         
 
-        copy_point(&R,&B_pk_can.Q);
-        ec_eval_even(&Echall, &phi_chall, &R, 1);
+        //copy_point(&R,&B_pk_can.Q);
+        //ec_eval_even(&Echall, &phi_chall, &R, 1);
+        ec_point_t RS[3];
+        ec_point_init(&RS[0]);
+        ec_point_init(&RS[1]);
+        ec_point_init(&RS[2]);
+        ec_dbl_iter(&RS[0], TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Epk, &B_pk_can.P);
+        ec_dbl_iter(&RS[1], TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Epk, &B_pk_can.Q);
+        ec_dbl_iter(&RS[2], TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Epk, &B_pk_can.PmQ);
+        //copy_point(&RS[0],&B_pk_can.P);
+        //copy_point(&RS[1],&B_pk_can.Q);
+        //copy_point(&RS[2],&B_pk_can.PmQ);
+        ec_eval_even(&Echall, &phi_chall, RS, 3);
+        copy_point(&R,&RS[1]);
+
+        ec_point_t should_be_zero;
+        ibz_to_digit_array(scal, &chal);
+        ec_point_init(&should_be_zero);
+        ec_ladder3pt(&should_be_zero, scal, &RS[0], &RS[1], &RS[2], &Echall);
+        //ec_dbl_iter(&should_be_zero, TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Echall, &should_be_zero);
+        assert(ec_is_zero(&should_be_zero));
 
         ec_curve_to_basis_2f_to_hint(&B_chal_can, &Echall, TORSION_PLUS_EVEN_POWER, sig->hint_chal);
 
         ec_dlog_2_weil_single_point(scalarP,scalarQ,&B_chal_can,&R,&Echall,TORSION_PLUS_EVEN_POWER);
+
+
+
 
         ibz_copy_digit_array(&mat_B_chal_can_to_B_chal_pk[0][1], scalarP);
         ibz_copy_digit_array(&mat_B_chal_can_to_B_chal_pk[1][1], scalarQ);
@@ -475,6 +497,14 @@ protocols_sign(signature_t *sig,
         ibz_mul(&tmp,&mat_B_chal_can_to_B_chal_pk[1][1],&chal);
         ibz_mod(&tmp,&tmp,&TORSION_PLUS_2POWER);
         ibz_neg(&mat_B_chal_can_to_B_chal_pk[1][0],&tmp);
+
+        ec_point_t S, T;
+        digit_t a[NWORDS_FIELD]={0}, b[NWORDS_ORDER]={0};
+        copy_point(&S,&RS[0]);
+        ibz_to_digit_array(a,&mat_B_chal_can_to_B_chal_pk[0][0]);
+        ibz_to_digit_array(b,&mat_B_chal_can_to_B_chal_pk[1][0]);
+        ec_biscalar_mul(&T, &Echall, a, b, &B_chal_can);
+        assert(ec_is_equal(&T, &S));
     }
     else {
         // K_chal = Q_pk + [chal]*P_pk so chal*a+c=0 and chal*b+d=0.
@@ -497,22 +527,23 @@ protocols_sign(signature_t *sig,
         ibz_neg(&mat_B_chal_can_to_B_chal_pk[1][1],&tmp);
     }
 
-    fp2_print("A_chal = ",&Echall.A);
+    // Printing stuff at runtime
+    //fp2_print("A_chal = ",&Echall.A);
 
-    fp2_t j3;
-    ec_j_inv(&j3,&Echall);
-    fp2_print("j(E_chal) = ",&j3);
+    //fp2_t j3;
+    //ec_j_inv(&j3,&Echall);
+    //fp2_print("j(E_chal) = ",&j3);
 
-    fp2_t xP_pk, xQ_pk;
+    //fp2_t xP_pk, xQ_pk;
 
-    fp2_copy(&xP_pk,&sk->canonical_basis.P.z);
-    fp2_inv(&xP_pk);
-    fp2_mul(&xP_pk,&xP_pk,&sk->canonical_basis.P.x);
-    fp2_copy(&xQ_pk,&sk->canonical_basis.Q.z);
-    fp2_inv(&xQ_pk);
-    fp2_mul(&xQ_pk,&xQ_pk,&sk->canonical_basis.Q.x);
-    fp2_print("xP_pk = ",&xP_pk);
-    fp2_print("xQ_pk = ",&xQ_pk);
+    //fp2_copy(&xP_pk,&sk->canonical_basis.P.z);
+    //fp2_inv(&xP_pk);
+    //fp2_mul(&xP_pk,&xP_pk,&sk->canonical_basis.P.x);
+    //fp2_copy(&xQ_pk,&sk->canonical_basis.Q.z);
+    //fp2_inv(&xQ_pk);
+    //fp2_mul(&xQ_pk,&xQ_pk,&sk->canonical_basis.Q.x);
+    //fp2_print("xP_pk = ",&xP_pk);
+    //fp2_print("xQ_pk = ",&xQ_pk);
 
 
 
