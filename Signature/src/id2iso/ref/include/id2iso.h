@@ -177,6 +177,22 @@ void change_of_basis_matrix_two(ibz_mat_2x2_t *mat,
                                 ec_curve_t *E,
                                 int f);
 
+/**
+ * @brief Change of basis matrix. Applies even when B2 is not a basis.
+ * Finds mat such that:
+ * (mat*v).B2 = v.B1
+ * where "." is the dot product, defined as (v1,v2).(P,Q) = v1*P + v2*Q
+ *
+ * @param mat the computed change of basis matrix
+ * @param B1 the source basis
+ * @param B2 the target basis (applies even when B2 is not a basis)
+ * @param E the elliptic curve
+ *
+ * mat encodes the coordinates of the points of B1 in the basis B2
+ */
+void change_of_basis_matrix_two_robust(ibz_mat_2x2_t *mat, ec_basis_t *B1, ec_basis_t *B2, ec_curve_t *E, int f);
+
+
 void change_of_basis_matrix_three(ibz_mat_2x2_t *mat,
                                   const ec_basis_t *B1,
                                   const ec_basis_t *B2,

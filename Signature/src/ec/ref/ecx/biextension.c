@@ -536,6 +536,79 @@ ec_dlog_2_weil_single_point(digit_t *scalarP,
 #endif
 }
 
+// decompose the basis into PQ without obtimisation.
+// Note that basis is not necessarily a basis here 
+// (this is why optimisations are omitted).
+// R = basis->P, S = basis->Q, R = scalarP1*P + scalarQ1*Q, S = scalarP2*P + scalarQ2*Q.
+void
+ec_dlog_2_weil_robust(digit_t *scalarP1,
+                   digit_t *scalarQ1,
+                   digit_t *scalarP2,
+                   digit_t *scalarQ2,
+                   ec_basis_t *PQ,
+                   ec_basis_t *basis,
+                   ec_curve_t *curve,
+                   int e)
+{
+
+    assert(test_point_order_twof(&PQ->Q, curve, e));
+
+    fp2_t w0, w;
+    ec_point_t AC, A24;
+    ec_point_t PmR, RmQ, PmS, SmQ;
+    jac_point_t xyP, xyQ, xyR, xyS, temp;
+
+    // we start by computing the different weil pairings
+
+    // precomputing the correct curve data
+    fp2_copy(&AC.x, &curve->A);
+    fp2_copy(&AC.z, &curve->C);
+    A24_from_AC(&A24, &AC);
+
+    // lifting the two basis points
+    lift_basis(&xyP, &xyQ, PQ, curve);
+    lift_basis(&xyR, &xyS, basis, curve);
+
+    // computation of the differences
+    jac_neg(&temp, &xyR);
+    ADD(&temp, &temp, &xyP, curve);
+    jac_to_xz(&PmR, &temp);
+    jac_neg(&temp, &xyQ);
+    ADD(&temp, &temp, &xyR, curve);
+    jac_to_xz(&RmQ, &temp);
+
+    jac_neg(&temp, &xyS);
+    ADD(&temp, &temp, &xyP, curve);
+    jac_to_xz(&PmS, &temp);
+    jac_neg(&temp, &xyQ);
+    ADD(&temp, &temp, &xyS, curve);
+    jac_to_xz(&SmQ, &temp);
+
+    // computation of the reference weil pairing
+    weil(&w0, e, &PQ->P, &PQ->Q, &PQ->PmQ, &A24);
+    // e(P,R) = w0^scalarQ1 (recall R = basis->P)
+    weil(&w, e, &PQ->P, &basis->P, &PmR, &A24);
+    fp2_dlog_2e(scalarQ1, &w, &w0, e);
+    // e(R,Q) = w0^scalarP1 (recall R = basis->P)
+    weil(&w, e, &basis->P, &PQ->Q, &RmQ, &A24);
+    fp2_dlog_2e(scalarP1, &w, &w0, e);
+
+    // e(P,S) = w0^scalarQ2 (recall S = basis->Q)
+    weil(&w, e, &PQ->P, &basis->Q, &PmS, &A24);
+    fp2_dlog_2e(scalarQ2, &w, &w0, e);
+    // e(R,Q) = w0^scalarP2 (recall S = basis->Q)
+    weil(&w, e, &basis->Q, &PQ->Q, &SmQ, &A24);
+    fp2_dlog_2e(scalarP2, &w, &w0, e);
+
+//#ifndef NDEBUG
+    ec_point_t test_comput;
+    ec_biscalar_mul(&test_comput, curve, scalarP1, scalarQ1, PQ);
+    assert(ec_is_equal(&test_comput, &basis->P));
+    ec_biscalar_mul(&test_comput, curve, scalarP2, scalarQ2, PQ);
+    assert(ec_is_equal(&test_comput, &basis->Q));
+//#endif
+}
+
 // Normalize a "basis" (P, Q), (P1, P2) and store their inverse
 void
 to_cubical_basis_i(ec_point_t *P,
@@ -702,6 +775,7 @@ weil_dlog(digit_t *scalarP1,
 
 // Like ec_dlog_2_weil_old but inline all weil pairing computation to factor
 // the same arithmetic operations
+// decompose the basis into PQ
 void
 ec_dlog_2_weil(digit_t *scalarP1,
                digit_t *scalarQ1,

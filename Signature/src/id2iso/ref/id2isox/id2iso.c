@@ -1037,6 +1037,86 @@ change_of_basis_matrix_two(ibz_mat_2x2_t *mat, ec_basis_t *B1, ec_basis_t *B2, e
 // finds mat such that:
 // (mat*v).B2 = v.B1
 // where "." is the dot product, defined as (v1,v2).(P,Q) = v1*P + v2*Q
+// mat encodes the coordinates of the points of B1 in the basis B2
+// applies even when B1 is not a basis (robust).
+void
+change_of_basis_matrix_two_robust(ibz_mat_2x2_t *mat, ec_basis_t *B1, ec_basis_t *B2, ec_curve_t *E, int f)
+{
+    // TODO
+    digit_t x1[NWORDS_ORDER] = { 0 }, x2[NWORDS_ORDER] = { 0 }, x3[NWORDS_ORDER] = { 0 },
+            x4[NWORDS_ORDER] = { 0 };
+    digit_t x5[NWORDS_ORDER] = { 0 }, x6[NWORDS_ORDER] = { 0 };
+    ibz_t i1, i2, i3, i4, i5, i6;
+    ibz_init(&i1);
+    ibz_init(&i2);
+    ibz_init(&i3);
+    ibz_init(&i4);
+    ibz_init(&i5);
+    ibz_init(&i6);
+
+    assert(test_point_order_twof(&(B2->PmQ), E, f));
+
+    ec_dlog_2_weil_robust(x1, x2, x3, x4, B2, B1, E, f);
+
+    // copying the digits
+    ibz_copy_digit_array(&i1, x1);
+    ibz_copy_digit_array(&i2, x2);
+    ibz_copy_digit_array(&i3, x3);
+    ibz_copy_digit_array(&i4, x4);
+
+    ec_point_t test;
+#ifndef NDEBUG
+    ec_biscalar_mul(&test, E, x1, x2, B2);
+    assert(ec_is_equal(&test, &(B1->P)));
+    ec_biscalar_mul(&test, E, x3, x4, B2);
+    assert(ec_is_equal(&test, &(B1->Q)));
+#endif
+
+    ibz_sub(&i5, &i1, &i3);
+    ibz_mod(&i5, &i5, &TORSION_PLUS_2POWER);
+    ibz_sub(&i6, &i2, &i4);
+    ibz_mod(&i6, &i6, &TORSION_PLUS_2POWER);
+
+    ibz_to_digits(x5, &i5);
+    ibz_to_digits(x6, &i6);
+
+    ec_biscalar_mul(&test, E, x5, x6, B2);
+    if (!(ec_is_equal(&test, &(B1->PmQ)))) {
+        ibz_neg(&i3, &i3);
+        ibz_neg(&i4, &i4);
+
+        ibz_sub(&i5, &i1, &i3);
+        ibz_mod(&i5, &i5, &TORSION_PLUS_2POWER);
+        ibz_sub(&i6, &i2, &i4);
+        ibz_mod(&i6, &i6, &TORSION_PLUS_2POWER);
+
+        ibz_to_digits(x5, &i5);
+        ibz_to_digits(x6, &i6);
+
+#ifndef NDEBUG
+        ec_biscalar_mul(&test, E, x5, x6, B2);
+        assert(ec_is_equal(&test, &(B1->PmQ)));
+#endif
+    }
+
+    ibz_copy(&((*mat)[0][0]), &i1);
+    ibz_copy(&((*mat)[1][0]), &i2);
+    ibz_copy(&((*mat)[0][1]), &i3);
+    ibz_copy(&((*mat)[1][1]), &i4);
+
+    ibz_finalize(&i1);
+    ibz_finalize(&i2);
+    ibz_finalize(&i3);
+    ibz_finalize(&i4);
+    ibz_finalize(&i5);
+    ibz_finalize(&i6);
+
+    return;
+}
+
+// finds mat such that:
+// (mat*v).B2 = v.B1
+// where "." is the dot product, defined as (v1,v2).(P,Q) = v1*P + v2*Q
 void
 change_of_basis_matrix_three(ibz_mat_2x2_t *mat,
                              const ec_basis_t *B1,
