@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_precomp_lvl1.a CMakeFiles/sqisign_precomp_lvl1.dir/gf_constants.c.o CMakeFiles/sqisign_precomp_lvl1.dir/torsion_constants.c.o CMakeFiles/sqisign_precomp_lvl1.dir/quaternion_data.c.o CMakeFiles/sqisign_precomp_lvl1.dir/endomorphism_action.c.o CMakeFiles/sqisign_precomp_lvl1.dir/klpt_constants.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_precomp_lvl1.a

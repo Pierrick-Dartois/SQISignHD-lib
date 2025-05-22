@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_intbig_generic.a CMakeFiles/sqisign_intbig_generic.dir/intbig.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_intbig_generic.a

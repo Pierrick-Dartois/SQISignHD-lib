@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_lvl5.a CMakeFiles/sqisign_lvl5.dir/sqisign.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_lvl5.a

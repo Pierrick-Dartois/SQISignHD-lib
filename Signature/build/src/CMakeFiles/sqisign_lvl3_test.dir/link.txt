@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_lvl3_test.a CMakeFiles/sqisign_lvl3_test.dir/sqisign.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_lvl3_test.a

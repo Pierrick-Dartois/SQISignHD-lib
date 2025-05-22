@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_dim2id2iso_lvl1.a CMakeFiles/sqisign_dim2id2iso_lvl1.dir/__/dim2id2isox/dim2id2iso.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_dim2id2iso_lvl1.a

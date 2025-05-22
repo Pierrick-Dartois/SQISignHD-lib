@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsqisign_klpt_lvl5.a CMakeFiles/sqisign_klpt_lvl5.dir/__/klptx/tools.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsqisign_klpt_lvl5.a
