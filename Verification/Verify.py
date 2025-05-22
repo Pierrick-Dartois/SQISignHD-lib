@@ -12,19 +12,26 @@ from Theta_dim4.Theta_dim4_sage.pkg.theta_structures.Tuple_point import TuplePoi
 from Theta_dim4.Theta_dim4_sage.pkg.isogenies.Kani_endomorphism import KaniEndoHalf
 from Theta_dim4.Theta_dim4_sage.pkg.utilities.strategy import precompute_strategy_with_first_eval
 
+# CLI imports
+import argparse
+from pathlib import Path
+
 public_params = {1:{'p':5*2**248-1,'c':5,'e':248},3:{'p':65*2**376-1,'c':65,'e':376},5:{'p':27*2**500-1,'c':27,'e':500}}
 
 
 class SQIsignHD:
 	def __init__(self,lvl):
+		if lvl not in [1,3,5]:
+			raise ValueError("Level (parameter -lvl) should be 1, 3 or 5.")
+
 		self.p = public_params[lvl]['p']
 		self.c = public_params[lvl]['c']
 		self.e = public_params[lvl]['e']
 		self.Fp2 = GF(self.p**2,'i',modulus=[1,0,1],proof=False)
 		self.i = self.Fp2.gen()
 
-		self.NQR_TABLE = self.read_gf_table("API/SQIsignHD/Data/NQR_TABLE_lvl"+str(lvl)+".txt")
-		self.Z_NQR_TABLE = self.read_gf_table("API/SQIsignHD/Data/Z_NQR_TABLE_lvl"+str(lvl)+".txt")
+		self.NQR_TABLE = self.read_gf_table("Data/NQR_TABLE_lvl"+str(lvl)+".txt")
+		self.Z_NQR_TABLE = self.read_gf_table("Data/Z_NQR_TABLE_lvl"+str(lvl)+".txt")
 
 		for x in self.NQR_TABLE:
 			assert(x.is_square() == False)
@@ -135,10 +142,10 @@ class SQIsignHD_verif:
 	def __init__(self,pp,number):
 		self.params = pp
 
-		file = "API/SQIsignHD/Data/Public_keys_lvl"+str(pp.lvl)+".txt"
+		file = "Data/Public_keys_lvl"+str(pp.lvl)+".txt"
 		self.A_pk, self.h_pk_P, self.h_pk_Q = pp.read_public_key(file,number)
 
-		file = "API/SQIsignHD/Data/Signatures_lvl"+str(pp.lvl)+".txt"
+		file = "Data/Signatures_lvl"+str(pp.lvl)+".txt"
 		self.A_com, self.a, self.b, self.c_or_d, self.q, self.h_com_P, self.h_com_Q,\
 		self.h_chal_P, self.h_chal_Q, self.vec_chal = pp.read_signature(file,number)
 
@@ -229,55 +236,121 @@ class SQIsignHD_verif:
 
 		return ((FT[0]==a1P_com)|(FT[0]==-a1P_com))&((FT[1]==a2P_com)|(FT[1]==-a2P_com))&(FT[3]==self.E_chal(0))
 
-	def verify(self):
-		print("\nStarting verification:")
-		t0 = time()
+	def verify(self,verbose=True):
+		if verbose:
+			print("\nStarting verification:")
+			t0 = time()
 		self.recover_pk_and_com()
-		t1 = time()
-		print("Commitment and public key basis generation time {} s".format(t1-t0))
-		t1 = time()
+		if verbose:
+			t1 = time()
+			print("Commitment and public key basis generation time {} s".format(t1-t0))
+			t1 = time()
 		self.recover_chal()
-		t2 = time()
-		print("Challenge and challenge basis computation time {} s".format(t2-t1))
-		t2 = time()
+		if verbose:
+			t2 = time()
+			print("Challenge and challenge basis computation time {} s".format(t2-t1))
+			t2 = time()
 		self.image_response()
-		t3 = time()
-		print("Response image recovery time {} s".format(t3-t2))
-		t3 = time()
+		if verbose:
+			t3 = time()
+			print("Response image recovery time {} s".format(t3-t2))
+			t3 = time()
 		self.compute_HD()
-		t4 = time()
-		print("4-dimensional isogeny computation time {} s".format(t4-t3))
-		t5 = time()
+		if verbose:
+			t4 = time()
+			print("4-dimensional isogeny computation time {} s".format(t4-t3))
+			t5 = time()
 		matching_codomain = self.verify_middle_codomain()
-		t6 = time()
-		print("Do F1 and F2_dual have the same codomain?\n{}".format(matching_codomain))
-		print("Codomain matching verification time {} s".format(t6-t5))
-		t6 = time()
+		if verbose:
+			t6 = time()
+			print("Do F1 and F2_dual have the same codomain?\n{}".format(matching_codomain))
+			print("Codomain matching verification time {} s".format(t6-t5))
+			t6 = time()
 		correct_image = self.verify_HD_image()
-		t7 = time()
-		print("Is the point evaluation correct ?\n{}".format(correct_image))
-		print("Time image verification {} s".format(t7-t6))
-		print("\nEnd verification. Total verification time {} s\n".format(t7-t0))
+		if verbose:
+			t7 = time()
+			print("Is the point evaluation correct ?\n{}".format(correct_image))
+			print("Time image verification {} s".format(t7-t6))
+			print("\nEnd verification. Total verification time {} s\n".format(t7-t0))
 
 		return matching_codomain&correct_image
 
 if __name__=="__main__":
-	pp = SQIsignHD(3)
-	test = True
-	dt = 0
-	n_test = 100
-	for i in range(n_test):
-		print("Verifying response number {}".format(i))
-		verif = SQIsignHD_verif(pp,i)
-		t0 = time()
-		test = test&verif.verify()
-		t1 = time()
-		dt += t1-t0
+	parser = argparse.ArgumentParser()
+
+	parser.add_argument("-lvl","--level")
+	parser.add_argument("-test","--test",action="store_true")
+	parser.add_argument("-i","--index")
+	parser.add_argument("-n","--n_samples")
+	parser.add_argument("-bench","--benchmark",action="store_true")
+
+	args = parser.parse_args()
+
+	lvl = int(args.level)
+	pp = SQIsignHD(lvl)
+
+
+	if args.test:
+		print("##########################################")
+		print("# Testing level {} SQIsignHD verification #".format(lvl))
+		print("# p = {}*2**{} - 1                       #".format(pp.c,pp.e))
+		print("##########################################\n")
+		if args.index!=None:
+			i = int(args.index)
+			n_samples = 1
+			if i>=100:
+				raise ValueError("Index (parameter -i) should be <=99.")
+			print("Verifying response number {}".format(i))
+			verif = SQIsignHD_verif(pp,i)
+			t0 = time()
+			test = verif.verify(verbose=True)
+			t1 = time()
+			dt = t1-t0
+		else:
+			if args.n_samples!=None:
+				n_samples = int(args.n_samples)
+				if n_samples>100:
+					raise ValueError("The number of samples (parameter -n) should be <=100.")
+			else:
+				n_samples = 100
+
+			test = True
+			dt = 0
+			for i in range(n_samples):
+				print("Verifying response number {}".format(i))
+				verif = SQIsignHD_verif(pp,i)
+				t0 = time()
+				test = test&verif.verify(verbose=True)
+				t1 = time()
+				dt += t1-t0
+
+	if args.benchmark:
+		print("###############################################")
+		print("# Benchmarking level {} SQIsignHD verification #".format(lvl))
+		print("# p = {}*2**{} - 1                            #".format(pp.c,pp.e))
+		print("###############################################\n")
+
+		if args.n_samples!=None:
+			n_samples = int(args.n_samples)
+			if n_samples>100:
+				raise ValueError("The number of samples (parameter -n) should be <=100.")
+		else:
+			n_samples = 100
+
+		test = True
+		dt = 0
+		for i in range(n_samples):
+			print("Verifying response number {}".format(i))
+			verif = SQIsignHD_verif(pp,i)
+			t0 = time()
+			test = test&verif.verify(verbose=False)
+			t1 = time()
+			dt += t1-t0
 
 	if test:
 		print("\nAll tests passed.")
-		print("\nAverage verification time {} s".format(dt/n_test))
+		print("\nAverage verification time {} s".format(dt/n_samples))
 	else:
 		print("\nError: some tests failed.")
-		print("\nAverage verification time {} s".format(dt/n_test))
+		print("\nAverage verification time {} s".format(dt/n_samples))
 		

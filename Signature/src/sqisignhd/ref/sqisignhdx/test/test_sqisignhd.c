@@ -6,7 +6,6 @@
 #include <time.h>
 #include <gf_constants.h>
 #include <fips202.h>
-#include <unistd.h>
 
 #include "test_sqisignhd.h"
 #include <tools.h>
@@ -112,14 +111,20 @@ test_sqisign(int repeat, uint64_t bench)
 
     float ms;
 
-    char buffer[]="";
-    getcwd(buffer, 100);
-    printf("%s\n", buffer);
-
     FILE *p_file_pk;
     FILE *p_file_sign;
-    p_file_pk = fopen("Public_keys.txt", "w");
-    p_file_sign = fopen("Signatures.txt", "w");
+    if(LVL == 1){
+        p_file_pk = fopen("../../Verification/Data/Public_keys_lvl1.txt", "w");
+        p_file_sign = fopen("../../Verification/Data/Signatures_lvl1.txt", "w");
+    }
+    if(LVL == 3){
+        p_file_pk = fopen("../../Verification/Data/Public_keys_lvl3.txt", "w");
+        p_file_sign = fopen("../../Verification/Data/Signatures_lvl3.txt", "w");
+    }
+    if(LVL == 5){
+        p_file_pk = fopen("../../Verification/Data/Public_keys_lvl5.txt", "w");
+        p_file_sign = fopen("../../Verification/Data/Signatures_lvl5.txt", "w");
+    }
 
     printf("\n\nBenchmarking signatures\n");
     dt_kg = 0;

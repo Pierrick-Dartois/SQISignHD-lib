@@ -7,7 +7,7 @@ if not require_version(9, 8, print_message=True):
 
 ################################################################
 
-from parameters import p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk, e_resp_hd, e_chal_hd, e_sig_pt_order
+from parameters import lvl, p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk, e_resp_hd, e_chal_hd, e_sig_pt_order
 
 ################################################################
 
@@ -30,6 +30,7 @@ defs = {
 from cformat import Ibz, Object, ObjectFormatter
 
 objs = ObjectFormatter([
+        Object('int', 'LVL', int(lvl)),
         Object('uint64_t', 'TORSION_PLUS_EVEN_POWER', int(f)),
         Object('uint64_t[]', 'TORSION_ODD_PRIMES', Lpls + Lmin),
         Object('uint64_t[]', 'TORSION_ODD_POWERS', Epls + Emin),

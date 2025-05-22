@@ -2,6 +2,7 @@
 #define TORSION_2POWER_BYTES 63
 #define TORSION_3POWER_BYTES 1
 #define TORSION_23POWER_BYTES 64
+extern const int LVL;
 extern const uint64_t TORSION_PLUS_EVEN_POWER;
 extern const uint64_t TORSION_ODD_PRIMES[2];
 extern const uint64_t TORSION_ODD_POWERS[2];

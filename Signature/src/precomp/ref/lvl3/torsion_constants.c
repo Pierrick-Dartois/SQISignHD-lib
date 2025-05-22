@@ -3,6 +3,7 @@
 #include <torsion_constants.h>
 #if 0
 #elif 8*DIGIT_LEN == 16
+const int LVL = 0x3;
 const uint64_t TORSION_PLUS_EVEN_POWER = 0x178;
 const uint64_t TORSION_ODD_PRIMES[6] = {0x5, 0xd, 0x3, 0xb, 0x13, 0x2f};
 const uint64_t TORSION_ODD_POWERS[6] = {0x1, 0x1, 0x1, 0x2, 0x1, 0x1};
@@ -31,6 +32,7 @@ const ibz_t DEGREE_CHAL_HD = {{._mp_alloc = 0, ._mp_size = 13, ._mp_d = (mp_limb
 const uint64_t EXPONENT_SIGN_PT_ORDER_HD = 0x67;
 const ibz_t SIGN_PT_ORDER_HD = {{._mp_alloc = 0, ._mp_size = 7, ._mp_d = (mp_limb_t[]) {0x0,0x0,0x0,0x0,0x0,0x0,0x80}}};
 #elif 8*DIGIT_LEN == 32
+const int LVL = 0x3;
 const uint64_t TORSION_PLUS_EVEN_POWER = 0x178;
 const uint64_t TORSION_ODD_PRIMES[6] = {0x5, 0xd, 0x3, 0xb, 0x13, 0x2f};
 const uint64_t TORSION_ODD_POWERS[6] = {0x1, 0x1, 0x1, 0x2, 0x1, 0x1};
@@ -59,6 +61,7 @@ const ibz_t DEGREE_CHAL_HD = {{._mp_alloc = 0, ._mp_size = 7, ._mp_d = (mp_limb_
 const uint64_t EXPONENT_SIGN_PT_ORDER_HD = 0x67;
 const ibz_t SIGN_PT_ORDER_HD = {{._mp_alloc = 0, ._mp_size = 4, ._mp_d = (mp_limb_t[]) {0x0,0x0,0x0,0x80}}};
 #elif 8*DIGIT_LEN == 64
+const int LVL = 0x3;
 const uint64_t TORSION_PLUS_EVEN_POWER = 0x178;
 const uint64_t TORSION_ODD_PRIMES[6] = {0x5, 0xd, 0x3, 0xb, 0x13, 0x2f};
 const uint64_t TORSION_ODD_POWERS[6] = {0x1, 0x1, 0x1, 0x2, 0x1, 0x1};
