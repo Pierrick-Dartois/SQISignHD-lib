@@ -4,7 +4,7 @@ This library contains an implementation of F-SQISignHD (Fast Version of the Shor
 
 Copyright (c) 2025, Pierrick Dartois, Antonin Leroux, Damien Robert and Benjamin Wesolowski.
 
-Note that this library differs significantly from the first version of FastSQIsignHD described in the SQISignHD paper [2]. In particular, the new signature implementation follows from ideal-to-isogeny translation algorithms introduced for the SQIsign2D-West protocol [3] which is now the reference SQIsign NIST candidate [4].
+Note that this library differs significantly from the first version of FastSQIsignHD described in the SQISignHD paper [2]. This can be found in the v1 branch. In particular, the new signature implementation follows from ideal-to-isogeny translation algorithms introduced for the SQIsign2D-West protocol [3] which is now the reference SQIsign NIST candidate [4].
 
 This library contains two independent sublibraries:
 
