@@ -2,6 +2,7 @@
 #include <curve_extras.h>
 
 #include <inttypes.h>
+#include <fp2.h>
 
 void
 public_key_init(public_key_t *pk)

@@ -4,6 +4,7 @@
 #include <fips202.h>
 #include <stdio.h>
 #include <string.h>
+#include <fp2.h>
 
 #define RESPONSE_LENGTH TORSION_PLUS_EVEN_POWER + 16
 
