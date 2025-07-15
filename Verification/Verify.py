@@ -18,6 +18,13 @@ from pathlib import Path
 
 public_params = {1:{'p':5*2**248-1,'c':5,'e':248},3:{'p':65*2**376-1,'c':65,'e':376},5:{'p':27*2**500-1,'c':27,'e':500}}
 
+def hexline_to_int(line):
+	L=line.split('=')
+	if L[1][1]=='-':
+		return -int('0x'+L[1][2:-1],16)
+	else:
+		return int('0x'+L[1][1:-1],16)
+
 
 class SQIsignHD:
 	def __init__(self,lvl):
@@ -78,7 +85,7 @@ class SQIsignHD:
 
 	def read_signature(self,file,number):
 		# number starting from 0
-		n_line=number*11+1
+		n_line=number*8+1
 
 		# A_com
 		line = linecache.getline(file,n_line)
@@ -88,23 +95,19 @@ class SQIsignHD:
 
 		# a
 		line = linecache.getline(file,n_line+1)
-		L=line.split('=')
-		a = int('0x'+L[1][1:-1],16)
+		a = hexline_to_int(line)
 
 		# b
 		line = linecache.getline(file,n_line+2)
-		L=line.split('=')
-		b = int('0x'+L[1][1:-1],16)
+		b = hexline_to_int(line)
 
 		# c_or_d
 		line = linecache.getline(file,n_line+3)
-		L=line.split('=')
-		c_or_d = int('0x'+L[1][1:-1],16)
+		c_or_d = hexline_to_int(line)
 
 		# q
 		line = linecache.getline(file,n_line+4)
-		L=line.split('=')
-		q = int('0x'+L[1][1:-1],16)
+		q = hexline_to_int(line)
 
 		# h_com_P
 		line = linecache.getline(file,n_line+5)
@@ -116,27 +119,11 @@ class SQIsignHD:
 		L=line.split('=')
 		hint_com_Q = int(L[1][1:-1])
 
-		# h_chal_P
+		# chal
 		line = linecache.getline(file,n_line+7)
-		L=line.split('=')
-		hint_chal_P = int(L[1][1:-1])
+		chal = hexline_to_int(line)
 
-		# h_chal_Q
-		line = linecache.getline(file,n_line+8)
-		L=line.split('=')
-		hint_chal_Q = int(L[1][1:-1])
-
-		# vec_chal
-		vec_chal = [0,0]
-		line = linecache.getline(file,n_line+9)
-		L=line.split('=')
-		vec_chal[0] = int('0x'+L[1][1:-1],16)
-		line = linecache.getline(file,n_line+10)
-		L=line.split('=')
-		vec_chal[1] = int('0x'+L[1][1:-1],16)
-
-
-		return A_com, a, b, c_or_d, q, hint_com_P, hint_com_Q, hint_chal_P, hint_chal_Q, vec_chal
+		return A_com, a, b, c_or_d, q, hint_com_P, hint_com_Q, chal
 
 class SQIsignHD_verif:
 	def __init__(self,pp,number):
@@ -146,8 +133,7 @@ class SQIsignHD_verif:
 		self.A_pk, self.h_pk_P, self.h_pk_Q = pp.read_public_key(file,number)
 
 		file = "Data/Signatures_lvl"+str(pp.lvl)+".txt"
-		self.A_com, self.a, self.b, self.c_or_d, self.q, self.h_com_P, self.h_com_Q,\
-		self.h_chal_P, self.h_chal_Q, self.vec_chal = pp.read_signature(file,number)
+		self.A_com, self.a, self.b, self.c_or_d, self.q, self.h_com_P, self.h_com_Q, self.chal = pp.read_signature(file,number)
 
 
 	def recover_pk_and_com(self):
@@ -158,24 +144,36 @@ class SQIsignHD_verif:
 		self.P_com, self.Q_com = torsion_basis_2f_from_hint(self.E_com,self.h_com_P,self.h_com_Q,self.params.NQR_TABLE,self.params.Z_NQR_TABLE)
 
 	def recover_chal(self):
-		rescale = ZZ(2**(self.params.e-self.params.lamb))
+		rescale1 = ZZ(2**(self.params.e-self.params.lamb-self.params.r))
+		rescale2 = ZZ(2**(self.params.r))
+		rescale3 = ZZ(2**(self.params.lamb))
 		deg = ZZ(2**(self.params.lamb))
 
-		B_pk_lamb = (rescale*self.P_pk, rescale*self.Q_pk)
-		phi_chal, self.E_chal = isogeny_from_scalar_x_only(self.E_pk, deg, self.vec_chal, B_pk_lamb)
+		B_pk_rplamb = (rescale1*self.P_pk, rescale1*self.Q_pk)
+		B_pk_lamb = (rescale2*B_pk_rplamb[0], rescale2*B_pk_rplamb[1])
+		phi_chal, self.E_chal = isogeny_from_scalar_x_only(self.E_pk, deg, self.chal, B_pk_lamb)
 
-		self.P_chal, self.Q_chal = torsion_basis_2f_from_hint(self.E_chal,self.h_chal_P,self.h_chal_Q,self.params.NQR_TABLE,self.params.Z_NQR_TABLE)
+		phiP_pk_rplamb, phiQ_pk_rplamb = evaluate_isogeny_x_only(phi_chal, B_pk_rplamb[0], B_pk_rplamb[1], rescale2*rescale3, deg)
+
+		# Rescaled basis of E_chal
+		self.P_chal_resc, self.Q_chal_resc = phiP_pk_rplamb + self.chal*phiQ_pk_rplamb, rescale3*phiQ_pk_rplamb
+
+		#self.P_chal, self.Q_chal = torsion_basis_2f_from_hint(self.E_chal,self.h_chal_P,self.h_chal_Q,self.params.NQR_TABLE,self.params.Z_NQR_TABLE)
 
 	def image_response(self):
 		rescale = ZZ(2**(self.params.e-self.params.r))
 		R_com = rescale*self.P_com
 		S_com = rescale*self.Q_com
-		R_chal = rescale*self.P_chal
-		S_chal = rescale*self.Q_chal
 		order = ZZ(2**self.params.r)
 
 		w_com = weil_pairing_pari(R_com, S_com, order)
-		w_chal = weil_pairing_pari(R_chal, S_chal, order)
+		w_chal = weil_pairing_pari(self.P_chal_resc, self.Q_chal_resc, order)
+
+		assert w_com**(2**(self.params.r-1))!=1
+		assert w_com**(2**(self.params.r))==1
+		assert w_chal**(2**(self.params.r-1))!=1
+		assert w_chal**(2**(self.params.r))==1
+
 
 		k = discrete_log_pari(w_com, w_chal, order)
 
@@ -188,8 +186,8 @@ class SQIsignHD_verif:
 
 		self.R_com = R_com
 		self.S_com = S_com
-		self.phi_rsp_R_com = self.a*R_chal + self.b*S_chal
-		self.phi_rsp_S_com = self.c*R_chal + self.d*S_chal
+		self.phi_rsp_R_com = self.a*self.P_chal_resc + self.b*self.Q_chal_resc
+		self.phi_rsp_S_com = self.c*self.P_chal_resc + self.d*self.Q_chal_resc
 
 	def compute_HD(self):
 		N = 2**self.params.f-self.q

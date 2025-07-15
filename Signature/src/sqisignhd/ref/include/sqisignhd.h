@@ -46,7 +46,7 @@ typedef struct signature
 
     // Hints to recover the basis
     int *hint_com;
-    int *hint_chal;
+    //int *hint_chal;
 
     // Image point coefficients
     ibz_t a;
@@ -58,7 +58,7 @@ typedef struct signature
 
     // Challenge: extra information that should not appear if only the 
     // SHAKE256 could be consistently implemented between C and python...
-    ibz_vec_2_t vec_chal;
+    ibz_t chal;
     
     /// REMOVE: this old stuff
     ///int two_resp_length;

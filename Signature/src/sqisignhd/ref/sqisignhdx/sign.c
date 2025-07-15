@@ -16,13 +16,13 @@ void
 secret_sig_init(signature_t *sig)
 {
     sig->hint_com = (int *)malloc(2 * sizeof(int));
-    sig->hint_chal = (int *)malloc(2 * sizeof(int));
+    //sig->hint_chal = (int *)malloc(2 * sizeof(int));
 
     ibz_init(&sig->a);
     ibz_init(&sig->b);
     ibz_init(&sig->c_or_d);
     ibz_init(&sig->q);
-    ibz_vec_2_init(&sig->vec_chal);
+    ibz_init(&sig->chal);
     //ibz_init(&sig->x);
     //ibz_init(&sig->b0);
     //ibz_init(&sig->d0);
@@ -36,13 +36,13 @@ void
 secret_sig_finalize(signature_t *sig)
 {
     free(sig->hint_com);
-    free(sig->hint_chal);
+    //free(sig->hint_chal);
 
     ibz_finalize(&sig->a);
     ibz_finalize(&sig->b);
     ibz_finalize(&sig->c_or_d);
     ibz_finalize(&sig->q);
-    ibz_vec_2_finalize(&sig->vec_chal);
+    ibz_finalize(&sig->chal);
     //ibz_finalize(&sig->x);
     //ibz_finalize(&sig->b0);
     //ibz_finalize(&sig->d0);
@@ -63,10 +63,9 @@ fprint_signature(FILE *p_file, const signature_t *sig)
     ibz_fprintf(p_file,"q = %Zx\n",sig->q);
     fprintf(p_file, "hint_com_P = %u\n",(sig->hint_com[0]));
     fprintf(p_file, "hint_com_Q = %u\n",(sig->hint_com[1]));
-    fprintf(p_file, "hint_chal_P = %u\n",(sig->hint_chal[0]));
-    fprintf(p_file, "hint_chal_Q = %u\n",(sig->hint_chal[1]));
-    ibz_fprintf(p_file, "vec_chal[0] = %Zx\n",(sig->vec_chal[0]));
-    ibz_fprintf(p_file, "vec_chal[1] = %Zx\n",(sig->vec_chal[1]));
+    //fprintf(p_file, "hint_chal_P = %u\n",(sig->hint_chal[0]));
+    //fprintf(p_file, "hint_chal_Q = %u\n",(sig->hint_chal[1]));
+    ibz_fprintf(p_file, "chal = %Zx\n",(sig->chal));
 }
 
 static void
@@ -401,6 +400,7 @@ protocols_sign(signature_t *sig,
     hash_to_challenge(&vec_chall, &E_com, m, pk, l);
 
     // computing the challenge isogeny 
+    /*
     ec_isog_even_t phi_chall;
     ec_basis_t B_pk_can;
     ec_curve_t Epk;
@@ -435,6 +435,7 @@ protocols_sign(signature_t *sig,
     }
 
     ec_dbl_iter(&phi_chall.kernel, TORSION_PLUS_EVEN_POWER-EXPONENT_CHAL_HD, &Epk, &phi_chall.kernel);
+    */
 
     //ec_curve_t Echall;
     //ec_point_t points[3]; 
@@ -449,6 +450,7 @@ protocols_sign(signature_t *sig,
     //copy_point(&B_chal_pk.Q,&points[1]);
     //copy_point(&B_chal_pk.PmQ,&points[2]);
 
+    /*
     // Computation of mat_B_chal_can_to_B_chal_pk, the matrix of B_chal_pk=phi_chal(B_pk_can) in B_chal_can
     // mat_B_chal_can_to_B_chal_pk=[[a,c],[b,d]], phi_chal(P_pk)=[a]P_chal+[b]Q_chal, phi_chal(Q_pk)=[c]P_chal+[d]Q_chal.
     ec_basis_t B_chal_can, phi_chall_B_pk;
@@ -469,7 +471,7 @@ protocols_sign(signature_t *sig,
 
     change_of_basis_matrix_two_robust(&mat_B_chal_can_to_B_chal_pk, &phi_chall_B_pk, &B_chal_can, &Echall, TORSION_PLUS_EVEN_POWER);
 
-    //printf("After challenge basis push\n");
+    //printf("After challenge basis push\n");*/
 
 
     // now we compute the ideal associated to the challenge
@@ -592,7 +594,7 @@ protocols_sign(signature_t *sig,
     // Computation of mat_BAcan_to_BA0 * mat_B0_to_quat_resp_dual_0 * (1/N_com)*mat_B0_to_B_com_dual 
     ibz_2x2_mul_mod(&sig_mat_pk_can_to_B_pk, &sig_mat_pk_can_to_B_pk, &mat_Bcom0_to_Bcom_can, &TORSION_PLUS_2POWER);
 
-    // Computation of mat_B_chal_can_to_B_chal_pk * mat_BAcan_to_BA0 * mat_B0_to_quat_resp_dual_0 * (1/N_com)*mat_B0_to_B_com_dual 
+    /*// Computation of mat_B_chal_can_to_B_chal_pk * mat_BAcan_to_BA0 * mat_B0_to_quat_resp_dual_0 * (1/N_com)*mat_B0_to_B_com_dual 
     ibz_2x2_mul_mod(&sig_mat_pk_can_to_B_pk, &mat_B_chal_can_to_B_chal_pk, &sig_mat_pk_can_to_B_pk, &TORSION_PLUS_2POWER);
 
     // The matrix should be a multiple of 2^e_chl (to be checked)
@@ -602,29 +604,47 @@ protocols_sign(signature_t *sig,
             assert(ibz_cmp(&remain, &ibz_const_zero) == 0);
         }
     }
+    */
 
     // Dividing by N_sk
     ibz_copy(&tmp, &sk->secret_ideal.norm);
     assert(ibz_cmp(&tmp,&FIXED_DEGREE_SK) == 0);
-    ibz_invmod(&tmp, &tmp, &SIGN_PT_ORDER_HD);
+    ibz_invmod(&tmp, &tmp, &TORSION_PLUS_2POWER);
 
     for(int i=0; i<2; i++){
         for(int j=0; j<2; j++){
             ibz_mul(&sig_mat_pk_can_to_B_pk[i][j], &sig_mat_pk_can_to_B_pk[i][j], &tmp);
-            ibz_mod(&sig_mat_pk_can_to_B_pk[i][j], &sig_mat_pk_can_to_B_pk[i][j], &SIGN_PT_ORDER_HD);
+            ibz_mod(&sig_mat_pk_can_to_B_pk[i][j], &sig_mat_pk_can_to_B_pk[i][j], &TORSION_PLUS_2POWER);
         }
     }
 
     // * Store into signature
-    ibz_copy(&sig->a,&sig_mat_pk_can_to_B_pk[0][0]);
-    ibz_copy(&sig->b,&sig_mat_pk_can_to_B_pk[1][0]);
-    if(ibz_get(&sig_mat_pk_can_to_B_pk[0][0])%2 == 1){
+    ibz_div(&tmp, &sig->a, &sig_mat_pk_can_to_B_pk[0][0], &SIGN_PT_ORDER_HD);
+    //ibz_copy(&sig->a,&sig_mat_pk_can_to_B_pk[0][0]);
+
+    ibz_mul(&tmp,&sig_mat_pk_can_to_B_pk[0][0],&vec_chall[1]);
+    ibz_sub(&tmp,&sig_mat_pk_can_to_B_pk[1][0],&tmp);
+    ibz_div(&sig->b, &remain, &tmp, &DEGREE_CHAL_HD);
+    ibz_div(&tmp, &sig->b, &sig->b, &SIGN_PT_ORDER_HD);
+
+    ibz_div(&tmp, &remain, &remain, &SIGN_PT_ORDER_HD);
+    assert(ibz_cmp(&remain, &ibz_const_zero) == 0);
+    
+    //ibz_copy(&sig->b,&sig_mat_pk_can_to_B_pk[1][0]);
+
+    if(ibz_get(&sig->a)%2 == 1){
         // a is odd, then c_or_d is c (determined by a)
-        ibz_copy(&sig->c_or_d,&sig_mat_pk_can_to_B_pk[0][1]);
+        ibz_div(&tmp, &sig->c_or_d, &sig_mat_pk_can_to_B_pk[0][1], &SIGN_PT_ORDER_HD);
     }
     else{
         // a is even, then c_or_d is d (determined by b)
-        ibz_copy(&sig->c_or_d,&sig_mat_pk_can_to_B_pk[1][1]);
+        ibz_mul(&tmp,&sig_mat_pk_can_to_B_pk[0][1],&vec_chall[1]);
+        ibz_sub(&tmp,&sig_mat_pk_can_to_B_pk[1][1],&tmp);
+        ibz_div(&sig->c_or_d, &remain, &tmp, &DEGREE_CHAL_HD);
+        ibz_div(&tmp, &sig->c_or_d, &sig->c_or_d, &SIGN_PT_ORDER_HD);
+
+        ibz_div(&tmp, &remain, &remain, &SIGN_PT_ORDER_HD);
+        assert(ibz_cmp(&remain, &ibz_const_zero) == 0);
     }
 
     // Degree q of the response
@@ -640,8 +660,7 @@ protocols_sign(signature_t *sig,
     sig->E_com.is_A24_computed_and_normalized = 0;
 
     // Setting challenge
-    ibz_copy(&sig->vec_chal[0],&vec_chall[0]);
-    ibz_copy(&sig->vec_chal[1],&vec_chall[1]);
+    ibz_copy(&sig->chal,&vec_chall[1]);
 
     /*
 #ifndef NDEBUG
