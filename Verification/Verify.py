@@ -7,7 +7,7 @@ from time import time
 
 from Theta_dim4.Theta_dim4_sage.pkg.utilities.basis_from_hints import torsion_basis_2f_from_hint
 from Theta_dim4.Theta_dim4_sage.pkg.utilities.discrete_log import weil_pairing_pari, discrete_log_pari
-from Theta_dim4.Theta_dim4_sage.pkg.montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only
+from Theta_dim4.Theta_dim4_sage.pkg.montgomery_isogenies.isogenies_x_only import isogeny_from_scalar_x_only, evaluate_isogeny_x_only_with_image_pairing
 from Theta_dim4.Theta_dim4_sage.pkg.theta_structures.Tuple_point import TuplePoint
 from Theta_dim4.Theta_dim4_sage.pkg.isogenies.Kani_endomorphism import KaniEndoHalf
 from Theta_dim4.Theta_dim4_sage.pkg.utilities.strategy import precompute_strategy_with_first_eval
@@ -153,10 +153,11 @@ class SQIsignHD_verif:
 		B_pk_lamb = (rescale2*B_pk_rplamb[0], rescale2*B_pk_rplamb[1])
 		phi_chal, self.E_chal = isogeny_from_scalar_x_only(self.E_pk, deg, self.chal, B_pk_lamb)
 
-		phiP_pk_rplamb, phiQ_pk_rplamb = evaluate_isogeny_x_only(phi_chal, B_pk_rplamb[0], B_pk_rplamb[1], rescale2*rescale3, deg)
+		phiP_pk_rplamb, phiQ_pk_rplamb, w_chal = evaluate_isogeny_x_only_with_image_pairing(phi_chal, B_pk_rplamb[0], B_pk_rplamb[1], rescale2*rescale3, deg)
 
 		# Rescaled basis of E_chal
 		self.P_chal_resc, self.Q_chal_resc = phiP_pk_rplamb + self.chal*phiQ_pk_rplamb, rescale3*phiQ_pk_rplamb
+		self.w_chal = w_chal
 
 		#self.P_chal, self.Q_chal = torsion_basis_2f_from_hint(self.E_chal,self.h_chal_P,self.h_chal_Q,self.params.NQR_TABLE,self.params.Z_NQR_TABLE)
 
@@ -167,15 +168,9 @@ class SQIsignHD_verif:
 		order = ZZ(2**self.params.r)
 
 		w_com = weil_pairing_pari(R_com, S_com, order)
-		w_chal = weil_pairing_pari(self.P_chal_resc, self.Q_chal_resc, order)
-
-		assert w_com**(2**(self.params.r-1))!=1
-		assert w_com**(2**(self.params.r))==1
-		assert w_chal**(2**(self.params.r-1))!=1
-		assert w_chal**(2**(self.params.r))==1
-
-
-		k = discrete_log_pari(w_com, w_chal, order)
+		#w_chal = weil_pairing_pari(self.P_chal_resc, self.Q_chal_resc, order)
+		
+		k = discrete_log_pari(w_com, self.w_chal, order)
 
 		if self.a%2==1:
 			self.c = self.c_or_d

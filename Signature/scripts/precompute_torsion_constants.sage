@@ -7,7 +7,7 @@ if not require_version(9, 8, print_message=True):
 
 ################################################################
 
-from parameters import lvl, p, B, f, Tpls, Tmin, Dcom, Dchall, N_sk, e_resp_hd, e_chal_hd, e_sig_pt_order
+from parameters import lvl, p, B, f, Tpls, Tmin, Dcom, Dchall, e_resp_hd, e_chal_hd, e_sig_pt_order
 
 ################################################################
 
@@ -51,7 +51,6 @@ objs = ObjectFormatter([
         Object('ibz_t', 'DEGREE_COMMITMENT_PLUS', Ibz(gcd(Dcom, Tpls))),
         Object('ibz_t', 'DEGREE_COMMITMENT_MINUS', Ibz(gcd(Dcom, Tmin))),
         Object('ibz_t', 'DEGREE_CHALLENGE', Ibz(Dchall)),
-        Object('ibz_t', 'FIXED_DEGREE_SK', Ibz(N_sk)),
         Object('uint64_t', 'EXPONENT_RESP_HD', int(e_resp_hd)),
         Object('ibz_t', 'DEGREE_RESP_HD', Ibz(2^e_resp_hd)),
         Object('uint64_t', 'EXPONENT_CHAL_HD', int(e_chal_hd)),

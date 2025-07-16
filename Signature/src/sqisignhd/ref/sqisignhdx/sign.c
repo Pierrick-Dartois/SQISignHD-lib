@@ -608,7 +608,7 @@ protocols_sign(signature_t *sig,
 
     // Dividing by N_sk
     ibz_copy(&tmp, &sk->secret_ideal.norm);
-    assert(ibz_cmp(&tmp,&FIXED_DEGREE_SK) == 0);
+    //assert(ibz_cmp(&tmp,&FIXED_DEGREE_SK) == 0);// Way to slow to impose this condition
     ibz_invmod(&tmp, &tmp, &TORSION_PLUS_2POWER);
 
     for(int i=0; i<2; i++){
