@@ -206,3 +206,23 @@ fp2_print(char *name, const fp2_t *a)
     }
     printf("\n");
 }
+
+void
+fp2_print_to_file(FILE *p_file, const fp2_t *a)
+{
+    fprintf(p_file,"0x");
+
+    uint8_t buf[FP_ENCODED_BYTES];
+    fp_encode(&buf, &a->re); // Encoding ensures canonical rep
+    for (int i = 0; i < FP_ENCODED_BYTES; i++) {
+        fprintf(p_file,"%02x", buf[FP_ENCODED_BYTES - i - 1]);
+    }
+
+    fprintf(p_file," + i*0x");
+
+    fp_encode(&buf, &a->im);
+    for (int i = 0; i < FP_ENCODED_BYTES; i++) {
+        fprintf(p_file,"%02x", buf[FP_ENCODED_BYTES - i - 1]);
+    }
+    fprintf(p_file,"\n");
+}

@@ -139,5 +139,6 @@ void fp2_sqrt(fp2_t *x);
 void fp2_batched_inv(fp2_t *x, int len);
 void fp2_pow_vartime(fp2_t *out, const fp2_t *x, const uint64_t *exp, const int size);
 void fp2_print(char *name, const fp2_t *a);
+void fp2_print_to_file(FILE *p_file, const fp2_t *a);
 
 #endif
